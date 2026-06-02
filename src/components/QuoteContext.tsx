@@ -1,5 +1,6 @@
 import { createContext, useContext, useMemo, useState, type ReactNode } from "react";
 import { defaultQuote, type QuoteState } from "@/lib/quote-types";
+import { emptyWardrobeQuote, type WardrobeQuoteState } from "@/types/Wardrobe";
 
 export interface RecentExport {
   ref: string;
@@ -14,6 +15,9 @@ interface QuoteContextValue {
   resetQuote: () => void;
   recent: RecentExport[];
   addRecent: (r: RecentExport) => void;
+  wardrobe: WardrobeQuoteState;
+  setWardrobe: React.Dispatch<React.SetStateAction<WardrobeQuoteState>>;
+  resetWardrobe: () => void;
 }
 
 const Ctx = createContext<QuoteContextValue | null>(null);
@@ -21,6 +25,7 @@ const Ctx = createContext<QuoteContextValue | null>(null);
 export function QuoteProvider({ children }: { children: ReactNode }) {
   const [quote, setQuote] = useState<QuoteState>(() => defaultQuote());
   const [recent, setRecent] = useState<RecentExport[]>([]);
+  const [wardrobe, setWardrobe] = useState<WardrobeQuoteState>(() => emptyWardrobeQuote());
 
   const value = useMemo<QuoteContextValue>(
     () => ({
@@ -29,8 +34,11 @@ export function QuoteProvider({ children }: { children: ReactNode }) {
       resetQuote: () => setQuote(defaultQuote()),
       recent,
       addRecent: (r) => setRecent((prev) => [r, ...prev].slice(0, 8)),
+      wardrobe,
+      setWardrobe,
+      resetWardrobe: () => setWardrobe(emptyWardrobeQuote()),
     }),
-    [quote, recent],
+    [quote, recent, wardrobe],
   );
 
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;

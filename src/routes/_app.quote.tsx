@@ -21,6 +21,7 @@ import {
   QuoteSummary,
 } from "@/components/QuoteCalculator";
 import QuotePreview from "@/components/QuotePreview";
+import QuoteTypeTabs from "@/components/QuoteTypeTabs";
 import { extras, fabrics, suppliers } from "@/data/catalog";
 import {
   PRESET_SIZES,
@@ -104,6 +105,7 @@ function CreateQuote() {
 
   return (
     <div className="mx-auto w-full max-w-[1400px]">
+      <QuoteTypeTabs />
       <header className="mb-6 flex flex-wrap items-end justify-between gap-3">
         <div>
           <div className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground">

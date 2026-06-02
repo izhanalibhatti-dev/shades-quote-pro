@@ -9,6 +9,7 @@ import {
   PanelLeft,
   Moon,
   Sun,
+  DoorOpen,
 } from "lucide-react";
 import { useEffect, useState } from "react";
 import Logo from "@/components/Logo";
@@ -17,7 +18,8 @@ import { applyTheme, getTheme, type Theme } from "@/lib/theme";
 
 const NAV = [
   { to: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
-  { to: "/quote", label: "Create Quote", icon: FilePlus2 },
+  { to: "/quote", label: "Blinds Quote", icon: FilePlus2 },
+  { to: "/wardrobe", label: "Wardrobes & Doors", icon: DoorOpen },
   { to: "/settings", label: "Settings", icon: Settings },
 ] as const;
 
