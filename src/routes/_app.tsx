@@ -5,6 +5,7 @@ import { Menu } from "lucide-react";
 import { Toaster } from "@/components/ui/sonner";
 import AppSidebar from "@/components/AppSidebar";
 import { QuoteProvider } from "@/components/QuoteContext";
+import AccessibilityWidget from "@/components/AccessibilityWidget";
 import { isAuthed } from "@/lib/auth";
 import { applyTheme, getTheme } from "@/lib/theme";
 
@@ -67,6 +68,7 @@ function AppLayout() {
         </div>
 
         <Toaster richColors position="top-right" />
+        <AccessibilityWidget />
       </div>
     </QuoteProvider>
   );
