@@ -1,5 +1,7 @@
 import { forwardRef } from "react";
 import Logo from "@/components/Logo";
+import { getBlindProductType } from "@/data/blinds/productTypes";
+import { getIntlLocale, useI18n } from "@/lib/i18n";
 import { computePricing, formatGBP, type QuoteState } from "@/lib/quote-types";
 
 const QuotePreview = forwardRef<HTMLDivElement, { quote: QuoteState }>(function QuotePreview(
@@ -7,7 +9,11 @@ const QuotePreview = forwardRef<HTMLDivElement, { quote: QuoteState }>(function 
   ref,
 ) {
   const p = computePricing(quote);
+  const { locale, t, translateLabel } = useI18n();
   const date = new Date(quote.meta.date);
+  const dateLocale = getIntlLocale(locale);
+  const blindType = getBlindProductType(quote.product.productTypeId, p.productTypeName);
+  const productLabel = blindType ? `${blindType.label} Blind` : translateLabel(p.productTypeName);
 
   return (
     <div
@@ -31,10 +37,16 @@ const QuotePreview = forwardRef<HTMLDivElement, { quote: QuoteState }>(function 
             <Logo className="h-12 w-auto" />
           </div>
           <div className="text-right">
-            <div className="text-[10px] uppercase tracking-[0.22em] text-[#6b7280]">Quotation</div>
+            <div className="text-[10px] uppercase tracking-[0.22em] text-[#6b7280]">
+              {t("quote.quotation")}
+            </div>
             <div className="mt-0.5 text-[15px] font-semibold tracking-tight">{quote.meta.ref}</div>
             <div className="mt-0.5 text-[11px] text-[#6b7280]">
-              {date.toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })}
+              {date.toLocaleDateString(dateLocale, {
+                day: "numeric",
+                month: "long",
+                year: "numeric",
+              })}
             </div>
           </div>
         </div>
@@ -44,7 +56,7 @@ const QuotePreview = forwardRef<HTMLDivElement, { quote: QuoteState }>(function 
 
       {/* Customer + Blind */}
       <div className="grid grid-cols-2 gap-8 px-10 py-7">
-        <Block label="Prepared for">
+        <Block label={t("quote.preparedFor")}>
           <div className="text-[14px] font-semibold tracking-tight">
             {quote.customer.fullName || "N/A"}
           </div>
@@ -58,14 +70,13 @@ const QuotePreview = forwardRef<HTMLDivElement, { quote: QuoteState }>(function 
             {quote.customer.email || ""}
           </div>
         </Block>
-        <Block label="Product">
-          <div className="text-[14px] font-semibold tracking-tight">{p.productTypeName}</div>
+        <Block label={t("quote.product")}>
+          <div className="text-[14px] font-semibold tracking-tight">{productLabel}</div>
           <div className="mt-1 text-[12.5px] text-[#4b5563]">{p.supplierName}</div>
           <dl className="mt-2 grid grid-cols-2 gap-x-4 gap-y-1 text-[11.5px] text-[#4b5563]">
-            <Pair k="Fabric" v={p.fabricName} />
-            <Pair k="Band" v={p.band} />
-            <Pair k="Mount" v={quote.product.mount} />
-            <Pair k="Chain" v={quote.product.chainSide} />
+            {!isInternalBandLabel(p.fabricName) && <Pair k={t("quote.fabric")} v={p.fabricName} />}
+            <Pair k={t("quote.mount")} v={quote.product.mount} />
+            <Pair k={t("quote.chain")} v={quote.product.chainSide} />
           </dl>
         </Block>
       </div>
@@ -74,23 +85,26 @@ const QuotePreview = forwardRef<HTMLDivElement, { quote: QuoteState }>(function 
 
       {/* Specification table */}
       <div className="px-10 py-7">
-        <div className="text-[10px] uppercase tracking-[0.22em] text-[#6b7280]">Specification</div>
+        <div className="text-[10px] uppercase tracking-[0.22em] text-[#6b7280]">
+          {t("quote.specification")}
+        </div>
         <table className="mt-3 w-full text-[12.5px]">
           <thead>
             <tr className="text-[10.5px] uppercase tracking-[0.14em] text-[#6b7280]">
-              <th className="pb-2 text-left font-medium">Item</th>
+              <th className="pb-2 text-left font-medium">{t("quote.item")}</th>
               <th className="pb-2 text-right font-medium">W x H (mm)</th>
-              <th className="pb-2 text-right font-medium">Table size</th>
-              <th className="pb-2 text-right font-medium">Qty</th>
-              <th className="pb-2 text-right font-medium">Base</th>
+              <th className="pb-2 text-right font-medium">{t("quote.tableSize")}</th>
+              <th className="pb-2 text-right font-medium">{t("quote.qty")}</th>
+              <th className="pb-2 text-right font-medium">{t("quote.base")}</th>
             </tr>
           </thead>
           <tbody>
             <tr className="border-t border-[#ece8df]">
               <td className="py-3 pr-2 align-top">
-                <div className="font-medium">{p.productTypeName}</div>
+                <div className="font-medium">{productLabel}</div>
                 <div className="text-[11px] text-[#6b7280]">
-                  {quote.product.room} · {p.fabricName}
+                  {quote.product.room}
+                  {!isInternalBandLabel(p.fabricName) ? ` · ${p.fabricName}` : ""}
                 </div>
               </td>
               <td className="py-3 text-right tabular-nums">
@@ -126,26 +140,28 @@ const QuotePreview = forwardRef<HTMLDivElement, { quote: QuoteState }>(function 
               <p className="mt-1.5 max-w-full break-words text-[#4b5563]">{quote.customer.notes}</p>
             </>
           ) : (
-            <p className="max-w-full">
-              Quotation valid for 30 days from the date of issue. Labour is shown separately and is
-              not included in the VAT calculation.
-            </p>
+            <p className="max-w-full">{t("quote.validity")}</p>
           )}
         </div>
         <div className="min-w-0 rounded-xl bg-[#faf7f1] p-5">
-          <Row k="Base price" v={formatGBP(p.basePrice)} />
-          <Row k="Extras" v={formatGBP(p.extrasTotal)} />
-          <Row k="Trade price" v={formatGBP(p.tradePrice)} />
+          <Row k={t("quote.basePrice")} v={formatGBP(p.basePrice)} />
+          <Row k={t("quote.extras")} v={formatGBP(p.extrasTotal)} />
+          <Row k={t("quote.tradePrice")} v={formatGBP(p.tradePrice)} />
           {quote.pricing.discount > 0 && (
-            <Row k="Discount" v={`- ${formatGBP(quote.pricing.discount)}`} />
+            <Row k={t("quote.discount")} v={`- ${formatGBP(quote.pricing.discount)}`} />
           )}
           <div className="my-2 h-px bg-[#e7e1d3]" />
-          <Row k="Taxable subtotal" v={formatGBP(p.taxableSubtotal)} />
-          <Row k={`VAT (${Math.round(quote.pricing.vatRate * 100)}%)`} v={formatGBP(p.vat)} />
-          <Row k="Labour" v={formatGBP(p.labourCost)} />
+          <Row k={t("quote.taxableSubtotal")} v={formatGBP(p.taxableSubtotal)} />
+          <Row
+            k={`${t("quote.vat")} (${Math.round(quote.pricing.vatRate * 100)}%)`}
+            v={formatGBP(p.vat)}
+          />
+          <Row k={t("quote.labour")} v={formatGBP(p.labourCost)} />
           <div className="my-2 h-px bg-[#e7e1d3]" />
           <div className="flex items-baseline justify-between gap-3">
-            <span className="text-[10.5px] uppercase tracking-[0.18em] text-[#6b7280]">Total</span>
+            <span className="text-[10.5px] uppercase tracking-[0.18em] text-[#6b7280]">
+              {t("quote.total")}
+            </span>
             <span className="text-[20px] font-semibold tracking-tight tabular-nums">
               {formatGBP(p.finalTotal)}
             </span>
@@ -158,7 +174,7 @@ const QuotePreview = forwardRef<HTMLDivElement, { quote: QuoteState }>(function 
         <div className="grid grid-cols-2 gap-8">
           <div className="min-w-0">
             <div className="text-[10px] uppercase tracking-[0.22em] text-[#9ca3af]">
-              Prepared by
+              {t("quote.preparedBy")}
             </div>
             <div className="mt-1.5 text-[13px] font-semibold tracking-tight text-[#1a1d2b]">
               {quote.preparedBy.name || "N/A"}
@@ -174,24 +190,26 @@ const QuotePreview = forwardRef<HTMLDivElement, { quote: QuoteState }>(function 
             </div>
             <div className="mt-5 h-px w-full bg-[#cbc4b3]" />
             <div className="mt-1.5 text-[10px] uppercase tracking-[0.18em] text-[#9ca3af]">
-              Consultant signature
+              {t("quote.consultantSignature")}
             </div>
           </div>
           <div className="min-w-0 text-right">
-            <div className="text-[10px] uppercase tracking-[0.22em] text-[#9ca3af]">Customer</div>
+            <div className="text-[10px] uppercase tracking-[0.22em] text-[#9ca3af]">
+              {t("quote.customer")}
+            </div>
             <div className="mt-1.5 text-[13px] font-semibold tracking-tight text-[#1a1d2b]">
               {quote.customer.fullName || "N/A"}
             </div>
             <div className="text-[11px] text-[#6b7280]">&nbsp;</div>
             <div className="mt-5 h-px w-full bg-[#cbc4b3]" />
             <div className="mt-1.5 text-[10px] uppercase tracking-[0.18em] text-[#9ca3af]">
-              Customer signature
+              {t("quote.customerSignature")}
             </div>
           </div>
         </div>
         <div className="mt-5 flex items-center justify-between text-[10.5px] text-[#9ca3af]">
           <span>shadesandspace.com</span>
-          <span>Thank you for choosing Shades &amp; Space</span>
+          <span>{t("quote.thanks")}</span>
         </div>
       </div>
     </div>
@@ -223,6 +241,10 @@ function Row({ k, v }: { k: string; v: string }) {
       <span className="tabular-nums text-[#1a1d2b]">{v}</span>
     </div>
   );
+}
+
+function isInternalBandLabel(value: string) {
+  return /^(standard|band\s+[a-z]{1,3})$/i.test(value.trim());
 }
 
 export default QuotePreview;

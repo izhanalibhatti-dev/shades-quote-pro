@@ -39,14 +39,16 @@ export function resolveUnitPrice(
         return { unitPrice: 0, warning: "Enter width and height to calculate price." };
       }
       const sqm = (w / 1000) * (h / 1000);
-      return { unitPrice: +(sqm * mode.pricePerSqm).toFixed(2) };
+      const calculated = sqm * mode.pricePerSqm;
+      return { unitPrice: +Math.max(mode.minimumCharge ?? 0, calculated).toFixed(2) };
     }
     case "perMetre": {
       const w = opts.widthMm ?? 0;
       if (w <= 0) {
         return { unitPrice: 0, warning: "Enter width (mm) to calculate price." };
       }
-      return { unitPrice: +((w / 1000) * mode.pricePerMetre).toFixed(2) };
+      const calculated = (w / 1000) * mode.pricePerMetre;
+      return { unitPrice: +Math.max(mode.minimumCharge ?? 0, calculated).toFixed(2) };
     }
     case "gridWxH": {
       const w = opts.widthMm ?? 0;
@@ -113,10 +115,7 @@ export function calculateWardrobeTotals(state: WardrobeQuoteState): WardrobeQuot
   return { subtotal, vat, total };
 }
 
-export function rebuildLine(
-  line: WardrobeLineItem,
-  product: WardrobeProduct,
-): WardrobeLineItem {
+export function rebuildLine(line: WardrobeLineItem, product: WardrobeProduct): WardrobeLineItem {
   const calc = calculateLine(product, {
     widthMm: line.widthMm,
     heightMm: line.heightMm,

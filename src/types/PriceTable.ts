@@ -8,6 +8,9 @@ export interface PriceTable {
   year: number;
   currency: "GBP";
   source?: string;
+  priceSourceLabel?: string;
+  workbookSheetName?: string;
+  workbookCellRange?: string;
   notes?: string;
   widthsLabel?: string;
   heightsLabel?: string;

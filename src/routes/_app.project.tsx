@@ -1,0 +1,1897 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { useMemo, useRef, useState, type ComponentType, type ReactNode } from "react";
+import { motion } from "framer-motion";
+import { toPng } from "html-to-image";
+import { toast } from "sonner";
+import {
+  Blinds,
+  Copy,
+  DoorOpen,
+  Download,
+  FileText,
+  Hammer,
+  IdCard,
+  Layers,
+  Package,
+  Pencil,
+  Plus,
+  RotateCcw,
+  Trash2,
+} from "lucide-react";
+import ProjectQuotePreview from "@/components/ProjectQuotePreview";
+import { useQuote } from "@/components/QuoteContext";
+import QuoteTypeTabs from "@/components/QuoteTypeTabs";
+import { extras, fabrics, priceTables, suppliers } from "@/data/catalog";
+import { BLIND_PRODUCT_TYPES, getBlindProductType } from "@/data/blinds/productTypes";
+import { WARDROBE_CATEGORIES } from "@/data/wardrobe/categories";
+import { defaultQuote, formatGBP, uid } from "@/lib/quote-types";
+import { useI18n, type TranslationKey } from "@/lib/i18n";
+import { calculateQuote } from "@/pricing/calculateQuote";
+import { calculateProjectQuote } from "@/pricing/calculateProjectQuote";
+import { calculateLine } from "@/wardrobe-pricing/calculate";
+import type { ProjectQuote, ProjectQuoteItem, ProjectQuoteItemType } from "@/types/ProjectQuote";
+import type { QuoteState, SelectedExtra } from "@/types/Quote";
+import type { WardrobeAddon, WardrobeCategoryId, WardrobeProduct } from "@/types/Wardrobe";
+
+export const Route = createFileRoute("/_app/project")({
+  head: () => ({ meta: [{ title: "Project Quote - Shades & Space" }] }),
+  component: () => <ProjectQuoteBuilder mode="project" />,
+});
+
+type DraftType = ProjectQuoteItemType;
+type BuilderMode = "project" | "blinds" | "wardrobes";
+
+interface DraftState {
+  type: DraftType;
+  blindTypeId: string;
+  blindProductTypeId: string;
+  blindFabricId: string;
+  blindFrameColour: PerfectFitRollerFrameColour;
+  blindWidthMm: number;
+  blindHeightMm: number;
+  blindQuantity: number;
+  blindMount: "Inside Recess" | "Outside Recess" | "Ceiling" | "Face Fix";
+  blindChainSide: "Left" | "Right";
+  blindExtras: SelectedExtra[];
+  wardrobeCategoryId: WardrobeCategoryId;
+  wardrobeProductId: string;
+  wardrobeWidthMm: number;
+  wardrobeHeightMm: number;
+  wardrobeQuantity: number;
+  wardrobeManualUnitPrice?: number;
+  wardrobeAddons: WardrobeAddon[];
+  title: string;
+  code: string;
+  description: string;
+  quantity: number;
+  unitPrice: number;
+  taxable: boolean;
+  notes: string;
+}
+
+const ITEM_TYPES: {
+  type: DraftType;
+  labelKey: TranslationKey;
+  icon: ComponentType<{ className?: string }>;
+}[] = [
+  { type: "blind", labelKey: "item.blind", icon: Blinds },
+  { type: "wardrobe", labelKey: "item.wardrobe", icon: DoorOpen },
+  { type: "accessory", labelKey: "item.accessory", icon: Package },
+  { type: "labour", labelKey: "item.labour", icon: Hammer },
+  { type: "manual", labelKey: "item.manual", icon: Pencil },
+];
+
+type BlindSelectableOption = (typeof fabrics)[number];
+
+const PERFECT_FIT_FRAME_SURCHARGE_EXTRA_IDS = {
+  "perfect-fit-roller": "perfect-fit-roller-golden-oak-mahogany-frame-surcharge",
+  "perfect-fit-vision": "perfect-fit-vision-golden-oak-mahogany-frame-surcharge",
+  "perfect-fit-aluminium": "perfect-fit-aluminium-golden-oak-mahogany-frame-surcharge",
+  "perfect-fit-wood": "perfect-fit-wood-golden-oak-mahogany-frame-surcharge",
+} as const;
+const PERFECT_FIT_FRAME_SURCHARGE_IDS = Object.values(PERFECT_FIT_FRAME_SURCHARGE_EXTRA_IDS);
+const PERFECT_FIT_ROLLER_FRAME_COLOURS = [
+  "White",
+  "Black",
+  "Brown",
+  "Anthracite Grey",
+  "Golden Oak",
+  "Mahogany",
+] as const;
+type PerfectFitRollerFrameColour = (typeof PERFECT_FIT_ROLLER_FRAME_COLOURS)[number];
+
+function isPerfectFitRollerFrameColour(value: string): value is PerfectFitRollerFrameColour {
+  return PERFECT_FIT_ROLLER_FRAME_COLOURS.includes(value as PerfectFitRollerFrameColour);
+}
+
+function frameColourHasSurcharge(value: string) {
+  return value === "Golden Oak" || value === "Mahogany";
+}
+
+function isPerfectFitFrameBlindType(
+  blindTypeId: string,
+): blindTypeId is keyof typeof PERFECT_FIT_FRAME_SURCHARGE_EXTRA_IDS {
+  return blindTypeId in PERFECT_FIT_FRAME_SURCHARGE_EXTRA_IDS;
+}
+
+function withPerfectFitFrameSurcharge(
+  extras: SelectedExtra[],
+  blindTypeId: string,
+  frameColour: PerfectFitRollerFrameColour,
+) {
+  const withoutFrameSurcharge = extras.filter(
+    (item) => !PERFECT_FIT_FRAME_SURCHARGE_IDS.includes(item.id),
+  );
+  if (!isPerfectFitFrameBlindType(blindTypeId) || !frameColourHasSurcharge(frameColour)) {
+    return withoutFrameSurcharge;
+  }
+  return [
+    ...withoutFrameSurcharge,
+    { id: PERFECT_FIT_FRAME_SURCHARGE_EXTRA_IDS[blindTypeId], quantity: 1 },
+  ];
+}
+
+function isExtraApplicableToBlindType(
+  extra: (typeof extras)[number],
+  blindTypeId: string,
+  includeInternal = false,
+) {
+  if (!includeInternal && PERFECT_FIT_FRAME_SURCHARGE_IDS.includes(extra.id)) {
+    return false;
+  }
+  return !extra.applicableBlindTypes?.length || extra.applicableBlindTypes.includes(blindTypeId);
+}
+
+function filterExtrasForBlindType(selectedExtras: SelectedExtra[], blindTypeId: string) {
+  return selectedExtras.filter((selected) => {
+    const extra = extras.find((item) => item.id === selected.id);
+    if (!extra) return false;
+    return isExtraApplicableToBlindType(extra, blindTypeId, true);
+  });
+}
+
+function extraDetail(extra: (typeof extras)[number]) {
+  const details: string[] = [];
+  if (extra.description) details.push(extra.description);
+  switch (extra.pricing.type) {
+    case "fixed":
+      details.push(extra.pricing.amount === 0 ? "Free" : formatGBP(extra.pricing.amount));
+      break;
+    case "perBlind":
+      details.push(`${formatGBP(extra.pricing.amount)} per blind`);
+      break;
+    case "perMetreWidth":
+      details.push(`${formatGBP(extra.pricing.amount)} per metre width`);
+      break;
+    case "percentageBase":
+      details.push(`+${extra.pricing.amount}%`);
+      break;
+    case "fixedPlusPercentageBase":
+      details.push(`${formatGBP(extra.pricing.amount)} + ${extra.pricing.percentage}%`);
+      break;
+    case "fixedPlusWidthThreshold":
+      details.push(
+        `${formatGBP(extra.pricing.amount)} + ${formatGBP(extra.pricing.uplift)} over ${extra.pricing.thresholdWidthMm}mm`,
+      );
+      break;
+    case "widthTable":
+      details.push("Priced by width");
+      break;
+  }
+  return Array.from(new Set(details)).join(" - ");
+}
+
+function getFabricBlindTypeId(fabric: BlindSelectableOption) {
+  const explicit = fabric.compatibleBlindTypes?.[0];
+  if (explicit) return explicit;
+
+  const productType = suppliers
+    .flatMap((supplier) => supplier.productTypes)
+    .find((item) => item.id === fabric.productTypeId);
+  return getBlindProductType(fabric.productTypeId, productType?.name ?? "")?.id;
+}
+
+function getOptionsForBlindType(blindTypeId: string, includeFallback = false) {
+  return fabrics
+    .filter((fabric) => {
+      const matches = fabric.compatibleBlindTypes?.includes(blindTypeId) ?? false;
+      const derivedMatch =
+        !fabric.compatibleBlindTypes?.length && getFabricBlindTypeId(fabric) === blindTypeId;
+      if (!matches && !derivedMatch) return false;
+      return includeFallback ? true : isSelectableFabricOption(fabric);
+    })
+    .sort((a, b) => optionDisplayName(a).localeCompare(optionDisplayName(b)));
+}
+
+function getFallbackOptionsForBlindType(blindTypeId: string) {
+  return getOptionsForBlindType(blindTypeId, true)
+    .filter((fabric) => fabric.isFallback && !isSurchargePricingReference(fabric))
+    .sort(
+      (a, b) =>
+        fallbackPriority(a) - fallbackPriority(b) ||
+        optionDisplayName(a).localeCompare(optionDisplayName(b)),
+    );
+}
+
+function firstOptionForBlindType(blindTypeId: string) {
+  return getOptionsForBlindType(blindTypeId)[0] ?? getFallbackOptionsForBlindType(blindTypeId)[0];
+}
+
+function firstAvailableBlindType() {
+  return BLIND_PRODUCT_TYPES.find(
+    (blindType) =>
+      getOptionsForBlindType(blindType.id).length > 0 ||
+      getFallbackOptionsForBlindType(blindType.id).length > 0,
+  );
+}
+
+function isBandOnlyFabricName(name: string) {
+  return /^(standard|band\s+[a-z]{1,3})$/i.test(name.trim());
+}
+
+function isSelectableFabricOption(fabric: BlindSelectableOption) {
+  if (fabric.isFallback || fabric.selectionKind === "pricingBandFallback") return false;
+
+  const label = optionDisplayName(fabric).trim();
+  const pricingSource = fabric.pricingSource?.trim() ?? "";
+  const combined = `${label} ${pricingSource} ${fabric.productTypeId}`.toLowerCase();
+
+  if (!label || isBandOnlyFabricName(label)) return false;
+  if (/\b(additional\s+cost|surcharge|workbook|worksheet|pricing\s+table)\b/i.test(combined)) {
+    return false;
+  }
+  if (/\bprices?\s+are\s+for\b/i.test(combined)) return false;
+  if (/^[a-z]{1,3}\s*-\s*band\s+[a-z]{1,3}$/i.test(label)) return false;
+  if (/^(?:pf\s+roller|perfect\s+fit\s+konnect)\s*-\s*band\s+[a-z]{1,3}$/i.test(label)) {
+    return false;
+  }
+  if (/\bband\s+[a-z]{1,3}\b/i.test(label) && fabric.supplierName === "Workbook Pricing") {
+    return false;
+  }
+
+  return true;
+}
+
+function isSurchargePricingReference(fabric: BlindSelectableOption) {
+  return /\b(additional\s+cost|surcharge)\b/i.test(
+    `${optionDisplayName(fabric)} ${fabric.pricingSource ?? ""} ${fabric.productTypeId}`,
+  );
+}
+
+function fallbackPriority(fabric: BlindSelectableOption) {
+  const source = (fabric.pricingSource ?? "").trim();
+  if (source && !source.includes(",")) return 0;
+  return 1;
+}
+
+function optionDisplayName(fabric: BlindSelectableOption) {
+  return fabric.displayName ?? fabric.name;
+}
+
+function optionLabel(fabric: BlindSelectableOption) {
+  return optionDisplayName(fabric);
+}
+
+function initialDraft(): DraftState {
+  const firstBlindType = firstAvailableBlindType();
+  const firstFabric = firstBlindType ? firstOptionForBlindType(firstBlindType.id) : fabrics[0];
+  const firstWardrobeCategory = WARDROBE_CATEGORIES[0];
+
+  return {
+    type: "blind",
+    blindTypeId: firstBlindType?.id ?? getFabricBlindTypeId(firstFabric) ?? "",
+    blindProductTypeId: firstFabric?.productTypeId ?? "",
+    blindFabricId: firstFabric?.id ?? "",
+    blindFrameColour: "White",
+    blindWidthMm: 1800,
+    blindHeightMm: 2100,
+    blindQuantity: 1,
+    blindMount: "Inside Recess",
+    blindChainSide: "Right",
+    blindExtras: [],
+    wardrobeCategoryId: firstWardrobeCategory.id,
+    wardrobeProductId: firstWardrobeCategory.products[0]?.id ?? "",
+    wardrobeWidthMm: 0,
+    wardrobeHeightMm: 0,
+    wardrobeQuantity: 1,
+    wardrobeAddons: [],
+    title: "",
+    code: "",
+    description: "",
+    quantity: 1,
+    unitPrice: 0,
+    taxable: true,
+    notes: "",
+  };
+}
+
+const MODE_CONFIG = {
+  project: {
+    eyebrowKey: "project.eyebrow",
+    titleKey: "project.title",
+    exportName: "project",
+    scopeKey: "project.scope",
+    itemTypes: ["blind", "wardrobe", "accessory", "labour", "manual"] satisfies DraftType[],
+  },
+  blinds: {
+    eyebrowKey: "blinds.eyebrow",
+    titleKey: "blinds.title",
+    exportName: "blinds",
+    scopeKey: "blinds.scope",
+    itemTypes: ["blind"] satisfies DraftType[],
+  },
+  wardrobes: {
+    eyebrowKey: "wardrobes.eyebrow",
+    titleKey: "wardrobes.title",
+    exportName: "wardrobes",
+    scopeKey: "wardrobes.scope",
+    itemTypes: ["wardrobe", "accessory", "labour", "manual"] satisfies DraftType[],
+  },
+} as const;
+
+export function ProjectQuoteBuilder({ mode }: { mode: BuilderMode }) {
+  const context = useQuote();
+  const config = MODE_CONFIG[mode];
+  const { t, translateLabel } = useI18n();
+  const project =
+    mode === "project"
+      ? context.project
+      : mode === "blinds"
+        ? context.blindsProject
+        : context.wardrobeProject;
+  const setProject =
+    mode === "project"
+      ? context.setProject
+      : mode === "blinds"
+        ? context.setBlindsProject
+        : context.setWardrobeProject;
+  const resetProject =
+    mode === "project"
+      ? context.resetProject
+      : mode === "blinds"
+        ? context.resetBlindsProject
+        : context.resetWardrobeProject;
+  const { addRecent } = context;
+  const [activeAreaId, setActiveAreaId] = useState(project.areas[0]?.id ?? "");
+  const [areaName, setAreaName] = useState("");
+  const [editingItemId, setEditingItemId] = useState<string | null>(null);
+  const [draft, setDraft] = useState<DraftState>(() => initialDraft());
+  const [exporting, setExporting] = useState(false);
+  const previewRef = useRef<HTMLDivElement>(null);
+
+  const activeArea = project.areas.find((area) => area.id === activeAreaId) ?? project.areas[0];
+  const totals = useMemo(() => calculateProjectQuote(project), [project]);
+
+  const blindTypeOptions = useMemo(() => {
+    return BLIND_PRODUCT_TYPES.filter(
+      (blindType) =>
+        getOptionsForBlindType(blindType.id).length > 0 ||
+        getFallbackOptionsForBlindType(blindType.id).length > 0,
+    ).map((blindType) => ({ value: blindType.id, label: blindType.label }));
+  }, []);
+  const standardFabricOptions = useMemo(
+    () => getOptionsForBlindType(draft.blindTypeId),
+    [draft.blindTypeId],
+  );
+  const fallbackBandOptions = useMemo(
+    () => getFallbackOptionsForBlindType(draft.blindTypeId),
+    [draft.blindTypeId],
+  );
+  const availableBlindOptions = standardFabricOptions;
+  const wardrobeCategory = WARDROBE_CATEGORIES.find(
+    (category) => category.id === draft.wardrobeCategoryId,
+  );
+  const wardrobeProduct = wardrobeCategory?.products.find(
+    (product) => product.id === draft.wardrobeProductId,
+  );
+
+  const liveItem = useMemo(() => {
+    try {
+      return buildProjectItem(draft, project, translateLabel);
+    } catch (_error) {
+      return null;
+    }
+  }, [draft, project, translateLabel]);
+
+  const addArea = () => {
+    const name = areaName.trim();
+    if (!name) return;
+    const area = { id: uid(), name, notes: "", items: [] };
+    setProject((current) => ({ ...current, areas: [...current.areas, area] }));
+    setAreaName("");
+    setActiveAreaId(area.id);
+  };
+
+  const removeArea = (areaId: string) => {
+    setProject((current) => {
+      if (current.areas.length <= 1) return current;
+      const areas = current.areas.filter((area) => area.id !== areaId);
+      if (activeAreaId === areaId) setActiveAreaId(areas[0]?.id ?? "");
+      return { ...current, areas };
+    });
+  };
+
+  const saveItem = () => {
+    if (!activeArea || !liveItem) return;
+    const item = { ...liveItem, id: editingItemId ?? uid() };
+    setProject((current) => ({
+      ...current,
+      areas: current.areas.map((area) =>
+        area.id === activeArea.id
+          ? {
+              ...area,
+              items: editingItemId
+                ? area.items.map((existing) => (existing.id === editingItemId ? item : existing))
+                : [...area.items, item],
+            }
+          : area,
+      ),
+    }));
+    setEditingItemId(null);
+    setDraft(initialDraft());
+    toast.success(editingItemId ? t("actions.saveItem") : t("actions.addToRoom"));
+  };
+
+  const editItem = (item: ProjectQuoteItem) => {
+    setEditingItemId(item.id);
+    setDraft(draftFromItem(item));
+  };
+
+  const removeItem = (areaId: string, itemId: string) => {
+    setProject((current) => ({
+      ...current,
+      areas: current.areas.map((area) =>
+        area.id === areaId
+          ? { ...area, items: area.items.filter((item) => item.id !== itemId) }
+          : area,
+      ),
+    }));
+  };
+
+  const duplicateItem = (areaId: string, item: ProjectQuoteItem) => {
+    setProject((current) => ({
+      ...current,
+      areas: current.areas.map((area) =>
+        area.id === areaId ? { ...area, items: [...area.items, { ...item, id: uid() }] } : area,
+      ),
+    }));
+  };
+
+  const exportProject = async () => {
+    if (!previewRef.current) return;
+    setExporting(true);
+    try {
+      const dataUrl = await toPng(previewRef.current, {
+        pixelRatio: 2,
+        cacheBust: true,
+        backgroundColor: "#ffffff",
+        width: 760,
+        style: { width: "760px", maxWidth: "760px", margin: "0" },
+      });
+      const link = document.createElement("a");
+      const safeName = (project.customer.fullName || "customer").replace(/[^a-z0-9-_]+/gi, "_");
+      link.download = `${project.ref}-${safeName}-${config.exportName}.png`;
+      link.href = dataUrl;
+      link.click();
+      addRecent({
+        ref: project.ref,
+        name: project.customer.fullName,
+        total: totals.total,
+        at: Date.now(),
+      });
+      toast.success(t("actions.export"));
+    } catch (error) {
+      console.error(error);
+      toast.error("Export failed", { description: "Please try again." });
+    } finally {
+      setExporting(false);
+    }
+  };
+
+  const printProject = () => {
+    window.print();
+  };
+
+  const onReset = () => {
+    resetProject();
+    setActiveAreaId("");
+    setEditingItemId(null);
+    setDraft(initialDraft());
+    toast.message(t("actions.reset"));
+  };
+
+  const allowedItemTypes = ITEM_TYPES.filter((item) => config.itemTypes.includes(item.type));
+
+  return (
+    <div className="mx-auto w-full max-w-[1500px]">
+      <QuoteTypeTabs />
+
+      <header className="mb-6 flex flex-wrap items-end justify-between gap-3">
+        <div>
+          <div className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
+            {t(config.eyebrowKey)}
+          </div>
+          <h1 className="mt-1 text-2xl font-semibold tracking-tight md:text-3xl">
+            {t(config.titleKey)}
+          </h1>
+        </div>
+        <div className="flex items-center gap-2">
+          <button
+            onClick={onReset}
+            className="inline-flex h-10 items-center gap-2 rounded-xl border border-border bg-card px-3.5 text-sm font-medium hover:bg-accent"
+          >
+            <RotateCcw className="h-4 w-4" /> {t("actions.reset")}
+          </button>
+          <motion.button
+            whileTap={{ scale: 0.98 }}
+            onClick={exportProject}
+            disabled={exporting}
+            className="inline-flex h-10 items-center gap-2 rounded-xl bg-primary px-4 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-95 disabled:opacity-70"
+          >
+            <Download className="h-4 w-4" />
+            {exporting ? t("actions.exporting") : t("actions.export")}
+          </motion.button>
+          <button
+            onClick={printProject}
+            className="inline-flex h-10 items-center gap-2 rounded-xl border border-border bg-card px-3.5 text-sm font-medium hover:bg-accent"
+          >
+            <FileText className="h-4 w-4" /> {t("actions.printPdf")}
+          </button>
+        </div>
+      </header>
+
+      <div className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_minmax(500px,0.86fr)]">
+        <div className="space-y-6">
+          <Panel icon={<IdCard className="h-4 w-4" />} title={t("quote.details")}>
+            <div className="grid gap-3 md:grid-cols-2">
+              <TextInput
+                label={t("quote.number")}
+                value={project.ref}
+                onChange={(ref) => setProject((current) => ({ ...current, ref }))}
+              />
+              <TextInput
+                label={t("quote.date")}
+                type="date"
+                value={project.date.slice(0, 10)}
+                onChange={(date) =>
+                  setProject((current) => ({
+                    ...current,
+                    date: new Date(`${date}T12:00:00`).toISOString(),
+                  }))
+                }
+              />
+              <TextInput
+                label={t("quote.customerName")}
+                value={project.customer.fullName}
+                onChange={(fullName) =>
+                  setProject((current) => ({
+                    ...current,
+                    customer: { ...current.customer, fullName },
+                  }))
+                }
+              />
+              <TextInput
+                label={t("quote.phone")}
+                type="tel"
+                value={project.customer.phone}
+                onChange={(phone) =>
+                  setProject((current) => ({
+                    ...current,
+                    customer: { ...current.customer, phone },
+                  }))
+                }
+              />
+              <TextInput
+                label={t("quote.email")}
+                type="email"
+                value={project.customer.email}
+                onChange={(email) =>
+                  setProject((current) => ({
+                    ...current,
+                    customer: { ...current.customer, email },
+                  }))
+                }
+              />
+              <TextInput
+                label={t("quote.postcode")}
+                value={project.customer.postcode}
+                onChange={(postcode) =>
+                  setProject((current) => ({
+                    ...current,
+                    customer: { ...current.customer, postcode },
+                  }))
+                }
+              />
+              <div className="md:col-span-2">
+                <TextInput
+                  label={t("quote.address")}
+                  value={project.customer.address}
+                  onChange={(address) =>
+                    setProject((current) => ({
+                      ...current,
+                      customer: { ...current.customer, address },
+                    }))
+                  }
+                />
+              </div>
+            </div>
+          </Panel>
+
+          <Panel icon={<Layers className="h-4 w-4" />} title={t("quote.rooms")}>
+            <div className="flex flex-wrap gap-2">
+              {project.areas.map((area) => (
+                <button
+                  key={area.id}
+                  onClick={() => setActiveAreaId(area.id)}
+                  className={`rounded-xl border px-3 py-2 text-sm font-medium ${
+                    activeArea?.id === area.id
+                      ? "border-primary bg-primary text-primary-foreground"
+                      : "border-border bg-background hover:bg-accent"
+                  }`}
+                >
+                  {area.name}
+                </button>
+              ))}
+            </div>
+            <div className="mt-4 grid gap-3 md:grid-cols-[1fr_auto]">
+              <TextInput label={t("quote.addRoom")} value={areaName} onChange={setAreaName} />
+              <button
+                onClick={addArea}
+                className="mt-[21px] inline-flex h-11 items-center justify-center gap-2 rounded-xl bg-primary px-4 text-sm font-medium text-primary-foreground"
+              >
+                <Plus className="h-4 w-4" /> {t("actions.addArea")}
+              </button>
+            </div>
+            {activeArea && (
+              <div className="mt-4 grid gap-3 md:grid-cols-[1fr_auto]">
+                <TextInput
+                  label={t("quote.selectedArea")}
+                  value={activeArea.name}
+                  onChange={(name) =>
+                    setProject((current) => ({
+                      ...current,
+                      areas: current.areas.map((area) =>
+                        area.id === activeArea.id ? { ...area, name } : area,
+                      ),
+                    }))
+                  }
+                />
+                <button
+                  onClick={() => removeArea(activeArea.id)}
+                  disabled={project.areas.length <= 1}
+                  className="mt-[21px] inline-flex h-11 items-center justify-center gap-2 rounded-xl border border-border px-4 text-sm font-medium text-muted-foreground hover:bg-accent disabled:opacity-40"
+                >
+                  <Trash2 className="h-4 w-4" /> {t("actions.remove")}
+                </button>
+                <div className="md:col-span-2">
+                  <Textarea
+                    label={t("quote.areaNotes")}
+                    value={activeArea.notes ?? ""}
+                    onChange={(notes) =>
+                      setProject((current) => ({
+                        ...current,
+                        areas: current.areas.map((area) =>
+                          area.id === activeArea.id ? { ...area, notes } : area,
+                        ),
+                      }))
+                    }
+                  />
+                </div>
+              </div>
+            )}
+          </Panel>
+
+          <Panel
+            icon={<Plus className="h-4 w-4" />}
+            title={editingItemId ? t("quote.editItem") : t("quote.addItem")}
+          >
+            <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-5">
+              {allowedItemTypes.map((option) => {
+                const Icon = option.icon;
+                return (
+                  <button
+                    key={option.type}
+                    onClick={() =>
+                      setDraft((current) => ({
+                        ...current,
+                        type: option.type,
+                        taxable: option.type !== "labour",
+                      }))
+                    }
+                    className={`flex h-12 items-center justify-center gap-2 rounded-xl border px-3 text-sm font-medium ${
+                      draft.type === option.type
+                        ? "border-primary bg-primary text-primary-foreground"
+                        : "border-border bg-background hover:bg-accent"
+                    }`}
+                  >
+                    <Icon className="h-4 w-4" />
+                    <span className="truncate">{t(option.labelKey)}</span>
+                  </button>
+                );
+              })}
+            </div>
+
+            <div className="mt-5">
+              {draft.type === "blind" && (
+                <BlindDraftForm
+                  draft={draft}
+                  setDraft={setDraft}
+                  blindTypeOptions={blindTypeOptions}
+                  availableOptions={availableBlindOptions}
+                  isFallbackSelection={standardFabricOptions.length === 0}
+                  t={t}
+                />
+              )}
+              {draft.type === "wardrobe" && (
+                <WardrobeDraftForm
+                  draft={draft}
+                  setDraft={setDraft}
+                  category={wardrobeCategory}
+                  product={wardrobeProduct}
+                  t={t}
+                />
+              )}
+              {(draft.type === "manual" ||
+                draft.type === "accessory" ||
+                draft.type === "labour") && (
+                <ManualDraftForm draft={draft} setDraft={setDraft} t={t} />
+              )}
+            </div>
+
+            {liveItem && (
+              <div className="mt-5 grid gap-3 rounded-2xl border border-border bg-muted/30 p-4 sm:grid-cols-3">
+                <Stat label={t("quote.item")} value={liveItem.title || t("field.untitled")} />
+                <Stat label={t("field.unit")} value={formatGBP(liveItem.unitPrice)} />
+                <Stat
+                  label={t("field.lineTotal")}
+                  value={formatGBP(liveItem.lineTotal)}
+                  highlight
+                />
+              </div>
+            )}
+
+            <div className="mt-5 flex justify-end gap-2">
+              {editingItemId && (
+                <button
+                  onClick={() => {
+                    setEditingItemId(null);
+                    setDraft(initialDraft());
+                  }}
+                  className="h-10 rounded-xl border border-border px-4 text-sm font-medium hover:bg-accent"
+                >
+                  {t("actions.cancelEdit")}
+                </button>
+              )}
+              <button
+                onClick={saveItem}
+                disabled={!activeArea || !liveItem}
+                className="inline-flex h-10 items-center gap-2 rounded-xl bg-primary px-4 text-sm font-medium text-primary-foreground disabled:opacity-50"
+              >
+                <Plus className="h-4 w-4" />
+                {editingItemId ? t("actions.saveItem") : t("actions.addToRoom")}
+              </button>
+            </div>
+          </Panel>
+        </div>
+
+        <div className="space-y-6">
+          <Panel icon={<Layers className="h-4 w-4" />} title={t("quote.summary")}>
+            <div className="space-y-4">
+              {project.areas.map((area) => {
+                const areaTotal = totals.areaTotals.find((item) => item.areaId === area.id);
+                return (
+                  <section
+                    key={area.id}
+                    className="rounded-2xl border border-border bg-background p-4"
+                  >
+                    <div className="mb-3 flex items-center justify-between gap-3">
+                      <div>
+                        <h3 className="text-sm font-semibold tracking-tight">{area.name}</h3>
+                        <p className="text-[11px] text-muted-foreground">
+                          {area.items.length} item{area.items.length === 1 ? "" : "s"}
+                        </p>
+                      </div>
+                      <div className="text-sm font-semibold tabular-nums">
+                        {formatGBP(areaTotal?.subtotal ?? 0)}
+                      </div>
+                    </div>
+                    {area.items.length === 0 ? (
+                      <div className="rounded-xl border border-dashed border-border px-4 py-6 text-center text-sm text-muted-foreground">
+                        {t("status.noItems")}
+                      </div>
+                    ) : (
+                      <ul className="space-y-2">
+                        {area.items.map((item) => (
+                          <li key={item.id} className="rounded-xl border border-border p-3">
+                            <div className="flex items-start justify-between gap-3">
+                              <div className="min-w-0">
+                                <div className="truncate text-sm font-medium">{item.title}</div>
+                                <div className="mt-0.5 text-[11px] text-muted-foreground">
+                                  {itemLabel(item, t)} · {t("quote.qty")} {item.quantity} ·{" "}
+                                  {item.taxable ? t("field.taxable") : t("field.nonTaxable")}
+                                </div>
+                                {item.type === "blind" && (
+                                  <div className="mt-1 text-[11px] text-muted-foreground">
+                                    {item.calculation.pricingReferenceNote}
+                                  </div>
+                                )}
+                              </div>
+                              <div className="flex shrink-0 flex-col items-end gap-2">
+                                <div className="text-sm font-semibold tabular-nums">
+                                  {formatGBP(item.lineTotal)}
+                                </div>
+                                <div className="flex gap-1">
+                                  <IconButton
+                                    label={t("actions.edit")}
+                                    onClick={() => editItem(item)}
+                                    icon={<Pencil />}
+                                  />
+                                  <IconButton
+                                    label={t("actions.duplicate")}
+                                    onClick={() => duplicateItem(area.id, item)}
+                                    icon={<Copy />}
+                                  />
+                                  <IconButton
+                                    label={t("actions.remove")}
+                                    onClick={() => removeItem(area.id, item.id)}
+                                    icon={<Trash2 />}
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </section>
+                );
+              })}
+            </div>
+
+            <div className="mt-5 grid gap-3 sm:grid-cols-2">
+              <NumberInput
+                label={`${t("quote.discount")} (£)`}
+                value={project.discount}
+                step={5}
+                onChange={(discount) =>
+                  setProject((current) => ({ ...current, discount: Math.max(0, discount) }))
+                }
+              />
+              <NumberInput
+                label={`${t("quote.vat")} (%)`}
+                value={Math.round(project.vatRate * 100)}
+                onChange={(vat) =>
+                  setProject((current) => ({
+                    ...current,
+                    vatRate: Math.max(0, Math.min(100, vat)) / 100,
+                  }))
+                }
+              />
+              <div className="sm:col-span-2">
+                <Textarea
+                  label={t("quote.notes")}
+                  value={project.notes}
+                  onChange={(notes) => setProject((current) => ({ ...current, notes }))}
+                />
+              </div>
+            </div>
+
+            <div className="mt-5 rounded-2xl bg-foreground/[0.04] p-5">
+              <TotalRow label={t("quote.subtotal")} value={formatGBP(totals.subtotal)} />
+              <TotalRow label={t("quote.discount")} value={`- ${formatGBP(totals.discount)}`} />
+              <TotalRow
+                label={t("quote.taxableSubtotal")}
+                value={formatGBP(totals.taxableSubtotal)}
+              />
+              <TotalRow
+                label={t("quote.nonTaxable")}
+                value={formatGBP(totals.nonTaxableSubtotal)}
+              />
+              <TotalRow
+                label={`${t("quote.vat")} (${Math.round(project.vatRate * 100)}%)`}
+                value={formatGBP(totals.vat)}
+              />
+              <div className="my-2 h-px bg-border" />
+              <div className="flex items-baseline justify-between gap-3">
+                <span className="text-[10.5px] uppercase tracking-[0.18em] text-muted-foreground">
+                  {t("quote.finalTotal")}
+                </span>
+                <span className="text-2xl font-semibold tabular-nums tracking-tight">
+                  {formatGBP(totals.total)}
+                </span>
+              </div>
+            </div>
+          </Panel>
+
+          <div className="overflow-auto rounded-3xl border border-border bg-card p-4 luxe-shadow">
+            <div className="mx-auto w-[760px]">
+              <ProjectQuotePreview
+                ref={previewRef}
+                project={project}
+                scopeLabel={t(config.scopeKey)}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="project-print-sheet">
+        <ProjectQuotePreview project={project} scopeLabel={t(config.scopeKey)} />
+      </div>
+    </div>
+  );
+}
+
+function buildProjectItem(
+  draft: DraftState,
+  project: ProjectQuote,
+  translateLabel: (label: string) => string,
+): ProjectQuoteItem | null {
+  if (draft.type === "blind") {
+    const fabric = fabrics.find((item) => item.id === draft.blindFabricId);
+    if (!fabric) return null;
+
+    const quote: QuoteState = {
+      ...defaultQuote(),
+      customer: project.customer,
+      preparedBy: project.preparedBy,
+      meta: { ref: project.ref, date: project.date },
+      product: {
+        supplierId: fabric.supplierId,
+        productTypeId: fabric.productTypeId,
+        fabricId: fabric.id,
+        frameColour: isPerfectFitFrameBlindType(draft.blindTypeId)
+          ? draft.blindFrameColour
+          : undefined,
+        room: "",
+        mount: draft.blindMount,
+        chainSide: draft.blindChainSide,
+      },
+      size: {
+        mode: "custom",
+        presetId: "",
+        widthMm: draft.blindWidthMm,
+        heightMm: draft.blindHeightMm,
+        quantity: Math.max(1, draft.blindQuantity),
+      },
+      extras: isPerfectFitFrameBlindType(draft.blindTypeId)
+        ? withPerfectFitFrameSurcharge(
+            filterExtrasForBlindType(draft.blindExtras, draft.blindTypeId),
+            draft.blindTypeId,
+            draft.blindFrameColour,
+          )
+        : filterExtrasForBlindType(
+            draft.blindExtras.filter((item) => !PERFECT_FIT_FRAME_SURCHARGE_IDS.includes(item.id)),
+            draft.blindTypeId,
+          ),
+      pricing: { labourCost: 0, discount: 0, vatRate: project.vatRate },
+    };
+
+    const calculation = calculateQuote(quote);
+    const lineTotal = roundMoney(calculation.tradePrice);
+    const quantity = Math.max(1, calculation.quantity);
+    const blindType = BLIND_PRODUCT_TYPES.find((type) => type.id === draft.blindTypeId);
+    const itemTitle = blindType
+      ? `${blindType.label} Blind`
+      : translateLabel(calculation.productTypeName);
+    const selectionText = isBandOnlyFabricName(calculation.fabricName)
+      ? calculation.pricingBand === "Standard"
+        ? ""
+        : `Band ${calculation.pricingBand}`
+      : calculation.fabricName;
+
+    const frameText = isPerfectFitFrameBlindType(draft.blindTypeId)
+      ? `Frame: ${draft.blindFrameColour}`
+      : "";
+    const descriptionParts = [
+      selectionText,
+      frameText,
+      `${calculation.widthMm} x ${calculation.heightMm}mm`,
+    ].filter(Boolean);
+
+    return {
+      id: "draft",
+      type: "blind",
+      title: itemTitle,
+      description: descriptionParts.join(" - "),
+      quantity,
+      unitPrice: roundMoney(lineTotal / quantity),
+      lineTotal,
+      taxable: true,
+      notes: draft.notes || undefined,
+      quote,
+      calculation,
+    };
+  }
+
+  if (draft.type === "wardrobe") {
+    const category = WARDROBE_CATEGORIES.find((item) => item.id === draft.wardrobeCategoryId);
+    const product = category?.products.find((item) => item.id === draft.wardrobeProductId);
+    if (!category || !product) return null;
+
+    const calc = calculateLine(product, {
+      widthMm: draft.wardrobeWidthMm,
+      heightMm: draft.wardrobeHeightMm,
+      quantity: draft.wardrobeQuantity,
+      manualUnitPrice: draft.wardrobeManualUnitPrice,
+      addons: draft.wardrobeAddons,
+    });
+    const wardrobeLine = {
+      id: "draft",
+      categoryId: category.id,
+      productId: product.id,
+      productName: product.name,
+      categoryName: category.name,
+      widthMm: product.requiresDimensions ? draft.wardrobeWidthMm : undefined,
+      heightMm: product.requiresDimensions ? draft.wardrobeHeightMm : undefined,
+      quantity: Math.max(1, draft.wardrobeQuantity),
+      manualUnitPrice: draft.wardrobeManualUnitPrice,
+      addons: draft.wardrobeAddons,
+      notes: draft.notes || undefined,
+      calc,
+    };
+
+    return {
+      id: "draft",
+      type: "wardrobe",
+      title: product.name,
+      description: category.name,
+      quantity: wardrobeLine.quantity,
+      unitPrice: calc.unitPrice,
+      lineTotal: calc.lineTotal,
+      taxable: true,
+      notes: draft.notes || undefined,
+      wardrobeLine,
+    };
+  }
+
+  const quantity = Math.max(1, draft.quantity);
+  const unitPrice = Math.max(0, draft.unitPrice);
+  const lineTotal = roundMoney(quantity * unitPrice);
+  const title =
+    draft.title.trim() ||
+    (draft.type === "labour"
+      ? "Fitting labour"
+      : draft.type === "accessory"
+        ? "Accessory"
+        : "Manual item");
+
+  if (lineTotal <= 0 || !title) return null;
+
+  return {
+    id: "draft",
+    type: draft.type,
+    title,
+    code: draft.type === "accessory" ? draft.code.trim() || undefined : undefined,
+    description: draft.description.trim() || undefined,
+    quantity,
+    unitPrice,
+    lineTotal,
+    taxable: draft.type === "labour" ? false : draft.taxable,
+    notes: draft.notes || undefined,
+  } as ProjectQuoteItem;
+}
+
+function draftFromItem(item: ProjectQuoteItem): DraftState {
+  const draft = initialDraft();
+
+  if (item.type === "blind") {
+    const productTypeName =
+      suppliers
+        .flatMap((supplier) => supplier.productTypes)
+        .find((productType) => productType.id === item.quote.product.productTypeId)?.name ?? "";
+    const blindType = getBlindProductType(item.quote.product.productTypeId, productTypeName);
+    const savedFrameColour = item.quote.product.frameColour;
+    return {
+      ...draft,
+      type: "blind",
+      blindTypeId: blindType?.id ?? "",
+      blindProductTypeId: item.quote.product.productTypeId,
+      blindFabricId: item.quote.product.fabricId,
+      blindFrameColour:
+        savedFrameColour && isPerfectFitRollerFrameColour(savedFrameColour)
+          ? savedFrameColour
+          : "White",
+      blindWidthMm: item.quote.size.widthMm,
+      blindHeightMm: item.quote.size.heightMm,
+      blindQuantity: item.quote.size.quantity,
+      blindMount: item.quote.product.mount,
+      blindChainSide: item.quote.product.chainSide,
+      blindExtras: item.quote.extras,
+      notes: item.notes ?? "",
+    };
+  }
+
+  if (item.type === "wardrobe") {
+    const line = item.wardrobeLine;
+    return {
+      ...draft,
+      type: "wardrobe",
+      wardrobeCategoryId: line.categoryId,
+      wardrobeProductId: line.productId,
+      wardrobeWidthMm: line.widthMm ?? 0,
+      wardrobeHeightMm: line.heightMm ?? 0,
+      wardrobeQuantity: line.quantity,
+      wardrobeManualUnitPrice: line.manualUnitPrice,
+      wardrobeAddons: line.addons,
+      notes: line.notes ?? "",
+    };
+  }
+
+  return {
+    ...draft,
+    type: item.type,
+    title: item.title,
+    code: item.type === "accessory" ? (item.code ?? "") : "",
+    description: item.description ?? "",
+    quantity: item.quantity,
+    unitPrice: item.unitPrice,
+    taxable: item.taxable,
+    notes: item.notes ?? "",
+  };
+}
+
+function BlindDraftForm({
+  draft,
+  setDraft,
+  blindTypeOptions,
+  availableOptions,
+  isFallbackSelection,
+  t,
+}: {
+  draft: DraftState;
+  setDraft: React.Dispatch<React.SetStateAction<DraftState>>;
+  blindTypeOptions: { value: string; label: string }[];
+  availableOptions: typeof fabrics;
+  isFallbackSelection: boolean;
+  t: (key: TranslationKey) => string;
+}) {
+  const hasOnlyStandardPlaceholder =
+    availableOptions.length === 1 && availableOptions[0]?.name.trim().toLowerCase() === "standard";
+  const selectionLabel = "Fabric / Finish / Colour";
+  const visibleExtras = extras.filter((extra) =>
+    isExtraApplicableToBlindType(extra, draft.blindTypeId),
+  );
+  const handleBlindTypeChange = (blindTypeId: string) => {
+    const fabric = firstOptionForBlindType(blindTypeId);
+    setDraft((current) => ({
+      ...current,
+      blindTypeId,
+      blindProductTypeId: fabric?.productTypeId ?? "",
+      blindFabricId: fabric?.id ?? "",
+      blindFrameColour: isPerfectFitFrameBlindType(blindTypeId)
+        ? current.blindFrameColour
+        : "White",
+      blindExtras: isPerfectFitFrameBlindType(blindTypeId)
+        ? withPerfectFitFrameSurcharge(
+            filterExtrasForBlindType(current.blindExtras, blindTypeId),
+            blindTypeId,
+            current.blindFrameColour,
+          )
+        : filterExtrasForBlindType(
+            current.blindExtras.filter(
+              (item) => !PERFECT_FIT_FRAME_SURCHARGE_IDS.includes(item.id),
+            ),
+            blindTypeId,
+          ),
+    }));
+  };
+
+  return (
+    <div className="space-y-4">
+      <div className="grid gap-3 md:grid-cols-2">
+        <BlindTypePicker
+          label={t("field.blindType")}
+          value={draft.blindTypeId}
+          onChange={handleBlindTypeChange}
+          options={blindTypeOptions}
+        />
+        {availableOptions.length > 0 && !hasOnlyStandardPlaceholder && (
+          <SelectInput
+            label={selectionLabel}
+            value={draft.blindFabricId}
+            onChange={(blindFabricId) => {
+              const fabric = fabrics.find((item) => item.id === blindFabricId);
+              setDraft((current) => ({
+                ...current,
+                blindFabricId,
+                blindProductTypeId: fabric?.productTypeId ?? current.blindProductTypeId,
+              }));
+            }}
+            options={availableOptions.map((fabric) => ({
+              value: fabric.id,
+              label: optionLabel(fabric),
+            }))}
+          />
+        )}
+        {isPerfectFitFrameBlindType(draft.blindTypeId) && (
+          <SelectInput
+            label="Frame Colour"
+            value={draft.blindFrameColour}
+            onChange={(blindFrameColour) => {
+              const nextFrameColour = isPerfectFitRollerFrameColour(blindFrameColour)
+                ? blindFrameColour
+                : "White";
+              setDraft((current) => ({
+                ...current,
+                blindFrameColour: nextFrameColour,
+                blindExtras: withPerfectFitFrameSurcharge(
+                  current.blindExtras,
+                  current.blindTypeId,
+                  nextFrameColour,
+                ),
+              }));
+            }}
+            options={PERFECT_FIT_ROLLER_FRAME_COLOURS.map((value) => ({ value, label: value }))}
+          />
+        )}
+        {isFallbackSelection && (
+          <div className="rounded-xl border border-amber-400/40 bg-amber-400/10 px-3 py-2 text-xs text-muted-foreground md:col-span-2">
+            No fabric/colour list was found for this blind type. Select the pricing band shown in
+            the workbook.
+          </div>
+        )}
+        {draft.blindFabricId && (
+          <div className="rounded-xl border border-border bg-muted/30 px-3 py-2 text-xs text-muted-foreground md:col-span-2">
+            {fabrics.find((item) => item.id === draft.blindFabricId)?.pricingReferenceNote ??
+              "Internal pricing reference will appear here after a fabric or finish is selected."}
+          </div>
+        )}
+        <NumberInput
+          label={t("field.width")}
+          value={draft.blindWidthMm}
+          step={10}
+          onChange={(blindWidthMm) =>
+            setDraft((current) => ({ ...current, blindWidthMm: Math.max(0, blindWidthMm) }))
+          }
+        />
+        <NumberInput
+          label={t("field.height")}
+          value={draft.blindHeightMm}
+          step={10}
+          onChange={(blindHeightMm) =>
+            setDraft((current) => ({ ...current, blindHeightMm: Math.max(0, blindHeightMm) }))
+          }
+        />
+        <NumberInput
+          label={t("field.quantity")}
+          value={draft.blindQuantity}
+          min={1}
+          onChange={(blindQuantity) =>
+            setDraft((current) => ({ ...current, blindQuantity: Math.max(1, blindQuantity) }))
+          }
+        />
+        <SelectInput
+          label={t("field.mount")}
+          value={draft.blindMount}
+          onChange={(blindMount) =>
+            setDraft((current) => ({
+              ...current,
+              blindMount: blindMount as DraftState["blindMount"],
+            }))
+          }
+          options={["Inside Recess", "Outside Recess", "Ceiling", "Face Fix"].map((value) => ({
+            value,
+            label: value,
+          }))}
+        />
+        <SelectInput
+          label={t("field.chainSide")}
+          value={draft.blindChainSide}
+          onChange={(blindChainSide) =>
+            setDraft((current) => ({
+              ...current,
+              blindChainSide: blindChainSide as DraftState["blindChainSide"],
+            }))
+          }
+          options={["Right", "Left"].map((value) => ({ value, label: value }))}
+        />
+      </div>
+      <div>
+        <div className="mb-2 text-[11px] font-medium uppercase tracking-[0.12em] text-muted-foreground">
+          {t("field.blindExtras")}
+        </div>
+        <div className="grid gap-2 md:grid-cols-2">
+          {visibleExtras.map((extra) => {
+            const selected = draft.blindExtras.find((item) => item.id === extra.id);
+            return (
+              <label
+                key={extra.id}
+                className="flex items-center justify-between gap-3 rounded-xl border border-border bg-background px-3 py-2 text-sm"
+              >
+                <span className="min-w-0">
+                  <span className="block truncate">{extra.name}</span>
+                  <span className="block truncate text-xs text-muted-foreground">
+                    {extraDetail(extra)}
+                  </span>
+                </span>
+                <input
+                  type="checkbox"
+                  checked={!!selected}
+                  onChange={(event) =>
+                    setDraft((current) => ({
+                      ...current,
+                      blindExtras: event.target.checked
+                        ? [...current.blindExtras, { id: extra.id, quantity: 1 }]
+                        : current.blindExtras.filter((item) => item.id !== extra.id),
+                    }))
+                  }
+                />
+              </label>
+            );
+          })}
+        </div>
+      </div>
+      <Textarea
+        label={t("field.notes")}
+        value={draft.notes}
+        onChange={(notes) => setDraft((current) => ({ ...current, notes }))}
+      />
+    </div>
+  );
+}
+
+function WardrobeDraftForm({
+  draft,
+  setDraft,
+  category,
+  product,
+  t,
+}: {
+  draft: DraftState;
+  setDraft: React.Dispatch<React.SetStateAction<DraftState>>;
+  category?: (typeof WARDROBE_CATEGORIES)[number];
+  product?: WardrobeProduct;
+  t: (key: TranslationKey) => string;
+}) {
+  return (
+    <div className="space-y-4">
+      <div className="grid gap-3 md:grid-cols-2">
+        <SelectInput
+          label={t("field.category")}
+          value={draft.wardrobeCategoryId}
+          onChange={(wardrobeCategoryId) => {
+            const nextCategory = WARDROBE_CATEGORIES.find((item) => item.id === wardrobeCategoryId);
+            setDraft((current) => ({
+              ...current,
+              wardrobeCategoryId: wardrobeCategoryId as WardrobeCategoryId,
+              wardrobeProductId: nextCategory?.products[0]?.id ?? "",
+              wardrobeManualUnitPrice: undefined,
+            }));
+          }}
+          options={WARDROBE_CATEGORIES.map((item) => ({ value: item.id, label: item.name }))}
+        />
+        <SelectInput
+          label={t("field.product")}
+          value={draft.wardrobeProductId}
+          onChange={(wardrobeProductId) =>
+            setDraft((current) => ({
+              ...current,
+              wardrobeProductId,
+              wardrobeManualUnitPrice: undefined,
+            }))
+          }
+          options={(category?.products ?? []).map((item) => ({ value: item.id, label: item.name }))}
+        />
+        {product?.requiresDimensions && (
+          <>
+            <NumberInput
+              label={t("field.width")}
+              value={draft.wardrobeWidthMm}
+              step={10}
+              onChange={(wardrobeWidthMm) =>
+                setDraft((current) => ({
+                  ...current,
+                  wardrobeWidthMm: Math.max(0, wardrobeWidthMm),
+                }))
+              }
+            />
+            <NumberInput
+              label={t("field.height")}
+              value={draft.wardrobeHeightMm}
+              step={10}
+              onChange={(wardrobeHeightMm) =>
+                setDraft((current) => ({
+                  ...current,
+                  wardrobeHeightMm: Math.max(0, wardrobeHeightMm),
+                }))
+              }
+            />
+          </>
+        )}
+        <NumberInput
+          label={t("field.quantity")}
+          value={draft.wardrobeQuantity}
+          min={1}
+          onChange={(wardrobeQuantity) =>
+            setDraft((current) => ({
+              ...current,
+              wardrobeQuantity: Math.max(1, wardrobeQuantity),
+            }))
+          }
+        />
+        <NumberInput
+          label={
+            product?.pricing.type === "manual" ? t("field.unitPrice") : t("field.priceOverride")
+          }
+          value={draft.wardrobeManualUnitPrice ?? 0}
+          onChange={(wardrobeManualUnitPrice) =>
+            setDraft((current) => ({
+              ...current,
+              wardrobeManualUnitPrice:
+                wardrobeManualUnitPrice > 0 ? wardrobeManualUnitPrice : undefined,
+            }))
+          }
+        />
+      </div>
+      {product?.description && (
+        <p className="text-[11px] text-muted-foreground">{product.description}</p>
+      )}
+      <Textarea
+        label={t("field.notes")}
+        value={draft.notes}
+        onChange={(notes) => setDraft((current) => ({ ...current, notes }))}
+      />
+    </div>
+  );
+}
+
+function ManualDraftForm({
+  draft,
+  setDraft,
+  t,
+}: {
+  draft: DraftState;
+  setDraft: React.Dispatch<React.SetStateAction<DraftState>>;
+  t: (key: TranslationKey) => string;
+}) {
+  return (
+    <div className="grid gap-3 md:grid-cols-2">
+      <TextInput
+        label={draft.type === "labour" ? t("field.labourName") : t("field.itemName")}
+        value={draft.title}
+        onChange={(title) => setDraft((current) => ({ ...current, title }))}
+      />
+      {draft.type === "accessory" && (
+        <TextInput
+          label={t("field.code")}
+          value={draft.code}
+          onChange={(code) => setDraft((current) => ({ ...current, code }))}
+        />
+      )}
+      <NumberInput
+        label={t("field.quantity")}
+        value={draft.quantity}
+        min={1}
+        onChange={(quantity) =>
+          setDraft((current) => ({ ...current, quantity: Math.max(1, quantity) }))
+        }
+      />
+      <NumberInput
+        label={t("field.unitPrice")}
+        value={draft.unitPrice}
+        onChange={(unitPrice) =>
+          setDraft((current) => ({ ...current, unitPrice: Math.max(0, unitPrice) }))
+        }
+      />
+      {draft.type !== "labour" && (
+        <label className="flex h-11 items-center gap-2 rounded-xl border border-border bg-background px-3 text-sm md:mt-[21px]">
+          <input
+            type="checkbox"
+            checked={draft.taxable}
+            onChange={(event) =>
+              setDraft((current) => ({ ...current, taxable: event.target.checked }))
+            }
+          />
+          {t("field.includeVat")}
+        </label>
+      )}
+      <div className="md:col-span-2">
+        <Textarea
+          label={t("field.description")}
+          value={draft.description}
+          onChange={(description) => setDraft((current) => ({ ...current, description }))}
+        />
+      </div>
+    </div>
+  );
+}
+
+function Panel({ icon, title, children }: { icon: ReactNode; title: string; children: ReactNode }) {
+  return (
+    <section className="rounded-3xl border border-border bg-card p-6 luxe-shadow">
+      <div className="mb-5 flex items-center gap-3">
+        <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent text-accent-foreground">
+          {icon}
+        </span>
+        <h2 className="text-sm font-semibold tracking-tight">{title}</h2>
+      </div>
+      {children}
+    </section>
+  );
+}
+
+function TextInput({
+  label,
+  value,
+  onChange,
+  type = "text",
+}: {
+  label: string;
+  value: string;
+  onChange: (value: string) => void;
+  type?: string;
+}) {
+  return (
+    <label className="block">
+      <span className="mb-1.5 block text-[11px] font-medium uppercase tracking-[0.12em] text-muted-foreground">
+        {label}
+      </span>
+      <input
+        type={type}
+        value={value}
+        onChange={(event) => onChange(event.target.value)}
+        className="h-11 w-full rounded-xl border border-border bg-background px-3.5 text-sm focus:border-foreground/40 focus:outline-none focus:ring-2 focus:ring-foreground/10"
+      />
+    </label>
+  );
+}
+
+function NumberInput({
+  label,
+  value,
+  onChange,
+  step = 1,
+  min = 0,
+}: {
+  label: string;
+  value: number;
+  onChange: (value: number) => void;
+  step?: number;
+  min?: number;
+}) {
+  return (
+    <label className="block">
+      <span className="mb-1.5 block text-[11px] font-medium uppercase tracking-[0.12em] text-muted-foreground">
+        {label}
+      </span>
+      <input
+        type="number"
+        inputMode="decimal"
+        value={Number.isFinite(value) ? value : 0}
+        min={min}
+        step={step}
+        onChange={(event) => {
+          const next = Number(event.target.value);
+          onChange(Number.isFinite(next) ? next : 0);
+        }}
+        className="h-11 w-full rounded-xl border border-border bg-background px-3.5 text-sm tabular-nums focus:border-foreground/40 focus:outline-none focus:ring-2 focus:ring-foreground/10"
+      />
+    </label>
+  );
+}
+
+function SelectInput({
+  label,
+  value,
+  onChange,
+  options,
+}: {
+  label: string;
+  value: string;
+  onChange: (value: string) => void;
+  options: { value: string; label: string }[];
+}) {
+  return (
+    <label className="block">
+      <span className="mb-1.5 block text-[11px] font-medium uppercase tracking-[0.12em] text-muted-foreground">
+        {label}
+      </span>
+      <select
+        value={value}
+        onChange={(event) => onChange(event.target.value)}
+        className="h-11 w-full rounded-xl border border-border bg-background px-3.5 text-sm focus:border-foreground/40 focus:outline-none focus:ring-2 focus:ring-foreground/10"
+      >
+        {options.map((option) => (
+          <option key={option.value} value={option.value}>
+            {option.label}
+          </option>
+        ))}
+      </select>
+    </label>
+  );
+}
+
+function BlindTypePicker({
+  label,
+  value,
+  onChange,
+  options,
+}: {
+  label: string;
+  value: string;
+  onChange: (value: string) => void;
+  options: { value: string; label: string }[];
+}) {
+  return (
+    <div className="md:col-span-2">
+      <span className="mb-1.5 block text-[11px] font-medium uppercase tracking-[0.12em] text-muted-foreground">
+        {label}
+      </span>
+      <div className="-mx-1 flex gap-2 overflow-x-auto px-1 pb-2">
+        {options.map((option) => {
+          const selected = option.value === value;
+          return (
+            <button
+              key={option.value}
+              type="button"
+              onClick={() => onChange(option.value)}
+              className={`flex h-[126px] min-w-[150px] flex-col items-center justify-between gap-2 rounded-xl border px-3 py-3 text-center transition ${
+                selected
+                  ? "border-foreground/40 bg-foreground text-background shadow-sm"
+                  : "border-border bg-background text-foreground hover:border-foreground/30"
+              }`}
+            >
+              <span className="flex h-16 w-full items-center justify-center">
+                <BlindTypeGraphic typeId={option.value} />
+              </span>
+              <span className="flex min-h-8 w-full items-center justify-center text-balance text-xs font-semibold leading-tight">
+                {option.label}
+              </span>
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+function BlindTypeGraphic({ typeId }: { typeId: string }) {
+  const stroke = "currentColor";
+  const fill = "currentColor";
+  const frame = (
+    <rect
+      x="10"
+      y="6"
+      width="60"
+      height="52"
+      rx="1.5"
+      fill="none"
+      stroke={stroke}
+      strokeWidth="3"
+    />
+  );
+
+  if (typeId.includes("vertical") || typeId === "pvc-rigid") {
+    return (
+      <svg aria-hidden="true" viewBox="0 0 80 64" className="h-16 w-20">
+        {frame}
+        <rect x="18" y="12" width="44" height="4" rx="1" fill={fill} />
+        {Array.from({ length: 7 }).map((_, index) => {
+          const x = 17 + index * 6;
+          return (
+            <path
+              key={index}
+              d={`M${x} 16 h4 v35 l-4 3 z`}
+              fill="none"
+              stroke={stroke}
+              strokeWidth="2.6"
+              strokeLinejoin="round"
+            />
+          );
+        })}
+      </svg>
+    );
+  }
+
+  if (typeId.includes("venetian") || typeId.includes("fauxwood") || typeId.includes("sunwood")) {
+    return (
+      <svg aria-hidden="true" viewBox="0 0 80 64" className="h-16 w-20">
+        {frame}
+        <rect x="14" y="11" width="50" height="5" rx="1" fill={fill} />
+        {Array.from({ length: 8 }).map((_, index) => (
+          <rect
+            key={index}
+            x="16"
+            y={20 + index * 4}
+            width="48"
+            height="2.4"
+            rx="1.2"
+            fill={fill}
+          />
+        ))}
+        <path d="M66 13 v35" stroke={stroke} strokeWidth="2" strokeLinecap="round" />
+        <ellipse cx="66" cy="51" rx="3" ry="6" fill={fill} />
+      </svg>
+    );
+  }
+
+  if (typeId.includes("pleated")) {
+    return (
+      <svg aria-hidden="true" viewBox="0 0 80 64" className="h-16 w-20">
+        {frame}
+        <rect x="16" y="11" width="48" height="4" rx="1" fill={fill} />
+        {Array.from({ length: 9 }).map((_, index) => (
+          <path
+            key={index}
+            d={`M18 ${18 + index * 3.6} h44 l-3 2.2 h-38 z`}
+            fill="none"
+            stroke={stroke}
+            strokeWidth="1.7"
+            strokeLinejoin="round"
+          />
+        ))}
+        <rect x="18" y="48" width="44" height="7" fill="none" stroke={stroke} strokeWidth="2" />
+      </svg>
+    );
+  }
+
+  if (typeId.includes("vision") || typeId === "allusion") {
+    return (
+      <svg aria-hidden="true" viewBox="0 0 80 64" className="h-16 w-20">
+        {frame}
+        <rect
+          x="16"
+          y="11"
+          width="48"
+          height="5"
+          rx="1"
+          fill="none"
+          stroke={stroke}
+          strokeWidth="2.4"
+        />
+        {Array.from({ length: 5 }).map((_, index) => (
+          <g key={index}>
+            <rect x="18" y={20 + index * 7} width="44" height="4" fill={fill} />
+            <rect
+              x="18"
+              y={24 + index * 7}
+              width="44"
+              height="3"
+              fill="none"
+              stroke={stroke}
+              strokeWidth="1.4"
+            />
+          </g>
+        ))}
+      </svg>
+    );
+  }
+
+  if (typeId.includes("shutter")) {
+    return (
+      <svg aria-hidden="true" viewBox="0 0 80 64" className="h-16 w-20">
+        {frame}
+        <rect x="17" y="13" width="46" height="38" fill="none" stroke={stroke} strokeWidth="2.4" />
+        {Array.from({ length: 5 }).map((_, index) => (
+          <path
+            key={index}
+            d={`M20 ${20 + index * 6} h40`}
+            stroke={stroke}
+            strokeWidth="3"
+            strokeLinecap="round"
+          />
+        ))}
+        <path d="M40 13 v38" stroke={stroke} strokeWidth="2" />
+      </svg>
+    );
+  }
+
+  if (typeId === "roman") {
+    return (
+      <svg aria-hidden="true" viewBox="0 0 80 64" className="h-16 w-20">
+        {frame}
+        <rect x="18" y="11" width="44" height="4" rx="1" fill={fill} />
+        <path d="M19 16 h42 l-2 9 h-38 z" fill="none" stroke={stroke} strokeWidth="2" />
+        <path d="M21 25 h38 l-2 8 h-34 z" fill="none" stroke={stroke} strokeWidth="2" />
+        <path d="M23 33 h34 l-2 8 h-30 z" fill="none" stroke={stroke} strokeWidth="2" />
+        <rect x="23" y="41" width="34" height="13" fill="none" stroke={stroke} strokeWidth="2" />
+      </svg>
+    );
+  }
+
+  return (
+    <svg aria-hidden="true" viewBox="0 0 80 64" className="h-16 w-20">
+      {frame}
+      <rect
+        x="18"
+        y="11"
+        width="44"
+        height="6"
+        rx="3"
+        fill="none"
+        stroke={stroke}
+        strokeWidth="3"
+      />
+      <rect x="20" y="18" width="40" height="34" fill="none" stroke={stroke} strokeWidth="2.6" />
+      <rect x="19" y="51" width="42" height="4" rx="1" fill={fill} />
+    </svg>
+  );
+}
+
+function Textarea({
+  label,
+  value,
+  onChange,
+}: {
+  label: string;
+  value: string;
+  onChange: (value: string) => void;
+}) {
+  return (
+    <label className="block">
+      <span className="mb-1.5 block text-[11px] font-medium uppercase tracking-[0.12em] text-muted-foreground">
+        {label}
+      </span>
+      <textarea
+        rows={2}
+        value={value}
+        onChange={(event) => onChange(event.target.value)}
+        className="w-full resize-none rounded-xl border border-border bg-background px-3.5 py-2.5 text-sm focus:border-foreground/40 focus:outline-none focus:ring-2 focus:ring-foreground/10"
+      />
+    </label>
+  );
+}
+
+function Stat({ label, value, highlight }: { label: string; value: string; highlight?: boolean }) {
+  return (
+    <div
+      className={`min-w-0 rounded-xl border px-3 py-2 ${
+        highlight ? "border-foreground/20 bg-background" : "border-border bg-background/60"
+      }`}
+    >
+      <div className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground">{label}</div>
+      <div className="mt-0.5 truncate text-sm font-semibold tabular-nums tracking-tight">
+        {value}
+      </div>
+    </div>
+  );
+}
+
+function TotalRow({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="flex items-baseline justify-between py-1 text-[12px]">
+      <span className="text-muted-foreground">{label}</span>
+      <span className="tabular-nums">{value}</span>
+    </div>
+  );
+}
+
+function IconButton({
+  label,
+  icon,
+  onClick,
+}: {
+  label: string;
+  icon: ReactNode;
+  onClick: () => void;
+}) {
+  return (
+    <button
+      onClick={onClick}
+      aria-label={label}
+      title={label}
+      className="rounded-lg p-1.5 text-muted-foreground hover:bg-accent"
+    >
+      <span className="[&_svg]:h-3.5 [&_svg]:w-3.5">{icon}</span>
+    </button>
+  );
+}
+
+function itemLabel(item: ProjectQuoteItem, t: (key: TranslationKey) => string) {
+  switch (item.type) {
+    case "blind":
+      return item.description || t("item.blindShort");
+    case "wardrobe":
+      return item.wardrobeLine.categoryName;
+    case "accessory":
+      return item.code ? `${t("item.accessoryShort")} ${item.code}` : t("item.accessoryShort");
+    case "labour":
+      return t("item.labourShort");
+    case "manual":
+      return t("item.manualShort");
+  }
+}
+
+function roundMoney(value: number) {
+  return +value.toFixed(2);
+}

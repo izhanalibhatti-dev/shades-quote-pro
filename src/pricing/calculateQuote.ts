@@ -38,6 +38,14 @@ export function calculateQuote(quote: QuoteState): QuoteCalculation {
     widthMm: quote.size.widthMm,
     heightMm: quote.size.heightMm,
   });
+  const pricingSource =
+    fabric.pricingSource ?? priceTable.priceSourceLabel ?? priceTable.source ?? supplier.name;
+  const pricingCompany = fabric.supplierName ?? supplier.name;
+  const pricingReferenceNote =
+    fabric.pricingReferenceNote ??
+    (band && band !== "Standard"
+      ? `Internal pricing reference: ${pricingCompany}, Band ${band}. Pricing source: ${pricingSource}.`
+      : `Internal pricing reference: ${pricingCompany}. Pricing source: ${pricingSource}.`);
 
   const basePrice = base.price * quote.size.quantity;
   const selectedExtraLines = quote.extras.map((selected) => {
@@ -58,10 +66,14 @@ export function calculateQuote(quote: QuoteState): QuoteCalculation {
   const finalTotal = taxableSubtotal + vat + labourCost;
 
   return {
-    supplierName: supplier.name,
+    supplierName: pricingCompany,
     productTypeName: productType.name,
-    fabricName: fabric.name,
+    fabricName: fabric.displayName ?? fabric.name,
     band,
+    pricingBand: band,
+    pricingSource,
+    pricingReferenceNote,
+    priceSource: pricingReferenceNote,
     widthMm: quote.size.widthMm,
     heightMm: quote.size.heightMm,
     roundedWidthMm: base.roundedWidthMm,

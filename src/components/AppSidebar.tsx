@@ -10,17 +10,21 @@ import {
   Moon,
   Sun,
   DoorOpen,
+  BriefcaseBusiness,
 } from "lucide-react";
 import { useEffect, useState } from "react";
 import Logo from "@/components/Logo";
+import LanguageSelector from "@/components/LanguageSelector";
 import { signOut } from "@/lib/auth";
+import { useI18n, type TranslationKey } from "@/lib/i18n";
 import { applyTheme, getTheme, type Theme } from "@/lib/theme";
 
 const NAV = [
-  { to: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
-  { to: "/quote", label: "Blinds Quote", icon: FilePlus2 },
-  { to: "/wardrobe", label: "Wardrobes & Doors", icon: DoorOpen },
-  { to: "/settings", label: "Settings", icon: Settings },
+  { to: "/dashboard", labelKey: "nav.dashboard", icon: LayoutDashboard },
+  { to: "/project", labelKey: "nav.project", icon: BriefcaseBusiness },
+  { to: "/quote", labelKey: "nav.blinds", icon: FilePlus2 },
+  { to: "/wardrobe", labelKey: "nav.wardrobes", icon: DoorOpen },
+  { to: "/settings", labelKey: "nav.settings", icon: Settings },
 ] as const;
 
 export default function AppSidebar({
@@ -37,6 +41,7 @@ export default function AppSidebar({
   const navigate = useNavigate();
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const [theme, setTheme] = useState<Theme>("light");
+  const { t } = useI18n();
 
   useEffect(() => {
     const t = getTheme();
@@ -91,7 +96,9 @@ export default function AppSidebar({
               )}
               <Icon className="h-[18px] w-[18px] shrink-0" />
               {!collapsed && (
-                <span className="truncate font-medium tracking-tight">{item.label}</span>
+                <span className="truncate font-medium tracking-tight">
+                  {t(item.labelKey as TranslationKey)}
+                </span>
               )}
             </Link>
           );
@@ -99,6 +106,9 @@ export default function AppSidebar({
       </nav>
 
       <div className="mt-auto flex flex-col gap-1 px-3 pb-5">
+        <div className={collapsed ? "flex justify-center" : "w-full"}>
+          <LanguageSelector compact={collapsed} showLabel={false} />
+        </div>
         <button
           onClick={toggleTheme}
           className={`flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-sidebar-foreground/75 transition-colors hover:bg-sidebar-accent/60 hover:text-sidebar-foreground ${collapsed ? "justify-center px-2" : ""}`}
@@ -110,7 +120,7 @@ export default function AppSidebar({
           )}
           {!collapsed && (
             <span className="font-medium tracking-tight">
-              {theme === "dark" ? "Light mode" : "Dark mode"}
+              {theme === "dark" ? t("nav.lightMode") : t("nav.darkMode")}
             </span>
           )}
         </button>
@@ -123,14 +133,14 @@ export default function AppSidebar({
           ) : (
             <PanelLeftClose className="h-[18px] w-[18px]" />
           )}
-          {!collapsed && <span className="font-medium tracking-tight">Collapse</span>}
+          {!collapsed && <span className="font-medium tracking-tight">{t("nav.collapse")}</span>}
         </button>
         <button
           onClick={handleSignOut}
           className={`flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-sidebar-foreground/75 transition-colors hover:bg-sidebar-accent/60 hover:text-sidebar-foreground ${collapsed ? "justify-center px-2" : ""}`}
         >
           <LogOut className="h-[18px] w-[18px]" />
-          {!collapsed && <span className="font-medium tracking-tight">Sign out</span>}
+          {!collapsed && <span className="font-medium tracking-tight">{t("nav.signOut")}</span>}
         </button>
       </div>
     </div>

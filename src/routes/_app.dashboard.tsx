@@ -2,7 +2,9 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles, Ruler, Lightbulb, FileDown, Plus } from "lucide-react";
 import { useQuote } from "@/components/QuoteContext";
-import { fabrics, suppliers } from "@/data/catalog";
+import { BLIND_PRODUCT_TYPES } from "@/data/blinds/productTypes";
+import { fabrics } from "@/data/catalog";
+import { getIntlLocale, useI18n } from "@/lib/i18n";
 import { formatGBP } from "@/lib/quote-types";
 
 export const Route = createFileRoute("/_app/dashboard")({
@@ -12,15 +14,15 @@ export const Route = createFileRoute("/_app/dashboard")({
 
 function Dashboard() {
   const { setQuote, recent } = useQuote();
-  const quickStarts = suppliers.flatMap((supplier) =>
-    supplier.productTypes.map((productType) => ({
-      supplier,
-      productType,
-      fabric: fabrics.find(
-        (fabric) => fabric.supplierId === supplier.id && fabric.productTypeId === productType.id,
-      ),
-    })),
-  );
+  const { locale, t } = useI18n();
+  const dateLocale = getIntlLocale(locale);
+  const quickStarts = BLIND_PRODUCT_TYPES.map((blindType) => {
+    const fabric = fabrics.find((item) => {
+      const matches = item.compatibleBlindTypes?.includes(blindType.id) ?? false;
+      return matches && !item.isFallback;
+    });
+    return fabric ? { blindType, fabric } : null;
+  }).filter((item): item is NonNullable<typeof item> => item !== null);
 
   return (
     <div className="mx-auto w-full max-w-6xl space-y-10">
@@ -37,46 +39,44 @@ function Dashboard() {
         <div className="relative grid gap-6 p-7 md:grid-cols-[1.4fr_1fr] md:p-10">
           <div>
             <div className="inline-flex items-center gap-2 rounded-full border border-border bg-background/60 px-3 py-1 text-[11px] uppercase tracking-[0.18em] text-muted-foreground backdrop-blur">
-              <Sparkles className="h-3 w-3" /> Quote Studio
+              <Sparkles className="h-3 w-3" /> {t("dashboard.badge")}
             </div>
             <h1 className="mt-4 text-balance text-3xl font-semibold tracking-tight md:text-4xl">
-              Craft an elegant quote in under a minute.
+              {t("dashboard.title")}
             </h1>
             <p className="mt-3 max-w-xl text-sm text-muted-foreground md:text-base">
-              A focused tool for home visits, measurements and consultations. Enter the details, see
-              the price update live, and export a beautifully branded quote instantly.
+              {t("dashboard.subtitle")}
             </p>
             <div className="mt-6 flex flex-wrap items-center gap-3">
               <Link
                 to="/quote"
                 className="group inline-flex h-11 items-center gap-2 rounded-xl bg-primary px-5 text-sm font-medium text-primary-foreground transition-all hover:opacity-95"
               >
-                <Plus className="h-4 w-4" /> Create new quote
+                <Plus className="h-4 w-4" /> {t("dashboard.createQuote")}
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
               </Link>
               <Link
                 to="/settings"
                 className="inline-flex h-11 items-center gap-2 rounded-xl border border-border bg-background/60 px-4 text-sm font-medium text-foreground hover:bg-accent"
               >
-                Adjust defaults
+                {t("dashboard.adjustDefaults")}
               </Link>
             </div>
           </div>
 
           <div className="hidden md:block">
             <div className="glass rounded-2xl p-5">
-              <div className="text-xs uppercase tracking-[0.16em] text-muted-foreground">Today</div>
+              <div className="text-xs uppercase tracking-[0.16em] text-muted-foreground">
+                {t("dashboard.today")}
+              </div>
               <div className="mt-1 text-2xl font-semibold tracking-tight">
-                {new Date().toLocaleDateString("en-GB", {
+                {new Date().toLocaleDateString(dateLocale, {
                   weekday: "long",
                   day: "numeric",
                   month: "long",
                 })}
               </div>
-              <p className="mt-3 text-sm text-muted-foreground">
-                Session-only workspace. Nothing is saved to the cloud. Your quote lives here until
-                you export it.
-              </p>
+              <p className="mt-3 text-sm text-muted-foreground">{t("dashboard.workspace")}</p>
             </div>
           </div>
         </div>
@@ -85,13 +85,13 @@ function Dashboard() {
       {/* Quick product shortcuts */}
       <section>
         <SectionHeader
-          title="Quick start by product"
-          caption="Pre-fill the builder from supplier catalogue data"
+          title={t("dashboard.quickStart")}
+          caption={t("dashboard.quickStartCaption")}
         />
         <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
-          {quickStarts.map(({ supplier, productType, fabric }, i) => (
+          {quickStarts.map(({ blindType, fabric }, i) => (
             <motion.div
-              key={`${supplier.id}-${productType.id}`}
+              key={`${blindType.id}-${fabric.id}`}
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: i * 0.03 }}
@@ -103,9 +103,9 @@ function Dashboard() {
                     ...q,
                     product: {
                       ...q.product,
-                      supplierId: supplier.id,
-                      productTypeId: productType.id,
-                      fabricId: fabric?.id ?? q.product.fabricId,
+                      supplierId: fabric.supplierId,
+                      productTypeId: fabric.productTypeId,
+                      fabricId: fabric.id,
                     },
                   }))
                 }
@@ -114,13 +114,13 @@ function Dashboard() {
                 <div className="flex items-center gap-2">
                   <BlindGlyph />
                   <div className="text-[10.5px] uppercase tracking-[0.16em] text-muted-foreground">
-                    {supplier.name}
+                    {t("dashboard.startQuote")}
                   </div>
                 </div>
                 <div className="mt-6">
-                  <div className="text-sm font-semibold tracking-tight">{productType.name}</div>
+                  <div className="text-sm font-semibold tracking-tight">{blindType.label}</div>
                   <div className="mt-0.5 flex items-center gap-1 text-xs text-muted-foreground transition-colors group-hover:text-foreground">
-                    Start quote{" "}
+                    {t("dashboard.startQuote")}{" "}
                     <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
                   </div>
                 </div>
@@ -133,14 +133,16 @@ function Dashboard() {
       <section className="grid gap-6 lg:grid-cols-[1.2fr_1fr]">
         {/* Recent exports */}
         <div className="rounded-3xl border border-border bg-card p-6">
-          <SectionHeader title="Recent exports" caption="From this session only" inline />
+          <SectionHeader
+            title={t("dashboard.recentExports")}
+            caption={t("dashboard.recentCaption")}
+            inline
+          />
           {recent.length === 0 ? (
             <div className="mt-5 flex flex-col items-center justify-center gap-2 rounded-2xl border border-dashed border-border bg-muted/30 px-6 py-12 text-center">
               <FileDown className="h-5 w-5 text-muted-foreground" />
-              <div className="text-sm font-medium">No exports yet</div>
-              <p className="max-w-sm text-xs text-muted-foreground">
-                When you download a quote as a PNG, it will appear here for this session.
-              </p>
+              <div className="text-sm font-medium">{t("dashboard.noExports")}</div>
+              <p className="max-w-sm text-xs text-muted-foreground">{t("dashboard.exportHelp")}</p>
             </div>
           ) : (
             <ul className="mt-4 divide-y divide-border">
@@ -148,11 +150,11 @@ function Dashboard() {
                 <li key={r.ref + r.at} className="flex items-center justify-between py-3">
                   <div className="min-w-0">
                     <div className="truncate text-sm font-medium">
-                      {r.name || "Unnamed customer"}
+                      {r.name || t("dashboard.unnamedCustomer")}
                     </div>
                     <div className="text-xs text-muted-foreground">
                       {r.ref} ·{" "}
-                      {new Date(r.at).toLocaleTimeString("en-GB", {
+                      {new Date(r.at).toLocaleTimeString(dateLocale, {
                         hour: "2-digit",
                         minute: "2-digit",
                       })}
@@ -169,22 +171,22 @@ function Dashboard() {
         <div className="space-y-6">
           <InfoCard
             icon={<Ruler className="h-4 w-4" />}
-            title="Measurement tips"
+            title={t("dashboard.measurementTips")}
             items={[
-              "Measure width in three places. Use the smallest for inside recess.",
-              "Always note height from the highest fixing point.",
-              "Add 5-10cm overlap on each side for outside-mount blinds.",
-              "Round to the nearest centimetre, never the nearest inch.",
+              t("dashboard.tipMeasure1"),
+              t("dashboard.tipMeasure2"),
+              t("dashboard.tipMeasure3"),
+              t("dashboard.tipMeasure4"),
             ]}
           />
           <InfoCard
             icon={<Lightbulb className="h-4 w-4" />}
-            title="Quick guide"
+            title={t("dashboard.quickGuide")}
             items={[
-              "Enter customer details, then choose blind & room.",
-              "Switch between preset sizes and fully custom dimensions.",
-              "Pricing updates live. Edit labour, discount and VAT.",
-              "Download the right-hand preview as a high-resolution PNG.",
+              t("dashboard.guide1"),
+              t("dashboard.guide2"),
+              t("dashboard.guide3"),
+              t("dashboard.guide4"),
             ]}
           />
         </div>

@@ -1,0 +1,770 @@
+{
+  "source": "references/alpine Trade Price working (1).xlsx",
+  "generatedBy": "scripts/import-blinds-workbook.py",
+  "summary": {
+    "worksheetsFound": 27,
+    "pricingTablesImported": 36,
+    "productTypesImported": 36,
+    "fabricMappingsImported": 800,
+    "finishOrColourOptionsGenerated": 635,
+    "fallbackBandOptionsGenerated": 73,
+    "validationErrors": 0,
+    "definedNames": 4,
+    "formulaCells": 0
+  },
+  "validationErrors": [],
+  "fabricMappingNotes": [
+    "Skipped unsupported fabric band Alutrade!C12 = 'DISCONTINUED'.",
+    "Skipped unsupported fabric band Alutrade!C19 = 'DISCONTINUED'.",
+    "Skipped unsupported fabric band Louvolite 2026!C11 = 'F+20%'.",
+    "Skipped unsupported fabric band Louvolite 2026!C15 = 'F+20%'.",
+    "Skipped unsupported fabric band Eclipse 2026!I51 = 'F + 10%'.",
+    "Skipped unsupported fabric band Eclipse 2026!L17 = 'F + 15%'.",
+    "Skipped unsupported fabric band Eclipse 2026!L48 = 'F + 20%'.",
+    "Skipped unsupported fabric band Arena 2026!F46 = 'F+10%'.",
+    "Skipped unsupported fabric band Arena 2026!I12 = 'F+15%'.",
+    "Skipped unsupported fabric band Arena 2026!I49 = 'F+20%'."
+  ],
+  "definedNames": [
+    {
+      "name": "_xlnm.Print_Area",
+      "localSheetId": "23",
+      "refersTo": "'PF Aluminium'!$M$32:$S$55"
+    },
+    {
+      "name": "_xlnm.Print_Area",
+      "localSheetId": "24",
+      "refersTo": "'PF Wood'!$B$2:$M$9"
+    },
+    {
+      "name": "_xlnm.Print_Area",
+      "localSheetId": "25",
+      "refersTo": "'Sunwood Faux'!$A$1:$AF$20"
+    },
+    {
+      "name": "_xlnm.Print_Area",
+      "localSheetId": "26",
+      "refersTo": "'Sunwood Wood'!$B$1:$Q$39"
+    }
+  ],
+  "sheets": [
+    {
+      "sheet": "Cover",
+      "status": "skipped",
+      "reason": "Reference, fabric-band, cover, or supplier metadata sheet. Not a direct quote pricing grid.",
+      "detectedTables": [],
+      "notes": []
+    },
+    {
+      "sheet": "Fabric Box 2026",
+      "status": "skipped",
+      "reason": "Reference, fabric-band, cover, or supplier metadata sheet. Not a direct quote pricing grid.",
+      "detectedTables": [],
+      "notes": []
+    },
+    {
+      "sheet": "Alutrade",
+      "status": "skipped",
+      "reason": "Reference, fabric-band, cover, or supplier metadata sheet. Not a direct quote pricing grid.",
+      "detectedTables": [],
+      "notes": []
+    },
+    {
+      "sheet": "United",
+      "status": "skipped",
+      "reason": "Reference, fabric-band, cover, or supplier metadata sheet. Not a direct quote pricing grid.",
+      "detectedTables": [],
+      "notes": []
+    },
+    {
+      "sheet": "Louvolite 2026",
+      "status": "skipped",
+      "reason": "Reference, fabric-band, cover, or supplier metadata sheet. Not a direct quote pricing grid.",
+      "detectedTables": [],
+      "notes": []
+    },
+    {
+      "sheet": "Eclipse 2026",
+      "status": "skipped",
+      "reason": "Reference, fabric-band, cover, or supplier metadata sheet. Not a direct quote pricing grid.",
+      "detectedTables": [],
+      "notes": []
+    },
+    {
+      "sheet": "Arena 2026",
+      "status": "skipped",
+      "reason": "Reference, fabric-band, cover, or supplier metadata sheet. Not a direct quote pricing grid.",
+      "detectedTables": [],
+      "notes": []
+    },
+    {
+      "sheet": "Vertical",
+      "status": "imported",
+      "reason": null,
+      "detectedTables": [
+        {
+          "title": "Vertical",
+          "band": "AA",
+          "range": "D4:O15",
+          "widths": 12,
+          "heights": 10
+        },
+        {
+          "title": "Vertical",
+          "band": "A",
+          "range": "D18:O29",
+          "widths": 12,
+          "heights": 10
+        },
+        {
+          "title": "Vertical",
+          "band": "B",
+          "range": "D32:O43",
+          "widths": 12,
+          "heights": 10
+        },
+        {
+          "title": "Vertical",
+          "band": "C",
+          "range": "D46:O57",
+          "widths": 12,
+          "heights": 10
+        },
+        {
+          "title": "Vertical",
+          "band": "D",
+          "range": "D60:O71",
+          "widths": 12,
+          "heights": 10
+        },
+        {
+          "title": "Vertical",
+          "band": "E",
+          "range": "D74:O85",
+          "widths": 12,
+          "heights": 10
+        },
+        {
+          "title": "Vertical",
+          "band": "F",
+          "range": "D88:O99",
+          "widths": 12,
+          "heights": 10
+        }
+      ],
+      "notes": []
+    },
+    {
+      "sheet": "Sheet1",
+      "status": "skipped",
+      "reason": "Reference, fabric-band, cover, or supplier metadata sheet. Not a direct quote pricing grid.",
+      "detectedTables": [],
+      "notes": []
+    },
+    {
+      "sheet": "Pvc Rigid",
+      "status": "imported",
+      "reason": null,
+      "detectedTables": [
+        {
+          "title": "Occa -",
+          "band": "A",
+          "range": "D5:U15",
+          "widths": 18,
+          "heights": 10
+        },
+        {
+          "title": "Alaya - Amari - Carerra - Kuta - Niro - Tosca",
+          "band": "B",
+          "range": "D19:U29",
+          "widths": 18,
+          "heights": 10
+        },
+        {
+          "title": "Pvc Rigid",
+          "band": "C",
+          "range": "D33:U43",
+          "widths": 18,
+          "heights": 10
+        }
+      ],
+      "notes": []
+    },
+    {
+      "sheet": "Roller",
+      "status": "imported",
+      "reason": null,
+      "detectedTables": [
+        {
+          "title": "Roller",
+          "band": "AA",
+          "range": "D3:U17",
+          "widths": 18,
+          "heights": 13
+        },
+        {
+          "title": "Roller",
+          "band": "A",
+          "range": "D20:U34",
+          "widths": 18,
+          "heights": 14
+        },
+        {
+          "title": "Roller",
+          "band": "B",
+          "range": "D37:U51",
+          "widths": 18,
+          "heights": 14
+        },
+        {
+          "title": "Roller",
+          "band": "C",
+          "range": "D54:U68",
+          "widths": 18,
+          "heights": 14
+        },
+        {
+          "title": "Roller",
+          "band": "D",
+          "range": "D71:U85",
+          "widths": 18,
+          "heights": 14
+        },
+        {
+          "title": "Roller",
+          "band": "E",
+          "range": "D88:U102",
+          "widths": 18,
+          "heights": 14
+        },
+        {
+          "title": "Roller",
+          "band": "F",
+          "range": "D105:U119",
+          "widths": 18,
+          "heights": 14
+        }
+      ],
+      "notes": []
+    },
+    {
+      "sheet": "Vision",
+      "status": "imported",
+      "reason": null,
+      "detectedTables": [
+        {
+          "title": "Capri",
+          "band": "A",
+          "range": "D6:P18",
+          "widths": 13,
+          "heights": 12
+        },
+        {
+          "title": "Arrezzo - Firenza - Modella - Naples - Nola - Nuvola - Setosa - Trento",
+          "band": "B",
+          "range": "D23:P35",
+          "widths": 13,
+          "heights": 12
+        },
+        {
+          "title": "Allegria - Ferrara - Lusso - Modina - Rimini",
+          "band": "C",
+          "range": "D40:P52",
+          "widths": 13,
+          "heights": 12
+        },
+        {
+          "title": "Alberto - Bella - Boucle - Floreale - Tessuto",
+          "band": "D",
+          "range": "D57:P69",
+          "widths": 13,
+          "heights": 12
+        },
+        {
+          "title": "Vision",
+          "band": "E",
+          "range": "D74:P86",
+          "widths": 13,
+          "heights": 12
+        }
+      ],
+      "notes": []
+    },
+    {
+      "sheet": "PF Vision",
+      "status": "imported",
+      "reason": null,
+      "detectedTables": [
+        {
+          "title": "Capri",
+          "band": "A",
+          "range": "D8:K17",
+          "widths": 8,
+          "heights": 9
+        },
+        {
+          "title": "Arrezzo - Firenza - Modella - Naples - Nola - Nuvola - Setosa - Trento",
+          "band": "B",
+          "range": "D21:K31",
+          "widths": 8,
+          "heights": 10
+        },
+        {
+          "title": "Allegria - Ferrara - Lusso - Modina - Rimini",
+          "band": "C",
+          "range": "D35:K44",
+          "widths": 8,
+          "heights": 9
+        },
+        {
+          "title": "Alberto - Bella - Boucle - Floreale - Tessuto",
+          "band": "D",
+          "range": "D48:K57",
+          "widths": 8,
+          "heights": 9
+        },
+        {
+          "title": "PF Vision",
+          "band": "E",
+          "range": "D60:K69",
+          "widths": 8,
+          "heights": 9
+        }
+      ],
+      "notes": []
+    },
+    {
+      "sheet": "Perfect Fit Shutter",
+      "status": "imported",
+      "reason": null,
+      "detectedTables": [
+        {
+          "title": "Glass Size",
+          "band": "Standard",
+          "range": "C4:U21",
+          "widths": 19,
+          "heights": 16
+        }
+      ],
+      "notes": []
+    },
+    {
+      "sheet": "PF Roller",
+      "status": "imported",
+      "reason": null,
+      "detectedTables": [
+        {
+          "title": "PF Roller",
+          "band": "A",
+          "range": "D7:L17",
+          "widths": 9,
+          "heights": 10
+        },
+        {
+          "title": "PF Roller",
+          "band": "B",
+          "range": "P7:X17",
+          "widths": 9,
+          "heights": 10
+        },
+        {
+          "title": "PF Roller",
+          "band": "C",
+          "range": "D20:L30",
+          "widths": 9,
+          "heights": 10
+        },
+        {
+          "title": "PF Roller",
+          "band": "D",
+          "range": "P20:X30",
+          "widths": 9,
+          "heights": 10
+        },
+        {
+          "title": "PF Roller",
+          "band": "E",
+          "range": "D33:L43",
+          "widths": 9,
+          "heights": 10
+        },
+        {
+          "title": "PF Roller",
+          "band": "F",
+          "range": "P33:X43",
+          "widths": 9,
+          "heights": 10
+        },
+        {
+          "title": "Perfect Fit Konnect",
+          "band": "INS",
+          "range": "D58:H63",
+          "widths": 5,
+          "heights": 5
+        }
+      ],
+      "notes": []
+    },
+    {
+      "sheet": "Allusion",
+      "status": "imported",
+      "reason": null,
+      "detectedTables": [
+        {
+          "title": "Horizon",
+          "band": "A",
+          "range": "D4:Q19",
+          "widths": 14,
+          "heights": 14
+        },
+        {
+          "title": "Vista FR - Natural",
+          "band": "B",
+          "range": "D22:Q37",
+          "widths": 14,
+          "heights": 14
+        },
+        {
+          "title": "Shadow",
+          "band": "C",
+          "range": "D41:Q56",
+          "widths": 14,
+          "heights": 14
+        }
+      ],
+      "notes": []
+    },
+    {
+      "sheet": "Pleated Fabric",
+      "status": "manualReview",
+      "reason": "No complete width/height pricing grid was detected.",
+      "detectedTables": [],
+      "notes": []
+    },
+    {
+      "sheet": "PF Pleated",
+      "status": "imported",
+      "reason": null,
+      "detectedTables": [
+        {
+          "title": "PF Pleated",
+          "band": "A",
+          "range": "D4:N20",
+          "widths": 11,
+          "heights": 15
+        },
+        {
+          "title": "PF Pleated",
+          "band": "B",
+          "range": "D22:N38",
+          "widths": 11,
+          "heights": 15
+        },
+        {
+          "title": "PF Pleated",
+          "band": "C",
+          "range": "D40:N56",
+          "widths": 11,
+          "heights": 15
+        },
+        {
+          "title": "PF Pleated",
+          "band": "D",
+          "range": "D58:N74",
+          "widths": 11,
+          "heights": 15
+        },
+        {
+          "title": "PF Pleated",
+          "band": "E",
+          "range": "D76:N92",
+          "widths": 11,
+          "heights": 15
+        },
+        {
+          "title": "PF Pleated",
+          "band": "F",
+          "range": "D94:N110",
+          "widths": 11,
+          "heights": 15
+        },
+        {
+          "title": "PF Pleated",
+          "band": "G",
+          "range": "D112:N128",
+          "widths": 11,
+          "heights": 15
+        },
+        {
+          "title": "PF Pleated",
+          "band": "H",
+          "range": "D130:N146",
+          "widths": 11,
+          "heights": 15
+        }
+      ],
+      "notes": []
+    },
+    {
+      "sheet": "Freehang Pleated",
+      "status": "imported",
+      "reason": null,
+      "detectedTables": [
+        {
+          "title": "Freehang Pleated",
+          "band": "A",
+          "range": "D3:V22",
+          "widths": 19,
+          "heights": 18
+        },
+        {
+          "title": "Freehang Pleated",
+          "band": "B",
+          "range": "D24:V43",
+          "widths": 19,
+          "heights": 18
+        },
+        {
+          "title": "Freehang Pleated",
+          "band": "C",
+          "range": "D45:V64",
+          "widths": 19,
+          "heights": 18
+        },
+        {
+          "title": "Freehang Pleated",
+          "band": "D",
+          "range": "D66:V85",
+          "widths": 19,
+          "heights": 18
+        },
+        {
+          "title": "Freehang Pleated",
+          "band": "E",
+          "range": "D87:V106",
+          "widths": 19,
+          "heights": 18
+        },
+        {
+          "title": "Freehang Pleated",
+          "band": "F",
+          "range": "D108:V127",
+          "widths": 19,
+          "heights": 18
+        },
+        {
+          "title": "Freehang Pleated",
+          "band": "G",
+          "range": "D129:V148",
+          "widths": 19,
+          "heights": 18
+        },
+        {
+          "title": "Freehang Pleated",
+          "band": "H",
+          "range": "D150:V169",
+          "widths": 19,
+          "heights": 18
+        }
+      ],
+      "notes": []
+    },
+    {
+      "sheet": "Aqua Fauxwood",
+      "status": "imported",
+      "reason": null,
+      "detectedTables": [
+        {
+          "title": "White Smooth - White Grain - Niagra - Grey - Grey Wash - Grey Nightfall",
+          "band": "Standard",
+          "range": "D8:Y12",
+          "widths": 22,
+          "heights": 4
+        },
+        {
+          "title": "PRICE WITH TAPE",
+          "band": "Standard",
+          "range": "D17:Y21",
+          "widths": 22,
+          "heights": 4
+        }
+      ],
+      "notes": []
+    },
+    {
+      "sheet": "Romans",
+      "status": "imported",
+      "reason": null,
+      "detectedTables": [
+        {
+          "title": "Boheme, Haven, Pinnacle, Reveal, Strata, Tova, Trace, Vine",
+          "band": "A",
+          "range": "D6:O25",
+          "widths": 12,
+          "heights": 18
+        },
+        {
+          "title": "Belle, Capella, Cielo, Folina, Lila, Opal, Serenity, Veil, Verdant, Vibenna",
+          "band": "B",
+          "range": "D31:O50",
+          "widths": 12,
+          "heights": 18
+        },
+        {
+          "title": "Bliss, Calista, Cami, Canvas, Celina, Flores, Kairo, Keates, Lorcan, Lovella, Lumi, Memento, Mulberry, Ortega, Saskia, Sculpt, Treviso, Vista, Wentworth",
+          "band": "C",
+          "range": "D56:O75",
+          "widths": 12,
+          "heights": 18
+        },
+        {
+          "title": "Artisan, Arturo, Catkin, Casa, Dakar, Echo, Jareh, Lemon Grove, Lora, Lorenzo, Marble, Mimi, Noble, Nomad, Pavo, Riva, Rumour, Spire, Tivoli, Verve",
+          "band": "D",
+          "range": "D81:O100",
+          "widths": 12,
+          "heights": 18
+        }
+      ],
+      "notes": []
+    },
+    {
+      "sheet": "Arena Fauxwood",
+      "status": "imported",
+      "reason": null,
+      "detectedTables": [
+        {
+          "title": "Band A - Essence Range",
+          "band": "Standard",
+          "range": "D5:P9",
+          "widths": 13,
+          "heights": 3
+        },
+        {
+          "title": "Band B - Urban Range",
+          "band": "Standard",
+          "range": "D15:P19",
+          "widths": 13,
+          "heights": 3
+        },
+        {
+          "title": "Band C - Expressions Range",
+          "band": "Standard",
+          "range": "D24:Q28",
+          "widths": 14,
+          "heights": 3
+        },
+        {
+          "title": "Band D - Expressions Range (Highshine White & Cool White)",
+          "band": "ANY",
+          "range": "D33:Q37",
+          "widths": 14,
+          "heights": 3
+        }
+      ],
+      "notes": []
+    },
+    {
+      "sheet": "Aluminium Venetians",
+      "status": "imported",
+      "reason": null,
+      "detectedTables": [
+        {
+          "title": "Plain -Metallic",
+          "band": "Standard",
+          "range": "E7:W27",
+          "widths": 19,
+          "heights": 20
+        },
+        {
+          "title": "Brushed - Filtra - Caruso - Woodline - Stripe - Hammered - Textured - Premium Metalic",
+          "band": "Standard",
+          "range": "E33:W53",
+          "widths": 19,
+          "heights": 20
+        }
+      ],
+      "notes": []
+    },
+    {
+      "sheet": "PF Aluminium",
+      "status": "imported",
+      "reason": null,
+      "detectedTables": [
+        {
+          "title": "Perfect Fit 25mm Plain Aluminium Venetians",
+          "band": "Standard",
+          "range": "D10:K27",
+          "widths": 8,
+          "heights": 17
+        },
+        {
+          "title": "Perfect Fit 25mm Special Effects Aluminium Venetians",
+          "band": "Standard",
+          "range": "D34:K51",
+          "widths": 8,
+          "heights": 17
+        }
+      ],
+      "notes": []
+    },
+    {
+      "sheet": "PF Wood",
+      "status": "imported",
+      "reason": null,
+      "detectedTables": [
+        {
+          "title": "35\"",
+          "band": "INS",
+          "range": "D4:M7",
+          "widths": 10,
+          "heights": 3
+        }
+      ],
+      "notes": []
+    },
+    {
+      "sheet": "Sunwood Faux",
+      "status": "imported",
+      "reason": null,
+      "detectedTables": [
+        {
+          "title": "SUNWOOD Fauxwood - 35/50mm",
+          "band": "Standard",
+          "range": "D6:Z10",
+          "widths": 23,
+          "heights": 3
+        }
+      ],
+      "notes": []
+    },
+    {
+      "sheet": "Sunwood Wood",
+      "status": "imported",
+      "reason": null,
+      "detectedTables": [
+        {
+          "title": "35”",
+          "band": "INS",
+          "range": "D7:Q11",
+          "widths": 14,
+          "heights": 4
+        },
+        {
+          "title": "35”",
+          "band": "INS",
+          "range": "D18:Q22",
+          "widths": 14,
+          "heights": 4
+        },
+        {
+          "title": "35”",
+          "band": "INS",
+          "range": "D28:Q32",
+          "widths": 14,
+          "heights": 4
+        }
+      ],
+      "notes": []
+    }
+  ]
+}

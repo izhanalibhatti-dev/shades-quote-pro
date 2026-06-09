@@ -6,7 +6,9 @@ import { Toaster } from "@/components/ui/sonner";
 import AppSidebar from "@/components/AppSidebar";
 import { QuoteProvider } from "@/components/QuoteContext";
 import AccessibilityWidget from "@/components/AccessibilityWidget";
+import LanguageSelector from "@/components/LanguageSelector";
 import { isAuthed } from "@/lib/auth";
+import { useI18n } from "@/lib/i18n";
 import { applyTheme, getTheme } from "@/lib/theme";
 
 export const Route = createFileRoute("/_app")({
@@ -22,6 +24,7 @@ function AppLayout() {
   const [collapsed, setCollapsed] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const { t } = useI18n();
 
   useEffect(() => {
     applyTheme(getTheme());
@@ -42,13 +45,14 @@ function AppLayout() {
             <button
               className="flex h-9 w-9 items-center justify-center rounded-lg hover:bg-accent md:hidden"
               onClick={() => setMobileOpen(true)}
-              aria-label="Open menu"
+              aria-label={t("nav.openMenu")}
             >
               <Menu className="h-5 w-5" />
             </button>
-            <div className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
-              Shades &amp; Space / Quote Studio
+            <div className="min-w-0 flex-1 truncate text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
+              {t("app.name")}
             </div>
+            <LanguageSelector />
           </header>
 
           <main className="relative flex-1">

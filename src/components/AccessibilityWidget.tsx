@@ -12,6 +12,7 @@ import {
   X,
   Eye,
 } from "lucide-react";
+import { useI18n } from "@/lib/i18n";
 
 /**
  * Self-contained accessibility widget.
@@ -61,6 +62,7 @@ function readBool(key: string, fallback = false) {
 }
 
 export default function AccessibilityWidget() {
+  const { t } = useI18n();
   const [open, setOpen] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [scale, setScale] = useState(1);
@@ -133,9 +135,7 @@ export default function AccessibilityWidget() {
     if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
     stopSpeech();
     const main =
-      document.querySelector("main") ??
-      document.querySelector("[role=main]") ??
-      document.body;
+      document.querySelector("main") ?? document.querySelector("[role=main]") ?? document.body;
     const text = (main?.innerText ?? "").replace(/\s+/g, " ").trim().slice(0, 6000);
     if (!text) return;
     const u = new SpeechSynthesisUtterance(text);
@@ -166,9 +166,9 @@ export default function AccessibilityWidget() {
           setHidden(false);
           persist(LS.hidden, "0");
         }}
-        aria-label="Show accessibility tools (Alt+A)"
+        aria-label={t("a11y.showTools")}
         className="fixed bottom-3 left-3 z-50 flex h-8 w-8 items-center justify-center rounded-full border border-border bg-background/80 text-muted-foreground opacity-60 shadow-sm backdrop-blur transition hover:opacity-100"
-        title="Show accessibility tools (Alt+A)"
+        title={t("a11y.showTools")}
       >
         <Eye className="h-4 w-4" />
       </button>
@@ -186,17 +186,17 @@ export default function AccessibilityWidget() {
             exit={{ opacity: 0, y: 8, scale: 0.97 }}
             transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
             role="dialog"
-            aria-label="Accessibility tools"
+            aria-label={t("a11y.tools")}
             className="mb-3 w-[280px] overflow-hidden rounded-2xl border border-border bg-card text-card-foreground shadow-2xl"
           >
             <div className="flex items-center justify-between border-b border-border px-4 py-3">
               <div className="flex items-center gap-2 text-sm font-semibold tracking-tight">
                 <Accessibility className="h-4 w-4" />
-                Accessibility
+                {t("a11y.tools")}
               </div>
               <button
                 onClick={() => setOpen(false)}
-                aria-label="Close accessibility panel"
+                aria-label={t("a11y.closePanel")}
                 className="rounded-md p-1 text-muted-foreground hover:bg-accent hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
               >
                 <X className="h-4 w-4" />
@@ -204,50 +204,50 @@ export default function AccessibilityWidget() {
             </div>
 
             <div className="space-y-4 p-4">
-              <Section title="Read aloud">
+              <Section title={t("a11y.readAloud")}>
                 <div className="flex gap-2">
                   <ToolButton onClick={readAloud} aria-pressed={speaking}>
                     <Volume2 className="h-4 w-4" />
-                    {speaking ? "Reading…" : "Read page"}
+                    {speaking ? t("a11y.reading") : t("a11y.readPage")}
                   </ToolButton>
                   <ToolButton onClick={stopSpeech} variant="outline">
                     <Pause className="h-4 w-4" />
-                    Stop
+                    {t("a11y.stop")}
                   </ToolButton>
                 </div>
               </Section>
 
               <Section
-                title="Text size"
+                title={t("a11y.textSize")}
                 right={<span className="tabular-nums">{Math.round(scale * 100)}%</span>}
               >
                 <div className="flex gap-2">
                   <ToolButton
                     onClick={() => changeScale(scale - STEP)}
                     disabled={scale <= MIN + 0.001}
-                    aria-label="Decrease text size"
+                    aria-label={t("a11y.decreaseText")}
                   >
                     <Minus className="h-4 w-4" />
                   </ToolButton>
                   <ToolButton
                     onClick={() => changeScale(scale + STEP)}
                     disabled={scale >= MAX - 0.001}
-                    aria-label="Increase text size"
+                    aria-label={t("a11y.increaseText")}
                   >
                     <Plus className="h-4 w-4" />
                   </ToolButton>
                   <ToolButton
                     onClick={() => changeScale(1)}
                     variant="outline"
-                    aria-label="Reset text size"
+                    aria-label={t("a11y.resetText")}
                   >
                     <RotateCcw className="h-4 w-4" />
-                    Reset
+                    {t("actions.reset")}
                   </ToolButton>
                 </div>
               </Section>
 
-              <Section title="Display">
+              <Section title={t("a11y.display")}>
                 <ToolButton
                   onClick={toggleContrast}
                   variant={contrast ? "default" : "outline"}
@@ -255,7 +255,7 @@ export default function AccessibilityWidget() {
                   className="w-full"
                 >
                   <Contrast className="h-4 w-4" />
-                  {contrast ? "High contrast: on" : "High contrast: off"}
+                  {contrast ? t("a11y.contrastOn") : t("a11y.contrastOff")}
                 </ToolButton>
               </Section>
 
@@ -264,7 +264,7 @@ export default function AccessibilityWidget() {
                 className="flex w-full items-center justify-center gap-2 rounded-lg border border-dashed border-border px-3 py-2 text-xs text-muted-foreground hover:bg-accent hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
               >
                 <EyeOff className="h-3.5 w-3.5" />
-                Hide widget (Alt+A to reopen)
+                {t("a11y.hideWidget")}
               </button>
             </div>
           </motion.div>
@@ -276,7 +276,7 @@ export default function AccessibilityWidget() {
         onClick={() => setOpen((v) => !v)}
         whileHover={{ scale: 1.04 }}
         whileTap={{ scale: 0.96 }}
-        aria-label="Accessibility tools"
+        aria-label={t("a11y.tools")}
         aria-expanded={open}
         className="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-xl ring-1 ring-black/5 transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
       >

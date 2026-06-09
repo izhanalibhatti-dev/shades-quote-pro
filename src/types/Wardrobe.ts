@@ -28,7 +28,7 @@ export type WardrobeCategoryId =
  */
 export type WardrobePricingMode =
   | { type: "fixed"; unitPrice: number }
-  | { type: "perSqm"; pricePerSqm: number }
+  | { type: "perSqm"; pricePerSqm: number; minimumCharge?: number }
   | {
       type: "gridWxH";
       widths: number[]; // mm, ascending
@@ -36,7 +36,7 @@ export type WardrobePricingMode =
       // prices[heightIndex][widthIndex] — null = unavailable cell.
       prices: (number | null)[][];
     }
-  | { type: "perMetre"; pricePerMetre: number }
+  | { type: "perMetre"; pricePerMetre: number; minimumCharge?: number }
   | { type: "manual" };
 
 export interface WardrobeProduct {
@@ -85,7 +85,7 @@ export interface WardrobeLineItem {
   addons: WardrobeAddon[];
   notes?: string;
   // Cached calculation at the time of add/update — kept so the summary does
- // not need to re-resolve the catalogue for stale items.
+  // not need to re-resolve the catalogue for stale items.
   calc: WardrobeLineCalc;
 }
 

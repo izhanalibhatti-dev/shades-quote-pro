@@ -14,6 +14,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AppWardrobeRouteImport } from './routes/_app.wardrobe'
 import { Route as AppSettingsRouteImport } from './routes/_app.settings'
 import { Route as AppQuoteRouteImport } from './routes/_app.quote'
+import { Route as AppProjectRouteImport } from './routes/_app.project'
 import { Route as AppDashboardRouteImport } from './routes/_app.dashboard'
 
 const AppRoute = AppRouteImport.update({
@@ -40,6 +41,11 @@ const AppQuoteRoute = AppQuoteRouteImport.update({
   path: '/quote',
   getParentRoute: () => AppRoute,
 } as any)
+const AppProjectRoute = AppProjectRouteImport.update({
+  id: '/project',
+  path: '/project',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppDashboardRoute = AppDashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
@@ -49,6 +55,7 @@ const AppDashboardRoute = AppDashboardRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/dashboard': typeof AppDashboardRoute
+  '/project': typeof AppProjectRoute
   '/quote': typeof AppQuoteRoute
   '/settings': typeof AppSettingsRoute
   '/wardrobe': typeof AppWardrobeRoute
@@ -56,6 +63,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/dashboard': typeof AppDashboardRoute
+  '/project': typeof AppProjectRoute
   '/quote': typeof AppQuoteRoute
   '/settings': typeof AppSettingsRoute
   '/wardrobe': typeof AppWardrobeRoute
@@ -65,20 +73,28 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/_app': typeof AppRouteWithChildren
   '/_app/dashboard': typeof AppDashboardRoute
+  '/_app/project': typeof AppProjectRoute
   '/_app/quote': typeof AppQuoteRoute
   '/_app/settings': typeof AppSettingsRoute
   '/_app/wardrobe': typeof AppWardrobeRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/dashboard' | '/quote' | '/settings' | '/wardrobe'
+  fullPaths:
+    | '/'
+    | '/dashboard'
+    | '/project'
+    | '/quote'
+    | '/settings'
+    | '/wardrobe'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/dashboard' | '/quote' | '/settings' | '/wardrobe'
+  to: '/' | '/dashboard' | '/project' | '/quote' | '/settings' | '/wardrobe'
   id:
     | '__root__'
     | '/'
     | '/_app'
     | '/_app/dashboard'
+    | '/_app/project'
     | '/_app/quote'
     | '/_app/settings'
     | '/_app/wardrobe'
@@ -126,6 +142,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppQuoteRouteImport
       parentRoute: typeof AppRoute
     }
+    '/_app/project': {
+      id: '/_app/project'
+      path: '/project'
+      fullPath: '/project'
+      preLoaderRoute: typeof AppProjectRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/_app/dashboard': {
       id: '/_app/dashboard'
       path: '/dashboard'
@@ -138,6 +161,7 @@ declare module '@tanstack/react-router' {
 
 interface AppRouteChildren {
   AppDashboardRoute: typeof AppDashboardRoute
+  AppProjectRoute: typeof AppProjectRoute
   AppQuoteRoute: typeof AppQuoteRoute
   AppSettingsRoute: typeof AppSettingsRoute
   AppWardrobeRoute: typeof AppWardrobeRoute
@@ -145,6 +169,7 @@ interface AppRouteChildren {
 
 const AppRouteChildren: AppRouteChildren = {
   AppDashboardRoute: AppDashboardRoute,
+  AppProjectRoute: AppProjectRoute,
   AppQuoteRoute: AppQuoteRoute,
   AppSettingsRoute: AppSettingsRoute,
   AppWardrobeRoute: AppWardrobeRoute,

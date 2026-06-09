@@ -36,8 +36,17 @@ function getUnitPrice(extra: Extra, quote: QuoteState, basePrice: number): numbe
       return basePrice * (extra.pricing.amount / 100);
     case "fixedPlusPercentageBase":
       return extra.pricing.amount + basePrice * (extra.pricing.percentage / 100);
+    case "fixedPlusWidthThreshold":
+      return (
+        (extra.pricing.amount +
+          (quote.size.widthMm > extra.pricing.thresholdWidthMm ? extra.pricing.uplift : 0)) *
+        quote.size.quantity
+      );
     case "widthTable":
-      return getWidthTablePrice(extra.pricing.widths, extra.pricing.prices, quote.size.widthMm);
+      return (
+        getWidthTablePrice(extra.pricing.widths, extra.pricing.prices, quote.size.widthMm) *
+        quote.size.quantity
+      );
   }
 }
 

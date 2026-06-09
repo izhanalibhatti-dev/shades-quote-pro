@@ -199,6 +199,10 @@
   border-radius: 6px;
 }
 
+.login-field-input:focus-visible {
+  outline: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -268,4 +272,33 @@ html.a11y-high-contrast * {
 html.a11y-high-contrast :where(button, a, [role="button"]):focus-visible {
   outline: 3px solid var(--ring);
   outline-offset: 3px;
+}
+
+.project-print-sheet {
+  display: none;
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+
+  .project-print-sheet,
+  .project-print-sheet * {
+    visibility: visible;
+  }
+
+  .project-print-sheet {
+    display: block;
+    position: absolute;
+    inset: 0 auto auto 0;
+    width: 100%;
+    background: white;
+  }
+
+  .project-print-sheet > * {
+    margin: 0 auto;
+    max-width: 760px !important;
+    box-shadow: none !important;
+  }
 }

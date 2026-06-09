@@ -1,0 +1,495 @@
+[
+  {
+    "id": "workbook-allusion",
+    "name": "Allusion",
+    "productTypes": [
+      {
+        "id": "wb-allusion-vista-fr-natural",
+        "name": "Allusion, Vista FR - Natural",
+        "priceTableId": "wb-allusion-vista-fr-natural-2026"
+      }
+    ]
+  },
+  {
+    "id": "workbook-aluminium-venetians",
+    "name": "Aluminium Venetians",
+    "productTypes": [
+      {
+        "id": "wb-aluminium-venetians-brushed-filtra-caruso-woodline-stripe-hammered-textured-premium-metalic",
+        "name": "Aluminium Venetians, Brushed - Filtra - Caruso - Woodline - Stripe - Hammered - Textured - Premium Metalic",
+        "priceTableId": "wb-aluminium-venetians-brushed-filtra-caruso-woodline-stripe-hammered-textured-premium-metalic-2026"
+      },
+      {
+        "id": "wb-aluminium-venetians-plain-metallic",
+        "name": "Aluminium Venetians, Plain -Metallic",
+        "priceTableId": "wb-aluminium-venetians-plain-metallic-2026"
+      }
+    ]
+  },
+  {
+    "id": "workbook-alutrade",
+    "name": "Alutrade",
+    "productTypes": [
+      {
+        "id": "wb-vertical",
+        "name": "Vertical",
+        "priceTableId": "wb-vertical-2026"
+      }
+    ]
+  },
+  {
+    "id": "workbook-aqua-fauxwood",
+    "name": "Aqua Fauxwood",
+    "productTypes": [
+      {
+        "id": "wb-aqua-fauxwood-white-smooth-white-grain-niagra-grey-grey-wash-grey-nightfall",
+        "name": "Aqua Fauxwood, White Smooth - White Grain - Niagra - Grey - Grey Wash - Grey Nightfall",
+        "priceTableId": "wb-aqua-fauxwood-white-smooth-white-grain-niagra-grey-grey-wash-grey-nightfall-2026"
+      }
+    ]
+  },
+  {
+    "id": "workbook-arena-2026",
+    "name": "Arena 2026",
+    "productTypes": [
+      {
+        "id": "wb-roller-2",
+        "name": "Roller",
+        "priceTableId": "wb-roller-2-2026"
+      },
+      {
+        "id": "wb-vertical",
+        "name": "Vertical",
+        "priceTableId": "wb-vertical-2026"
+      }
+    ]
+  },
+  {
+    "id": "workbook-arena-fauxwood",
+    "name": "Arena Fauxwood",
+    "productTypes": [
+      {
+        "id": "wb-arena-fauxwood-band-a-essence-range",
+        "name": "Arena Fauxwood, Band A - Essence Range",
+        "priceTableId": "wb-arena-fauxwood-band-a-essence-range-2026"
+      },
+      {
+        "id": "wb-arena-fauxwood-band-b-urban-range",
+        "name": "Arena Fauxwood, Band B - Urban Range",
+        "priceTableId": "wb-arena-fauxwood-band-b-urban-range-2026"
+      },
+      {
+        "id": "wb-arena-fauxwood-band-c-expressions-range",
+        "name": "Arena Fauxwood, Band C - Expressions Range",
+        "priceTableId": "wb-arena-fauxwood-band-c-expressions-range-2026"
+      },
+      {
+        "id": "wb-arena-fauxwood-band-d-expressions-range-highshine-white-cool-white",
+        "name": "Arena Fauxwood, Band D - Expressions Range (Highshine White & Cool White)",
+        "priceTableId": "wb-arena-fauxwood-band-d-expressions-range-highshine-white-cool-white-2026"
+      }
+    ]
+  },
+  {
+    "id": "workbook-decora-2026",
+    "name": "Decora 2026",
+    "productTypes": [
+      {
+        "id": "wb-pvc-rigid",
+        "name": "Pvc Rigid",
+        "priceTableId": "wb-pvc-rigid-2026"
+      },
+      {
+        "id": "wb-roller-2",
+        "name": "Roller",
+        "priceTableId": "wb-roller-2-2026"
+      },
+      {
+        "id": "wb-roller",
+        "name": "Roller",
+        "priceTableId": "wb-roller-2026"
+      },
+      {
+        "id": "wb-vertical",
+        "name": "Vertical",
+        "priceTableId": "wb-vertical-2026"
+      }
+    ]
+  },
+  {
+    "id": "workbook-eclipse-2026",
+    "name": "Eclipse 2026",
+    "productTypes": [
+      {
+        "id": "wb-roller-2",
+        "name": "Roller",
+        "priceTableId": "wb-roller-2-2026"
+      },
+      {
+        "id": "wb-vertical",
+        "name": "Vertical",
+        "priceTableId": "wb-vertical-2026"
+      }
+    ]
+  },
+  {
+    "id": "workbook-fabric-box-romans",
+    "name": "Fabric Box Romans",
+    "productTypes": [
+      {
+        "id": "wb-romans",
+        "name": "Romans",
+        "priceTableId": "wb-romans-2026"
+      }
+    ]
+  },
+  {
+    "id": "workbook-louvolite-2026",
+    "name": "Louvolite 2026",
+    "productTypes": [
+      {
+        "id": "wb-allusion-horizon",
+        "name": "Allusion, Horizon",
+        "priceTableId": "wb-allusion-horizon-2026"
+      },
+      {
+        "id": "wb-allusion-shadow",
+        "name": "Allusion, Shadow",
+        "priceTableId": "wb-allusion-shadow-2026"
+      },
+      {
+        "id": "wb-allusion-vista-fr-natural",
+        "name": "Allusion, Vista FR - Natural",
+        "priceTableId": "wb-allusion-vista-fr-natural-2026"
+      },
+      {
+        "id": "wb-roller-2",
+        "name": "Roller",
+        "priceTableId": "wb-roller-2-2026"
+      },
+      {
+        "id": "wb-vertical",
+        "name": "Vertical",
+        "priceTableId": "wb-vertical-2026"
+      },
+      {
+        "id": "wb-vision-alberto-bella-boucle-floreale-tessuto",
+        "name": "Vision, Alberto - Bella - Boucle - Floreale - Tessuto",
+        "priceTableId": "wb-vision-alberto-bella-boucle-floreale-tessuto-2026"
+      },
+      {
+        "id": "wb-vision-allegria-ferrara-lusso-modina-rimini",
+        "name": "Vision, Allegria - Ferrara - Lusso - Modina - Rimini",
+        "priceTableId": "wb-vision-allegria-ferrara-lusso-modina-rimini-2026"
+      },
+      {
+        "id": "wb-vision-arrezzo-firenza-modella-naples-nola-nuvola-setosa-trento",
+        "name": "Vision, Arrezzo - Firenza - Modella - Naples - Nola - Nuvola - Setosa - Trento",
+        "priceTableId": "wb-vision-arrezzo-firenza-modella-naples-nola-nuvola-setosa-trento-2026"
+      },
+      {
+        "id": "wb-vision-capri",
+        "name": "Vision, Capri",
+        "priceTableId": "wb-vision-capri-2026"
+      }
+    ]
+  },
+  {
+    "id": "workbook-perfect-fit-aluminium",
+    "name": "Perfect Fit Aluminium",
+    "productTypes": [
+      {
+        "id": "wb-pf-aluminium-perfect-fit-25mm-plain-aluminium-venetians",
+        "name": "PF Aluminium, Perfect Fit 25mm Plain Aluminium Venetians",
+        "priceTableId": "wb-pf-aluminium-perfect-fit-25mm-plain-aluminium-venetians-2026"
+      },
+      {
+        "id": "wb-pf-aluminium-perfect-fit-25mm-special-effects-aluminium-venetians",
+        "name": "PF Aluminium, Perfect Fit 25mm Special Effects Aluminium Venetians",
+        "priceTableId": "wb-pf-aluminium-perfect-fit-25mm-special-effects-aluminium-venetians-2026"
+      }
+    ]
+  },
+  {
+    "id": "workbook-perfect-fit-sunwood",
+    "name": "Perfect Fit Sunwood",
+    "productTypes": [
+      {
+        "id": "wb-pf-wood-35",
+        "name": "PF Wood, 35\"",
+        "priceTableId": "wb-pf-wood-35-2026"
+      }
+    ]
+  },
+  {
+    "id": "workbook-perfect-fit-vision",
+    "name": "Perfect Fit Vision",
+    "productTypes": [
+      {
+        "id": "wb-pf-vision-alberto-bella-boucle-floreale-tessuto",
+        "name": "PF Vision, Alberto - Bella - Boucle - Floreale - Tessuto",
+        "priceTableId": "wb-pf-vision-alberto-bella-boucle-floreale-tessuto-2026"
+      },
+      {
+        "id": "wb-pf-vision-allegria-ferrara-lusso-modina-rimini",
+        "name": "PF Vision, Allegria - Ferrara - Lusso - Modina - Rimini",
+        "priceTableId": "wb-pf-vision-allegria-ferrara-lusso-modina-rimini-2026"
+      },
+      {
+        "id": "wb-pf-vision-arrezzo-firenza-modella-naples-nola-nuvola-setosa-trento",
+        "name": "PF Vision, Arrezzo - Firenza - Modella - Naples - Nola - Nuvola - Setosa - Trento",
+        "priceTableId": "wb-pf-vision-arrezzo-firenza-modella-naples-nola-nuvola-setosa-trento-2026"
+      },
+      {
+        "id": "wb-pf-vision-capri",
+        "name": "PF Vision, Capri",
+        "priceTableId": "wb-pf-vision-capri-2026"
+      }
+    ]
+  },
+  {
+    "id": "workbook-sunwood-faux",
+    "name": "Sunwood Faux",
+    "productTypes": [
+      {
+        "id": "wb-sunwood-faux-sunwood-fauxwood-35-50mm",
+        "name": "Sunwood Faux, SUNWOOD Fauxwood - 35/50mm",
+        "priceTableId": "wb-sunwood-faux-sunwood-fauxwood-35-50mm-2026"
+      }
+    ]
+  },
+  {
+    "id": "workbook-sunwood-wood",
+    "name": "Sunwood Wood",
+    "productTypes": [
+      {
+        "id": "wb-sunwood-wood-35",
+        "name": "Sunwood Wood, 35”",
+        "priceTableId": "wb-sunwood-wood-35-2026"
+      }
+    ]
+  },
+  {
+    "id": "workbook-united",
+    "name": "United",
+    "productTypes": [
+      {
+        "id": "wb-roller-2",
+        "name": "Roller",
+        "priceTableId": "wb-roller-2-2026"
+      },
+      {
+        "id": "wb-roller",
+        "name": "Roller",
+        "priceTableId": "wb-roller-2026"
+      },
+      {
+        "id": "wb-vertical",
+        "name": "Vertical",
+        "priceTableId": "wb-vertical-2026"
+      }
+    ]
+  },
+  {
+    "id": "workbook-vision",
+    "name": "Vision",
+    "productTypes": [
+      {
+        "id": "wb-vision-alberto-bella-boucle-floreale-tessuto",
+        "name": "Vision, Alberto - Bella - Boucle - Floreale - Tessuto",
+        "priceTableId": "wb-vision-alberto-bella-boucle-floreale-tessuto-2026"
+      },
+      {
+        "id": "wb-vision-arrezzo-firenza-modella-naples-nola-nuvola-setosa-trento",
+        "name": "Vision, Arrezzo - Firenza - Modella - Naples - Nola - Nuvola - Setosa - Trento",
+        "priceTableId": "wb-vision-arrezzo-firenza-modella-naples-nola-nuvola-setosa-trento-2026"
+      }
+    ]
+  },
+  {
+    "id": "workbook-workbook-pricing",
+    "name": "Workbook Pricing",
+    "productTypes": [
+      {
+        "id": "wb-allusion-horizon",
+        "name": "Allusion, Horizon",
+        "priceTableId": "wb-allusion-horizon-2026"
+      },
+      {
+        "id": "wb-allusion-shadow",
+        "name": "Allusion, Shadow",
+        "priceTableId": "wb-allusion-shadow-2026"
+      },
+      {
+        "id": "wb-allusion-vista-fr-natural",
+        "name": "Allusion, Vista FR - Natural",
+        "priceTableId": "wb-allusion-vista-fr-natural-2026"
+      },
+      {
+        "id": "wb-aluminium-venetians-brushed-filtra-caruso-woodline-stripe-hammered-textured-premium-metalic",
+        "name": "Aluminium Venetians, Brushed - Filtra - Caruso - Woodline - Stripe - Hammered - Textured - Premium Metalic",
+        "priceTableId": "wb-aluminium-venetians-brushed-filtra-caruso-woodline-stripe-hammered-textured-premium-metalic-2026"
+      },
+      {
+        "id": "wb-aluminium-venetians-plain-metallic",
+        "name": "Aluminium Venetians, Plain -Metallic",
+        "priceTableId": "wb-aluminium-venetians-plain-metallic-2026"
+      },
+      {
+        "id": "wb-aqua-fauxwood-price-with-tape",
+        "name": "Aqua Fauxwood, PRICE WITH TAPE",
+        "priceTableId": "wb-aqua-fauxwood-price-with-tape-2026"
+      },
+      {
+        "id": "wb-aqua-fauxwood-white-smooth-white-grain-niagra-grey-grey-wash-grey-nightfall",
+        "name": "Aqua Fauxwood, White Smooth - White Grain - Niagra - Grey - Grey Wash - Grey Nightfall",
+        "priceTableId": "wb-aqua-fauxwood-white-smooth-white-grain-niagra-grey-grey-wash-grey-nightfall-2026"
+      },
+      {
+        "id": "wb-arena-fauxwood-band-a-essence-range",
+        "name": "Arena Fauxwood, Band A - Essence Range",
+        "priceTableId": "wb-arena-fauxwood-band-a-essence-range-2026"
+      },
+      {
+        "id": "wb-arena-fauxwood-band-b-urban-range",
+        "name": "Arena Fauxwood, Band B - Urban Range",
+        "priceTableId": "wb-arena-fauxwood-band-b-urban-range-2026"
+      },
+      {
+        "id": "wb-arena-fauxwood-band-c-expressions-range",
+        "name": "Arena Fauxwood, Band C - Expressions Range",
+        "priceTableId": "wb-arena-fauxwood-band-c-expressions-range-2026"
+      },
+      {
+        "id": "wb-arena-fauxwood-band-d-expressions-range-highshine-white-cool-white",
+        "name": "Arena Fauxwood, Band D - Expressions Range (Highshine White & Cool White)",
+        "priceTableId": "wb-arena-fauxwood-band-d-expressions-range-highshine-white-cool-white-2026"
+      },
+      {
+        "id": "wb-freehang-pleated",
+        "name": "Freehang Pleated",
+        "priceTableId": "wb-freehang-pleated-2026"
+      },
+      {
+        "id": "wb-pf-aluminium-perfect-fit-25mm-plain-aluminium-venetians",
+        "name": "PF Aluminium, Perfect Fit 25mm Plain Aluminium Venetians",
+        "priceTableId": "wb-pf-aluminium-perfect-fit-25mm-plain-aluminium-venetians-2026"
+      },
+      {
+        "id": "wb-pf-aluminium-perfect-fit-25mm-special-effects-aluminium-venetians",
+        "name": "PF Aluminium, Perfect Fit 25mm Special Effects Aluminium Venetians",
+        "priceTableId": "wb-pf-aluminium-perfect-fit-25mm-special-effects-aluminium-venetians-2026"
+      },
+      {
+        "id": "wb-pf-pleated",
+        "name": "PF Pleated",
+        "priceTableId": "wb-pf-pleated-2026"
+      },
+      {
+        "id": "wb-pf-roller",
+        "name": "PF Roller",
+        "priceTableId": "wb-pf-roller-2026"
+      },
+      {
+        "id": "wb-pf-roller-perfect-fit-konnect",
+        "name": "PF Roller, Perfect Fit Konnect",
+        "priceTableId": "wb-pf-roller-perfect-fit-konnect-2026"
+      },
+      {
+        "id": "wb-pf-vision",
+        "name": "PF Vision",
+        "priceTableId": "wb-pf-vision-2026"
+      },
+      {
+        "id": "wb-pf-vision-alberto-bella-boucle-floreale-tessuto",
+        "name": "PF Vision, Alberto - Bella - Boucle - Floreale - Tessuto",
+        "priceTableId": "wb-pf-vision-alberto-bella-boucle-floreale-tessuto-2026"
+      },
+      {
+        "id": "wb-pf-vision-allegria-ferrara-lusso-modina-rimini",
+        "name": "PF Vision, Allegria - Ferrara - Lusso - Modina - Rimini",
+        "priceTableId": "wb-pf-vision-allegria-ferrara-lusso-modina-rimini-2026"
+      },
+      {
+        "id": "wb-pf-vision-arrezzo-firenza-modella-naples-nola-nuvola-setosa-trento",
+        "name": "PF Vision, Arrezzo - Firenza - Modella - Naples - Nola - Nuvola - Setosa - Trento",
+        "priceTableId": "wb-pf-vision-arrezzo-firenza-modella-naples-nola-nuvola-setosa-trento-2026"
+      },
+      {
+        "id": "wb-pf-vision-capri",
+        "name": "PF Vision, Capri",
+        "priceTableId": "wb-pf-vision-capri-2026"
+      },
+      {
+        "id": "wb-pf-wood-35",
+        "name": "PF Wood, 35\"",
+        "priceTableId": "wb-pf-wood-35-2026"
+      },
+      {
+        "id": "wb-perfect-fit-shutter-glass-size",
+        "name": "Perfect Fit Shutter, Glass Size",
+        "priceTableId": "wb-perfect-fit-shutter-glass-size-2026"
+      },
+      {
+        "id": "wb-pvc-rigid",
+        "name": "Pvc Rigid",
+        "priceTableId": "wb-pvc-rigid-2026"
+      },
+      {
+        "id": "wb-roller-2",
+        "name": "Roller",
+        "priceTableId": "wb-roller-2-2026"
+      },
+      {
+        "id": "wb-roller",
+        "name": "Roller",
+        "priceTableId": "wb-roller-2026"
+      },
+      {
+        "id": "wb-romans",
+        "name": "Romans",
+        "priceTableId": "wb-romans-2026"
+      },
+      {
+        "id": "wb-sunwood-faux-sunwood-fauxwood-35-50mm",
+        "name": "Sunwood Faux, SUNWOOD Fauxwood - 35/50mm",
+        "priceTableId": "wb-sunwood-faux-sunwood-fauxwood-35-50mm-2026"
+      },
+      {
+        "id": "wb-sunwood-wood-35",
+        "name": "Sunwood Wood, 35”",
+        "priceTableId": "wb-sunwood-wood-35-2026"
+      },
+      {
+        "id": "wb-vertical",
+        "name": "Vertical",
+        "priceTableId": "wb-vertical-2026"
+      },
+      {
+        "id": "wb-vision",
+        "name": "Vision",
+        "priceTableId": "wb-vision-2026"
+      },
+      {
+        "id": "wb-vision-alberto-bella-boucle-floreale-tessuto",
+        "name": "Vision, Alberto - Bella - Boucle - Floreale - Tessuto",
+        "priceTableId": "wb-vision-alberto-bella-boucle-floreale-tessuto-2026"
+      },
+      {
+        "id": "wb-vision-allegria-ferrara-lusso-modina-rimini",
+        "name": "Vision, Allegria - Ferrara - Lusso - Modina - Rimini",
+        "priceTableId": "wb-vision-allegria-ferrara-lusso-modina-rimini-2026"
+      },
+      {
+        "id": "wb-vision-arrezzo-firenza-modella-naples-nola-nuvola-setosa-trento",
+        "name": "Vision, Arrezzo - Firenza - Modella - Naples - Nola - Nuvola - Setosa - Trento",
+        "priceTableId": "wb-vision-arrezzo-firenza-modella-naples-nola-nuvola-setosa-trento-2026"
+      },
+      {
+        "id": "wb-vision-capri",
+        "name": "Vision, Capri",
+        "priceTableId": "wb-vision-capri-2026"
+      }
+    ]
+  }
+]

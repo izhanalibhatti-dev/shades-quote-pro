@@ -20,6 +20,9 @@ export function QuoteSummary({ calculation }: { calculation: QuoteCalculation })
           value={`${calculation.roundedWidthMm} x ${calculation.roundedHeightMm}mm`}
         />
       </div>
+      <div className="border-t border-border px-5 py-3 text-xs text-muted-foreground">
+        {calculation.pricingReferenceNote}
+      </div>
       <div className="flex items-baseline justify-between border-t border-border bg-foreground/[0.03] px-5 py-4">
         <span className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
           Final total

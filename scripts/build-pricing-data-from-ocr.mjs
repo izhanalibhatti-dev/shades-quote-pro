@@ -136,6 +136,32 @@ const verifiedAMatrix = [
   [15.98, 25.93, 35.89, 45.84, 56.34, 66.29, 76.25, 86.2, 96.15, 106.12, 116.07, 126.01],
 ];
 
+const verifiedBMatrix = [
+  [9.13, 12.43, 15.74, 19.05, 22.88, 26.19, 29.5, 32.81, 36.11, 39.41, 42.72, 46.02],
+  [10.51, 15.17, 19.85, 24.52, 29.72, 34.4, 39.07, 43.75, 48.42, 53.09, 57.77, 62.45],
+  [11.86, 17.91, 23.95, 30, 36.56, 42.61, 48.65, 54.69, 60.73, 66.78, 72.82, 78.86],
+  [13.23, 20.65, 28.06, 35.47, 43.41, 50.81, 58.22, 65.63, 73.04, 80.45, 87.87, 95.27],
+  [14.6, 23.38, 32.16, 40.93, 50.24, 59.02, 67.79, 76.57, 85.35, 94.13, 102.91, 111.69],
+  [15.98, 26.11, 36.26, 46.41, 57.08, 62.52, 71.96, 81.39, 90.82, 100.26, 109.7, 119.14],
+  [17.34, 28.86, 40.37, 51.88, 63.92, 70.16, 80.87, 91.57, 102.28, 112.98, 123.69, 134.4],
+  [18.71, 31.58, 44.47, 57.36, 70.77, 77.78, 89.77, 101.75, 113.73, 125.71, 137.69, 149.57],
+  [20.08, 34.33, 48.58, 62.82, 77.6, 85.42, 98.66, 111.93, 125.18, 138.43, 151.68, 164.93],
+  [21.44, 37.06, 52.68, 68.29, 84.44, 93.05, 107.58, 122.11, 136.62, 151.14, 165.68, 180.2],
+];
+
+const verifiedCMatrix = [
+  [9.54, 13.31, 17.1, 20.87, 25.17, 28.94, 32.72, 36.49, 40.27, 44.04, 47.82, 51.59],
+  [11.31, 16.84, 22.37, 27.9, 33.97, 39.5, 45.04, 50.58, 56.11, 61.65, 67.18, 72.72],
+  [13.06, 20.36, 27.65, 34.95, 42.78, 50.07, 57.37, 64.66, 71.96, 79.25, 86.55, 93.85],
+  [14.82, 23.88, 32.93, 42, 51.58, 60.64, 69.69, 78.75, 87.81, 96.87, 105.92, 114.98],
+  [16.58, 27.4, 38.22, 49.04, 60.38, 71.2, 82.02, 92.84, 103.65, 114.47, 125.29, 136.11],
+  [18.34, 30.93, 43.51, 56.08, 69.18, 81.76, 94.34, 106.92, 119.5, 132.07, 144.65, 157.45],
+  [20.11, 34.45, 48.78, 63.12, 77.98, 92.33, 106.67, 121.31, 135.35, 149.68, 164.03, 178.36],
+  [21.86, 37.96, 54.06, 70.17, 86.79, 102.89, 119.26, 135.09, 151.19, 167.3, 183.39, 199.49],
+  [23.62, 41.49, 59.35, 77.2, 95.59, 113.46, 131.32, 149.18, 167.04, 184.9, 202.76, 220.62],
+  [25.39, 45.01, 64.63, 84.25, 104.39, 124.02, 143.64, 163.26, 182.89, 202.51, 222.13, 241.75],
+];
+
 const verifiedDMatrix = [
   [10.03, 14.24, 18.45, 22.65, 27.38, 31.58, 35.79, 40.07, 44.2, 48.41, 52.63, 56.83],
   [12.12, 18.43, 24.73, 31.02, 37.87, 44.15, 50.46, 56.76, 63.06, 69.36, 75.67, 81.96],
@@ -271,8 +297,8 @@ const verifiedPvcRigidBMatrix = [
 const verticalBands = {
   AA: verifiedAaMatrix,
   A: verifiedAMatrix,
-  B: b.matrix,
-  C: c.matrix,
+  B: verifiedBMatrix,
+  C: verifiedCMatrix,
   D: verifiedDMatrix,
   E: verifiedEMatrix,
   F: verifiedFMatrix,
@@ -284,7 +310,7 @@ const verticalTable = {
   source:
     "photos of pricing. 2/IMG_8963.JPG, IMG_8882.JPG, IMG_8883.JPG, IMG_8884.JPG, IMG_8885.JPG",
   notes:
-    "OCR extracted from supplier 2026 vertical blinds trade price list, ex VAT. Bands AA, A, D, E, and F were manually verified against source photos after row grouping was checked. Null cells are OCR-unread or unavailable sizes and are intentionally not guessed.",
+    "OCR extracted from supplier 2026 vertical blinds trade price list, ex VAT. Bands AA, A, B, C, D, E, and F were manually verified against source photos after row grouping was checked.",
   widthsLabel:
     "Width breakpoints in millimetres. User width rounds up to the nearest value in this array.",
   heightsLabel:
@@ -292,7 +318,7 @@ const verticalTable = {
   bandsLabel: "Each key is a fabric price band. The selected fabric decides which band is used.",
   matrixLabel:
     "Prices are GBP trade prices ex VAT. Matrix rows match heights in order, columns match widths in order.",
-  nullLabel: "null means the source photo/OCR did not provide a safe readable price for that size.",
+  nullLabel: "No null cells remain in the verified vertical blind bands.",
   widths: aa.widths,
   heights: aa.heights,
   bands: verticalBands,

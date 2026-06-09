@@ -3,13 +3,16 @@ import { useNavigate } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { Mail, Lock, ArrowRight, Loader2 } from "lucide-react";
 import Logo from "@/components/Logo";
+import LanguageSelector from "@/components/LanguageSelector";
 import { signIn, isAuthed } from "@/lib/auth";
+import { useI18n } from "@/lib/i18n";
 
 export default function LoginScreen() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const { t } = useI18n();
 
   useEffect(() => {
     if (isAuthed()) navigate({ to: "/dashboard" });
@@ -26,6 +29,10 @@ export default function LoginScreen() {
 
   return (
     <main className="relative min-h-screen w-full overflow-hidden grad-aurora text-white">
+      <div className="absolute right-4 top-4 z-20">
+        <LanguageSelector />
+      </div>
+
       {/* Decorative orbs */}
       <motion.div
         aria-hidden
@@ -67,17 +74,17 @@ export default function LoginScreen() {
           className="glass-dark w-full rounded-3xl p-8 luxe-shadow"
         >
           <div className="mb-7 text-center">
-            <h1 className="text-2xl font-semibold tracking-tight text-balance">Welcome back</h1>
-            <p className="mt-1.5 text-sm text-white/65">
-              Sign in to the Shades &amp; Space quote studio
-            </p>
+            <h1 className="text-2xl font-semibold tracking-tight text-balance">
+              {t("login.welcome")}
+            </h1>
+            <p className="mt-1.5 text-sm text-white/65">{t("login.subtitle")}</p>
           </div>
 
           <form onSubmit={onSubmit} className="space-y-4">
             <Field
               icon={<Mail className="h-4 w-4" />}
               type="email"
-              placeholder="Work email"
+              placeholder={t("login.email")}
               value={email}
               onChange={(v) => setEmail(v)}
               autoComplete="email"
@@ -85,7 +92,7 @@ export default function LoginScreen() {
             <Field
               icon={<Lock className="h-4 w-4" />}
               type="password"
-              placeholder="Password"
+              placeholder={t("login.password")}
               value={password}
               onChange={(v) => setPassword(v)}
               autoComplete="current-password"
@@ -102,7 +109,7 @@ export default function LoginScreen() {
                 <Loader2 className="h-4 w-4 animate-spin" />
               ) : (
                 <>
-                  Sign in
+                  {t("login.signIn")}
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
                 </>
               )}
@@ -110,7 +117,7 @@ export default function LoginScreen() {
           </form>
 
           <p className="mt-6 text-center text-[11px] uppercase tracking-[0.18em] text-white/40">
-            Internal staff access only
+            {t("login.staffOnly")}
           </p>
         </motion.div>
 
@@ -138,7 +145,7 @@ function Field({
   autoComplete?: string;
 }) {
   return (
-    <label className="group flex h-12 items-center gap-3 rounded-xl border border-white/10 bg-white/[0.06] px-4 transition-colors focus-within:border-white/30 focus-within:bg-white/[0.09]">
+    <label className="group flex h-12 items-center gap-3 rounded-xl border border-white/10 bg-white/[0.06] px-4 transition-colors focus-within:border-white/35 focus-within:bg-white/[0.09] focus-within:ring-2 focus-within:ring-white/15">
       <span className="text-white/50 group-focus-within:text-white/80">{icon}</span>
       <input
         type={type}
@@ -146,7 +153,7 @@ function Field({
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
         autoComplete={autoComplete}
-        className="h-full w-full bg-transparent text-sm text-white placeholder:text-white/40 focus:outline-none"
+        className="login-field-input h-full w-full bg-transparent text-sm text-white placeholder:text-white/40 focus:outline-none focus-visible:outline-none"
       />
     </label>
   );

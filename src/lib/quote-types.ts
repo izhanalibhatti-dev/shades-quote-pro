@@ -1,5 +1,6 @@
 import { fabrics, suppliers } from "@/data/catalog";
 import { calculateQuote } from "@/pricing/calculateQuote";
+import type { ProjectQuote } from "@/types/ProjectQuote";
 import type { QuoteCalculation, QuoteState } from "@/types/Quote";
 
 export const ROOM_TYPES = [
@@ -51,6 +52,26 @@ export function defaultQuote(): QuoteState {
     meta: { ref, date: now.toISOString() },
     preparedBy: loadPreparedBy(),
   };
+}
+
+export function defaultProjectQuote(): ProjectQuote {
+  const base = defaultQuote();
+
+  return {
+    id: uid(),
+    ref: base.meta.ref,
+    date: base.meta.date,
+    customer: base.customer,
+    preparedBy: base.preparedBy,
+    areas: [{ id: uid(), name: "Kitchen", notes: "", items: [] }],
+    notes: "",
+    discount: 0,
+    vatRate: 0.2,
+  };
+}
+
+export function uid() {
+  return Math.random().toString(36).slice(2, 10);
 }
 
 const PREPARED_BY_KEY = "sas.preparedBy";

@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { Cog, ShieldCheck, Database } from "lucide-react";
 import { useQuote } from "@/components/QuoteContext";
+import { useI18n } from "@/lib/i18n";
 
 export const Route = createFileRoute("/_app/settings")({
   head: () => ({ meta: [{ title: "Settings - Shades & Space" }] }),
@@ -10,23 +11,24 @@ export const Route = createFileRoute("/_app/settings")({
 
 function Settings() {
   const { quote, setQuote } = useQuote();
+  const { t } = useI18n();
 
   return (
     <div className="mx-auto w-full max-w-3xl space-y-6">
       <header>
         <div className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
-          Preferences
+          {t("settings.preferences")}
         </div>
-        <h1 className="mt-1 text-2xl font-semibold tracking-tight md:text-3xl">Settings</h1>
-        <p className="mt-1 text-sm text-muted-foreground">
-          Defaults applied to new quotes in this session.
-        </p>
+        <h1 className="mt-1 text-2xl font-semibold tracking-tight md:text-3xl">
+          {t("settings.title")}
+        </h1>
+        <p className="mt-1 text-sm text-muted-foreground">{t("settings.subtitle")}</p>
       </header>
 
       <section className="rounded-3xl border border-border bg-card p-6 luxe-shadow">
-        <CardHead icon={<Cog className="h-4 w-4" />} title="Quote defaults" />
+        <CardHead icon={<Cog className="h-4 w-4" />} title={t("settings.quoteDefaults")} />
         <div className="mt-5 grid gap-3 sm:grid-cols-2">
-          <Field label="Default labour (£)">
+          <Field label={t("settings.defaultLabour")}>
             <input
               type="number"
               min={0}
@@ -44,7 +46,7 @@ function Settings() {
               className="h-11 w-full rounded-xl border border-border bg-background px-3.5 text-sm tabular-nums focus:border-foreground/40 focus:outline-none focus:ring-2 focus:ring-foreground/10"
             />
           </Field>
-          <Field label="VAT rate (%)">
+          <Field label={t("settings.vatRate")}>
             <input
               type="number"
               min={0}
@@ -71,23 +73,18 @@ function Settings() {
         animate={{ opacity: 1, y: 0 }}
         className="rounded-3xl border border-border bg-card p-6"
       >
-        <CardHead icon={<Database className="h-4 w-4" />} title="Data & storage" />
-        <p className="mt-3 text-sm text-muted-foreground">
-          Shades &amp; Space Quote Studio is a session-only tool. No customer data, quote or file is
-          stored on a server. Refreshing or closing the app clears the current quote.
-        </p>
+        <CardHead icon={<Database className="h-4 w-4" />} title={t("settings.dataStorage")} />
+        <p className="mt-3 text-sm text-muted-foreground">{t("settings.dataStorageText")}</p>
         <ul className="mt-4 grid gap-2 text-sm">
-          <Bullet>No accounts, no cloud database</Bullet>
-          <Bullet>Quotes exist only during the active session</Bullet>
-          <Bullet>PNG exports are downloaded directly to this device</Bullet>
+          <Bullet>{t("settings.dataBullet1")}</Bullet>
+          <Bullet>{t("settings.dataBullet2")}</Bullet>
+          <Bullet>{t("settings.dataBullet3")}</Bullet>
         </ul>
       </motion.section>
 
       <section className="rounded-3xl border border-border bg-card p-6">
-        <CardHead icon={<ShieldCheck className="h-4 w-4" />} title="Access" />
-        <p className="mt-3 text-sm text-muted-foreground">
-          Internal staff access only. Use the sign-out button in the sidebar to end your session.
-        </p>
+        <CardHead icon={<ShieldCheck className="h-4 w-4" />} title={t("settings.access")} />
+        <p className="mt-3 text-sm text-muted-foreground">{t("settings.accessText")}</p>
       </section>
     </div>
   );
