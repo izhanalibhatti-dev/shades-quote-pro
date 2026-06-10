@@ -138,10 +138,7 @@ function isExtraApplicableToBlindType(
   blindTypeId: string,
   includeInternal = false,
 ) {
-  if (
-    !includeInternal &&
-    (PERFECT_FIT_FRAME_SURCHARGE_IDS as readonly string[]).includes(extra.id)
-  ) {
+  if (!includeInternal && (PERFECT_FIT_FRAME_SURCHARGE_IDS as readonly string[]).includes(extra.id)) {
     return false;
   }
   return !extra.applicableBlindTypes?.length || extra.applicableBlindTypes.includes(blindTypeId);
@@ -273,24 +270,8 @@ function optionDisplayName(fabric: BlindSelectableOption) {
   return fabric.displayName ?? fabric.name;
 }
 
-function optionLabel(
-  fabric: BlindSelectableOption,
-  allOptions: readonly BlindSelectableOption[] = fabrics,
-) {
-  const name = optionDisplayName(fabric);
-  const matchingNames = allOptions.filter(
-    (option) => optionDisplayName(option).trim().toLowerCase() === name.trim().toLowerCase(),
-  );
-  if (matchingNames.length <= 1 || fabric.isFallback) return name;
-
-  const supplier = fabric.supplierName ?? fabric.company;
-  const sameSupplierCount = matchingNames.filter(
-    (option) => (option.supplierName ?? option.company) === supplier,
-  ).length;
-  const qualifier =
-    sameSupplierCount > 1 && fabric.collection ? `${supplier}, ${fabric.collection}` : supplier;
-
-  return qualifier ? `${name} - ${qualifier}` : name;
+function optionLabel(fabric: BlindSelectableOption) {
+  return optionDisplayName(fabric);
 }
 
 function initialDraft(): DraftState {
@@ -399,8 +380,7 @@ export function ProjectQuoteBuilder({ mode }: { mode: BuilderMode }) {
     () => getFallbackOptionsForBlindType(draft.blindTypeId),
     [draft.blindTypeId],
   );
-  const availableBlindOptions =
-    standardFabricOptions.length > 0 ? standardFabricOptions : fallbackBandOptions;
+  const availableBlindOptions = standardFabricOptions;
   const wardrobeCategory = WARDROBE_CATEGORIES.find(
     (category) => category.id === draft.wardrobeCategoryId,
   );
@@ -590,7 +570,9 @@ export function ProjectQuoteBuilder({ mode }: { mode: BuilderMode }) {
                 onChange={(date) =>
                   setProject((current) => ({
                     ...current,
-                    date: date ? new Date(`${date}T12:00:00`).toISOString() : current.date,
+                    date: date
+                      ? new Date(`${date}T12:00:00`).toISOString()
+                      : current.date,
                   }))
                 }
               />
@@ -1255,7 +1237,7 @@ function BlindDraftForm({
             }}
             options={availableOptions.map((fabric) => ({
               value: fabric.id,
-              label: optionLabel(fabric, availableOptions),
+              label: optionLabel(fabric),
             }))}
           />
         )}
@@ -1282,8 +1264,8 @@ function BlindDraftForm({
         )}
         {isFallbackSelection && (
           <div className="rounded-xl border border-amber-400/40 bg-amber-400/10 px-3 py-2 text-xs text-muted-foreground md:col-span-2">
-            This product only has band-level pricing in the workbook, so select the pricing band
-            manually.
+            No fabric/colour list was found for this blind type. Select the pricing band shown in
+            the workbook.
           </div>
         )}
         {draft.blindFabricId && (

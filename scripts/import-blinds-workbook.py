@@ -630,8 +630,10 @@ def blind_type_for_product(product_type_id: str, product_type_name: str) -> str 
         return "perfect-fit-shutter"
     if "aluminium-venetians" in low_id:
         return "aluminium-venetian"
-    if "aqua-fauxwood" in low_id or "arena-fauxwood" in low_id or "fauxwood" in low_name:
-        return "fauxwood"
+    if "aqua-fauxwood" in low_id:
+        return "aqua-fauxwood"
+    if "arena-fauxwood" in low_id:
+        return "arena-fauxwood"
     if "sunwood-faux" in low_id:
         return "sunwood-faux"
     if "sunwood-wood" in low_id:
@@ -661,7 +663,8 @@ def selection_kind_for_product(product_type_id: str) -> str:
         "perfect-fit-aluminium",
         "perfect-fit-wood",
         "perfect-fit-shutter",
-        "fauxwood",
+        "aqua-fauxwood",
+        "arena-fauxwood",
         "sunwood-faux",
         "sunwood-wood",
     }:
@@ -728,18 +731,6 @@ def make_default_fabrics(price_tables: list[dict[str, Any]]) -> list[dict[str, A
                 }
             )
     return fabrics
-
-
-def make_fallback_fabrics(
-    price_tables: list[dict[str, Any]],
-    mapped_fabrics: list[dict[str, Any]],
-) -> list[dict[str, Any]]:
-    mapped_product_ids = {
-        fabric["productTypeId"] for fabric in mapped_fabrics if not fabric.get("isFallback")
-    }
-    return make_default_fabrics(
-        [table for table in price_tables if table["productTypeId"] not in mapped_product_ids]
-    )
 
 
 def make_table_finish_options(
@@ -927,7 +918,7 @@ def parse_aqua_fauxwood_options(
         options.append(
             make_finish_option(
                 company="Aqua Fauxwood",
-                blind_type="fauxwood",
+                blind_type="aqua-fauxwood",
                 product_type_id=product_type_id,
                 name=name,
                 band="Standard",
@@ -982,7 +973,7 @@ def parse_arena_fauxwood_options(
             options.append(
                 make_finish_option(
                     company="Arena Fauxwood",
-                    blind_type="fauxwood",
+                    blind_type="arena-fauxwood",
                     product_type_id=table["productTypeId"],
                     name=name,
                     band=band_key,
@@ -1002,7 +993,7 @@ def parse_arena_fauxwood_options(
             options.append(
                 make_finish_option(
                     company="Arena Fauxwood",
-                    blind_type="fauxwood",
+                    blind_type="arena-fauxwood",
                     product_type_id=band_d_table["productTypeId"],
                     name=name,
                     band="ANY" if "ANY" in band_d_table["bands"] else "Standard",
@@ -1593,10 +1584,6 @@ def validate_price_tables(price_tables: list[dict[str, Any]]) -> list[str]:
                         errors.append(
                             f"{table['id']} band {band} has non-numeric at {row_index},{col_index}."
                         )
-                    elif value <= 0:
-                        errors.append(
-                            f"{table['id']} band {band} has non-positive price at {row_index},{col_index}."
-                        )
     return errors
 
 
@@ -1647,7 +1634,8 @@ def validate_fabrics(fabrics: list[dict[str, Any]], price_tables: list[dict[str,
         "perfect-fit-aluminium",
         "perfect-fit-wood",
         "perfect-fit-shutter",
-        "fauxwood",
+        "aqua-fauxwood",
+        "arena-fauxwood",
         "allusion",
         "freehang-pleated",
         "sunwood-faux",
@@ -1740,9 +1728,8 @@ def build() -> tuple[list[dict[str, Any]], list[dict[str, Any]], list[dict[str, 
     workbook_fabrics, fabric_notes = parse_reference_fabrics(sheets, price_tables, red_style_ids)
     finish_options = parse_finish_options(sheets, price_tables)
     table_finish_options: list[dict[str, Any]] = []
-    mapped_options = workbook_fabrics + finish_options + table_finish_options
-    fallback_fabrics = make_fallback_fabrics(price_tables, mapped_options)
-    fabrics = dedupe_fabrics(mapped_options + fallback_fabrics)
+    fallback_fabrics = make_default_fabrics(price_tables)
+    fabrics = dedupe_fabrics(workbook_fabrics + finish_options + table_finish_options + fallback_fabrics)
     suppliers = make_suppliers(price_tables, fabrics)
     validation_errors = (
         validate_price_tables(price_tables)
@@ -1766,7 +1753,6 @@ def build() -> tuple[list[dict[str, Any]], list[dict[str, Any]], list[dict[str, 
         },
         "validationErrors": validation_errors,
         "fabricMappingNotes": fabric_notes[:500],
-        "fallbackOptions": fallback_fabrics,
         "definedNames": defined_names,
         "sheets": coverage_sheets,
     }
@@ -1783,52 +1769,12 @@ def make_analysis_report(
 ) -> str:
     mapped_by_source: dict[str, int] = {}
     products_by_blind_type: dict[str, set[str]] = {}
-    duplicate_labels: dict[tuple[str, str], set[str]] = {}
     for fabric in mapped_fabrics + finish_options:
         mapped_by_source[fabric.get("supplierName", "Workbook Pricing")] = (
             mapped_by_source.get(fabric.get("supplierName", "Workbook Pricing"), 0) + 1
         )
         for blind_type in fabric.get("compatibleBlindTypes", []):
             products_by_blind_type.setdefault(blind_type, set()).add(fabric["productTypeId"])
-            label = clean_text(fabric.get("displayName") or fabric.get("name") or "").lower()
-            if label:
-                duplicate_labels.setdefault((blind_type, label), set()).add(
-                    fabric.get("supplierName") or "Workbook Pricing"
-                )
-
-    pricing_grid_sheets = [
-        sheet["sheet"] for sheet in coverage["sheets"] if sheet.get("detectedTables")
-    ]
-    supplier_lookup_sheets = [
-        "Fabric Box 2026",
-        "United",
-        "Louvolite 2026",
-        "Eclipse 2026",
-        "Arena 2026",
-    ]
-    finish_lookup_sheets = [
-        "Alutrade",
-        "Aqua Fauxwood",
-        "Arena Fauxwood",
-        "Aluminium Venetians",
-        "PF Aluminium",
-        "PF Wood",
-        "Sunwood Faux",
-        "Sunwood Wood",
-        "Romans",
-    ]
-    fallback_blind_types = sorted(
-        {
-            blind_type
-            for fabric in coverage.get("fallbackOptions", [])
-            for blind_type in fabric.get("compatibleBlindTypes", [])
-        }
-    )
-    ambiguous = [
-        (blind_type, label, suppliers)
-        for (blind_type, label), suppliers in duplicate_labels.items()
-        if len(suppliers) > 1
-    ]
 
     lines = [
         "# Blind Workbook Analysis",
@@ -1846,15 +1792,6 @@ def make_analysis_report(
         f"- Fabric-to-band mappings extracted: {coverage['summary']['fabricMappingsImported']}",
         f"- Finish/colour options generated from pricing grids: {coverage['summary']['finishOrColourOptionsGenerated']}",
         f"- Manual fallback band options generated: {coverage['summary']['fallbackBandOptionsGenerated']}",
-        "",
-        "## Workbook Structure",
-        "",
-        f"- Pricing grid sheets: {', '.join(pricing_grid_sheets) if pricing_grid_sheets else 'None detected'}",
-        f"- Supplier/fabric lookup sheets: {', '.join(supplier_lookup_sheets)}",
-        f"- Fabric-to-band mapping sheets: {', '.join(supplier_lookup_sheets)}",
-        f"- Finish/colour-to-band mapping sheets: {', '.join(finish_lookup_sheets)}",
-        "- Extras/options sheets: no separate extras worksheet was found; frame surcharges and product options are embedded as notes/tables in product pricing sheets, with app extras held in `src/data/extras/extras.json`.",
-        f"- Fallback manual-band blind types: {', '.join(fallback_blind_types) if fallback_blind_types else 'None'}",
         "",
         "## Worksheets",
         "",
@@ -1886,20 +1823,6 @@ def make_analysis_report(
     lines.extend(["", "## Product Compatibility", ""])
     for blind_type, product_ids in sorted(products_by_blind_type.items()):
         lines.append(f"- {blind_type}: {', '.join(sorted(product_ids))}")
-
-    lines.extend(["", "## Ambiguous Mappings", ""])
-    if ambiguous:
-        for blind_type, label, suppliers in sorted(ambiguous)[:100]:
-            lines.append(
-                f"- {label} ({blind_type}) appears in multiple sources: {', '.join(sorted(suppliers))}. The UI disambiguates by supplier/collection in the option label."
-            )
-        if len(ambiguous) > 100:
-            lines.append(f"- ...{len(ambiguous) - 100} more duplicate labels omitted.")
-    else:
-        lines.append("- No duplicate fabric/finish labels across suppliers were detected.")
-    lines.append(
-        "- ATLANTEX appears in Eclipse 2026 and Arena 2026 supplier lookup blocks for Roller/Vertical, but no ATLANTEX text exists in the Vision/PF Vision pricing worksheets. Treat Vision + ATLANTEX as manual-check unless the workbook owner confirms a cross-product mapping."
-    )
 
     lines.extend(["", "## Manual Review", ""])
     manual = [
