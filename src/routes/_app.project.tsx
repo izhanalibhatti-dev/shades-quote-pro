@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { toPng } from "html-to-image";
 import { toast } from "sonner";
 import {
+  AlertTriangle,
   Blinds,
   Copy,
   DoorOpen,
@@ -82,6 +83,9 @@ const ITEM_TYPES: {
   { type: "labour", labelKey: "item.labour", icon: Hammer },
   { type: "manual", labelKey: "item.manual", icon: Pencil },
 ];
+
+const OVERALL_FITTING_TITLE = "Overall Fitting Labour";
+const OVERALL_FITTING_NOTE = "Whole quote fitting cost";
 
 type BlindSelectableOption = (typeof fabrics)[number];
 
@@ -347,7 +351,7 @@ const MODE_CONFIG = {
     titleKey: "blinds.title",
     exportName: "blinds",
     scopeKey: "blinds.scope",
-    itemTypes: ["blind"] satisfies DraftType[],
+    itemTypes: ["blind", "labour"] satisfies DraftType[],
   },
   wardrobes: {
     eyebrowKey: "wardrobes.eyebrow",
@@ -391,6 +395,9 @@ export function ProjectQuoteBuilder({ mode }: { mode: BuilderMode }) {
 
   const activeArea = project.areas.find((area) => area.id === activeAreaId) ?? project.areas[0];
   const totals = useMemo(() => calculateProjectQuote(project), [project]);
+  const fittingSubtotal = useMemo(() => getFittingSubtotal(project), [project]);
+  const productsSubtotal = roundMoney(totals.subtotal - fittingSubtotal);
+  const overallFittingAmount = getOverallFittingItem(project)?.unitPrice ?? 0;
   const discountBase = totals.taxableSubtotal + totals.discount;
   const discountPercent = discountBase > 0 ? roundMoney((totals.discount / discountBase) * 100) : 0;
   const setDiscountPercent = (percent: number) => {
@@ -435,6 +442,7 @@ export function ProjectQuoteBuilder({ mode }: { mode: BuilderMode }) {
       return null;
     }
   }, [draft, project, translateLabel]);
+  const livePricingWarning = getProjectItemWarning(liveItem);
 
   const addArea = () => {
     const name = areaName.trim();
@@ -498,6 +506,75 @@ export function ProjectQuoteBuilder({ mode }: { mode: BuilderMode }) {
         area.id === areaId ? { ...area, items: [...area.items, { ...item, id: uid() }] } : area,
       ),
     }));
+  };
+
+  const startFittingItem = (areaId?: string) => {
+    const targetArea = project.areas.find((area) => area.id === areaId) ?? activeArea;
+    if (targetArea) setActiveAreaId(targetArea.id);
+    setEditingItemId(null);
+    setDraft({
+      ...initialDraftForMode(mode),
+      type: "labour",
+      title: targetArea ? `${targetArea.name} fitting labour` : "Fitting labour",
+      taxable: false,
+    });
+  };
+
+  const setOverallFittingCost = (amount: number) => {
+    const nextAmount = roundMoney(Math.max(0, amount));
+    setProject((current) => {
+      const existing = getOverallFittingItem(current);
+
+      if (nextAmount <= 0) {
+        if (!existing) return current;
+        return {
+          ...current,
+          areas: current.areas.map((area) => ({
+            ...area,
+            items: area.items.filter((item) => item.id !== existing.id),
+          })),
+        };
+      }
+
+      const item: ProjectQuoteItem = {
+        id: existing?.id ?? uid(),
+        type: "labour",
+        title: OVERALL_FITTING_TITLE,
+        description: "Whole quote fitting cost",
+        quantity: 1,
+        unitPrice: nextAmount,
+        lineTotal: nextAmount,
+        taxable: false,
+        notes: OVERALL_FITTING_NOTE,
+      };
+
+      if (existing) {
+        return {
+          ...current,
+          areas: current.areas.map((area) => ({
+            ...area,
+            items: area.items.map((currentItem) =>
+              currentItem.id === existing.id ? item : currentItem,
+            ),
+          })),
+        };
+      }
+
+      const targetAreaId = activeAreaId || current.areas[0]?.id;
+      if (!targetAreaId) {
+        return {
+          ...current,
+          areas: [{ id: uid(), name: "Whole quote", notes: "", items: [item] }],
+        };
+      }
+
+      return {
+        ...current,
+        areas: current.areas.map((area) =>
+          area.id === targetAreaId ? { ...area, items: [...area.items, item] } : area,
+        ),
+      };
+    });
   };
 
   const exportProject = async (inEnglish = false) => {
@@ -842,6 +919,16 @@ export function ProjectQuoteBuilder({ mode }: { mode: BuilderMode }) {
               </div>
             )}
 
+            {livePricingWarning && (
+              <div className="mt-4 flex gap-2 rounded-2xl border border-amber-300 bg-amber-50 p-3 text-sm text-amber-900">
+                <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" />
+                <div>
+                  <div className="font-medium">Wardrobe price needs attention</div>
+                  <p className="mt-0.5 text-xs">{livePricingWarning}</p>
+                </div>
+              </div>
+            )}
+
             <div className="mt-5 flex justify-end gap-2">
               {editingItemId && (
                 <button
@@ -856,7 +943,7 @@ export function ProjectQuoteBuilder({ mode }: { mode: BuilderMode }) {
               )}
               <button
                 onClick={saveItem}
-                disabled={!activeArea || !liveItem}
+                disabled={!activeArea || !liveItem || Boolean(livePricingWarning)}
                 className="inline-flex h-10 items-center gap-2 rounded-xl bg-primary px-4 text-sm font-medium text-primary-foreground disabled:opacity-50"
               >
                 <Plus className="h-4 w-4" />
@@ -883,8 +970,19 @@ export function ProjectQuoteBuilder({ mode }: { mode: BuilderMode }) {
                           {area.items.length} item{area.items.length === 1 ? "" : "s"}
                         </p>
                       </div>
-                      <div className="text-sm font-semibold tabular-nums">
-                        {formatGBP(areaTotal?.subtotal ?? 0)}
+                      <div className="flex shrink-0 items-center gap-2">
+                        {(config.itemTypes as readonly DraftType[]).includes("labour") && (
+                          <button
+                            type="button"
+                            onClick={() => startFittingItem(area.id)}
+                            className="inline-flex h-8 items-center gap-1.5 rounded-lg border border-border px-2.5 text-xs font-medium hover:bg-accent"
+                          >
+                            <Hammer className="h-3.5 w-3.5" /> Add Labour / Fitting
+                          </button>
+                        )}
+                        <div className="text-sm font-semibold tabular-nums">
+                          {formatGBP(areaTotal?.subtotal ?? 0)}
+                        </div>
                       </div>
                     </div>
                     {area.items.length === 0 ? (
@@ -905,6 +1003,12 @@ export function ProjectQuoteBuilder({ mode }: { mode: BuilderMode }) {
                                 {item.type === "blind" && (
                                   <div className="mt-1 text-[11px] text-muted-foreground">
                                     {item.calculation.pricingReferenceNote}
+                                  </div>
+                                )}
+                                {getProjectItemWarning(item) && (
+                                  <div className="mt-2 flex gap-1.5 rounded-lg border border-amber-300 bg-amber-50 px-2 py-1.5 text-[11px] text-amber-900">
+                                    <AlertTriangle className="mt-0.5 h-3.5 w-3.5 shrink-0" />
+                                    <span>{getProjectItemWarning(item)}</span>
                                   </div>
                                 )}
                               </div>
@@ -941,6 +1045,11 @@ export function ProjectQuoteBuilder({ mode }: { mode: BuilderMode }) {
             </div>
 
             <div className="mt-5 grid gap-3 sm:grid-cols-2">
+              <NumberInput
+                label="Overall fitting cost (£)"
+                value={overallFittingAmount}
+                onChange={setOverallFittingCost}
+              />
               <div>
                 <NumberInput
                   label={`${t("quote.discount")} (%)`}
@@ -986,6 +1095,8 @@ export function ProjectQuoteBuilder({ mode }: { mode: BuilderMode }) {
             </div>
 
             <div className="mt-5 rounded-2xl bg-foreground/[0.04] p-5">
+              <TotalRow label="Products subtotal" value={formatGBP(productsSubtotal)} />
+              <TotalRow label="Fitting subtotal" value={formatGBP(fittingSubtotal)} />
               <TotalRow label={t("quote.subtotal")} value={formatGBP(totals.subtotal)} />
               <TotalRow label={`${t("quote.discount")} %`} value={`${discountPercent}%`} />
               <TotalRow
@@ -1203,6 +1314,40 @@ function buildProjectItem(
     taxable: draft.type === "labour" ? false : draft.taxable,
     notes: draft.notes || undefined,
   } as ProjectQuoteItem;
+}
+
+function getFittingSubtotal(project: ProjectQuote) {
+  return roundMoney(
+    project.areas.reduce(
+      (sum, area) =>
+        sum +
+        area.items
+          .filter((item) => item.type === "labour")
+          .reduce((itemSum, item) => itemSum + item.lineTotal, 0),
+      0,
+    ),
+  );
+}
+
+function getOverallFittingItem(project: ProjectQuote) {
+  return project.areas
+    .flatMap((area) => area.items)
+    .find(
+      (item) =>
+        item.type === "labour" &&
+        item.title === OVERALL_FITTING_TITLE &&
+        item.notes === OVERALL_FITTING_NOTE,
+    );
+}
+
+function getProjectItemWarning(item: ProjectQuoteItem | null) {
+  if (!item || item.type !== "wardrobe") return null;
+  return (
+    item.wardrobeLine.calc.warning ??
+    (item.lineTotal <= 0
+      ? "No wardrobe price is mapped for this selection. Enter a verified manual unit price before adding it."
+      : null)
+  );
 }
 
 function draftFromItem(item: ProjectQuoteItem): DraftState {

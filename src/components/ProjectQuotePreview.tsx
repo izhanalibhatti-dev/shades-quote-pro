@@ -10,6 +10,8 @@ const ProjectQuotePreview = forwardRef<
   { project: ProjectQuote; scopeLabel?: string; forceLocale?: LocaleCode }
 >(function ProjectQuotePreview({ project, scopeLabel, forceLocale }, ref) {
   const totals = calculateProjectQuote(project);
+  const fittingSubtotal = getFittingSubtotal(project);
+  const productsSubtotal = +(totals.subtotal - fittingSubtotal).toFixed(2);
   const ctx = useI18n();
   const { locale, t } = forceLocale ? createTranslator(forceLocale) : ctx;
   const date = new Date(project.date);
@@ -151,6 +153,8 @@ const ProjectQuotePreview = forwardRef<
           )}
         </div>
         <div className="min-w-0 rounded-xl bg-[#faf7f1] p-5">
+          <Row k="Products subtotal" v={formatGBP(productsSubtotal)} />
+          <Row k="Fitting subtotal" v={formatGBP(fittingSubtotal)} />
           <Row k={t("quote.subtotal")} v={formatGBP(totals.subtotal)} />
           {totals.discount > 0 && (
             <Row k={t("quote.discount")} v={`- ${formatGBP(totals.discount)}`} />
@@ -218,6 +222,19 @@ const ProjectQuotePreview = forwardRef<
     </div>
   );
 });
+
+function getFittingSubtotal(project: ProjectQuote) {
+  return +project.areas
+    .reduce(
+      (sum, area) =>
+        sum +
+        area.items
+          .filter((item) => item.type === "labour")
+          .reduce((itemSum, item) => itemSum + item.lineTotal, 0),
+      0,
+    )
+    .toFixed(2);
+}
 
 function ItemDetails({ item, t }: { item: ProjectQuoteItem; t: ReturnType<typeof useI18n>["t"] }) {
   if (item.type === "blind") {
