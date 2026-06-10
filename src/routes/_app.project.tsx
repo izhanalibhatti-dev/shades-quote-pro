@@ -21,6 +21,8 @@ import {
 import ProjectQuotePreview from "@/components/ProjectQuotePreview";
 import { useQuote } from "@/components/QuoteContext";
 import QuoteTypeTabs from "@/components/QuoteTypeTabs";
+import { BlindTypeGroupedPicker } from "@/components/BlindTypeGroupedPicker";
+import { DateField } from "@/components/DateField";
 import { extras, fabrics, priceTables, suppliers } from "@/data/catalog";
 import { BLIND_PRODUCT_TYPES, getBlindProductType } from "@/data/blinds/productTypes";
 import { WARDROBE_CATEGORIES } from "@/data/wardrobe/categories";
