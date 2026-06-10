@@ -2440,6 +2440,24 @@ export function getIntlLocale(locale: LocaleCode) {
   return LOCALES.find((item) => item.code === locale)?.intlLocale ?? "en-GB";
 }
 
+/**
+ * Creates a stateless translator for a specific locale. Used for exporting
+ * customer-facing documents (e.g. PNG/print) in a fixed language regardless
+ * of the user's current UI language.
+ */
+export function createTranslator(locale: LocaleCode) {
+  const t = (key: TranslationKey) =>
+    accessibilityDictionary[locale][key] ??
+    globalDictionaryOverrides[locale][key] ??
+    dictionaries[locale][key] ??
+    en[key];
+  return {
+    locale,
+    t,
+    translateLabel: (label: string) => translateCatalogLabel(label, locale),
+  };
+}
+
 export function translateCatalogLabel(label: string, locale: LocaleCode) {
   return catalogLabelTranslations[locale]?.[label] ?? label;
 }

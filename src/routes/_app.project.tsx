@@ -21,6 +21,8 @@ import {
 import ProjectQuotePreview from "@/components/ProjectQuotePreview";
 import { useQuote } from "@/components/QuoteContext";
 import QuoteTypeTabs from "@/components/QuoteTypeTabs";
+import { BlindTypeGroupedPicker } from "@/components/BlindTypeGroupedPicker";
+import { DateField } from "@/components/DateField";
 import { extras, fabrics, priceTables, suppliers } from "@/data/catalog";
 import { BLIND_PRODUCT_TYPES, getBlindProductType } from "@/data/blinds/productTypes";
 import { WARDROBE_CATEGORIES } from "@/data/wardrobe/categories";
@@ -120,7 +122,7 @@ function withPerfectFitFrameSurcharge(
   frameColour: PerfectFitRollerFrameColour,
 ) {
   const withoutFrameSurcharge = extras.filter(
-    (item) => !PERFECT_FIT_FRAME_SURCHARGE_IDS.includes(item.id),
+    (item) => !(PERFECT_FIT_FRAME_SURCHARGE_IDS as readonly string[]).includes(item.id),
   );
   if (!isPerfectFitFrameBlindType(blindTypeId) || !frameColourHasSurcharge(frameColour)) {
     return withoutFrameSurcharge;
@@ -136,7 +138,7 @@ function isExtraApplicableToBlindType(
   blindTypeId: string,
   includeInternal = false,
 ) {
-  if (!includeInternal && PERFECT_FIT_FRAME_SURCHARGE_IDS.includes(extra.id)) {
+  if (!includeInternal && (PERFECT_FIT_FRAME_SURCHARGE_IDS as readonly string[]).includes(extra.id)) {
     return false;
   }
   return !extra.applicableBlindTypes?.length || extra.applicableBlindTypes.includes(blindTypeId);
@@ -358,6 +360,7 @@ export function ProjectQuoteBuilder({ mode }: { mode: BuilderMode }) {
   const [draft, setDraft] = useState<DraftState>(() => initialDraft());
   const [exporting, setExporting] = useState(false);
   const previewRef = useRef<HTMLDivElement>(null);
+  const englishPreviewRef = useRef<HTMLDivElement>(null);
 
   const activeArea = project.areas.find((area) => area.id === activeAreaId) ?? project.areas[0];
   const totals = useMemo(() => calculateProjectQuote(project), [project]);
@@ -457,11 +460,12 @@ export function ProjectQuoteBuilder({ mode }: { mode: BuilderMode }) {
     }));
   };
 
-  const exportProject = async () => {
-    if (!previewRef.current) return;
+  const exportProject = async (inEnglish = false) => {
+    const node = inEnglish ? englishPreviewRef.current : previewRef.current;
+    if (!node) return;
     setExporting(true);
     try {
-      const dataUrl = await toPng(previewRef.current, {
+      const dataUrl = await toPng(node, {
         pixelRatio: 2,
         cacheBust: true,
         backgroundColor: "#ffffff",
@@ -470,7 +474,8 @@ export function ProjectQuoteBuilder({ mode }: { mode: BuilderMode }) {
       });
       const link = document.createElement("a");
       const safeName = (project.customer.fullName || "customer").replace(/[^a-z0-9-_]+/gi, "_");
-      link.download = `${project.ref}-${safeName}-${config.exportName}.png`;
+      const suffix = inEnglish ? "-en" : "";
+      link.download = `${project.ref}-${safeName}-${config.exportName}${suffix}.png`;
       link.href = dataUrl;
       link.click();
       addRecent({
@@ -500,7 +505,9 @@ export function ProjectQuoteBuilder({ mode }: { mode: BuilderMode }) {
     toast.message(t("actions.reset"));
   };
 
-  const allowedItemTypes = ITEM_TYPES.filter((item) => config.itemTypes.includes(item.type));
+  const allowedItemTypes = ITEM_TYPES.filter((item) =>
+    (config.itemTypes as readonly DraftType[]).includes(item.type),
+  );
 
   return (
     <div className="mx-auto w-full max-w-[1500px]">
@@ -524,13 +531,21 @@ export function ProjectQuoteBuilder({ mode }: { mode: BuilderMode }) {
           </button>
           <motion.button
             whileTap={{ scale: 0.98 }}
-            onClick={exportProject}
+            onClick={() => exportProject(false)}
             disabled={exporting}
             className="inline-flex h-10 items-center gap-2 rounded-xl bg-primary px-4 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-95 disabled:opacity-70"
           >
             <Download className="h-4 w-4" />
             {exporting ? t("actions.exporting") : t("actions.export")}
           </motion.button>
+          <button
+            onClick={() => exportProject(true)}
+            disabled={exporting}
+            title="Always renders the customer document in English"
+            className="inline-flex h-10 items-center gap-2 rounded-xl border border-border bg-card px-3.5 text-sm font-medium hover:bg-accent disabled:opacity-70"
+          >
+            <Download className="h-4 w-4" /> Export in English
+          </button>
           <button
             onClick={printProject}
             className="inline-flex h-10 items-center gap-2 rounded-xl border border-border bg-card px-3.5 text-sm font-medium hover:bg-accent"
@@ -549,14 +564,15 @@ export function ProjectQuoteBuilder({ mode }: { mode: BuilderMode }) {
                 value={project.ref}
                 onChange={(ref) => setProject((current) => ({ ...current, ref }))}
               />
-              <TextInput
+              <DateField
                 label={t("quote.date")}
-                type="date"
                 value={project.date.slice(0, 10)}
                 onChange={(date) =>
                   setProject((current) => ({
                     ...current,
-                    date: new Date(`${date}T12:00:00`).toISOString(),
+                    date: date
+                      ? new Date(`${date}T12:00:00`).toISOString()
+                      : current.date,
                   }))
                 }
               />
@@ -917,6 +933,25 @@ export function ProjectQuoteBuilder({ mode }: { mode: BuilderMode }) {
       <div className="project-print-sheet">
         <ProjectQuotePreview project={project} scopeLabel={t(config.scopeKey)} />
       </div>
+      {/* Off-screen English render used for "Export in English" PNG */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: "fixed",
+          left: "-10000px",
+          top: 0,
+          width: "760px",
+          pointerEvents: "none",
+          opacity: 0,
+        }}
+      >
+        <ProjectQuotePreview
+          ref={englishPreviewRef}
+          project={project}
+          scopeLabel={t(config.scopeKey)}
+          forceLocale="en"
+        />
+      </div>
     </div>
   );
 }
@@ -960,7 +995,9 @@ function buildProjectItem(
             draft.blindFrameColour,
           )
         : filterExtrasForBlindType(
-            draft.blindExtras.filter((item) => !PERFECT_FIT_FRAME_SURCHARGE_IDS.includes(item.id)),
+            draft.blindExtras.filter(
+              (item) => !(PERFECT_FIT_FRAME_SURCHARGE_IDS as readonly string[]).includes(item.id),
+            ),
             draft.blindTypeId,
           ),
       pricing: { labourCost: 0, discount: 0, vatRate: project.vatRate },
@@ -1169,7 +1206,7 @@ function BlindDraftForm({
           )
         : filterExtrasForBlindType(
             current.blindExtras.filter(
-              (item) => !PERFECT_FIT_FRAME_SURCHARGE_IDS.includes(item.id),
+              (item) => !(PERFECT_FIT_FRAME_SURCHARGE_IDS as readonly string[]).includes(item.id),
             ),
             blindTypeId,
           ),
@@ -1179,11 +1216,12 @@ function BlindDraftForm({
   return (
     <div className="space-y-4">
       <div className="grid gap-3 md:grid-cols-2">
-        <BlindTypePicker
+        <BlindTypeGroupedPicker
           label={t("field.blindType")}
           value={draft.blindTypeId}
           onChange={handleBlindTypeChange}
           options={blindTypeOptions}
+          renderGraphic={(typeId) => <BlindTypeGraphic typeId={typeId} />}
         />
         {availableOptions.length > 0 && !hasOnlyStandardPlaceholder && (
           <SelectInput

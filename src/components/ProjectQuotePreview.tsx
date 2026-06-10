@@ -1,16 +1,17 @@
 import { forwardRef } from "react";
 import Logo from "@/components/Logo";
-import { getIntlLocale, useI18n } from "@/lib/i18n";
+import { createTranslator, getIntlLocale, useI18n, type LocaleCode } from "@/lib/i18n";
 import { formatGBP } from "@/lib/quote-types";
 import { calculateProjectQuote } from "@/pricing/calculateProjectQuote";
 import type { ProjectQuote, ProjectQuoteItem } from "@/types/ProjectQuote";
 
 const ProjectQuotePreview = forwardRef<
   HTMLDivElement,
-  { project: ProjectQuote; scopeLabel?: string }
->(function ProjectQuotePreview({ project, scopeLabel }, ref) {
+  { project: ProjectQuote; scopeLabel?: string; forceLocale?: LocaleCode }
+>(function ProjectQuotePreview({ project, scopeLabel, forceLocale }, ref) {
   const totals = calculateProjectQuote(project);
-  const { locale, t } = useI18n();
+  const ctx = useI18n();
+  const { locale, t } = forceLocale ? createTranslator(forceLocale) : ctx;
   const date = new Date(project.date);
   const dateLocale = getIntlLocale(locale);
 
