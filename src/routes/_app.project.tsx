@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useMemo, useRef, useState, type ComponentType, type ReactNode } from "react";
+import { useEffect, useMemo, useRef, useState, type ComponentType, type ReactNode } from "react";
 import { motion } from "framer-motion";
 import { toPng } from "html-to-image";
 import { toast } from "sonner";
@@ -138,7 +138,10 @@ function isExtraApplicableToBlindType(
   blindTypeId: string,
   includeInternal = false,
 ) {
-  if (!includeInternal && (PERFECT_FIT_FRAME_SURCHARGE_IDS as readonly string[]).includes(extra.id)) {
+  if (
+    !includeInternal &&
+    (PERFECT_FIT_FRAME_SURCHARGE_IDS as readonly string[]).includes(extra.id)
+  ) {
     return false;
   }
   return !extra.applicableBlindTypes?.length || extra.applicableBlindTypes.includes(blindTypeId);
@@ -270,8 +273,24 @@ function optionDisplayName(fabric: BlindSelectableOption) {
   return fabric.displayName ?? fabric.name;
 }
 
-function optionLabel(fabric: BlindSelectableOption) {
-  return optionDisplayName(fabric);
+function optionLabel(
+  fabric: BlindSelectableOption,
+  allOptions: readonly BlindSelectableOption[] = fabrics,
+) {
+  const name = optionDisplayName(fabric);
+  const matchingNames = allOptions.filter(
+    (option) => optionDisplayName(option).trim().toLowerCase() === name.trim().toLowerCase(),
+  );
+  if (matchingNames.length <= 1 || fabric.isFallback) return name;
+
+  const supplier = fabric.supplierName ?? fabric.company;
+  const sameSupplierCount = matchingNames.filter(
+    (option) => (option.supplierName ?? option.company) === supplier,
+  ).length;
+  const qualifier =
+    sameSupplierCount > 1 && fabric.collection ? `${supplier}, ${fabric.collection}` : supplier;
+
+  return qualifier ? `${name} - ${qualifier}` : name;
 }
 
 function initialDraft(): DraftState {
@@ -305,6 +324,14 @@ function initialDraft(): DraftState {
     taxable: true,
     notes: "",
   };
+}
+
+function initialDraftForMode(mode: BuilderMode): DraftState {
+  const draft = initialDraft();
+  if (mode === "wardrobes") {
+    return { ...draft, type: "wardrobe" };
+  }
+  return { ...draft, type: "blind" };
 }
 
 const MODE_CONFIG = {
@@ -357,13 +384,26 @@ export function ProjectQuoteBuilder({ mode }: { mode: BuilderMode }) {
   const [activeAreaId, setActiveAreaId] = useState(project.areas[0]?.id ?? "");
   const [areaName, setAreaName] = useState("");
   const [editingItemId, setEditingItemId] = useState<string | null>(null);
-  const [draft, setDraft] = useState<DraftState>(() => initialDraft());
+  const [draft, setDraft] = useState<DraftState>(() => initialDraftForMode(mode));
   const [exporting, setExporting] = useState(false);
   const previewRef = useRef<HTMLDivElement>(null);
   const englishPreviewRef = useRef<HTMLDivElement>(null);
 
   const activeArea = project.areas.find((area) => area.id === activeAreaId) ?? project.areas[0];
   const totals = useMemo(() => calculateProjectQuote(project), [project]);
+  const discountBase = totals.taxableSubtotal + totals.discount;
+  const discountPercent = discountBase > 0 ? roundMoney((totals.discount / discountBase) * 100) : 0;
+  const setDiscountPercent = (percent: number) => {
+    const nextPercent = Math.max(0, Math.min(100, percent));
+    setProject((current) => {
+      const currentTotals = calculateProjectQuote(current);
+      const currentDiscountBase = currentTotals.taxableSubtotal + currentTotals.discount;
+      return {
+        ...current,
+        discount: roundMoney((currentDiscountBase * nextPercent) / 100),
+      };
+    });
+  };
 
   const blindTypeOptions = useMemo(() => {
     return BLIND_PRODUCT_TYPES.filter(
@@ -431,7 +471,7 @@ export function ProjectQuoteBuilder({ mode }: { mode: BuilderMode }) {
       ),
     }));
     setEditingItemId(null);
-    setDraft(initialDraft());
+    setDraft(initialDraftForMode(mode));
     toast.success(editingItemId ? t("actions.saveItem") : t("actions.addToRoom"));
   };
 
@@ -501,13 +541,35 @@ export function ProjectQuoteBuilder({ mode }: { mode: BuilderMode }) {
     resetProject();
     setActiveAreaId("");
     setEditingItemId(null);
-    setDraft(initialDraft());
+    setDraft(initialDraftForMode(mode));
     toast.message(t("actions.reset"));
   };
 
   const allowedItemTypes = ITEM_TYPES.filter((item) =>
     (config.itemTypes as readonly DraftType[]).includes(item.type),
   );
+  const activeItemType = ITEM_TYPES.find((item) => item.type === draft.type) ?? allowedItemTypes[0];
+  const ActiveItemIcon = activeItemType?.icon ?? Plus;
+  const activeItemTitle =
+    draft.type === "blind"
+      ? "Blind item"
+      : draft.type === "wardrobe"
+        ? "Wardrobe / door item"
+        : draft.type === "accessory"
+          ? "Accessory item"
+          : draft.type === "labour"
+            ? "Labour / fitting item"
+            : "Manual item";
+  const activeItemHelper =
+    draft.type === "blind"
+      ? "Choose the blind type, fabric or finish, dimensions and blind-only options."
+      : draft.type === "wardrobe"
+        ? "Choose the wardrobe or door product, dimensions and wardrobe-specific options."
+        : draft.type === "accessory"
+          ? "Add a standalone accessory or supplied part."
+          : draft.type === "labour"
+            ? "Add fitting, installation or other non-taxable labour."
+            : "Add a custom line without changing product pricing.";
 
   return (
     <div className="mx-auto w-full max-w-[1500px]">
@@ -570,9 +632,7 @@ export function ProjectQuoteBuilder({ mode }: { mode: BuilderMode }) {
                 onChange={(date) =>
                   setProject((current) => ({
                     ...current,
-                    date: date
-                      ? new Date(`${date}T12:00:00`).toISOString()
-                      : current.date,
+                    date: date ? new Date(`${date}T12:00:00`).toISOString() : current.date,
                   }))
                 }
               />
@@ -701,33 +761,49 @@ export function ProjectQuoteBuilder({ mode }: { mode: BuilderMode }) {
             icon={<Plus className="h-4 w-4" />}
             title={editingItemId ? t("quote.editItem") : t("quote.addItem")}
           >
-            <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-5">
-              {allowedItemTypes.map((option) => {
-                const Icon = option.icon;
-                return (
-                  <button
-                    key={option.type}
-                    onClick={() =>
-                      setDraft((current) => ({
-                        ...current,
-                        type: option.type,
-                        taxable: option.type !== "labour",
-                      }))
-                    }
-                    className={`flex h-12 items-center justify-center gap-2 rounded-xl border px-3 text-sm font-medium ${
-                      draft.type === option.type
-                        ? "border-primary bg-primary text-primary-foreground"
-                        : "border-border bg-background hover:bg-accent"
-                    }`}
-                  >
-                    <Icon className="h-4 w-4" />
-                    <span className="truncate">{t(option.labelKey)}</span>
-                  </button>
-                );
-              })}
+            <div className="mb-5 rounded-2xl border border-border bg-background/70 p-4">
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                <div className="flex min-w-0 items-center gap-3">
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary text-primary-foreground">
+                    <ActiveItemIcon className="h-5 w-5" />
+                  </span>
+                  <div className="min-w-0">
+                    <div className="text-sm font-semibold tracking-tight">{activeItemTitle}</div>
+                    <p className="mt-0.5 text-xs text-muted-foreground">{activeItemHelper}</p>
+                  </div>
+                </div>
+              </div>
+
+              {allowedItemTypes.length > 1 && (
+                <div className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-5">
+                  {allowedItemTypes.map((option) => {
+                    const Icon = option.icon;
+                    return (
+                      <button
+                        key={option.type}
+                        onClick={() =>
+                          setDraft((current) => ({
+                            ...current,
+                            type: option.type,
+                            taxable: option.type !== "labour",
+                          }))
+                        }
+                        className={`flex h-11 items-center justify-center gap-2 rounded-xl border px-3 text-sm font-medium ${
+                          draft.type === option.type
+                            ? "border-primary bg-primary text-primary-foreground"
+                            : "border-border bg-card hover:bg-accent"
+                        }`}
+                      >
+                        <Icon className="h-4 w-4" />
+                        <span className="truncate">{t(option.labelKey)}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
             </div>
 
-            <div className="mt-5">
+            <div>
               {draft.type === "blind" && (
                 <BlindDraftForm
                   draft={draft}
@@ -771,7 +847,7 @@ export function ProjectQuoteBuilder({ mode }: { mode: BuilderMode }) {
                 <button
                   onClick={() => {
                     setEditingItemId(null);
-                    setDraft(initialDraft());
+                    setDraft(initialDraftForMode(mode));
                   }}
                   className="h-10 rounded-xl border border-border px-4 text-sm font-medium hover:bg-accent"
                 >
@@ -865,14 +941,31 @@ export function ProjectQuoteBuilder({ mode }: { mode: BuilderMode }) {
             </div>
 
             <div className="mt-5 grid gap-3 sm:grid-cols-2">
-              <NumberInput
-                label={`${t("quote.discount")} (£)`}
-                value={project.discount}
-                step={5}
-                onChange={(discount) =>
-                  setProject((current) => ({ ...current, discount: Math.max(0, discount) }))
-                }
-              />
+              <div>
+                <NumberInput
+                  label={`${t("quote.discount")} (%)`}
+                  value={discountPercent}
+                  step={1}
+                  max={100}
+                  onChange={setDiscountPercent}
+                />
+                <div className="mt-2 flex flex-wrap gap-1.5">
+                  {[5, 10, 15, 20].map((percent) => (
+                    <button
+                      key={percent}
+                      type="button"
+                      onClick={() => setDiscountPercent(percent)}
+                      className={`rounded-lg border px-2.5 py-1 text-xs font-medium ${
+                        Math.round(discountPercent) === percent
+                          ? "border-primary bg-primary text-primary-foreground"
+                          : "border-border bg-background hover:bg-accent"
+                      }`}
+                    >
+                      {percent}%
+                    </button>
+                  ))}
+                </div>
+              </div>
               <NumberInput
                 label={`${t("quote.vat")} (%)`}
                 value={Math.round(project.vatRate * 100)}
@@ -894,7 +987,11 @@ export function ProjectQuoteBuilder({ mode }: { mode: BuilderMode }) {
 
             <div className="mt-5 rounded-2xl bg-foreground/[0.04] p-5">
               <TotalRow label={t("quote.subtotal")} value={formatGBP(totals.subtotal)} />
-              <TotalRow label={t("quote.discount")} value={`- ${formatGBP(totals.discount)}`} />
+              <TotalRow label={`${t("quote.discount")} %`} value={`${discountPercent}%`} />
+              <TotalRow
+                label={`${t("quote.discount")} Amount`}
+                value={`- ${formatGBP(totals.discount)}`}
+              />
               <TotalRow
                 label={t("quote.taxableSubtotal")}
                 value={formatGBP(totals.taxableSubtotal)}
@@ -1237,7 +1334,7 @@ function BlindDraftForm({
             }}
             options={availableOptions.map((fabric) => ({
               value: fabric.id,
-              label: optionLabel(fabric),
+              label: optionLabel(fabric, availableOptions),
             }))}
           />
         )}
@@ -1580,32 +1677,71 @@ function NumberInput({
   onChange,
   step = 1,
   min = 0,
+  max,
 }: {
   label: string;
   value: number;
   onChange: (value: number) => void;
   step?: number;
   min?: number;
+  max?: number;
 }) {
+  const [textValue, setTextValue] = useState(() => formatInputNumber(value));
+  const focusedRef = useRef(false);
+
+  useEffect(() => {
+    if (!focusedRef.current) {
+      setTextValue(formatInputNumber(value));
+    }
+  }, [value]);
+
+  const commitValue = (raw: string) => {
+    const parsed = Number(raw);
+    const next = Number.isFinite(parsed) ? clampNumber(parsed, min, max) : min;
+    setTextValue(formatInputNumber(next));
+    onChange(next);
+  };
+
   return (
     <label className="block">
       <span className="mb-1.5 block text-[11px] font-medium uppercase tracking-[0.12em] text-muted-foreground">
         {label}
       </span>
       <input
-        type="number"
+        type="text"
         inputMode="decimal"
-        value={Number.isFinite(value) ? value : 0}
-        min={min}
-        step={step}
+        value={textValue}
+        data-step={step}
         onChange={(event) => {
-          const next = Number(event.target.value);
-          onChange(Number.isFinite(next) ? next : 0);
+          const next = event.target.value;
+          if (!/^\d*\.?\d*$/.test(next)) return;
+          setTextValue(next);
+          if (next === "" || next === ".") return;
+          const parsed = Number(next);
+          if (Number.isFinite(parsed)) {
+            onChange(clampNumber(parsed, min, max));
+          }
+        }}
+        onFocus={() => {
+          focusedRef.current = true;
+        }}
+        onBlur={() => {
+          focusedRef.current = false;
+          commitValue(textValue);
         }}
         className="h-11 w-full rounded-xl border border-border bg-background px-3.5 text-sm tabular-nums focus:border-foreground/40 focus:outline-none focus:ring-2 focus:ring-foreground/10"
       />
     </label>
   );
+}
+
+function clampNumber(value: number, min: number, max?: number) {
+  return Math.min(max ?? Number.POSITIVE_INFINITY, Math.max(min, value));
+}
+
+function formatInputNumber(value: number) {
+  if (!Number.isFinite(value)) return "";
+  return Number.isInteger(value) ? String(value) : String(roundMoney(value));
 }
 
 function SelectInput({
