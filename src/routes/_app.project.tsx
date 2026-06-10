@@ -360,6 +360,7 @@ export function ProjectQuoteBuilder({ mode }: { mode: BuilderMode }) {
   const [draft, setDraft] = useState<DraftState>(() => initialDraft());
   const [exporting, setExporting] = useState(false);
   const previewRef = useRef<HTMLDivElement>(null);
+  const englishPreviewRef = useRef<HTMLDivElement>(null);
 
   const activeArea = project.areas.find((area) => area.id === activeAreaId) ?? project.areas[0];
   const totals = useMemo(() => calculateProjectQuote(project), [project]);
@@ -459,11 +460,12 @@ export function ProjectQuoteBuilder({ mode }: { mode: BuilderMode }) {
     }));
   };
 
-  const exportProject = async () => {
-    if (!previewRef.current) return;
+  const exportProject = async (inEnglish = false) => {
+    const node = inEnglish ? englishPreviewRef.current : previewRef.current;
+    if (!node) return;
     setExporting(true);
     try {
-      const dataUrl = await toPng(previewRef.current, {
+      const dataUrl = await toPng(node, {
         pixelRatio: 2,
         cacheBust: true,
         backgroundColor: "#ffffff",
@@ -472,7 +474,8 @@ export function ProjectQuoteBuilder({ mode }: { mode: BuilderMode }) {
       });
       const link = document.createElement("a");
       const safeName = (project.customer.fullName || "customer").replace(/[^a-z0-9-_]+/gi, "_");
-      link.download = `${project.ref}-${safeName}-${config.exportName}.png`;
+      const suffix = inEnglish ? "-en" : "";
+      link.download = `${project.ref}-${safeName}-${config.exportName}${suffix}.png`;
       link.href = dataUrl;
       link.click();
       addRecent({
