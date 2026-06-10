@@ -10,7 +10,7 @@
   "scripts": {
     "dev": "vite dev --host 127.0.0.1",
     "build": "XDG_CONFIG_HOME=.wrangler/config vite build",
-    "build:github-pages": "npm run build && node scripts/build-github-pages.mjs",
+    "build:github-pages": "vite build --config vite.github-pages.config.ts --base ${VITE_BASE_PATH:-/} && node scripts/build-github-pages.mjs",
     "build:dev": "vite build --mode development",
     "preview": "vite preview",
     "ci": "npm run lint && npm run build",

@@ -1,24 +1,23 @@
-import { cp, mkdir, readdir, readFile, rm, writeFile } from "node:fs/promises";
+import { mkdir, readdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 
 const repoRoot = process.cwd();
-const clientDir = path.join(repoRoot, "dist", "client");
 const pagesDir = path.join(repoRoot, "dist", "github-pages");
-const basePath = normalizeBasePath(process.argv[2] ?? process.env.GITHUB_PAGES_BASE_PATH ?? "");
+const basePath = normalizeBasePath(
+  process.argv[2] ?? process.env.GITHUB_PAGES_BASE_PATH ?? process.env.VITE_BASE_PATH ?? "",
+);
 
-await rm(pagesDir, { recursive: true, force: true });
 await mkdir(pagesDir, { recursive: true });
-await cp(path.join(clientDir, "assets"), path.join(pagesDir, "assets"), { recursive: true });
 
 const assets = await readdir(path.join(pagesDir, "assets"));
 const entryScript = assets
-  .filter((file) => /^index-[\w-]+\.js$/.test(file))
+  .filter((file) => /^github-pages-entry-[\w-]+\.js$/.test(file))
   .sort()
   .at(-1);
 const stylesheet = assets.find((file) => /^styles-[\w-]+\.css$/.test(file));
 
 if (!entryScript) {
-  throw new Error("Could not find TanStack client entry asset in dist/client/assets.");
+  throw new Error("Could not find GitHub Pages SPA entry asset in dist/github-pages/assets.");
 }
 
 const packageJson = JSON.parse(await readFile(path.join(repoRoot, "package.json"), "utf8"));
@@ -35,7 +34,9 @@ const html = `<!doctype html>
     ${stylesheet ? `<link rel="stylesheet" href="${assetHref(basePath, stylesheet)}" />` : ""}
     <script type="module" crossorigin src="${assetHref(basePath, entryScript)}"></script>
   </head>
-  <body></body>
+  <body>
+    <div id="root"></div>
+  </body>
 </html>
 `;
 

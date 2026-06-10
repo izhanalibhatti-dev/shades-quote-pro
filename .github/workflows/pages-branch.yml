@@ -34,8 +34,7 @@ jobs:
         run: |
           BASE_PATH="/${GITHUB_REPOSITORY#*/}"
           echo "Building GitHub Pages branch for ${BASE_PATH}"
-          TSS_ROUTER_BASEPATH="${BASE_PATH}" VITE_BASE_PATH="${BASE_PATH}" npm run build
-          node scripts/build-github-pages.mjs "${BASE_PATH}"
+          VITE_BASE_PATH="${BASE_PATH}" npm run build:github-pages
 
       - name: Publish gh-pages branch
         env:
