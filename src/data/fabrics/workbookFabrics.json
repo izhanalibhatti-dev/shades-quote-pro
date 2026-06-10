@@ -13820,11 +13820,11 @@
     "isFallback": false
   },
   {
-    "id": "wb-aqua-fauxwood-white-smooth-white-grain-niagra-grey-grey-wash-grey-nightfall-aqua-fauxwood-aqua-fauxwood-aqua-fauxwood-white-smooth-standard",
+    "id": "wb-aqua-fauxwood-white-smooth-white-grain-niagra-grey-grey-wash-grey-nightfall-aqua-fauxwood-fauxwood-aqua-fauxwood-white-smooth-standard",
     "supplierId": "workbook-aqua-fauxwood",
     "supplierName": "Aqua Fauxwood",
     "company": "Aqua Fauxwood",
-    "blindType": "aqua-fauxwood",
+    "blindType": "fauxwood",
     "productTypeId": "wb-aqua-fauxwood-white-smooth-white-grain-niagra-grey-grey-wash-grey-nightfall",
     "name": "White Smooth",
     "displayName": "White Smooth",
@@ -13834,17 +13834,17 @@
     "pricingSource": "Aqua Fauxwood, White Smooth - White Grain - Niagra - Grey - Grey Wash - Grey Nightfall",
     "pricingReferenceNote": "Internal pricing reference: Aqua Fauxwood.",
     "compatibleBlindTypes": [
-      "aqua-fauxwood"
+      "fauxwood"
     ],
     "selectionKind": "finish",
     "isFallback": false
   },
   {
-    "id": "wb-aqua-fauxwood-white-smooth-white-grain-niagra-grey-grey-wash-grey-nightfall-aqua-fauxwood-aqua-fauxwood-aqua-fauxwood-white-grain-standard",
+    "id": "wb-aqua-fauxwood-white-smooth-white-grain-niagra-grey-grey-wash-grey-nightfall-aqua-fauxwood-fauxwood-aqua-fauxwood-white-grain-standard",
     "supplierId": "workbook-aqua-fauxwood",
     "supplierName": "Aqua Fauxwood",
     "company": "Aqua Fauxwood",
-    "blindType": "aqua-fauxwood",
+    "blindType": "fauxwood",
     "productTypeId": "wb-aqua-fauxwood-white-smooth-white-grain-niagra-grey-grey-wash-grey-nightfall",
     "name": "White Grain",
     "displayName": "White Grain",
@@ -13854,17 +13854,17 @@
     "pricingSource": "Aqua Fauxwood, White Smooth - White Grain - Niagra - Grey - Grey Wash - Grey Nightfall",
     "pricingReferenceNote": "Internal pricing reference: Aqua Fauxwood.",
     "compatibleBlindTypes": [
-      "aqua-fauxwood"
+      "fauxwood"
     ],
     "selectionKind": "finish",
     "isFallback": false
   },
   {
-    "id": "wb-aqua-fauxwood-white-smooth-white-grain-niagra-grey-grey-wash-grey-nightfall-aqua-fauxwood-aqua-fauxwood-aqua-fauxwood-niagra-standard",
+    "id": "wb-aqua-fauxwood-white-smooth-white-grain-niagra-grey-grey-wash-grey-nightfall-aqua-fauxwood-fauxwood-aqua-fauxwood-niagra-standard",
     "supplierId": "workbook-aqua-fauxwood",
     "supplierName": "Aqua Fauxwood",
     "company": "Aqua Fauxwood",
-    "blindType": "aqua-fauxwood",
+    "blindType": "fauxwood",
     "productTypeId": "wb-aqua-fauxwood-white-smooth-white-grain-niagra-grey-grey-wash-grey-nightfall",
     "name": "Niagra",
     "displayName": "Niagra",
@@ -13874,17 +13874,17 @@
     "pricingSource": "Aqua Fauxwood, White Smooth - White Grain - Niagra - Grey - Grey Wash - Grey Nightfall",
     "pricingReferenceNote": "Internal pricing reference: Aqua Fauxwood.",
     "compatibleBlindTypes": [
-      "aqua-fauxwood"
+      "fauxwood"
     ],
     "selectionKind": "finish",
     "isFallback": false
   },
   {
-    "id": "wb-aqua-fauxwood-white-smooth-white-grain-niagra-grey-grey-wash-grey-nightfall-aqua-fauxwood-aqua-fauxwood-aqua-fauxwood-grey-standard",
+    "id": "wb-aqua-fauxwood-white-smooth-white-grain-niagra-grey-grey-wash-grey-nightfall-aqua-fauxwood-fauxwood-aqua-fauxwood-grey-standard",
     "supplierId": "workbook-aqua-fauxwood",
     "supplierName": "Aqua Fauxwood",
     "company": "Aqua Fauxwood",
-    "blindType": "aqua-fauxwood",
+    "blindType": "fauxwood",
     "productTypeId": "wb-aqua-fauxwood-white-smooth-white-grain-niagra-grey-grey-wash-grey-nightfall",
     "name": "Grey",
     "displayName": "Grey",
@@ -13894,17 +13894,17 @@
     "pricingSource": "Aqua Fauxwood, White Smooth - White Grain - Niagra - Grey - Grey Wash - Grey Nightfall",
     "pricingReferenceNote": "Internal pricing reference: Aqua Fauxwood.",
     "compatibleBlindTypes": [
-      "aqua-fauxwood"
+      "fauxwood"
     ],
     "selectionKind": "finish",
     "isFallback": false
   },
   {
-    "id": "wb-aqua-fauxwood-white-smooth-white-grain-niagra-grey-grey-wash-grey-nightfall-aqua-fauxwood-aqua-fauxwood-aqua-fauxwood-grey-wash-standard",
+    "id": "wb-aqua-fauxwood-white-smooth-white-grain-niagra-grey-grey-wash-grey-nightfall-aqua-fauxwood-fauxwood-aqua-fauxwood-grey-wash-standard",
     "supplierId": "workbook-aqua-fauxwood",
     "supplierName": "Aqua Fauxwood",
     "company": "Aqua Fauxwood",
-    "blindType": "aqua-fauxwood",
+    "blindType": "fauxwood",
     "productTypeId": "wb-aqua-fauxwood-white-smooth-white-grain-niagra-grey-grey-wash-grey-nightfall",
     "name": "Grey Wash",
     "displayName": "Grey Wash",
@@ -13914,17 +13914,17 @@
     "pricingSource": "Aqua Fauxwood, White Smooth - White Grain - Niagra - Grey - Grey Wash - Grey Nightfall",
     "pricingReferenceNote": "Internal pricing reference: Aqua Fauxwood.",
     "compatibleBlindTypes": [
-      "aqua-fauxwood"
+      "fauxwood"
     ],
     "selectionKind": "finish",
     "isFallback": false
   },
   {
-    "id": "wb-aqua-fauxwood-white-smooth-white-grain-niagra-grey-grey-wash-grey-nightfall-aqua-fauxwood-aqua-fauxwood-aqua-fauxwood-grey-nightfall-standard",
+    "id": "wb-aqua-fauxwood-white-smooth-white-grain-niagra-grey-grey-wash-grey-nightfall-aqua-fauxwood-fauxwood-aqua-fauxwood-grey-nightfall-standard",
     "supplierId": "workbook-aqua-fauxwood",
     "supplierName": "Aqua Fauxwood",
     "company": "Aqua Fauxwood",
-    "blindType": "aqua-fauxwood",
+    "blindType": "fauxwood",
     "productTypeId": "wb-aqua-fauxwood-white-smooth-white-grain-niagra-grey-grey-wash-grey-nightfall",
     "name": "Grey Nightfall",
     "displayName": "Grey Nightfall",
@@ -13934,17 +13934,17 @@
     "pricingSource": "Aqua Fauxwood, White Smooth - White Grain - Niagra - Grey - Grey Wash - Grey Nightfall",
     "pricingReferenceNote": "Internal pricing reference: Aqua Fauxwood.",
     "compatibleBlindTypes": [
-      "aqua-fauxwood"
+      "fauxwood"
     ],
     "selectionKind": "finish",
     "isFallback": false
   },
   {
-    "id": "wb-arena-fauxwood-band-a-essence-range-arena-fauxwood-arena-fauxwood-arena-fauxwood-anchor-standard",
+    "id": "wb-arena-fauxwood-band-a-essence-range-arena-fauxwood-fauxwood-arena-fauxwood-anchor-standard",
     "supplierId": "workbook-arena-fauxwood",
     "supplierName": "Arena Fauxwood",
     "company": "Arena Fauxwood",
-    "blindType": "arena-fauxwood",
+    "blindType": "fauxwood",
     "productTypeId": "wb-arena-fauxwood-band-a-essence-range",
     "name": "Anchor",
     "displayName": "Anchor",
@@ -13954,17 +13954,17 @@
     "pricingSource": "Arena Fauxwood, Band A - Essence Range",
     "pricingReferenceNote": "Internal pricing reference: Arena Fauxwood, Band A.",
     "compatibleBlindTypes": [
-      "arena-fauxwood"
+      "fauxwood"
     ],
     "selectionKind": "finish",
     "isFallback": false
   },
   {
-    "id": "wb-arena-fauxwood-band-a-essence-range-arena-fauxwood-arena-fauxwood-arena-fauxwood-moonshine-standard",
+    "id": "wb-arena-fauxwood-band-a-essence-range-arena-fauxwood-fauxwood-arena-fauxwood-moonshine-standard",
     "supplierId": "workbook-arena-fauxwood",
     "supplierName": "Arena Fauxwood",
     "company": "Arena Fauxwood",
-    "blindType": "arena-fauxwood",
+    "blindType": "fauxwood",
     "productTypeId": "wb-arena-fauxwood-band-a-essence-range",
     "name": "Moonshine",
     "displayName": "Moonshine",
@@ -13974,17 +13974,17 @@
     "pricingSource": "Arena Fauxwood, Band A - Essence Range",
     "pricingReferenceNote": "Internal pricing reference: Arena Fauxwood, Band A.",
     "compatibleBlindTypes": [
-      "arena-fauxwood"
+      "fauxwood"
     ],
     "selectionKind": "finish",
     "isFallback": false
   },
   {
-    "id": "wb-arena-fauxwood-band-a-essence-range-arena-fauxwood-arena-fauxwood-arena-fauxwood-antique-standard",
+    "id": "wb-arena-fauxwood-band-a-essence-range-arena-fauxwood-fauxwood-arena-fauxwood-antique-standard",
     "supplierId": "workbook-arena-fauxwood",
     "supplierName": "Arena Fauxwood",
     "company": "Arena Fauxwood",
-    "blindType": "arena-fauxwood",
+    "blindType": "fauxwood",
     "productTypeId": "wb-arena-fauxwood-band-a-essence-range",
     "name": "Antique",
     "displayName": "Antique",
@@ -13994,17 +13994,17 @@
     "pricingSource": "Arena Fauxwood, Band A - Essence Range",
     "pricingReferenceNote": "Internal pricing reference: Arena Fauxwood, Band A.",
     "compatibleBlindTypes": [
-      "arena-fauxwood"
+      "fauxwood"
     ],
     "selectionKind": "finish",
     "isFallback": false
   },
   {
-    "id": "wb-arena-fauxwood-band-a-essence-range-arena-fauxwood-arena-fauxwood-arena-fauxwood-raven-black-standard",
+    "id": "wb-arena-fauxwood-band-a-essence-range-arena-fauxwood-fauxwood-arena-fauxwood-raven-black-standard",
     "supplierId": "workbook-arena-fauxwood",
     "supplierName": "Arena Fauxwood",
     "company": "Arena Fauxwood",
-    "blindType": "arena-fauxwood",
+    "blindType": "fauxwood",
     "productTypeId": "wb-arena-fauxwood-band-a-essence-range",
     "name": "Raven Black",
     "displayName": "Raven Black",
@@ -14014,17 +14014,17 @@
     "pricingSource": "Arena Fauxwood, Band A - Essence Range",
     "pricingReferenceNote": "Internal pricing reference: Arena Fauxwood, Band A.",
     "compatibleBlindTypes": [
-      "arena-fauxwood"
+      "fauxwood"
     ],
     "selectionKind": "finish",
     "isFallback": false
   },
   {
-    "id": "wb-arena-fauxwood-band-a-essence-range-arena-fauxwood-arena-fauxwood-arena-fauxwood-canvas-standard",
+    "id": "wb-arena-fauxwood-band-a-essence-range-arena-fauxwood-fauxwood-arena-fauxwood-canvas-standard",
     "supplierId": "workbook-arena-fauxwood",
     "supplierName": "Arena Fauxwood",
     "company": "Arena Fauxwood",
-    "blindType": "arena-fauxwood",
+    "blindType": "fauxwood",
     "productTypeId": "wb-arena-fauxwood-band-a-essence-range",
     "name": "Canvas",
     "displayName": "Canvas",
@@ -14034,17 +14034,17 @@
     "pricingSource": "Arena Fauxwood, Band A - Essence Range",
     "pricingReferenceNote": "Internal pricing reference: Arena Fauxwood, Band A.",
     "compatibleBlindTypes": [
-      "arena-fauxwood"
+      "fauxwood"
     ],
     "selectionKind": "finish",
     "isFallback": false
   },
   {
-    "id": "wb-arena-fauxwood-band-a-essence-range-arena-fauxwood-arena-fauxwood-arena-fauxwood-ultra-white-standard",
+    "id": "wb-arena-fauxwood-band-a-essence-range-arena-fauxwood-fauxwood-arena-fauxwood-ultra-white-standard",
     "supplierId": "workbook-arena-fauxwood",
     "supplierName": "Arena Fauxwood",
     "company": "Arena Fauxwood",
-    "blindType": "arena-fauxwood",
+    "blindType": "fauxwood",
     "productTypeId": "wb-arena-fauxwood-band-a-essence-range",
     "name": "Ultra White",
     "displayName": "Ultra White",
@@ -14054,17 +14054,17 @@
     "pricingSource": "Arena Fauxwood, Band A - Essence Range",
     "pricingReferenceNote": "Internal pricing reference: Arena Fauxwood, Band A.",
     "compatibleBlindTypes": [
-      "arena-fauxwood"
+      "fauxwood"
     ],
     "selectionKind": "finish",
     "isFallback": false
   },
   {
-    "id": "wb-arena-fauxwood-band-a-essence-range-arena-fauxwood-arena-fauxwood-arena-fauxwood-clove-standard",
+    "id": "wb-arena-fauxwood-band-a-essence-range-arena-fauxwood-fauxwood-arena-fauxwood-clove-standard",
     "supplierId": "workbook-arena-fauxwood",
     "supplierName": "Arena Fauxwood",
     "company": "Arena Fauxwood",
-    "blindType": "arena-fauxwood",
+    "blindType": "fauxwood",
     "productTypeId": "wb-arena-fauxwood-band-a-essence-range",
     "name": "Clove",
     "displayName": "Clove",
@@ -14074,17 +14074,17 @@
     "pricingSource": "Arena Fauxwood, Band A - Essence Range",
     "pricingReferenceNote": "Internal pricing reference: Arena Fauxwood, Band A.",
     "compatibleBlindTypes": [
-      "arena-fauxwood"
+      "fauxwood"
     ],
     "selectionKind": "finish",
     "isFallback": false
   },
   {
-    "id": "wb-arena-fauxwood-band-a-essence-range-arena-fauxwood-arena-fauxwood-arena-fauxwood-whicker-standard",
+    "id": "wb-arena-fauxwood-band-a-essence-range-arena-fauxwood-fauxwood-arena-fauxwood-whicker-standard",
     "supplierId": "workbook-arena-fauxwood",
     "supplierName": "Arena Fauxwood",
     "company": "Arena Fauxwood",
-    "blindType": "arena-fauxwood",
+    "blindType": "fauxwood",
     "productTypeId": "wb-arena-fauxwood-band-a-essence-range",
     "name": "Whicker",
     "displayName": "Whicker",
@@ -14094,17 +14094,17 @@
     "pricingSource": "Arena Fauxwood, Band A - Essence Range",
     "pricingReferenceNote": "Internal pricing reference: Arena Fauxwood, Band A.",
     "compatibleBlindTypes": [
-      "arena-fauxwood"
+      "fauxwood"
     ],
     "selectionKind": "finish",
     "isFallback": false
   },
   {
-    "id": "wb-arena-fauxwood-band-a-essence-range-arena-fauxwood-arena-fauxwood-arena-fauxwood-cobble-standard",
+    "id": "wb-arena-fauxwood-band-a-essence-range-arena-fauxwood-fauxwood-arena-fauxwood-cobble-standard",
     "supplierId": "workbook-arena-fauxwood",
     "supplierName": "Arena Fauxwood",
     "company": "Arena Fauxwood",
-    "blindType": "arena-fauxwood",
+    "blindType": "fauxwood",
     "productTypeId": "wb-arena-fauxwood-band-a-essence-range",
     "name": "Cobble",
     "displayName": "Cobble",
@@ -14114,17 +14114,17 @@
     "pricingSource": "Arena Fauxwood, Band A - Essence Range",
     "pricingReferenceNote": "Internal pricing reference: Arena Fauxwood, Band A.",
     "compatibleBlindTypes": [
-      "arena-fauxwood"
+      "fauxwood"
     ],
     "selectionKind": "finish",
     "isFallback": false
   },
   {
-    "id": "wb-arena-fauxwood-band-a-essence-range-arena-fauxwood-arena-fauxwood-arena-fauxwood-whisper-standard",
+    "id": "wb-arena-fauxwood-band-a-essence-range-arena-fauxwood-fauxwood-arena-fauxwood-whisper-standard",
     "supplierId": "workbook-arena-fauxwood",
     "supplierName": "Arena Fauxwood",
     "company": "Arena Fauxwood",
-    "blindType": "arena-fauxwood",
+    "blindType": "fauxwood",
     "productTypeId": "wb-arena-fauxwood-band-a-essence-range",
     "name": "Whisper",
     "displayName": "Whisper",
@@ -14134,17 +14134,17 @@
     "pricingSource": "Arena Fauxwood, Band A - Essence Range",
     "pricingReferenceNote": "Internal pricing reference: Arena Fauxwood, Band A.",
     "compatibleBlindTypes": [
-      "arena-fauxwood"
+      "fauxwood"
     ],
     "selectionKind": "finish",
     "isFallback": false
   },
   {
-    "id": "wb-arena-fauxwood-band-a-essence-range-arena-fauxwood-arena-fauxwood-arena-fauxwood-glow-white-standard",
+    "id": "wb-arena-fauxwood-band-a-essence-range-arena-fauxwood-fauxwood-arena-fauxwood-glow-white-standard",
     "supplierId": "workbook-arena-fauxwood",
     "supplierName": "Arena Fauxwood",
     "company": "Arena Fauxwood",
-    "blindType": "arena-fauxwood",
+    "blindType": "fauxwood",
     "productTypeId": "wb-arena-fauxwood-band-a-essence-range",
     "name": "Glow White",
     "displayName": "Glow White",
@@ -14154,17 +14154,17 @@
     "pricingSource": "Arena Fauxwood, Band A - Essence Range",
     "pricingReferenceNote": "Internal pricing reference: Arena Fauxwood, Band A.",
     "compatibleBlindTypes": [
-      "arena-fauxwood"
+      "fauxwood"
     ],
     "selectionKind": "finish",
     "isFallback": false
   },
   {
-    "id": "wb-arena-fauxwood-band-a-essence-range-arena-fauxwood-arena-fauxwood-arena-fauxwood-white-oak-standard",
+    "id": "wb-arena-fauxwood-band-a-essence-range-arena-fauxwood-fauxwood-arena-fauxwood-white-oak-standard",
     "supplierId": "workbook-arena-fauxwood",
     "supplierName": "Arena Fauxwood",
     "company": "Arena Fauxwood",
-    "blindType": "arena-fauxwood",
+    "blindType": "fauxwood",
     "productTypeId": "wb-arena-fauxwood-band-a-essence-range",
     "name": "White Oak",
     "displayName": "White Oak",
@@ -14174,17 +14174,17 @@
     "pricingSource": "Arena Fauxwood, Band A - Essence Range",
     "pricingReferenceNote": "Internal pricing reference: Arena Fauxwood, Band A.",
     "compatibleBlindTypes": [
-      "arena-fauxwood"
+      "fauxwood"
     ],
     "selectionKind": "finish",
     "isFallback": false
   },
   {
-    "id": "wb-arena-fauxwood-band-a-essence-range-arena-fauxwood-arena-fauxwood-arena-fauxwood-graphite-grey-standard",
+    "id": "wb-arena-fauxwood-band-a-essence-range-arena-fauxwood-fauxwood-arena-fauxwood-graphite-grey-standard",
     "supplierId": "workbook-arena-fauxwood",
     "supplierName": "Arena Fauxwood",
     "company": "Arena Fauxwood",
-    "blindType": "arena-fauxwood",
+    "blindType": "fauxwood",
     "productTypeId": "wb-arena-fauxwood-band-a-essence-range",
     "name": "Graphite Grey",
     "displayName": "Graphite Grey",
@@ -14194,17 +14194,17 @@
     "pricingSource": "Arena Fauxwood, Band A - Essence Range",
     "pricingReferenceNote": "Internal pricing reference: Arena Fauxwood, Band A.",
     "compatibleBlindTypes": [
-      "arena-fauxwood"
+      "fauxwood"
     ],
     "selectionKind": "finish",
     "isFallback": false
   },
   {
-    "id": "wb-arena-fauxwood-band-a-essence-range-arena-fauxwood-arena-fauxwood-arena-fauxwood-zenith-white-standard",
+    "id": "wb-arena-fauxwood-band-a-essence-range-arena-fauxwood-fauxwood-arena-fauxwood-zenith-white-standard",
     "supplierId": "workbook-arena-fauxwood",
     "supplierName": "Arena Fauxwood",
     "company": "Arena Fauxwood",
-    "blindType": "arena-fauxwood",
+    "blindType": "fauxwood",
     "productTypeId": "wb-arena-fauxwood-band-a-essence-range",
     "name": "Zenith White",
     "displayName": "Zenith White",
@@ -14214,17 +14214,17 @@
     "pricingSource": "Arena Fauxwood, Band A - Essence Range",
     "pricingReferenceNote": "Internal pricing reference: Arena Fauxwood, Band A.",
     "compatibleBlindTypes": [
-      "arena-fauxwood"
+      "fauxwood"
     ],
     "selectionKind": "finish",
     "isFallback": false
   },
   {
-    "id": "wb-arena-fauxwood-band-a-essence-range-arena-fauxwood-arena-fauxwood-arena-fauxwood-harbour-grey-standard",
+    "id": "wb-arena-fauxwood-band-a-essence-range-arena-fauxwood-fauxwood-arena-fauxwood-harbour-grey-standard",
     "supplierId": "workbook-arena-fauxwood",
     "supplierName": "Arena Fauxwood",
     "company": "Arena Fauxwood",
-    "blindType": "arena-fauxwood",
+    "blindType": "fauxwood",
     "productTypeId": "wb-arena-fauxwood-band-a-essence-range",
     "name": "Harbour Grey",
     "displayName": "Harbour Grey",
@@ -14234,17 +14234,17 @@
     "pricingSource": "Arena Fauxwood, Band A - Essence Range",
     "pricingReferenceNote": "Internal pricing reference: Arena Fauxwood, Band A.",
     "compatibleBlindTypes": [
-      "arena-fauxwood"
+      "fauxwood"
     ],
     "selectionKind": "finish",
     "isFallback": false
   },
   {
-    "id": "wb-arena-fauxwood-band-b-urban-range-arena-fauxwood-arena-fauxwood-arena-fauxwood-dusk-standard",
+    "id": "wb-arena-fauxwood-band-b-urban-range-arena-fauxwood-fauxwood-arena-fauxwood-dusk-standard",
     "supplierId": "workbook-arena-fauxwood",
     "supplierName": "Arena Fauxwood",
     "company": "Arena Fauxwood",
-    "blindType": "arena-fauxwood",
+    "blindType": "fauxwood",
     "productTypeId": "wb-arena-fauxwood-band-b-urban-range",
     "name": "Dusk",
     "displayName": "Dusk",
@@ -14254,17 +14254,17 @@
     "pricingSource": "Arena Fauxwood, Band B - Urban Range",
     "pricingReferenceNote": "Internal pricing reference: Arena Fauxwood, Band B.",
     "compatibleBlindTypes": [
-      "arena-fauxwood"
+      "fauxwood"
     ],
     "selectionKind": "finish",
     "isFallback": false
   },
   {
-    "id": "wb-arena-fauxwood-band-b-urban-range-arena-fauxwood-arena-fauxwood-arena-fauxwood-halcyon-standard",
+    "id": "wb-arena-fauxwood-band-b-urban-range-arena-fauxwood-fauxwood-arena-fauxwood-halcyon-standard",
     "supplierId": "workbook-arena-fauxwood",
     "supplierName": "Arena Fauxwood",
     "company": "Arena Fauxwood",
-    "blindType": "arena-fauxwood",
+    "blindType": "fauxwood",
     "productTypeId": "wb-arena-fauxwood-band-b-urban-range",
     "name": "Halcyon",
     "displayName": "Halcyon",
@@ -14274,17 +14274,17 @@
     "pricingSource": "Arena Fauxwood, Band B - Urban Range",
     "pricingReferenceNote": "Internal pricing reference: Arena Fauxwood, Band B.",
     "compatibleBlindTypes": [
-      "arena-fauxwood"
+      "fauxwood"
     ],
     "selectionKind": "finish",
     "isFallback": false
   },
   {
-    "id": "wb-arena-fauxwood-band-b-urban-range-arena-fauxwood-arena-fauxwood-arena-fauxwood-lilly-white-standard",
+    "id": "wb-arena-fauxwood-band-b-urban-range-arena-fauxwood-fauxwood-arena-fauxwood-lilly-white-standard",
     "supplierId": "workbook-arena-fauxwood",
     "supplierName": "Arena Fauxwood",
     "company": "Arena Fauxwood",
-    "blindType": "arena-fauxwood",
+    "blindType": "fauxwood",
     "productTypeId": "wb-arena-fauxwood-band-b-urban-range",
     "name": "Lilly White",
     "displayName": "Lilly White",
@@ -14294,17 +14294,17 @@
     "pricingSource": "Arena Fauxwood, Band B - Urban Range",
     "pricingReferenceNote": "Internal pricing reference: Arena Fauxwood, Band B.",
     "compatibleBlindTypes": [
-      "arena-fauxwood"
+      "fauxwood"
     ],
     "selectionKind": "finish",
     "isFallback": false
   },
   {
-    "id": "wb-arena-fauxwood-band-b-urban-range-arena-fauxwood-arena-fauxwood-arena-fauxwood-midnight-standard",
+    "id": "wb-arena-fauxwood-band-b-urban-range-arena-fauxwood-fauxwood-arena-fauxwood-midnight-standard",
     "supplierId": "workbook-arena-fauxwood",
     "supplierName": "Arena Fauxwood",
     "company": "Arena Fauxwood",
-    "blindType": "arena-fauxwood",
+    "blindType": "fauxwood",
     "productTypeId": "wb-arena-fauxwood-band-b-urban-range",
     "name": "Midnight",
     "displayName": "Midnight",
@@ -14314,17 +14314,17 @@
     "pricingSource": "Arena Fauxwood, Band B - Urban Range",
     "pricingReferenceNote": "Internal pricing reference: Arena Fauxwood, Band B.",
     "compatibleBlindTypes": [
-      "arena-fauxwood"
+      "fauxwood"
     ],
     "selectionKind": "finish",
     "isFallback": false
   },
   {
-    "id": "wb-arena-fauxwood-band-b-urban-range-arena-fauxwood-arena-fauxwood-arena-fauxwood-pewter-standard",
+    "id": "wb-arena-fauxwood-band-b-urban-range-arena-fauxwood-fauxwood-arena-fauxwood-pewter-standard",
     "supplierId": "workbook-arena-fauxwood",
     "supplierName": "Arena Fauxwood",
     "company": "Arena Fauxwood",
-    "blindType": "arena-fauxwood",
+    "blindType": "fauxwood",
     "productTypeId": "wb-arena-fauxwood-band-b-urban-range",
     "name": "Pewter",
     "displayName": "Pewter",
@@ -14334,17 +14334,17 @@
     "pricingSource": "Arena Fauxwood, Band B - Urban Range",
     "pricingReferenceNote": "Internal pricing reference: Arena Fauxwood, Band B.",
     "compatibleBlindTypes": [
-      "arena-fauxwood"
+      "fauxwood"
     ],
     "selectionKind": "finish",
     "isFallback": false
   },
   {
-    "id": "wb-arena-fauxwood-band-b-urban-range-arena-fauxwood-arena-fauxwood-arena-fauxwood-radiance-white-standard",
+    "id": "wb-arena-fauxwood-band-b-urban-range-arena-fauxwood-fauxwood-arena-fauxwood-radiance-white-standard",
     "supplierId": "workbook-arena-fauxwood",
     "supplierName": "Arena Fauxwood",
     "company": "Arena Fauxwood",
-    "blindType": "arena-fauxwood",
+    "blindType": "fauxwood",
     "productTypeId": "wb-arena-fauxwood-band-b-urban-range",
     "name": "Radiance White",
     "displayName": "Radiance White",
@@ -14354,17 +14354,17 @@
     "pricingSource": "Arena Fauxwood, Band B - Urban Range",
     "pricingReferenceNote": "Internal pricing reference: Arena Fauxwood, Band B.",
     "compatibleBlindTypes": [
-      "arena-fauxwood"
+      "fauxwood"
     ],
     "selectionKind": "finish",
     "isFallback": false
   },
   {
-    "id": "wb-arena-fauxwood-band-b-urban-range-arena-fauxwood-arena-fauxwood-arena-fauxwood-seal-standard",
+    "id": "wb-arena-fauxwood-band-b-urban-range-arena-fauxwood-fauxwood-arena-fauxwood-seal-standard",
     "supplierId": "workbook-arena-fauxwood",
     "supplierName": "Arena Fauxwood",
     "company": "Arena Fauxwood",
-    "blindType": "arena-fauxwood",
+    "blindType": "fauxwood",
     "productTypeId": "wb-arena-fauxwood-band-b-urban-range",
     "name": "Seal",
     "displayName": "Seal",
@@ -14374,17 +14374,17 @@
     "pricingSource": "Arena Fauxwood, Band B - Urban Range",
     "pricingReferenceNote": "Internal pricing reference: Arena Fauxwood, Band B.",
     "compatibleBlindTypes": [
-      "arena-fauxwood"
+      "fauxwood"
     ],
     "selectionKind": "finish",
     "isFallback": false
   },
   {
-    "id": "wb-arena-fauxwood-band-c-expressions-range-arena-fauxwood-arena-fauxwood-arena-fauxwood-astral-standard",
+    "id": "wb-arena-fauxwood-band-c-expressions-range-arena-fauxwood-fauxwood-arena-fauxwood-astral-standard",
     "supplierId": "workbook-arena-fauxwood",
     "supplierName": "Arena Fauxwood",
     "company": "Arena Fauxwood",
-    "blindType": "arena-fauxwood",
+    "blindType": "fauxwood",
     "productTypeId": "wb-arena-fauxwood-band-c-expressions-range",
     "name": "Astral",
     "displayName": "Astral",
@@ -14394,17 +14394,17 @@
     "pricingSource": "Arena Fauxwood, Band C - Expressions Range",
     "pricingReferenceNote": "Internal pricing reference: Arena Fauxwood, Band C.",
     "compatibleBlindTypes": [
-      "arena-fauxwood"
+      "fauxwood"
     ],
     "selectionKind": "finish",
     "isFallback": false
   },
   {
-    "id": "wb-arena-fauxwood-band-c-expressions-range-arena-fauxwood-arena-fauxwood-arena-fauxwood-medium-oak-standard",
+    "id": "wb-arena-fauxwood-band-c-expressions-range-arena-fauxwood-fauxwood-arena-fauxwood-medium-oak-standard",
     "supplierId": "workbook-arena-fauxwood",
     "supplierName": "Arena Fauxwood",
     "company": "Arena Fauxwood",
-    "blindType": "arena-fauxwood",
+    "blindType": "fauxwood",
     "productTypeId": "wb-arena-fauxwood-band-c-expressions-range",
     "name": "Medium Oak",
     "displayName": "Medium Oak",
@@ -14414,17 +14414,17 @@
     "pricingSource": "Arena Fauxwood, Band C - Expressions Range",
     "pricingReferenceNote": "Internal pricing reference: Arena Fauxwood, Band C.",
     "compatibleBlindTypes": [
-      "arena-fauxwood"
+      "fauxwood"
     ],
     "selectionKind": "finish",
     "isFallback": false
   },
   {
-    "id": "wb-arena-fauxwood-band-c-expressions-range-arena-fauxwood-arena-fauxwood-arena-fauxwood-autumn-gold-standard",
+    "id": "wb-arena-fauxwood-band-c-expressions-range-arena-fauxwood-fauxwood-arena-fauxwood-autumn-gold-standard",
     "supplierId": "workbook-arena-fauxwood",
     "supplierName": "Arena Fauxwood",
     "company": "Arena Fauxwood",
-    "blindType": "arena-fauxwood",
+    "blindType": "fauxwood",
     "productTypeId": "wb-arena-fauxwood-band-c-expressions-range",
     "name": "Autumn Gold",
     "displayName": "Autumn Gold",
@@ -14434,17 +14434,17 @@
     "pricingSource": "Arena Fauxwood, Band C - Expressions Range",
     "pricingReferenceNote": "Internal pricing reference: Arena Fauxwood, Band C.",
     "compatibleBlindTypes": [
-      "arena-fauxwood"
+      "fauxwood"
     ],
     "selectionKind": "finish",
     "isFallback": false
   },
   {
-    "id": "wb-arena-fauxwood-band-c-expressions-range-arena-fauxwood-arena-fauxwood-arena-fauxwood-misty-grey-standard",
+    "id": "wb-arena-fauxwood-band-c-expressions-range-arena-fauxwood-fauxwood-arena-fauxwood-misty-grey-standard",
     "supplierId": "workbook-arena-fauxwood",
     "supplierName": "Arena Fauxwood",
     "company": "Arena Fauxwood",
-    "blindType": "arena-fauxwood",
+    "blindType": "fauxwood",
     "productTypeId": "wb-arena-fauxwood-band-c-expressions-range",
     "name": "Misty Grey",
     "displayName": "Misty Grey",
@@ -14454,17 +14454,17 @@
     "pricingSource": "Arena Fauxwood, Band C - Expressions Range",
     "pricingReferenceNote": "Internal pricing reference: Arena Fauxwood, Band C.",
     "compatibleBlindTypes": [
-      "arena-fauxwood"
+      "fauxwood"
     ],
     "selectionKind": "finish",
     "isFallback": false
   },
   {
-    "id": "wb-arena-fauxwood-band-c-expressions-range-arena-fauxwood-arena-fauxwood-arena-fauxwood-chiffon-standard",
+    "id": "wb-arena-fauxwood-band-c-expressions-range-arena-fauxwood-fauxwood-arena-fauxwood-chiffon-standard",
     "supplierId": "workbook-arena-fauxwood",
     "supplierName": "Arena Fauxwood",
     "company": "Arena Fauxwood",
-    "blindType": "arena-fauxwood",
+    "blindType": "fauxwood",
     "productTypeId": "wb-arena-fauxwood-band-c-expressions-range",
     "name": "Chiffon",
     "displayName": "Chiffon",
@@ -14474,17 +14474,17 @@
     "pricingSource": "Arena Fauxwood, Band C - Expressions Range",
     "pricingReferenceNote": "Internal pricing reference: Arena Fauxwood, Band C.",
     "compatibleBlindTypes": [
-      "arena-fauxwood"
+      "fauxwood"
     ],
     "selectionKind": "finish",
     "isFallback": false
   },
   {
-    "id": "wb-arena-fauxwood-band-c-expressions-range-arena-fauxwood-arena-fauxwood-arena-fauxwood-rustic-oak-standard",
+    "id": "wb-arena-fauxwood-band-c-expressions-range-arena-fauxwood-fauxwood-arena-fauxwood-rustic-oak-standard",
     "supplierId": "workbook-arena-fauxwood",
     "supplierName": "Arena Fauxwood",
     "company": "Arena Fauxwood",
-    "blindType": "arena-fauxwood",
+    "blindType": "fauxwood",
     "productTypeId": "wb-arena-fauxwood-band-c-expressions-range",
     "name": "Rustic Oak",
     "displayName": "Rustic Oak",
@@ -14494,17 +14494,17 @@
     "pricingSource": "Arena Fauxwood, Band C - Expressions Range",
     "pricingReferenceNote": "Internal pricing reference: Arena Fauxwood, Band C.",
     "compatibleBlindTypes": [
-      "arena-fauxwood"
+      "fauxwood"
     ],
     "selectionKind": "finish",
     "isFallback": false
   },
   {
-    "id": "wb-arena-fauxwood-band-c-expressions-range-arena-fauxwood-arena-fauxwood-arena-fauxwood-cirrus-standard",
+    "id": "wb-arena-fauxwood-band-c-expressions-range-arena-fauxwood-fauxwood-arena-fauxwood-cirrus-standard",
     "supplierId": "workbook-arena-fauxwood",
     "supplierName": "Arena Fauxwood",
     "company": "Arena Fauxwood",
-    "blindType": "arena-fauxwood",
+    "blindType": "fauxwood",
     "productTypeId": "wb-arena-fauxwood-band-c-expressions-range",
     "name": "Cirrus",
     "displayName": "Cirrus",
@@ -14514,17 +14514,17 @@
     "pricingSource": "Arena Fauxwood, Band C - Expressions Range",
     "pricingReferenceNote": "Internal pricing reference: Arena Fauxwood, Band C.",
     "compatibleBlindTypes": [
-      "arena-fauxwood"
+      "fauxwood"
     ],
     "selectionKind": "finish",
     "isFallback": false
   },
   {
-    "id": "wb-arena-fauxwood-band-c-expressions-range-arena-fauxwood-arena-fauxwood-arena-fauxwood-snow-standard",
+    "id": "wb-arena-fauxwood-band-c-expressions-range-arena-fauxwood-fauxwood-arena-fauxwood-snow-standard",
     "supplierId": "workbook-arena-fauxwood",
     "supplierName": "Arena Fauxwood",
     "company": "Arena Fauxwood",
-    "blindType": "arena-fauxwood",
+    "blindType": "fauxwood",
     "productTypeId": "wb-arena-fauxwood-band-c-expressions-range",
     "name": "Snow",
     "displayName": "Snow",
@@ -14534,17 +14534,17 @@
     "pricingSource": "Arena Fauxwood, Band C - Expressions Range",
     "pricingReferenceNote": "Internal pricing reference: Arena Fauxwood, Band C.",
     "compatibleBlindTypes": [
-      "arena-fauxwood"
+      "fauxwood"
     ],
     "selectionKind": "finish",
     "isFallback": false
   },
   {
-    "id": "wb-arena-fauxwood-band-c-expressions-range-arena-fauxwood-arena-fauxwood-arena-fauxwood-flint-standard",
+    "id": "wb-arena-fauxwood-band-c-expressions-range-arena-fauxwood-fauxwood-arena-fauxwood-flint-standard",
     "supplierId": "workbook-arena-fauxwood",
     "supplierName": "Arena Fauxwood",
     "company": "Arena Fauxwood",
-    "blindType": "arena-fauxwood",
+    "blindType": "fauxwood",
     "productTypeId": "wb-arena-fauxwood-band-c-expressions-range",
     "name": "Flint",
     "displayName": "Flint",
@@ -14554,17 +14554,17 @@
     "pricingSource": "Arena Fauxwood, Band C - Expressions Range",
     "pricingReferenceNote": "Internal pricing reference: Arena Fauxwood, Band C.",
     "compatibleBlindTypes": [
-      "arena-fauxwood"
+      "fauxwood"
     ],
     "selectionKind": "finish",
     "isFallback": false
   },
   {
-    "id": "wb-arena-fauxwood-band-c-expressions-range-arena-fauxwood-arena-fauxwood-arena-fauxwood-griege-standard",
+    "id": "wb-arena-fauxwood-band-c-expressions-range-arena-fauxwood-fauxwood-arena-fauxwood-griege-standard",
     "supplierId": "workbook-arena-fauxwood",
     "supplierName": "Arena Fauxwood",
     "company": "Arena Fauxwood",
-    "blindType": "arena-fauxwood",
+    "blindType": "fauxwood",
     "productTypeId": "wb-arena-fauxwood-band-c-expressions-range",
     "name": "Griege",
     "displayName": "Griege",
@@ -14574,17 +14574,17 @@
     "pricingSource": "Arena Fauxwood, Band C - Expressions Range",
     "pricingReferenceNote": "Internal pricing reference: Arena Fauxwood, Band C.",
     "compatibleBlindTypes": [
-      "arena-fauxwood"
+      "fauxwood"
     ],
     "selectionKind": "finish",
     "isFallback": false
   },
   {
-    "id": "wb-arena-fauxwood-band-c-expressions-range-arena-fauxwood-arena-fauxwood-arena-fauxwood-haze-standard",
+    "id": "wb-arena-fauxwood-band-c-expressions-range-arena-fauxwood-fauxwood-arena-fauxwood-haze-standard",
     "supplierId": "workbook-arena-fauxwood",
     "supplierName": "Arena Fauxwood",
     "company": "Arena Fauxwood",
-    "blindType": "arena-fauxwood",
+    "blindType": "fauxwood",
     "productTypeId": "wb-arena-fauxwood-band-c-expressions-range",
     "name": "Haze",
     "displayName": "Haze",
@@ -14594,17 +14594,17 @@
     "pricingSource": "Arena Fauxwood, Band C - Expressions Range",
     "pricingReferenceNote": "Internal pricing reference: Arena Fauxwood, Band C.",
     "compatibleBlindTypes": [
-      "arena-fauxwood"
+      "fauxwood"
     ],
     "selectionKind": "finish",
     "isFallback": false
   },
   {
-    "id": "wb-arena-fauxwood-band-d-expressions-range-highshine-white-cool-white-arena-fauxwood-arena-fauxwood-arena-fauxwood-highshine-white-any",
+    "id": "wb-arena-fauxwood-band-d-expressions-range-highshine-white-cool-white-arena-fauxwood-fauxwood-arena-fauxwood-highshine-white-any",
     "supplierId": "workbook-arena-fauxwood",
     "supplierName": "Arena Fauxwood",
     "company": "Arena Fauxwood",
-    "blindType": "arena-fauxwood",
+    "blindType": "fauxwood",
     "productTypeId": "wb-arena-fauxwood-band-d-expressions-range-highshine-white-cool-white",
     "name": "Highshine White",
     "displayName": "Highshine White",
@@ -14614,17 +14614,17 @@
     "pricingSource": "Arena Fauxwood, Band D - Expressions Range (Highshine White & Cool White)",
     "pricingReferenceNote": "Internal pricing reference: Arena Fauxwood, Band D.",
     "compatibleBlindTypes": [
-      "arena-fauxwood"
+      "fauxwood"
     ],
     "selectionKind": "finish",
     "isFallback": false
   },
   {
-    "id": "wb-arena-fauxwood-band-d-expressions-range-highshine-white-cool-white-arena-fauxwood-arena-fauxwood-arena-fauxwood-cool-white-any",
+    "id": "wb-arena-fauxwood-band-d-expressions-range-highshine-white-cool-white-arena-fauxwood-fauxwood-arena-fauxwood-cool-white-any",
     "supplierId": "workbook-arena-fauxwood",
     "supplierName": "Arena Fauxwood",
     "company": "Arena Fauxwood",
-    "blindType": "arena-fauxwood",
+    "blindType": "fauxwood",
     "productTypeId": "wb-arena-fauxwood-band-d-expressions-range-highshine-white-cool-white",
     "name": "Cool White",
     "displayName": "Cool White",
@@ -14634,7 +14634,7 @@
     "pricingSource": "Arena Fauxwood, Band D - Expressions Range (Highshine White & Cool White)",
     "pricingReferenceNote": "Internal pricing reference: Arena Fauxwood, Band D.",
     "compatibleBlindTypes": [
-      "arena-fauxwood"
+      "fauxwood"
     ],
     "selectionKind": "finish",
     "isFallback": false
@@ -26140,91 +26140,6 @@
     "isFallback": false
   },
   {
-    "id": "wb-allusion-horizon-band-a",
-    "supplierId": "workbook-workbook-pricing",
-    "supplierName": "Workbook Pricing",
-    "productTypeId": "wb-allusion-horizon",
-    "name": "Band A",
-    "displayName": "Band A",
-    "band": "A",
-    "source": "references/alpine Trade Price working (1).xlsx::Allusion",
-    "pricingSource": "Allusion, Horizon",
-    "pricingReferenceNote": "Internal pricing reference: Workbook Pricing, Band A. Pricing source: Allusion, Horizon.",
-    "compatibleBlindTypes": [
-      "allusion"
-    ],
-    "selectionKind": "pricingBandFallback",
-    "isFallback": true
-  },
-  {
-    "id": "wb-allusion-shadow-band-c",
-    "supplierId": "workbook-workbook-pricing",
-    "supplierName": "Workbook Pricing",
-    "productTypeId": "wb-allusion-shadow",
-    "name": "Band C",
-    "displayName": "Band C",
-    "band": "C",
-    "source": "references/alpine Trade Price working (1).xlsx::Allusion",
-    "pricingSource": "Allusion, Shadow",
-    "pricingReferenceNote": "Internal pricing reference: Workbook Pricing, Band C. Pricing source: Allusion, Shadow.",
-    "compatibleBlindTypes": [
-      "allusion"
-    ],
-    "selectionKind": "pricingBandFallback",
-    "isFallback": true
-  },
-  {
-    "id": "wb-allusion-vista-fr-natural-band-b",
-    "supplierId": "workbook-workbook-pricing",
-    "supplierName": "Workbook Pricing",
-    "productTypeId": "wb-allusion-vista-fr-natural",
-    "name": "Band B",
-    "displayName": "Band B",
-    "band": "B",
-    "source": "references/alpine Trade Price working (1).xlsx::Allusion",
-    "pricingSource": "Allusion, Vista FR - Natural",
-    "pricingReferenceNote": "Internal pricing reference: Workbook Pricing, Band B. Pricing source: Allusion, Vista FR - Natural.",
-    "compatibleBlindTypes": [
-      "allusion"
-    ],
-    "selectionKind": "pricingBandFallback",
-    "isFallback": true
-  },
-  {
-    "id": "wb-aluminium-venetians-brushed-filtra-caruso-woodline-stripe-hammered-textured-premium-metalic-standard",
-    "supplierId": "workbook-workbook-pricing",
-    "supplierName": "Workbook Pricing",
-    "productTypeId": "wb-aluminium-venetians-brushed-filtra-caruso-woodline-stripe-hammered-textured-premium-metalic",
-    "name": "Standard",
-    "displayName": "Standard",
-    "band": "Standard",
-    "source": "references/alpine Trade Price working (1).xlsx::Aluminium Venetians",
-    "pricingSource": "Aluminium Venetians, Brushed - Filtra - Caruso - Woodline - Stripe - Hammered - Textured - Premium Metalic",
-    "pricingReferenceNote": "Internal pricing reference: Workbook Pricing. Pricing source: Aluminium Venetians, Brushed - Filtra - Caruso - Woodline - Stripe - Hammered - Textured - Premium Metalic.",
-    "compatibleBlindTypes": [
-      "aluminium-venetian"
-    ],
-    "selectionKind": "pricingBandFallback",
-    "isFallback": true
-  },
-  {
-    "id": "wb-aluminium-venetians-plain-metallic-standard",
-    "supplierId": "workbook-workbook-pricing",
-    "supplierName": "Workbook Pricing",
-    "productTypeId": "wb-aluminium-venetians-plain-metallic",
-    "name": "Standard",
-    "displayName": "Standard",
-    "band": "Standard",
-    "source": "references/alpine Trade Price working (1).xlsx::Aluminium Venetians",
-    "pricingSource": "Aluminium Venetians, Plain -Metallic",
-    "pricingReferenceNote": "Internal pricing reference: Workbook Pricing. Pricing source: Aluminium Venetians, Plain -Metallic.",
-    "compatibleBlindTypes": [
-      "aluminium-venetian"
-    ],
-    "selectionKind": "pricingBandFallback",
-    "isFallback": true
-  },
-  {
     "id": "wb-aqua-fauxwood-price-with-tape-standard",
     "supplierId": "workbook-workbook-pricing",
     "supplierName": "Workbook Pricing",
@@ -26236,92 +26151,7 @@
     "pricingSource": "Aqua Fauxwood, PRICE WITH TAPE",
     "pricingReferenceNote": "Internal pricing reference: Workbook Pricing. Pricing source: Aqua Fauxwood, PRICE WITH TAPE.",
     "compatibleBlindTypes": [
-      "aqua-fauxwood"
-    ],
-    "selectionKind": "pricingBandFallback",
-    "isFallback": true
-  },
-  {
-    "id": "wb-aqua-fauxwood-white-smooth-white-grain-niagra-grey-grey-wash-grey-nightfall-standard",
-    "supplierId": "workbook-workbook-pricing",
-    "supplierName": "Workbook Pricing",
-    "productTypeId": "wb-aqua-fauxwood-white-smooth-white-grain-niagra-grey-grey-wash-grey-nightfall",
-    "name": "Standard",
-    "displayName": "Standard",
-    "band": "Standard",
-    "source": "references/alpine Trade Price working (1).xlsx::Aqua Fauxwood",
-    "pricingSource": "Aqua Fauxwood, White Smooth - White Grain - Niagra - Grey - Grey Wash - Grey Nightfall",
-    "pricingReferenceNote": "Internal pricing reference: Workbook Pricing. Pricing source: Aqua Fauxwood, White Smooth - White Grain - Niagra - Grey - Grey Wash - Grey Nightfall.",
-    "compatibleBlindTypes": [
-      "aqua-fauxwood"
-    ],
-    "selectionKind": "pricingBandFallback",
-    "isFallback": true
-  },
-  {
-    "id": "wb-arena-fauxwood-band-a-essence-range-standard",
-    "supplierId": "workbook-workbook-pricing",
-    "supplierName": "Workbook Pricing",
-    "productTypeId": "wb-arena-fauxwood-band-a-essence-range",
-    "name": "Standard",
-    "displayName": "Standard",
-    "band": "Standard",
-    "source": "references/alpine Trade Price working (1).xlsx::Arena Fauxwood",
-    "pricingSource": "Arena Fauxwood, Band A - Essence Range",
-    "pricingReferenceNote": "Internal pricing reference: Workbook Pricing. Pricing source: Arena Fauxwood, Band A - Essence Range.",
-    "compatibleBlindTypes": [
-      "arena-fauxwood"
-    ],
-    "selectionKind": "pricingBandFallback",
-    "isFallback": true
-  },
-  {
-    "id": "wb-arena-fauxwood-band-b-urban-range-standard",
-    "supplierId": "workbook-workbook-pricing",
-    "supplierName": "Workbook Pricing",
-    "productTypeId": "wb-arena-fauxwood-band-b-urban-range",
-    "name": "Standard",
-    "displayName": "Standard",
-    "band": "Standard",
-    "source": "references/alpine Trade Price working (1).xlsx::Arena Fauxwood",
-    "pricingSource": "Arena Fauxwood, Band B - Urban Range",
-    "pricingReferenceNote": "Internal pricing reference: Workbook Pricing. Pricing source: Arena Fauxwood, Band B - Urban Range.",
-    "compatibleBlindTypes": [
-      "arena-fauxwood"
-    ],
-    "selectionKind": "pricingBandFallback",
-    "isFallback": true
-  },
-  {
-    "id": "wb-arena-fauxwood-band-c-expressions-range-standard",
-    "supplierId": "workbook-workbook-pricing",
-    "supplierName": "Workbook Pricing",
-    "productTypeId": "wb-arena-fauxwood-band-c-expressions-range",
-    "name": "Standard",
-    "displayName": "Standard",
-    "band": "Standard",
-    "source": "references/alpine Trade Price working (1).xlsx::Arena Fauxwood",
-    "pricingSource": "Arena Fauxwood, Band C - Expressions Range",
-    "pricingReferenceNote": "Internal pricing reference: Workbook Pricing. Pricing source: Arena Fauxwood, Band C - Expressions Range.",
-    "compatibleBlindTypes": [
-      "arena-fauxwood"
-    ],
-    "selectionKind": "pricingBandFallback",
-    "isFallback": true
-  },
-  {
-    "id": "wb-arena-fauxwood-band-d-expressions-range-highshine-white-cool-white-band-any",
-    "supplierId": "workbook-workbook-pricing",
-    "supplierName": "Workbook Pricing",
-    "productTypeId": "wb-arena-fauxwood-band-d-expressions-range-highshine-white-cool-white",
-    "name": "Band ANY",
-    "displayName": "Band ANY",
-    "band": "ANY",
-    "source": "references/alpine Trade Price working (1).xlsx::Arena Fauxwood",
-    "pricingSource": "Arena Fauxwood, Band D - Expressions Range (Highshine White & Cool White)",
-    "pricingReferenceNote": "Internal pricing reference: Workbook Pricing, Band ANY. Pricing source: Arena Fauxwood, Band D - Expressions Range (Highshine White & Cool White).",
-    "compatibleBlindTypes": [
-      "arena-fauxwood"
+      "fauxwood"
     ],
     "selectionKind": "pricingBandFallback",
     "isFallback": true
@@ -26475,40 +26305,6 @@
     "pricingReferenceNote": "Internal pricing reference: Workbook Pricing. Pricing source: Perfect Fit Shutter, Glass Size.",
     "compatibleBlindTypes": [
       "perfect-fit-shutter"
-    ],
-    "selectionKind": "pricingBandFallback",
-    "isFallback": true
-  },
-  {
-    "id": "wb-pf-aluminium-perfect-fit-25mm-plain-aluminium-venetians-standard",
-    "supplierId": "workbook-workbook-pricing",
-    "supplierName": "Workbook Pricing",
-    "productTypeId": "wb-pf-aluminium-perfect-fit-25mm-plain-aluminium-venetians",
-    "name": "Standard",
-    "displayName": "Standard",
-    "band": "Standard",
-    "source": "references/alpine Trade Price working (1).xlsx::PF Aluminium",
-    "pricingSource": "PF Aluminium, Perfect Fit 25mm Plain Aluminium Venetians",
-    "pricingReferenceNote": "Internal pricing reference: Workbook Pricing. Pricing source: PF Aluminium, Perfect Fit 25mm Plain Aluminium Venetians.",
-    "compatibleBlindTypes": [
-      "perfect-fit-aluminium"
-    ],
-    "selectionKind": "pricingBandFallback",
-    "isFallback": true
-  },
-  {
-    "id": "wb-pf-aluminium-perfect-fit-25mm-special-effects-aluminium-venetians-standard",
-    "supplierId": "workbook-workbook-pricing",
-    "supplierName": "Workbook Pricing",
-    "productTypeId": "wb-pf-aluminium-perfect-fit-25mm-special-effects-aluminium-venetians",
-    "name": "Standard",
-    "displayName": "Standard",
-    "band": "Standard",
-    "source": "references/alpine Trade Price working (1).xlsx::PF Aluminium",
-    "pricingSource": "PF Aluminium, Perfect Fit 25mm Special Effects Aluminium Venetians",
-    "pricingReferenceNote": "Internal pricing reference: Workbook Pricing. Pricing source: PF Aluminium, Perfect Fit 25mm Special Effects Aluminium Venetians.",
-    "compatibleBlindTypes": [
-      "perfect-fit-aluminium"
     ],
     "selectionKind": "pricingBandFallback",
     "isFallback": true
@@ -26786,516 +26582,6 @@
     "isFallback": true
   },
   {
-    "id": "wb-pf-vision-alberto-bella-boucle-floreale-tessuto-band-d",
-    "supplierId": "workbook-workbook-pricing",
-    "supplierName": "Workbook Pricing",
-    "productTypeId": "wb-pf-vision-alberto-bella-boucle-floreale-tessuto",
-    "name": "Band D",
-    "displayName": "Band D",
-    "band": "D",
-    "source": "references/alpine Trade Price working (1).xlsx::PF Vision",
-    "pricingSource": "PF Vision, Alberto - Bella - Boucle - Floreale - Tessuto",
-    "pricingReferenceNote": "Internal pricing reference: Workbook Pricing, Band D. Pricing source: PF Vision, Alberto - Bella - Boucle - Floreale - Tessuto.",
-    "compatibleBlindTypes": [
-      "perfect-fit-vision"
-    ],
-    "selectionKind": "pricingBandFallback",
-    "isFallback": true
-  },
-  {
-    "id": "wb-pf-vision-allegria-ferrara-lusso-modina-rimini-band-c",
-    "supplierId": "workbook-workbook-pricing",
-    "supplierName": "Workbook Pricing",
-    "productTypeId": "wb-pf-vision-allegria-ferrara-lusso-modina-rimini",
-    "name": "Band C",
-    "displayName": "Band C",
-    "band": "C",
-    "source": "references/alpine Trade Price working (1).xlsx::PF Vision",
-    "pricingSource": "PF Vision, Allegria - Ferrara - Lusso - Modina - Rimini",
-    "pricingReferenceNote": "Internal pricing reference: Workbook Pricing, Band C. Pricing source: PF Vision, Allegria - Ferrara - Lusso - Modina - Rimini.",
-    "compatibleBlindTypes": [
-      "perfect-fit-vision"
-    ],
-    "selectionKind": "pricingBandFallback",
-    "isFallback": true
-  },
-  {
-    "id": "wb-pf-vision-arrezzo-firenza-modella-naples-nola-nuvola-setosa-trento-band-b",
-    "supplierId": "workbook-workbook-pricing",
-    "supplierName": "Workbook Pricing",
-    "productTypeId": "wb-pf-vision-arrezzo-firenza-modella-naples-nola-nuvola-setosa-trento",
-    "name": "Band B",
-    "displayName": "Band B",
-    "band": "B",
-    "source": "references/alpine Trade Price working (1).xlsx::PF Vision",
-    "pricingSource": "PF Vision, Arrezzo - Firenza - Modella - Naples - Nola - Nuvola - Setosa - Trento",
-    "pricingReferenceNote": "Internal pricing reference: Workbook Pricing, Band B. Pricing source: PF Vision, Arrezzo - Firenza - Modella - Naples - Nola - Nuvola - Setosa - Trento.",
-    "compatibleBlindTypes": [
-      "perfect-fit-vision"
-    ],
-    "selectionKind": "pricingBandFallback",
-    "isFallback": true
-  },
-  {
-    "id": "wb-pf-vision-capri-band-a",
-    "supplierId": "workbook-workbook-pricing",
-    "supplierName": "Workbook Pricing",
-    "productTypeId": "wb-pf-vision-capri",
-    "name": "Band A",
-    "displayName": "Band A",
-    "band": "A",
-    "source": "references/alpine Trade Price working (1).xlsx::PF Vision",
-    "pricingSource": "PF Vision, Capri",
-    "pricingReferenceNote": "Internal pricing reference: Workbook Pricing, Band A. Pricing source: PF Vision, Capri.",
-    "compatibleBlindTypes": [
-      "perfect-fit-vision"
-    ],
-    "selectionKind": "pricingBandFallback",
-    "isFallback": true
-  },
-  {
-    "id": "wb-pf-wood-35-band-ins",
-    "supplierId": "workbook-workbook-pricing",
-    "supplierName": "Workbook Pricing",
-    "productTypeId": "wb-pf-wood-35",
-    "name": "Band INS",
-    "displayName": "Band INS",
-    "band": "INS",
-    "source": "references/alpine Trade Price working (1).xlsx::PF Wood",
-    "pricingSource": "PF Wood, 35\"",
-    "pricingReferenceNote": "Internal pricing reference: Workbook Pricing, Band INS. Pricing source: PF Wood, 35\".",
-    "compatibleBlindTypes": [
-      "perfect-fit-wood"
-    ],
-    "selectionKind": "pricingBandFallback",
-    "isFallback": true
-  },
-  {
-    "id": "wb-pvc-rigid-band-a",
-    "supplierId": "workbook-workbook-pricing",
-    "supplierName": "Workbook Pricing",
-    "productTypeId": "wb-pvc-rigid",
-    "name": "Band A",
-    "displayName": "Band A",
-    "band": "A",
-    "source": "references/alpine Trade Price working (1).xlsx::Pvc Rigid",
-    "pricingSource": "Pvc Rigid",
-    "pricingReferenceNote": "Internal pricing reference: Workbook Pricing, Band A. Pricing source: Pvc Rigid.",
-    "compatibleBlindTypes": [
-      "pvc-rigid"
-    ],
-    "selectionKind": "pricingBandFallback",
-    "isFallback": true
-  },
-  {
-    "id": "wb-pvc-rigid-band-b",
-    "supplierId": "workbook-workbook-pricing",
-    "supplierName": "Workbook Pricing",
-    "productTypeId": "wb-pvc-rigid",
-    "name": "Band B",
-    "displayName": "Band B",
-    "band": "B",
-    "source": "references/alpine Trade Price working (1).xlsx::Pvc Rigid",
-    "pricingSource": "Pvc Rigid",
-    "pricingReferenceNote": "Internal pricing reference: Workbook Pricing, Band B. Pricing source: Pvc Rigid.",
-    "compatibleBlindTypes": [
-      "pvc-rigid"
-    ],
-    "selectionKind": "pricingBandFallback",
-    "isFallback": true
-  },
-  {
-    "id": "wb-pvc-rigid-band-c",
-    "supplierId": "workbook-workbook-pricing",
-    "supplierName": "Workbook Pricing",
-    "productTypeId": "wb-pvc-rigid",
-    "name": "Band C",
-    "displayName": "Band C",
-    "band": "C",
-    "source": "references/alpine Trade Price working (1).xlsx::Pvc Rigid",
-    "pricingSource": "Pvc Rigid",
-    "pricingReferenceNote": "Internal pricing reference: Workbook Pricing, Band C. Pricing source: Pvc Rigid.",
-    "compatibleBlindTypes": [
-      "pvc-rigid"
-    ],
-    "selectionKind": "pricingBandFallback",
-    "isFallback": true
-  },
-  {
-    "id": "wb-roller-2-band-a",
-    "supplierId": "workbook-workbook-pricing",
-    "supplierName": "Workbook Pricing",
-    "productTypeId": "wb-roller-2",
-    "name": "Band A",
-    "displayName": "Band A",
-    "band": "A",
-    "source": "references/alpine Trade Price working (1).xlsx::Roller",
-    "pricingSource": "Roller",
-    "pricingReferenceNote": "Internal pricing reference: Workbook Pricing, Band A. Pricing source: Roller.",
-    "compatibleBlindTypes": [
-      "roller"
-    ],
-    "selectionKind": "pricingBandFallback",
-    "isFallback": true
-  },
-  {
-    "id": "wb-roller-2-band-b",
-    "supplierId": "workbook-workbook-pricing",
-    "supplierName": "Workbook Pricing",
-    "productTypeId": "wb-roller-2",
-    "name": "Band B",
-    "displayName": "Band B",
-    "band": "B",
-    "source": "references/alpine Trade Price working (1).xlsx::Roller",
-    "pricingSource": "Roller",
-    "pricingReferenceNote": "Internal pricing reference: Workbook Pricing, Band B. Pricing source: Roller.",
-    "compatibleBlindTypes": [
-      "roller"
-    ],
-    "selectionKind": "pricingBandFallback",
-    "isFallback": true
-  },
-  {
-    "id": "wb-roller-2-band-c",
-    "supplierId": "workbook-workbook-pricing",
-    "supplierName": "Workbook Pricing",
-    "productTypeId": "wb-roller-2",
-    "name": "Band C",
-    "displayName": "Band C",
-    "band": "C",
-    "source": "references/alpine Trade Price working (1).xlsx::Roller",
-    "pricingSource": "Roller",
-    "pricingReferenceNote": "Internal pricing reference: Workbook Pricing, Band C. Pricing source: Roller.",
-    "compatibleBlindTypes": [
-      "roller"
-    ],
-    "selectionKind": "pricingBandFallback",
-    "isFallback": true
-  },
-  {
-    "id": "wb-roller-2-band-d",
-    "supplierId": "workbook-workbook-pricing",
-    "supplierName": "Workbook Pricing",
-    "productTypeId": "wb-roller-2",
-    "name": "Band D",
-    "displayName": "Band D",
-    "band": "D",
-    "source": "references/alpine Trade Price working (1).xlsx::Roller",
-    "pricingSource": "Roller",
-    "pricingReferenceNote": "Internal pricing reference: Workbook Pricing, Band D. Pricing source: Roller.",
-    "compatibleBlindTypes": [
-      "roller"
-    ],
-    "selectionKind": "pricingBandFallback",
-    "isFallback": true
-  },
-  {
-    "id": "wb-roller-2-band-e",
-    "supplierId": "workbook-workbook-pricing",
-    "supplierName": "Workbook Pricing",
-    "productTypeId": "wb-roller-2",
-    "name": "Band E",
-    "displayName": "Band E",
-    "band": "E",
-    "source": "references/alpine Trade Price working (1).xlsx::Roller",
-    "pricingSource": "Roller",
-    "pricingReferenceNote": "Internal pricing reference: Workbook Pricing, Band E. Pricing source: Roller.",
-    "compatibleBlindTypes": [
-      "roller"
-    ],
-    "selectionKind": "pricingBandFallback",
-    "isFallback": true
-  },
-  {
-    "id": "wb-roller-2-band-f",
-    "supplierId": "workbook-workbook-pricing",
-    "supplierName": "Workbook Pricing",
-    "productTypeId": "wb-roller-2",
-    "name": "Band F",
-    "displayName": "Band F",
-    "band": "F",
-    "source": "references/alpine Trade Price working (1).xlsx::Roller",
-    "pricingSource": "Roller",
-    "pricingReferenceNote": "Internal pricing reference: Workbook Pricing, Band F. Pricing source: Roller.",
-    "compatibleBlindTypes": [
-      "roller"
-    ],
-    "selectionKind": "pricingBandFallback",
-    "isFallback": true
-  },
-  {
-    "id": "wb-roller-band-aa",
-    "supplierId": "workbook-workbook-pricing",
-    "supplierName": "Workbook Pricing",
-    "productTypeId": "wb-roller",
-    "name": "Band AA",
-    "displayName": "Band AA",
-    "band": "AA",
-    "source": "references/alpine Trade Price working (1).xlsx::Roller",
-    "pricingSource": "Roller",
-    "pricingReferenceNote": "Internal pricing reference: Workbook Pricing, Band AA. Pricing source: Roller.",
-    "compatibleBlindTypes": [
-      "roller"
-    ],
-    "selectionKind": "pricingBandFallback",
-    "isFallback": true
-  },
-  {
-    "id": "wb-romans-band-a",
-    "supplierId": "workbook-workbook-pricing",
-    "supplierName": "Workbook Pricing",
-    "productTypeId": "wb-romans",
-    "name": "Band A",
-    "displayName": "Band A",
-    "band": "A",
-    "source": "references/alpine Trade Price working (1).xlsx::Romans",
-    "pricingSource": "Romans",
-    "pricingReferenceNote": "Internal pricing reference: Workbook Pricing, Band A. Pricing source: Romans.",
-    "compatibleBlindTypes": [
-      "roman"
-    ],
-    "selectionKind": "pricingBandFallback",
-    "isFallback": true
-  },
-  {
-    "id": "wb-romans-band-b",
-    "supplierId": "workbook-workbook-pricing",
-    "supplierName": "Workbook Pricing",
-    "productTypeId": "wb-romans",
-    "name": "Band B",
-    "displayName": "Band B",
-    "band": "B",
-    "source": "references/alpine Trade Price working (1).xlsx::Romans",
-    "pricingSource": "Romans",
-    "pricingReferenceNote": "Internal pricing reference: Workbook Pricing, Band B. Pricing source: Romans.",
-    "compatibleBlindTypes": [
-      "roman"
-    ],
-    "selectionKind": "pricingBandFallback",
-    "isFallback": true
-  },
-  {
-    "id": "wb-romans-band-c",
-    "supplierId": "workbook-workbook-pricing",
-    "supplierName": "Workbook Pricing",
-    "productTypeId": "wb-romans",
-    "name": "Band C",
-    "displayName": "Band C",
-    "band": "C",
-    "source": "references/alpine Trade Price working (1).xlsx::Romans",
-    "pricingSource": "Romans",
-    "pricingReferenceNote": "Internal pricing reference: Workbook Pricing, Band C. Pricing source: Romans.",
-    "compatibleBlindTypes": [
-      "roman"
-    ],
-    "selectionKind": "pricingBandFallback",
-    "isFallback": true
-  },
-  {
-    "id": "wb-romans-band-d",
-    "supplierId": "workbook-workbook-pricing",
-    "supplierName": "Workbook Pricing",
-    "productTypeId": "wb-romans",
-    "name": "Band D",
-    "displayName": "Band D",
-    "band": "D",
-    "source": "references/alpine Trade Price working (1).xlsx::Romans",
-    "pricingSource": "Romans",
-    "pricingReferenceNote": "Internal pricing reference: Workbook Pricing, Band D. Pricing source: Romans.",
-    "compatibleBlindTypes": [
-      "roman"
-    ],
-    "selectionKind": "pricingBandFallback",
-    "isFallback": true
-  },
-  {
-    "id": "wb-sunwood-faux-sunwood-fauxwood-35-50mm-standard",
-    "supplierId": "workbook-workbook-pricing",
-    "supplierName": "Workbook Pricing",
-    "productTypeId": "wb-sunwood-faux-sunwood-fauxwood-35-50mm",
-    "name": "Standard",
-    "displayName": "Standard",
-    "band": "Standard",
-    "source": "references/alpine Trade Price working (1).xlsx::Sunwood Faux",
-    "pricingSource": "Sunwood Faux, SUNWOOD Fauxwood - 35/50mm",
-    "pricingReferenceNote": "Internal pricing reference: Workbook Pricing. Pricing source: Sunwood Faux, SUNWOOD Fauxwood - 35/50mm.",
-    "compatibleBlindTypes": [
-      "sunwood-faux"
-    ],
-    "selectionKind": "pricingBandFallback",
-    "isFallback": true
-  },
-  {
-    "id": "wb-sunwood-wood-35-band-ins",
-    "supplierId": "workbook-workbook-pricing",
-    "supplierName": "Workbook Pricing",
-    "productTypeId": "wb-sunwood-wood-35",
-    "name": "Band INS",
-    "displayName": "Band INS",
-    "band": "INS",
-    "source": "references/alpine Trade Price working (1).xlsx::Sunwood Wood",
-    "pricingSource": "Sunwood Wood, 35”",
-    "pricingReferenceNote": "Internal pricing reference: Workbook Pricing, Band INS. Pricing source: Sunwood Wood, 35”.",
-    "compatibleBlindTypes": [
-      "sunwood-wood"
-    ],
-    "selectionKind": "pricingBandFallback",
-    "isFallback": true
-  },
-  {
-    "id": "wb-sunwood-wood-35-band-ins-18",
-    "supplierId": "workbook-workbook-pricing",
-    "supplierName": "Workbook Pricing",
-    "productTypeId": "wb-sunwood-wood-35",
-    "name": "Band INS-18",
-    "displayName": "Band INS-18",
-    "band": "INS-18",
-    "source": "references/alpine Trade Price working (1).xlsx::Sunwood Wood",
-    "pricingSource": "Sunwood Wood, 35”",
-    "pricingReferenceNote": "Internal pricing reference: Workbook Pricing, Band INS-18. Pricing source: Sunwood Wood, 35”.",
-    "compatibleBlindTypes": [
-      "sunwood-wood"
-    ],
-    "selectionKind": "pricingBandFallback",
-    "isFallback": true
-  },
-  {
-    "id": "wb-sunwood-wood-35-band-ins-28",
-    "supplierId": "workbook-workbook-pricing",
-    "supplierName": "Workbook Pricing",
-    "productTypeId": "wb-sunwood-wood-35",
-    "name": "Band INS-28",
-    "displayName": "Band INS-28",
-    "band": "INS-28",
-    "source": "references/alpine Trade Price working (1).xlsx::Sunwood Wood",
-    "pricingSource": "Sunwood Wood, 35”",
-    "pricingReferenceNote": "Internal pricing reference: Workbook Pricing, Band INS-28. Pricing source: Sunwood Wood, 35”.",
-    "compatibleBlindTypes": [
-      "sunwood-wood"
-    ],
-    "selectionKind": "pricingBandFallback",
-    "isFallback": true
-  },
-  {
-    "id": "wb-vertical-band-aa",
-    "supplierId": "workbook-workbook-pricing",
-    "supplierName": "Workbook Pricing",
-    "productTypeId": "wb-vertical",
-    "name": "Band AA",
-    "displayName": "Band AA",
-    "band": "AA",
-    "source": "references/alpine Trade Price working (1).xlsx::Vertical",
-    "pricingSource": "Vertical",
-    "pricingReferenceNote": "Internal pricing reference: Workbook Pricing, Band AA. Pricing source: Vertical.",
-    "compatibleBlindTypes": [
-      "vertical"
-    ],
-    "selectionKind": "pricingBandFallback",
-    "isFallback": true
-  },
-  {
-    "id": "wb-vertical-band-a",
-    "supplierId": "workbook-workbook-pricing",
-    "supplierName": "Workbook Pricing",
-    "productTypeId": "wb-vertical",
-    "name": "Band A",
-    "displayName": "Band A",
-    "band": "A",
-    "source": "references/alpine Trade Price working (1).xlsx::Vertical",
-    "pricingSource": "Vertical",
-    "pricingReferenceNote": "Internal pricing reference: Workbook Pricing, Band A. Pricing source: Vertical.",
-    "compatibleBlindTypes": [
-      "vertical"
-    ],
-    "selectionKind": "pricingBandFallback",
-    "isFallback": true
-  },
-  {
-    "id": "wb-vertical-band-b",
-    "supplierId": "workbook-workbook-pricing",
-    "supplierName": "Workbook Pricing",
-    "productTypeId": "wb-vertical",
-    "name": "Band B",
-    "displayName": "Band B",
-    "band": "B",
-    "source": "references/alpine Trade Price working (1).xlsx::Vertical",
-    "pricingSource": "Vertical",
-    "pricingReferenceNote": "Internal pricing reference: Workbook Pricing, Band B. Pricing source: Vertical.",
-    "compatibleBlindTypes": [
-      "vertical"
-    ],
-    "selectionKind": "pricingBandFallback",
-    "isFallback": true
-  },
-  {
-    "id": "wb-vertical-band-c",
-    "supplierId": "workbook-workbook-pricing",
-    "supplierName": "Workbook Pricing",
-    "productTypeId": "wb-vertical",
-    "name": "Band C",
-    "displayName": "Band C",
-    "band": "C",
-    "source": "references/alpine Trade Price working (1).xlsx::Vertical",
-    "pricingSource": "Vertical",
-    "pricingReferenceNote": "Internal pricing reference: Workbook Pricing, Band C. Pricing source: Vertical.",
-    "compatibleBlindTypes": [
-      "vertical"
-    ],
-    "selectionKind": "pricingBandFallback",
-    "isFallback": true
-  },
-  {
-    "id": "wb-vertical-band-d",
-    "supplierId": "workbook-workbook-pricing",
-    "supplierName": "Workbook Pricing",
-    "productTypeId": "wb-vertical",
-    "name": "Band D",
-    "displayName": "Band D",
-    "band": "D",
-    "source": "references/alpine Trade Price working (1).xlsx::Vertical",
-    "pricingSource": "Vertical",
-    "pricingReferenceNote": "Internal pricing reference: Workbook Pricing, Band D. Pricing source: Vertical.",
-    "compatibleBlindTypes": [
-      "vertical"
-    ],
-    "selectionKind": "pricingBandFallback",
-    "isFallback": true
-  },
-  {
-    "id": "wb-vertical-band-e",
-    "supplierId": "workbook-workbook-pricing",
-    "supplierName": "Workbook Pricing",
-    "productTypeId": "wb-vertical",
-    "name": "Band E",
-    "displayName": "Band E",
-    "band": "E",
-    "source": "references/alpine Trade Price working (1).xlsx::Vertical",
-    "pricingSource": "Vertical",
-    "pricingReferenceNote": "Internal pricing reference: Workbook Pricing, Band E. Pricing source: Vertical.",
-    "compatibleBlindTypes": [
-      "vertical"
-    ],
-    "selectionKind": "pricingBandFallback",
-    "isFallback": true
-  },
-  {
-    "id": "wb-vertical-band-f",
-    "supplierId": "workbook-workbook-pricing",
-    "supplierName": "Workbook Pricing",
-    "productTypeId": "wb-vertical",
-    "name": "Band F",
-    "displayName": "Band F",
-    "band": "F",
-    "source": "references/alpine Trade Price working (1).xlsx::Vertical",
-    "pricingSource": "Vertical",
-    "pricingReferenceNote": "Internal pricing reference: Workbook Pricing, Band F. Pricing source: Vertical.",
-    "compatibleBlindTypes": [
-      "vertical"
-    ],
-    "selectionKind": "pricingBandFallback",
-    "isFallback": true
-  },
-  {
     "id": "wb-vision-band-e",
     "supplierId": "workbook-workbook-pricing",
     "supplierName": "Workbook Pricing",
@@ -27306,74 +26592,6 @@
     "source": "references/alpine Trade Price working (1).xlsx::Vision",
     "pricingSource": "Vision",
     "pricingReferenceNote": "Internal pricing reference: Workbook Pricing, Band E. Pricing source: Vision.",
-    "compatibleBlindTypes": [
-      "vision"
-    ],
-    "selectionKind": "pricingBandFallback",
-    "isFallback": true
-  },
-  {
-    "id": "wb-vision-alberto-bella-boucle-floreale-tessuto-band-d",
-    "supplierId": "workbook-workbook-pricing",
-    "supplierName": "Workbook Pricing",
-    "productTypeId": "wb-vision-alberto-bella-boucle-floreale-tessuto",
-    "name": "Band D",
-    "displayName": "Band D",
-    "band": "D",
-    "source": "references/alpine Trade Price working (1).xlsx::Vision",
-    "pricingSource": "Vision, Alberto - Bella - Boucle - Floreale - Tessuto",
-    "pricingReferenceNote": "Internal pricing reference: Workbook Pricing, Band D. Pricing source: Vision, Alberto - Bella - Boucle - Floreale - Tessuto.",
-    "compatibleBlindTypes": [
-      "vision"
-    ],
-    "selectionKind": "pricingBandFallback",
-    "isFallback": true
-  },
-  {
-    "id": "wb-vision-allegria-ferrara-lusso-modina-rimini-band-c",
-    "supplierId": "workbook-workbook-pricing",
-    "supplierName": "Workbook Pricing",
-    "productTypeId": "wb-vision-allegria-ferrara-lusso-modina-rimini",
-    "name": "Band C",
-    "displayName": "Band C",
-    "band": "C",
-    "source": "references/alpine Trade Price working (1).xlsx::Vision",
-    "pricingSource": "Vision, Allegria - Ferrara - Lusso - Modina - Rimini",
-    "pricingReferenceNote": "Internal pricing reference: Workbook Pricing, Band C. Pricing source: Vision, Allegria - Ferrara - Lusso - Modina - Rimini.",
-    "compatibleBlindTypes": [
-      "vision"
-    ],
-    "selectionKind": "pricingBandFallback",
-    "isFallback": true
-  },
-  {
-    "id": "wb-vision-arrezzo-firenza-modella-naples-nola-nuvola-setosa-trento-band-b",
-    "supplierId": "workbook-workbook-pricing",
-    "supplierName": "Workbook Pricing",
-    "productTypeId": "wb-vision-arrezzo-firenza-modella-naples-nola-nuvola-setosa-trento",
-    "name": "Band B",
-    "displayName": "Band B",
-    "band": "B",
-    "source": "references/alpine Trade Price working (1).xlsx::Vision",
-    "pricingSource": "Vision, Arrezzo - Firenza - Modella - Naples - Nola - Nuvola - Setosa - Trento",
-    "pricingReferenceNote": "Internal pricing reference: Workbook Pricing, Band B. Pricing source: Vision, Arrezzo - Firenza - Modella - Naples - Nola - Nuvola - Setosa - Trento.",
-    "compatibleBlindTypes": [
-      "vision"
-    ],
-    "selectionKind": "pricingBandFallback",
-    "isFallback": true
-  },
-  {
-    "id": "wb-vision-capri-band-a",
-    "supplierId": "workbook-workbook-pricing",
-    "supplierName": "Workbook Pricing",
-    "productTypeId": "wb-vision-capri",
-    "name": "Band A",
-    "displayName": "Band A",
-    "band": "A",
-    "source": "references/alpine Trade Price working (1).xlsx::Vision",
-    "pricingSource": "Vision, Capri",
-    "pricingReferenceNote": "Internal pricing reference: Workbook Pricing, Band A. Pricing source: Vision, Capri.",
     "compatibleBlindTypes": [
       "vision"
     ],

@@ -84,16 +84,10 @@ export const BLIND_PRODUCT_TYPES: BlindProductTypeDefinition[] = [
     match: (id) => hasPrefix(id, "wb-perfect-fit-shutter"),
   },
   {
-    id: "aqua-fauxwood",
-    label: "Aqua Fauxwood",
+    id: "fauxwood",
+    label: "Fauxwood",
     selectionLabel: "Finish / Colour",
-    match: (id) => hasPrefix(id, "wb-aqua-fauxwood"),
-  },
-  {
-    id: "arena-fauxwood",
-    label: "Arena Fauxwood",
-    selectionLabel: "Finish / Colour",
-    match: (id) => hasPrefix(id, "wb-arena-fauxwood"),
+    match: (id) => hasPrefix(id, "wb-aqua-fauxwood") || hasPrefix(id, "wb-arena-fauxwood"),
   },
   {
     id: "allusion",

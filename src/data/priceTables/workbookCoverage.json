@@ -7,7 +7,7 @@
     "productTypesImported": 36,
     "fabricMappingsImported": 800,
     "finishOrColourOptionsGenerated": 635,
-    "fallbackBandOptionsGenerated": 73,
+    "fallbackBandOptionsGenerated": 27,
     "validationErrors": 0,
     "definedNames": 4,
     "formulaCells": 0
@@ -24,6 +24,467 @@
     "Skipped unsupported fabric band Arena 2026!F46 = 'F+10%'.",
     "Skipped unsupported fabric band Arena 2026!I12 = 'F+15%'.",
     "Skipped unsupported fabric band Arena 2026!I49 = 'F+20%'."
+  ],
+  "fallbackOptions": [
+    {
+      "id": "wb-aqua-fauxwood-price-with-tape-standard",
+      "supplierId": "workbook-workbook-pricing",
+      "supplierName": "Workbook Pricing",
+      "productTypeId": "wb-aqua-fauxwood-price-with-tape",
+      "name": "Standard",
+      "displayName": "Standard",
+      "band": "Standard",
+      "source": "references/alpine Trade Price working (1).xlsx::Aqua Fauxwood",
+      "pricingSource": "Aqua Fauxwood, PRICE WITH TAPE",
+      "pricingReferenceNote": "Internal pricing reference: Workbook Pricing. Pricing source: Aqua Fauxwood, PRICE WITH TAPE.",
+      "compatibleBlindTypes": [
+        "fauxwood"
+      ],
+      "selectionKind": "pricingBandFallback",
+      "isFallback": true
+    },
+    {
+      "id": "wb-freehang-pleated-band-a",
+      "supplierId": "workbook-workbook-pricing",
+      "supplierName": "Workbook Pricing",
+      "productTypeId": "wb-freehang-pleated",
+      "name": "Band A",
+      "displayName": "Band A",
+      "band": "A",
+      "source": "references/alpine Trade Price working (1).xlsx::Freehang Pleated",
+      "pricingSource": "Freehang Pleated",
+      "pricingReferenceNote": "Internal pricing reference: Workbook Pricing, Band A. Pricing source: Freehang Pleated.",
+      "compatibleBlindTypes": [
+        "freehang-pleated"
+      ],
+      "selectionKind": "pricingBandFallback",
+      "isFallback": true
+    },
+    {
+      "id": "wb-freehang-pleated-band-b",
+      "supplierId": "workbook-workbook-pricing",
+      "supplierName": "Workbook Pricing",
+      "productTypeId": "wb-freehang-pleated",
+      "name": "Band B",
+      "displayName": "Band B",
+      "band": "B",
+      "source": "references/alpine Trade Price working (1).xlsx::Freehang Pleated",
+      "pricingSource": "Freehang Pleated",
+      "pricingReferenceNote": "Internal pricing reference: Workbook Pricing, Band B. Pricing source: Freehang Pleated.",
+      "compatibleBlindTypes": [
+        "freehang-pleated"
+      ],
+      "selectionKind": "pricingBandFallback",
+      "isFallback": true
+    },
+    {
+      "id": "wb-freehang-pleated-band-c",
+      "supplierId": "workbook-workbook-pricing",
+      "supplierName": "Workbook Pricing",
+      "productTypeId": "wb-freehang-pleated",
+      "name": "Band C",
+      "displayName": "Band C",
+      "band": "C",
+      "source": "references/alpine Trade Price working (1).xlsx::Freehang Pleated",
+      "pricingSource": "Freehang Pleated",
+      "pricingReferenceNote": "Internal pricing reference: Workbook Pricing, Band C. Pricing source: Freehang Pleated.",
+      "compatibleBlindTypes": [
+        "freehang-pleated"
+      ],
+      "selectionKind": "pricingBandFallback",
+      "isFallback": true
+    },
+    {
+      "id": "wb-freehang-pleated-band-d",
+      "supplierId": "workbook-workbook-pricing",
+      "supplierName": "Workbook Pricing",
+      "productTypeId": "wb-freehang-pleated",
+      "name": "Band D",
+      "displayName": "Band D",
+      "band": "D",
+      "source": "references/alpine Trade Price working (1).xlsx::Freehang Pleated",
+      "pricingSource": "Freehang Pleated",
+      "pricingReferenceNote": "Internal pricing reference: Workbook Pricing, Band D. Pricing source: Freehang Pleated.",
+      "compatibleBlindTypes": [
+        "freehang-pleated"
+      ],
+      "selectionKind": "pricingBandFallback",
+      "isFallback": true
+    },
+    {
+      "id": "wb-freehang-pleated-band-e",
+      "supplierId": "workbook-workbook-pricing",
+      "supplierName": "Workbook Pricing",
+      "productTypeId": "wb-freehang-pleated",
+      "name": "Band E",
+      "displayName": "Band E",
+      "band": "E",
+      "source": "references/alpine Trade Price working (1).xlsx::Freehang Pleated",
+      "pricingSource": "Freehang Pleated",
+      "pricingReferenceNote": "Internal pricing reference: Workbook Pricing, Band E. Pricing source: Freehang Pleated.",
+      "compatibleBlindTypes": [
+        "freehang-pleated"
+      ],
+      "selectionKind": "pricingBandFallback",
+      "isFallback": true
+    },
+    {
+      "id": "wb-freehang-pleated-band-f",
+      "supplierId": "workbook-workbook-pricing",
+      "supplierName": "Workbook Pricing",
+      "productTypeId": "wb-freehang-pleated",
+      "name": "Band F",
+      "displayName": "Band F",
+      "band": "F",
+      "source": "references/alpine Trade Price working (1).xlsx::Freehang Pleated",
+      "pricingSource": "Freehang Pleated",
+      "pricingReferenceNote": "Internal pricing reference: Workbook Pricing, Band F. Pricing source: Freehang Pleated.",
+      "compatibleBlindTypes": [
+        "freehang-pleated"
+      ],
+      "selectionKind": "pricingBandFallback",
+      "isFallback": true
+    },
+    {
+      "id": "wb-freehang-pleated-band-g",
+      "supplierId": "workbook-workbook-pricing",
+      "supplierName": "Workbook Pricing",
+      "productTypeId": "wb-freehang-pleated",
+      "name": "Band G",
+      "displayName": "Band G",
+      "band": "G",
+      "source": "references/alpine Trade Price working (1).xlsx::Freehang Pleated",
+      "pricingSource": "Freehang Pleated",
+      "pricingReferenceNote": "Internal pricing reference: Workbook Pricing, Band G. Pricing source: Freehang Pleated.",
+      "compatibleBlindTypes": [
+        "freehang-pleated"
+      ],
+      "selectionKind": "pricingBandFallback",
+      "isFallback": true
+    },
+    {
+      "id": "wb-freehang-pleated-band-h",
+      "supplierId": "workbook-workbook-pricing",
+      "supplierName": "Workbook Pricing",
+      "productTypeId": "wb-freehang-pleated",
+      "name": "Band H",
+      "displayName": "Band H",
+      "band": "H",
+      "source": "references/alpine Trade Price working (1).xlsx::Freehang Pleated",
+      "pricingSource": "Freehang Pleated",
+      "pricingReferenceNote": "Internal pricing reference: Workbook Pricing, Band H. Pricing source: Freehang Pleated.",
+      "compatibleBlindTypes": [
+        "freehang-pleated"
+      ],
+      "selectionKind": "pricingBandFallback",
+      "isFallback": true
+    },
+    {
+      "id": "wb-perfect-fit-shutter-glass-size-standard",
+      "supplierId": "workbook-workbook-pricing",
+      "supplierName": "Workbook Pricing",
+      "productTypeId": "wb-perfect-fit-shutter-glass-size",
+      "name": "Standard",
+      "displayName": "Standard",
+      "band": "Standard",
+      "source": "references/alpine Trade Price working (1).xlsx::Perfect Fit Shutter",
+      "pricingSource": "Perfect Fit Shutter, Glass Size",
+      "pricingReferenceNote": "Internal pricing reference: Workbook Pricing. Pricing source: Perfect Fit Shutter, Glass Size.",
+      "compatibleBlindTypes": [
+        "perfect-fit-shutter"
+      ],
+      "selectionKind": "pricingBandFallback",
+      "isFallback": true
+    },
+    {
+      "id": "wb-pf-pleated-band-a",
+      "supplierId": "workbook-workbook-pricing",
+      "supplierName": "Workbook Pricing",
+      "productTypeId": "wb-pf-pleated",
+      "name": "Band A",
+      "displayName": "Band A",
+      "band": "A",
+      "source": "references/alpine Trade Price working (1).xlsx::PF Pleated",
+      "pricingSource": "PF Pleated",
+      "pricingReferenceNote": "Internal pricing reference: Workbook Pricing, Band A. Pricing source: PF Pleated.",
+      "compatibleBlindTypes": [
+        "perfect-fit-pleated"
+      ],
+      "selectionKind": "pricingBandFallback",
+      "isFallback": true
+    },
+    {
+      "id": "wb-pf-pleated-band-b",
+      "supplierId": "workbook-workbook-pricing",
+      "supplierName": "Workbook Pricing",
+      "productTypeId": "wb-pf-pleated",
+      "name": "Band B",
+      "displayName": "Band B",
+      "band": "B",
+      "source": "references/alpine Trade Price working (1).xlsx::PF Pleated",
+      "pricingSource": "PF Pleated",
+      "pricingReferenceNote": "Internal pricing reference: Workbook Pricing, Band B. Pricing source: PF Pleated.",
+      "compatibleBlindTypes": [
+        "perfect-fit-pleated"
+      ],
+      "selectionKind": "pricingBandFallback",
+      "isFallback": true
+    },
+    {
+      "id": "wb-pf-pleated-band-c",
+      "supplierId": "workbook-workbook-pricing",
+      "supplierName": "Workbook Pricing",
+      "productTypeId": "wb-pf-pleated",
+      "name": "Band C",
+      "displayName": "Band C",
+      "band": "C",
+      "source": "references/alpine Trade Price working (1).xlsx::PF Pleated",
+      "pricingSource": "PF Pleated",
+      "pricingReferenceNote": "Internal pricing reference: Workbook Pricing, Band C. Pricing source: PF Pleated.",
+      "compatibleBlindTypes": [
+        "perfect-fit-pleated"
+      ],
+      "selectionKind": "pricingBandFallback",
+      "isFallback": true
+    },
+    {
+      "id": "wb-pf-pleated-band-d",
+      "supplierId": "workbook-workbook-pricing",
+      "supplierName": "Workbook Pricing",
+      "productTypeId": "wb-pf-pleated",
+      "name": "Band D",
+      "displayName": "Band D",
+      "band": "D",
+      "source": "references/alpine Trade Price working (1).xlsx::PF Pleated",
+      "pricingSource": "PF Pleated",
+      "pricingReferenceNote": "Internal pricing reference: Workbook Pricing, Band D. Pricing source: PF Pleated.",
+      "compatibleBlindTypes": [
+        "perfect-fit-pleated"
+      ],
+      "selectionKind": "pricingBandFallback",
+      "isFallback": true
+    },
+    {
+      "id": "wb-pf-pleated-band-e",
+      "supplierId": "workbook-workbook-pricing",
+      "supplierName": "Workbook Pricing",
+      "productTypeId": "wb-pf-pleated",
+      "name": "Band E",
+      "displayName": "Band E",
+      "band": "E",
+      "source": "references/alpine Trade Price working (1).xlsx::PF Pleated",
+      "pricingSource": "PF Pleated",
+      "pricingReferenceNote": "Internal pricing reference: Workbook Pricing, Band E. Pricing source: PF Pleated.",
+      "compatibleBlindTypes": [
+        "perfect-fit-pleated"
+      ],
+      "selectionKind": "pricingBandFallback",
+      "isFallback": true
+    },
+    {
+      "id": "wb-pf-pleated-band-f",
+      "supplierId": "workbook-workbook-pricing",
+      "supplierName": "Workbook Pricing",
+      "productTypeId": "wb-pf-pleated",
+      "name": "Band F",
+      "displayName": "Band F",
+      "band": "F",
+      "source": "references/alpine Trade Price working (1).xlsx::PF Pleated",
+      "pricingSource": "PF Pleated",
+      "pricingReferenceNote": "Internal pricing reference: Workbook Pricing, Band F. Pricing source: PF Pleated.",
+      "compatibleBlindTypes": [
+        "perfect-fit-pleated"
+      ],
+      "selectionKind": "pricingBandFallback",
+      "isFallback": true
+    },
+    {
+      "id": "wb-pf-pleated-band-g",
+      "supplierId": "workbook-workbook-pricing",
+      "supplierName": "Workbook Pricing",
+      "productTypeId": "wb-pf-pleated",
+      "name": "Band G",
+      "displayName": "Band G",
+      "band": "G",
+      "source": "references/alpine Trade Price working (1).xlsx::PF Pleated",
+      "pricingSource": "PF Pleated",
+      "pricingReferenceNote": "Internal pricing reference: Workbook Pricing, Band G. Pricing source: PF Pleated.",
+      "compatibleBlindTypes": [
+        "perfect-fit-pleated"
+      ],
+      "selectionKind": "pricingBandFallback",
+      "isFallback": true
+    },
+    {
+      "id": "wb-pf-pleated-band-h",
+      "supplierId": "workbook-workbook-pricing",
+      "supplierName": "Workbook Pricing",
+      "productTypeId": "wb-pf-pleated",
+      "name": "Band H",
+      "displayName": "Band H",
+      "band": "H",
+      "source": "references/alpine Trade Price working (1).xlsx::PF Pleated",
+      "pricingSource": "PF Pleated",
+      "pricingReferenceNote": "Internal pricing reference: Workbook Pricing, Band H. Pricing source: PF Pleated.",
+      "compatibleBlindTypes": [
+        "perfect-fit-pleated"
+      ],
+      "selectionKind": "pricingBandFallback",
+      "isFallback": true
+    },
+    {
+      "id": "wb-pf-roller-band-a",
+      "supplierId": "workbook-workbook-pricing",
+      "supplierName": "Workbook Pricing",
+      "productTypeId": "wb-pf-roller",
+      "name": "Band A",
+      "displayName": "Band A",
+      "band": "A",
+      "source": "references/alpine Trade Price working (1).xlsx::PF Roller",
+      "pricingSource": "PF Roller",
+      "pricingReferenceNote": "Internal pricing reference: Workbook Pricing, Band A. Pricing source: PF Roller.",
+      "compatibleBlindTypes": [
+        "perfect-fit-roller"
+      ],
+      "selectionKind": "pricingBandFallback",
+      "isFallback": true
+    },
+    {
+      "id": "wb-pf-roller-band-b",
+      "supplierId": "workbook-workbook-pricing",
+      "supplierName": "Workbook Pricing",
+      "productTypeId": "wb-pf-roller",
+      "name": "Band B",
+      "displayName": "Band B",
+      "band": "B",
+      "source": "references/alpine Trade Price working (1).xlsx::PF Roller",
+      "pricingSource": "PF Roller",
+      "pricingReferenceNote": "Internal pricing reference: Workbook Pricing, Band B. Pricing source: PF Roller.",
+      "compatibleBlindTypes": [
+        "perfect-fit-roller"
+      ],
+      "selectionKind": "pricingBandFallback",
+      "isFallback": true
+    },
+    {
+      "id": "wb-pf-roller-band-c",
+      "supplierId": "workbook-workbook-pricing",
+      "supplierName": "Workbook Pricing",
+      "productTypeId": "wb-pf-roller",
+      "name": "Band C",
+      "displayName": "Band C",
+      "band": "C",
+      "source": "references/alpine Trade Price working (1).xlsx::PF Roller",
+      "pricingSource": "PF Roller",
+      "pricingReferenceNote": "Internal pricing reference: Workbook Pricing, Band C. Pricing source: PF Roller.",
+      "compatibleBlindTypes": [
+        "perfect-fit-roller"
+      ],
+      "selectionKind": "pricingBandFallback",
+      "isFallback": true
+    },
+    {
+      "id": "wb-pf-roller-band-d",
+      "supplierId": "workbook-workbook-pricing",
+      "supplierName": "Workbook Pricing",
+      "productTypeId": "wb-pf-roller",
+      "name": "Band D",
+      "displayName": "Band D",
+      "band": "D",
+      "source": "references/alpine Trade Price working (1).xlsx::PF Roller",
+      "pricingSource": "PF Roller",
+      "pricingReferenceNote": "Internal pricing reference: Workbook Pricing, Band D. Pricing source: PF Roller.",
+      "compatibleBlindTypes": [
+        "perfect-fit-roller"
+      ],
+      "selectionKind": "pricingBandFallback",
+      "isFallback": true
+    },
+    {
+      "id": "wb-pf-roller-band-e",
+      "supplierId": "workbook-workbook-pricing",
+      "supplierName": "Workbook Pricing",
+      "productTypeId": "wb-pf-roller",
+      "name": "Band E",
+      "displayName": "Band E",
+      "band": "E",
+      "source": "references/alpine Trade Price working (1).xlsx::PF Roller",
+      "pricingSource": "PF Roller",
+      "pricingReferenceNote": "Internal pricing reference: Workbook Pricing, Band E. Pricing source: PF Roller.",
+      "compatibleBlindTypes": [
+        "perfect-fit-roller"
+      ],
+      "selectionKind": "pricingBandFallback",
+      "isFallback": true
+    },
+    {
+      "id": "wb-pf-roller-band-f",
+      "supplierId": "workbook-workbook-pricing",
+      "supplierName": "Workbook Pricing",
+      "productTypeId": "wb-pf-roller",
+      "name": "Band F",
+      "displayName": "Band F",
+      "band": "F",
+      "source": "references/alpine Trade Price working (1).xlsx::PF Roller",
+      "pricingSource": "PF Roller",
+      "pricingReferenceNote": "Internal pricing reference: Workbook Pricing, Band F. Pricing source: PF Roller.",
+      "compatibleBlindTypes": [
+        "perfect-fit-roller"
+      ],
+      "selectionKind": "pricingBandFallback",
+      "isFallback": true
+    },
+    {
+      "id": "wb-pf-roller-perfect-fit-konnect-band-ins",
+      "supplierId": "workbook-workbook-pricing",
+      "supplierName": "Workbook Pricing",
+      "productTypeId": "wb-pf-roller-perfect-fit-konnect",
+      "name": "Band INS",
+      "displayName": "Band INS",
+      "band": "INS",
+      "source": "references/alpine Trade Price working (1).xlsx::PF Roller",
+      "pricingSource": "PF Roller, Perfect Fit Konnect",
+      "pricingReferenceNote": "Internal pricing reference: Workbook Pricing, Band INS. Pricing source: PF Roller, Perfect Fit Konnect.",
+      "compatibleBlindTypes": [
+        "perfect-fit-roller"
+      ],
+      "selectionKind": "pricingBandFallback",
+      "isFallback": true
+    },
+    {
+      "id": "wb-pf-vision-band-e",
+      "supplierId": "workbook-workbook-pricing",
+      "supplierName": "Workbook Pricing",
+      "productTypeId": "wb-pf-vision",
+      "name": "Band E",
+      "displayName": "Band E",
+      "band": "E",
+      "source": "references/alpine Trade Price working (1).xlsx::PF Vision",
+      "pricingSource": "PF Vision",
+      "pricingReferenceNote": "Internal pricing reference: Workbook Pricing, Band E. Pricing source: PF Vision.",
+      "compatibleBlindTypes": [
+        "perfect-fit-vision"
+      ],
+      "selectionKind": "pricingBandFallback",
+      "isFallback": true
+    },
+    {
+      "id": "wb-vision-band-e",
+      "supplierId": "workbook-workbook-pricing",
+      "supplierName": "Workbook Pricing",
+      "productTypeId": "wb-vision",
+      "name": "Band E",
+      "displayName": "Band E",
+      "band": "E",
+      "source": "references/alpine Trade Price working (1).xlsx::Vision",
+      "pricingSource": "Vision",
+      "pricingReferenceNote": "Internal pricing reference: Workbook Pricing, Band E. Pricing source: Vision.",
+      "compatibleBlindTypes": [
+        "vision"
+      ],
+      "selectionKind": "pricingBandFallback",
+      "isFallback": true
+    }
   ],
   "definedNames": [
     {

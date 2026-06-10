@@ -25,7 +25,7 @@ export function getBasePrice({
 
   const price = bandMatrix[heightIndex]?.[widthIndex];
 
-  if (typeof price !== "number") {
+  if (typeof price !== "number" || price <= 0) {
     throw new Error(
       `No available price for ${priceTable.id}, band ${band}, ${roundedWidthMm}mm width x ${roundedHeightMm}mm height.`,
     );

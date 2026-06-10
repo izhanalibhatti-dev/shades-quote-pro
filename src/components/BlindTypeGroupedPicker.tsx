@@ -23,8 +23,7 @@ const GROUPS: Group[] = [
   {
     title: "Wood & Venetian",
     ids: [
-      "aqua-fauxwood",
-      "arena-fauxwood",
+      "fauxwood",
       "sunwood-faux",
       "sunwood-wood",
       "aluminium-venetian",
@@ -34,11 +33,7 @@ const GROUPS: Group[] = [
   },
   {
     title: "Specialist",
-    ids: [
-      "roman",
-      "allusion",
-      "perfect-fit-shutter",
-    ],
+    ids: ["roman", "allusion", "perfect-fit-shutter"],
   },
   {
     title: "Pleated",
