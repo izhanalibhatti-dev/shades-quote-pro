@@ -44,6 +44,10 @@ await writeFile(path.join(pagesDir, "index.html"), html);
 await writeFile(path.join(pagesDir, "404.html"), html);
 await writeFile(path.join(pagesDir, ".nojekyll"), "");
 
+for (const staleEntry of ["index-CEq0z4sX.js"]) {
+  await writeFile(path.join(pagesDir, "assets", staleEntry), `import "./${entryScript}";\n`);
+}
+
 console.log(
   `GitHub Pages artifact ready: dist/github-pages (${packageJson.name}, basePath=${basePath || "/"})`,
 );
