@@ -962,7 +962,9 @@ function buildProjectItem(
             draft.blindFrameColour,
           )
         : filterExtrasForBlindType(
-            draft.blindExtras.filter((item) => !PERFECT_FIT_FRAME_SURCHARGE_IDS.includes(item.id)),
+            draft.blindExtras.filter(
+              (item) => !(PERFECT_FIT_FRAME_SURCHARGE_IDS as readonly string[]).includes(item.id),
+            ),
             draft.blindTypeId,
           ),
       pricing: { labourCost: 0, discount: 0, vatRate: project.vatRate },
@@ -1171,7 +1173,7 @@ function BlindDraftForm({
           )
         : filterExtrasForBlindType(
             current.blindExtras.filter(
-              (item) => !PERFECT_FIT_FRAME_SURCHARGE_IDS.includes(item.id),
+              (item) => !(PERFECT_FIT_FRAME_SURCHARGE_IDS as readonly string[]).includes(item.id),
             ),
             blindTypeId,
           ),
