@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { Mail, Lock, ArrowRight, Loader2 } from "lucide-react";
@@ -9,8 +9,8 @@ import { useI18n } from "@/lib/i18n";
 
 export default function LoginScreen() {
   const navigate = useNavigate();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const emailRef = useRef<HTMLInputElement>(null);
+  const passwordRef = useRef<HTMLInputElement>(null);
   const [loading, setLoading] = useState(false);
   const { t } = useI18n();
 
@@ -20,6 +20,8 @@ export default function LoginScreen() {
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    const email = emailRef.current?.value.trim() ?? "";
+    const password = passwordRef.current?.value ?? "";
     if (!email || !password) return;
     setLoading(true);
     await new Promise((r) => setTimeout(r, 650));
@@ -74,20 +76,18 @@ export default function LoginScreen() {
             <Field
               icon={<Mail className="h-4 w-4" />}
               id="login-email"
+              inputRef={emailRef}
               type="email"
               placeholder={t("login.email")}
-              value={email}
-              onChange={(v) => setEmail(v)}
               autoComplete="email"
               autoFocus
             />
             <Field
               icon={<Lock className="h-4 w-4" />}
               id="login-password"
+              inputRef={passwordRef}
               type="password"
               placeholder={t("login.password")}
-              value={password}
-              onChange={(v) => setPassword(v)}
               autoComplete="current-password"
             />
 
@@ -125,19 +125,17 @@ export default function LoginScreen() {
 function Field({
   icon,
   id,
+  inputRef,
   type,
   placeholder,
-  value,
-  onChange,
   autoComplete,
   autoFocus = false,
 }: {
   icon: React.ReactNode;
   id: string;
+  inputRef: React.RefObject<HTMLInputElement | null>;
   type: string;
   placeholder: string;
-  value: string;
-  onChange: (v: string) => void;
   autoComplete?: string;
   autoFocus?: boolean;
 }) {
@@ -154,10 +152,8 @@ function Field({
       </span>
       <input
         id={id}
+        ref={inputRef}
         type={type}
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-        onInput={(e) => onChange(e.currentTarget.value)}
         placeholder={placeholder}
         autoComplete={autoComplete}
         autoFocus={autoFocus}

@@ -12,6 +12,7 @@
     "build": "XDG_CONFIG_HOME=.wrangler/config vite build",
     "build:github-pages": "vite build --config vite.github-pages.config.ts --base ${VITE_BASE_PATH:-/} && node scripts/build-github-pages.mjs",
     "build:dev": "vite build --mode development",
+    "deploy:cloudflare": "npm run build && npx wrangler deploy --config dist/server/wrangler.json",
     "preview": "vite preview",
     "ci": "npm run lint && npm run build",
     "import:blinds-workbook": "python3 scripts/import-blinds-workbook.py",
