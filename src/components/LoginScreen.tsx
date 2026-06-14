@@ -56,23 +56,13 @@ export default function LoginScreen() {
       />
 
       <div className="relative z-10 mx-auto flex min-h-screen max-w-md flex-col items-center justify-center px-6 py-12">
-        <motion.div
-          initial={{ opacity: 0, y: -8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="mb-10 flex items-center gap-3"
-        >
+        <div className="mb-10 flex items-center gap-3">
           <div className="rounded-xl bg-white/95 p-2 shadow-[0_8px_30px_-12px_rgba(0,0,0,0.5)]">
             <Logo className="h-10 w-auto" />
           </div>
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
-          className="glass-dark w-full rounded-3xl p-8 luxe-shadow"
-        >
+        <div className="glass-dark relative w-full rounded-3xl p-8 luxe-shadow">
           <div className="mb-7 text-center">
             <h1 className="text-2xl font-semibold tracking-tight text-balance">
               {t("login.welcome")}
@@ -80,7 +70,7 @@ export default function LoginScreen() {
             <p className="mt-1.5 text-sm text-white/65">{t("login.subtitle")}</p>
           </div>
 
-          <form onSubmit={onSubmit} className="space-y-4">
+          <form onSubmit={onSubmit} className="relative z-10 space-y-4">
             <Field
               icon={<Mail className="h-4 w-4" />}
               type="email"
@@ -119,7 +109,7 @@ export default function LoginScreen() {
           <p className="mt-6 text-center text-[11px] uppercase tracking-[0.18em] text-white/40">
             {t("login.staffOnly")}
           </p>
-        </motion.div>
+        </div>
 
         <p className="mt-8 text-xs text-white/40">
           © {new Date().getFullYear()} Shades &amp; Space. All rights reserved.
