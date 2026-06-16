@@ -3,5 +3,5 @@ import { ProjectQuoteBuilder } from "@/routes/_app.project";
 
 export const Route = createFileRoute("/_app/wardrobe")({
   head: () => ({ meta: [{ title: "Wardrobes & Doors Quote - Shades & Space" }] }),
-  component: () => <ProjectQuoteBuilder mode="wardrobes" />,
+  component: () => <ProjectQuoteBuilder key="wardrobes" mode="wardrobes" />,
 });

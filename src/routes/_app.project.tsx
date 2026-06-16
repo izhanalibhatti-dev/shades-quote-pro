@@ -41,7 +41,7 @@ import type { WardrobeAddon, WardrobeCategoryId, WardrobeProduct } from "@/types
 
 export const Route = createFileRoute("/_app/project")({
   head: () => ({ meta: [{ title: "Project Quote - Shades & Space" }] }),
-  component: () => <ProjectQuoteBuilder mode="project" />,
+  component: () => <ProjectQuoteBuilder key="project" mode="project" />,
 });
 
 type DraftType = ProjectQuoteItemType;
@@ -490,6 +490,17 @@ export function ProjectQuoteBuilder({ mode }: { mode: BuilderMode }) {
   const [exporting, setExporting] = useState(false);
   const previewRef = useRef<HTMLDivElement>(null);
   const englishPreviewRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setDraft(initialDraftForMode(mode));
+    setEditingItemId(null);
+  }, [mode]);
+
+  useEffect(() => {
+    setActiveAreaId((current) =>
+      project.areas.some((area) => area.id === current) ? current : (project.areas[0]?.id ?? ""),
+    );
+  }, [mode, project.areas]);
 
   const activeArea = project.areas.find((area) => area.id === activeAreaId) ?? project.areas[0];
   const totals = useMemo(() => calculateProjectQuote(project), [project]);

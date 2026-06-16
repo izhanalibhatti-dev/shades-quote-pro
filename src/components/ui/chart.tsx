@@ -63,8 +63,9 @@ ChartContainer.displayName = "Chart";
 
 const ChartStyle = ({ id, config }: { id: string; config: ChartConfig }) => {
   const colorConfig = Object.entries(config).filter(([, config]) => config.theme || config.color);
+  const safeId = toSafeCssIdentifier(id);
 
-  if (!colorConfig.length) {
+  if (!colorConfig.length || !safeId) {
     return null;
   }
 
@@ -74,11 +75,12 @@ const ChartStyle = ({ id, config }: { id: string; config: ChartConfig }) => {
         __html: Object.entries(THEMES)
           .map(
             ([theme, prefix]) => `
-${prefix} [data-chart=${id}] {
+${prefix} [data-chart=${safeId}] {
 ${colorConfig
   .map(([key, itemConfig]) => {
     const color = itemConfig.theme?.[theme as keyof typeof itemConfig.theme] || itemConfig.color;
-    return color ? `  --color-${key}: ${color};` : null;
+    const safeKey = toSafeCssIdentifier(key);
+    return safeKey && isSafeCssColor(color) ? `  --color-${safeKey}: ${color};` : null;
   })
   .join("\n")}
 }
@@ -89,6 +91,21 @@ ${colorConfig
     />
   );
 };
+
+function toSafeCssIdentifier(value: string): string | null {
+  return /^[a-zA-Z_][a-zA-Z0-9_-]*$/.test(value) ? value : null;
+}
+
+function isSafeCssColor(value: string | undefined): value is string {
+  if (!value) return false;
+  return (
+    /^#[0-9a-fA-F]{3,8}$/.test(value) ||
+    /^hsl\(\s*\d+(?:\.\d+)?(?:deg|rad|turn)?\s+\d+(?:\.\d+)?%\s+\d+(?:\.\d+)?%(?:\s*\/\s*(?:0|1|0?\.\d+|\d+(?:\.\d+)?%))?\s*\)$/.test(
+      value,
+    ) ||
+    /^var\(--[a-zA-Z_][a-zA-Z0-9_-]*\)$/.test(value)
+  );
+}
 
 const ChartTooltip = RechartsPrimitive.Tooltip;
 
