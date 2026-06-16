@@ -5,10 +5,12 @@ export function ExtrasSelector({
   extras,
   selected,
   onChange,
+  blindWidthMm,
 }: {
   extras: Extra[];
   selected: SelectedExtra[];
   onChange: (selected: SelectedExtra[]) => void;
+  blindWidthMm?: number;
 }) {
   const selectedIds = new Set(selected.map((item) => item.id));
 
@@ -30,7 +32,17 @@ export function ExtrasSelector({
               checked={checked}
               onChange={(event) => {
                 if (event.target.checked) {
-                  onChange([...selected, { id: extra.id, quantity: 1 }]);
+                  onChange([
+                    ...selected,
+                    {
+                      id: extra.id,
+                      quantity: 1,
+                      widthMm:
+                        extra.pricing.type === "widthTable" && blindWidthMm
+                          ? blindWidthMm
+                          : undefined,
+                    },
+                  ]);
                 } else {
                   onChange(selected.filter((item) => item.id !== extra.id));
                 }
@@ -46,20 +58,42 @@ export function ExtrasSelector({
               ) : null}
             </span>
             {checked ? (
-              <input
-                type="number"
-                min={1}
-                value={selected.find((item) => item.id === extra.id)?.quantity ?? 1}
-                onChange={(event) => {
-                  const quantity = Math.max(1, Number(event.target.value) || 1);
-                  onChange(
-                    selected.map((item) => (item.id === extra.id ? { ...item, quantity } : item)),
-                  );
-                }}
-                onClick={(event) => event.stopPropagation()}
-                className="h-8 w-16 rounded-lg border border-border bg-background px-2 text-right text-sm"
-                aria-label={`${extra.name} quantity`}
-              />
+              <span className="flex shrink-0 items-center gap-2">
+                {extra.pricing.type === "widthTable" ? (
+                  <input
+                    type="number"
+                    min={1}
+                    value={
+                      selected.find((item) => item.id === extra.id)?.widthMm ?? blindWidthMm ?? ""
+                    }
+                    onChange={(event) => {
+                      const widthMm = Math.max(1, Number(event.target.value) || 0);
+                      onChange(
+                        selected.map((item) =>
+                          item.id === extra.id ? { ...item, widthMm } : item,
+                        ),
+                      );
+                    }}
+                    onClick={(event) => event.stopPropagation()}
+                    className="h-8 w-24 rounded-lg border border-border bg-background px-2 text-right text-sm"
+                    aria-label={`${extra.name} width in millimetres`}
+                  />
+                ) : null}
+                <input
+                  type="number"
+                  min={1}
+                  value={selected.find((item) => item.id === extra.id)?.quantity ?? 1}
+                  onChange={(event) => {
+                    const quantity = Math.max(1, Number(event.target.value) || 1);
+                    onChange(
+                      selected.map((item) => (item.id === extra.id ? { ...item, quantity } : item)),
+                    );
+                  }}
+                  onClick={(event) => event.stopPropagation()}
+                  className="h-8 w-16 rounded-lg border border-border bg-background px-2 text-right text-sm"
+                  aria-label={`${extra.name} quantity`}
+                />
+              </span>
             ) : null}
           </label>
         );

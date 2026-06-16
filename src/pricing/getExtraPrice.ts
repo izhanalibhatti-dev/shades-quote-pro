@@ -13,44 +13,78 @@ export function getExtraPrice({
   basePrice: number;
 }): ExtraLine {
   const quantity = Math.max(1, selected.quantity || 1);
-  const unitPrice = getUnitPrice(extra, quote, basePrice);
+  const unitResult = getUnitPrice(extra, selected, quote, basePrice);
 
   return {
     id: extra.id,
     name: extra.name,
     quantity,
-    unitPrice,
-    total: unitPrice * quantity,
+    unitPrice: unitResult.unitPrice,
+    total: unitResult.unitPrice * quantity,
+    widthMm: unitResult.widthMm,
+    roundedWidthMm: unitResult.roundedWidthMm,
   };
 }
 
-function getUnitPrice(extra: Extra, quote: QuoteState, basePrice: number): number {
+function getUnitPrice(
+  extra: Extra,
+  selected: SelectedExtra,
+  quote: QuoteState,
+  basePrice: number,
+): { unitPrice: number; widthMm?: number; roundedWidthMm?: number } {
   switch (extra.pricing.type) {
     case "fixed":
-      return extra.pricing.amount;
+      return { unitPrice: extra.pricing.amount };
     case "perBlind":
-      return extra.pricing.amount * quote.size.quantity;
+      return { unitPrice: extra.pricing.amount * quote.size.quantity };
     case "perMetreWidth":
-      return extra.pricing.amount * (quote.size.widthMm / 1000);
+      return { unitPrice: extra.pricing.amount * (quote.size.widthMm / 1000) };
     case "percentageBase":
-      return basePrice * (extra.pricing.amount / 100);
+      return { unitPrice: basePrice * (extra.pricing.amount / 100) };
     case "fixedPlusPercentageBase":
-      return extra.pricing.amount + basePrice * (extra.pricing.percentage / 100);
+      return { unitPrice: extra.pricing.amount + basePrice * (extra.pricing.percentage / 100) };
     case "fixedPlusWidthThreshold":
-      return (
-        (extra.pricing.amount +
-          (quote.size.widthMm > extra.pricing.thresholdWidthMm ? extra.pricing.uplift : 0)) *
-        quote.size.quantity
-      );
-    case "widthTable":
-      return (
-        getWidthTablePrice(extra.pricing.widths, extra.pricing.prices, quote.size.widthMm) *
-        quote.size.quantity
-      );
+      return {
+        unitPrice:
+          (extra.pricing.amount +
+            (quote.size.widthMm > extra.pricing.thresholdWidthMm ? extra.pricing.uplift : 0)) *
+          quote.size.quantity,
+      };
+    case "widthTable": {
+      const widthMm =
+        Number.isFinite(selected.widthMm) && (selected.widthMm ?? 0) > 0
+          ? selected.widthMm
+          : quote.size.widthMm;
+      const result = getWidthTablePrice(extra.pricing.widths, extra.pricing.prices, widthMm);
+      return {
+        unitPrice: result.price * quote.size.quantity,
+        widthMm,
+        roundedWidthMm: result.roundedWidthMm,
+      };
+    }
   }
 }
 
-function getWidthTablePrice(widths: number[], prices: number[], widthMm: number): number {
+function getWidthTablePrice(
+  widths: number[],
+  prices: number[],
+  widthMm: number,
+): { price: number; roundedWidthMm: number } {
+  const min = Math.min(...widths);
+  const max = Math.max(...widths);
+
+  if (widthMm < min) {
+    throw new Error(
+      `Extra width ${widthMm}mm is below the minimum priced width. Available extra width range: ${min}-${max}mm.`,
+    );
+  }
+
+  if (widthMm > max) {
+    throw new Error(
+      `Extra width ${widthMm}mm is above the maximum priced width. Available extra width range: ${min}-${max}mm.`,
+    );
+  }
+
   const index = widths.findIndex((width) => widthMm <= width);
 
   if (index === -1) {
@@ -63,5 +97,5 @@ function getWidthTablePrice(widths: number[], prices: number[], widthMm: number)
     throw new Error(`The extra price table is missing a price for width ${widths[index]}mm.`);
   }
 
-  return price;
+  return { price, roundedWidthMm: widths[index] };
 }

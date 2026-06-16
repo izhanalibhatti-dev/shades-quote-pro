@@ -1,6 +1,7 @@
 export interface SelectedExtra {
   id: string;
   quantity: number;
+  widthMm?: number;
 }
 
 export interface QuoteState {
@@ -52,6 +53,8 @@ export interface ExtraLine {
   quantity: number;
   unitPrice: number;
   total: number;
+  widthMm?: number;
+  roundedWidthMm?: number;
 }
 
 export interface QuoteCalculation {

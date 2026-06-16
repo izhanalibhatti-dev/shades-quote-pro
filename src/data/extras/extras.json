@@ -3,51 +3,112 @@
     "id": "perfect-fit-roller-golden-oak-mahogany-frame-surcharge",
     "name": "Perfect Fit Roller Golden Oak / Mahogany Frame Surcharge",
     "description": "Internal 35% surcharge applied when Golden Oak or Mahogany frame colour is selected.",
-    "applicableBlindTypes": ["perfect-fit-roller"],
-    "pricing": { "type": "percentageBase", "amount": 35 }
+    "applicableBlindTypes": [
+      "perfect-fit-roller"
+    ],
+    "pricing": {
+      "type": "percentageBase",
+      "amount": 35
+    }
   },
   {
     "id": "perfect-fit-vision-golden-oak-mahogany-frame-surcharge",
     "name": "Perfect Fit Vision Golden Oak / Mahogany Frame Surcharge",
     "description": "Internal 25% surcharge applied when Golden Oak or Mahogany frame colour is selected.",
-    "applicableBlindTypes": ["perfect-fit-vision"],
-    "pricing": { "type": "percentageBase", "amount": 25 }
+    "applicableBlindTypes": [
+      "perfect-fit-vision"
+    ],
+    "pricing": {
+      "type": "percentageBase",
+      "amount": 25
+    }
   },
   {
     "id": "perfect-fit-aluminium-golden-oak-mahogany-frame-surcharge",
     "name": "Perfect Fit Aluminium Golden Oak / Mahogany Frame Surcharge",
     "description": "Internal 35% surcharge applied when Golden Oak or Mahogany frame colour is selected.",
-    "applicableBlindTypes": ["perfect-fit-aluminium"],
-    "pricing": { "type": "percentageBase", "amount": 35 }
+    "applicableBlindTypes": [
+      "perfect-fit-aluminium"
+    ],
+    "pricing": {
+      "type": "percentageBase",
+      "amount": 35
+    }
   },
   {
     "id": "perfect-fit-wood-golden-oak-mahogany-frame-surcharge",
     "name": "Perfect Fit Sunwood Golden Oak / Mahogany Frame Surcharge",
     "description": "Internal 30% surcharge applied when Golden Oak or Mahogany frame colour is selected.",
-    "applicableBlindTypes": ["perfect-fit-wood"],
-    "pricing": { "type": "percentageBase", "amount": 30 }
+    "applicableBlindTypes": [
+      "perfect-fit-wood"
+    ],
+    "pricing": {
+      "type": "percentageBase",
+      "amount": 30
+    }
   },
   {
     "id": "welded-single",
     "name": "Welded Single",
     "description": "No charge. Mention on order sheet. Not all fabrics can be welded.",
-    "applicableBlindTypes": ["vertical"],
-    "pricing": { "type": "fixed", "amount": 0 }
+    "applicableBlindTypes": [
+      "vertical"
+    ],
+    "pricing": {
+      "type": "fixed",
+      "amount": 0
+    }
   },
   {
     "id": "metal-welded-weights",
     "name": "Welded With Metal Weights",
     "description": "Rounded up by width.",
-    "applicableBlindTypes": ["vertical"],
+    "applicableBlindTypes": [
+      "vertical"
+    ],
     "pricing": {
       "type": "widthTable",
       "widths": [
-        500, 750, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3250, 3500, 3750, 4000,
-        4250, 4500, 4750, 5000
+        500,
+        750,
+        1000,
+        1250,
+        1500,
+        1750,
+        2000,
+        2250,
+        2500,
+        2750,
+        3000,
+        3250,
+        3500,
+        3750,
+        4000,
+        4250,
+        4500,
+        4750,
+        5000
       ],
       "prices": [
-        7.49, 7.49, 8.81, 10.13, 12.77, 14.09, 18.05, 19.36, 20.68, 22, 23.32, 24.64, 25.96, 27.28,
-        28.6, 29.92, 31.24, 32.55, 33.87
+        7.49,
+        7.49,
+        8.81,
+        10.13,
+        12.77,
+        14.09,
+        18.05,
+        19.36,
+        20.68,
+        22,
+        23.32,
+        24.64,
+        25.96,
+        27.28,
+        28.6,
+        29.92,
+        31.24,
+        32.55,
+        33.87
       ]
     }
   },
@@ -55,16 +116,52 @@
     "id": "metal-sewn-weights",
     "name": "Sewn In Weights",
     "description": "Rounded up by width.",
-    "applicableBlindTypes": ["vertical"],
+    "applicableBlindTypes": [
+      "vertical"
+    ],
     "pricing": {
       "type": "widthTable",
       "widths": [
-        500, 750, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3250, 3500, 3750, 4000,
-        4250, 4500, 4750, 5000
+        500,
+        750,
+        1000,
+        1250,
+        1500,
+        1750,
+        2000,
+        2250,
+        2500,
+        2750,
+        3000,
+        3250,
+        3500,
+        3750,
+        4000,
+        4250,
+        4500,
+        4750,
+        5000
       ],
       "prices": [
-        6.17, 6.17, 7.49, 8.81, 11.45, 12.77, 14.09, 15.41, 16.73, 18.05, 19.36, 20.68, 22, 23.32,
-        24.64, 25.96, 27.28, 28.6, 29.92
+        6.17,
+        6.17,
+        7.49,
+        8.81,
+        11.45,
+        12.77,
+        14.09,
+        15.41,
+        16.73,
+        18.05,
+        19.36,
+        20.68,
+        22,
+        23.32,
+        24.64,
+        25.96,
+        27.28,
+        28.6,
+        29.92
       ]
     }
   },
@@ -72,16 +169,52 @@
     "id": "black-weights-hangers-chain",
     "name": "Black Weights / Hangers / Chain",
     "description": "Rounded up by width.",
-    "applicableBlindTypes": ["vertical"],
+    "applicableBlindTypes": [
+      "vertical"
+    ],
     "pricing": {
       "type": "widthTable",
       "widths": [
-        500, 750, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3250, 3500, 3750, 4000,
-        4250, 4500, 4750, 5000
+        500,
+        750,
+        1000,
+        1250,
+        1500,
+        1750,
+        2000,
+        2250,
+        2500,
+        2750,
+        3000,
+        3250,
+        3500,
+        3750,
+        4000,
+        4250,
+        4500,
+        4750,
+        5000
       ],
       "prices": [
-        5.28, 5.28, 5.28, 6.59, 7.91, 9.23, 10.55, 11.87, 13.19, 14.51, 15.83, 17.15, 18.47, 19.78,
-        21.1, 22.42, 23.74, 25.06, 26.38
+        5.28,
+        5.28,
+        5.28,
+        6.59,
+        7.91,
+        9.23,
+        10.55,
+        11.87,
+        13.19,
+        14.51,
+        15.83,
+        17.15,
+        18.47,
+        19.78,
+        21.1,
+        22.42,
+        23.74,
+        25.06,
+        26.38
       ]
     }
   },
@@ -89,16 +222,52 @@
     "id": "beige-weights",
     "name": "Beige Weights / Hangers / Chain",
     "description": "Rounded up by width.",
-    "applicableBlindTypes": ["vertical"],
+    "applicableBlindTypes": [
+      "vertical"
+    ],
     "pricing": {
       "type": "widthTable",
       "widths": [
-        500, 750, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3250, 3500, 3750, 4000,
-        4250, 4500, 4750, 5000
+        500,
+        750,
+        1000,
+        1250,
+        1500,
+        1750,
+        2000,
+        2250,
+        2500,
+        2750,
+        3000,
+        3250,
+        3500,
+        3750,
+        4000,
+        4250,
+        4500,
+        4750,
+        5000
       ],
       "prices": [
-        5.28, 5.28, 5.28, 6.59, 7.91, 9.23, 10.55, 11.87, 13.19, 14.51, 15.83, 17.15, 18.47, 19.78,
-        21.1, 22.42, 23.74, 25.06, 26.38
+        5.28,
+        5.28,
+        5.28,
+        6.59,
+        7.91,
+        9.23,
+        10.55,
+        11.87,
+        13.19,
+        14.51,
+        15.83,
+        17.15,
+        18.47,
+        19.78,
+        21.1,
+        22.42,
+        23.74,
+        25.06,
+        26.38
       ]
     }
   },
@@ -106,16 +275,52 @@
     "id": "metal-stabilising-chain",
     "name": "Metal Stabilising Chain",
     "description": "Rounded up by width.",
-    "applicableBlindTypes": ["vertical"],
+    "applicableBlindTypes": [
+      "vertical"
+    ],
     "pricing": {
       "type": "widthTable",
       "widths": [
-        500, 750, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3250, 3500, 3750, 4000,
-        4250, 4500, 4750, 5000
+        500,
+        750,
+        1000,
+        1250,
+        1500,
+        1750,
+        2000,
+        2250,
+        2500,
+        2750,
+        3000,
+        3250,
+        3500,
+        3750,
+        4000,
+        4250,
+        4500,
+        4750,
+        5000
       ],
       "prices": [
-        3.96, 5.28, 6.59, 7.91, 9.23, 10.55, 11.87, 13.19, 14.51, 15.83, 17.15, 18.47, 19.78, 21.1,
-        22.42, 23.74, 25.06, 26.38, 27.7
+        3.96,
+        5.28,
+        6.59,
+        7.91,
+        9.23,
+        10.55,
+        11.87,
+        13.19,
+        14.51,
+        15.83,
+        17.15,
+        18.47,
+        19.78,
+        21.1,
+        22.42,
+        23.74,
+        25.06,
+        26.38,
+        27.7
       ]
     }
   },
@@ -123,23 +328,65 @@
     "id": "metal-side-chain",
     "name": "Metal Side Chain",
     "description": "Per rail.",
-    "applicableBlindTypes": ["vertical"],
-    "pricing": { "type": "perBlind", "amount": 3.1 }
+    "applicableBlindTypes": [
+      "vertical"
+    ],
+    "pricing": {
+      "type": "perBlind",
+      "amount": 3.1
+    }
   },
   {
     "id": "vogue-rail-upgrade-white-brown-brushed-anthracite",
     "name": "Upgrade to Vogue Rail - White, Brown, Brushed Aluminium, Anthracite Grey",
     "description": "Extra per blind. Excludes metal gear.",
-    "applicableBlindTypes": ["vertical", "pvc-rigid"],
+    "applicableBlindTypes": [
+      "vertical",
+      "pvc-rigid"
+    ],
     "pricing": {
       "type": "widthTable",
       "widths": [
-        500, 750, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3250, 3500, 3750, 4000,
-        4250, 4500, 4750, 5000
+        500,
+        750,
+        1000,
+        1250,
+        1500,
+        1750,
+        2000,
+        2250,
+        2500,
+        2750,
+        3000,
+        3250,
+        3500,
+        3750,
+        4000,
+        4250,
+        4500,
+        4750,
+        5000
       ],
       "prices": [
-        6.92, 6.92, 9.68, 9.68, 11.06, 12.45, 13.83, 15.21, 15.21, 16.6, 16.6, 17.98, 17.98, 19.36,
-        20.75, 22.13, 22.13, 23.51, 23.51
+        6.92,
+        6.92,
+        9.68,
+        9.68,
+        11.06,
+        12.45,
+        13.83,
+        15.21,
+        15.21,
+        16.6,
+        16.6,
+        17.98,
+        17.98,
+        19.36,
+        20.75,
+        22.13,
+        22.13,
+        23.51,
+        23.51
       ]
     }
   },
@@ -147,16 +394,53 @@
     "id": "vogue-rail-upgrade-black-champagne",
     "name": "Upgrade to Vogue Rail - Black, Champagne Gold",
     "description": "Extra per blind. Includes metal chain.",
-    "applicableBlindTypes": ["vertical", "pvc-rigid"],
+    "applicableBlindTypes": [
+      "vertical",
+      "pvc-rigid"
+    ],
     "pricing": {
       "type": "widthTable",
       "widths": [
-        500, 750, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3250, 3500, 3750, 4000,
-        4250, 4500, 4750, 5000
+        500,
+        750,
+        1000,
+        1250,
+        1500,
+        1750,
+        2000,
+        2250,
+        2500,
+        2750,
+        3000,
+        3250,
+        3500,
+        3750,
+        4000,
+        4250,
+        4500,
+        4750,
+        5000
       ],
       "prices": [
-        9.68, 9.68, 11.06, 11.06, 12.45, 13.83, 15.21, 16.6, 17.98, 19.36, 20.75, 22.13, 22.13,
-        23.51, 23.51, 24.89, 24.89, 26.28, 26.28
+        9.68,
+        9.68,
+        11.06,
+        11.06,
+        12.45,
+        13.83,
+        15.21,
+        16.6,
+        17.98,
+        19.36,
+        20.75,
+        22.13,
+        22.13,
+        23.51,
+        23.51,
+        24.89,
+        24.89,
+        26.28,
+        26.28
       ]
     }
   },
@@ -164,16 +448,52 @@
     "id": "slimline-rail-only",
     "name": "Slimline Rail Only",
     "description": "Rounded up by width.",
-    "applicableBlindTypes": ["vertical"],
+    "applicableBlindTypes": [
+      "vertical"
+    ],
     "pricing": {
       "type": "widthTable",
       "widths": [
-        500, 750, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3250, 3500, 3750, 4000,
-        4250, 4500, 4750, 5000
+        500,
+        750,
+        1000,
+        1250,
+        1500,
+        1750,
+        2000,
+        2250,
+        2500,
+        2750,
+        3000,
+        3250,
+        3500,
+        3750,
+        4000,
+        4250,
+        4500,
+        4750,
+        5000
       ],
       "prices": [
-        5.53, 6.92, 8.3, 9.68, 11.06, 12.45, 13.83, 15.21, 16.6, 17.98, 19.36, 20.75, 22.13, 23.51,
-        24.89, 26.28, 27.66, 29.04, 30.43
+        5.53,
+        6.92,
+        8.3,
+        9.68,
+        11.06,
+        12.45,
+        13.83,
+        15.21,
+        16.6,
+        17.98,
+        19.36,
+        20.75,
+        22.13,
+        23.51,
+        24.89,
+        26.28,
+        27.66,
+        29.04,
+        30.43
       ]
     }
   },
@@ -181,16 +501,52 @@
     "id": "vogue-rail-only-white-brown-brushed-anthracite",
     "name": "Vogue Rail Only - White, Brown, Brushed Aluminium, Anthracite Grey",
     "description": "Includes metal chain.",
-    "applicableBlindTypes": ["vertical"],
+    "applicableBlindTypes": [
+      "vertical"
+    ],
     "pricing": {
       "type": "widthTable",
       "widths": [
-        500, 750, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3250, 3500, 3750, 4000,
-        4250, 4500, 4750, 5000
+        500,
+        750,
+        1000,
+        1250,
+        1500,
+        1750,
+        2000,
+        2250,
+        2500,
+        2750,
+        3000,
+        3250,
+        3500,
+        3750,
+        4000,
+        4250,
+        4500,
+        4750,
+        5000
       ],
       "prices": [
-        11.06, 13.83, 15.21, 16.6, 17.98, 19.36, 20.75, 22.13, 23.51, 24.89, 26.28, 27.66, 29.04,
-        30.43, 31.81, 33.19, 34.58, 35.96, 37.34
+        11.06,
+        13.83,
+        15.21,
+        16.6,
+        17.98,
+        19.36,
+        20.75,
+        22.13,
+        23.51,
+        24.89,
+        26.28,
+        27.66,
+        29.04,
+        30.43,
+        31.81,
+        33.19,
+        34.58,
+        35.96,
+        37.34
       ]
     }
   },
@@ -198,81 +554,173 @@
     "id": "vogue-rail-only-black-champagne",
     "name": "Vogue Rail Only - Black, Champagne Gold",
     "description": "Includes metal chain.",
-    "applicableBlindTypes": ["vertical"],
+    "applicableBlindTypes": [
+      "vertical"
+    ],
     "pricing": {
       "type": "widthTable",
       "widths": [
-        500, 750, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3250, 3500, 3750, 4000,
-        4250, 4500, 4750, 5000
+        500,
+        750,
+        1000,
+        1250,
+        1500,
+        1750,
+        2000,
+        2250,
+        2500,
+        2750,
+        3000,
+        3250,
+        3500,
+        3750,
+        4000,
+        4250,
+        4500,
+        4750,
+        5000
       ],
       "prices": [
-        13.83, 15.21, 16.6, 17.98, 19.36, 20.75, 22.13, 23.51, 24.89, 26.28, 27.66, 29.04, 30.43,
-        31.81, 33.19, 34.58, 35.96, 37.34, 38.72
+        13.83,
+        15.21,
+        16.6,
+        17.98,
+        19.36,
+        20.75,
+        22.13,
+        23.51,
+        24.89,
+        26.28,
+        27.66,
+        29.04,
+        30.43,
+        31.81,
+        33.19,
+        34.58,
+        35.96,
+        37.34,
+        38.72
       ]
     }
   },
   {
     "id": "curved-rail-slimline",
     "name": "Curved Rail Only (Slimline)",
-    "applicableBlindTypes": ["vertical"],
-    "pricing": { "type": "fixed", "amount": 85.7 }
+    "applicableBlindTypes": [
+      "vertical"
+    ],
+    "pricing": {
+      "type": "fixed",
+      "amount": 85.7
+    }
   },
   {
     "id": "curved-rail-vogue",
     "name": "Curved Rail Only (Vogue)",
     "description": "Satin not available.",
-    "applicableBlindTypes": ["vertical"],
-    "pricing": { "type": "fixed", "amount": 139.73 }
+    "applicableBlindTypes": [
+      "vertical"
+    ],
+    "pricing": {
+      "type": "fixed",
+      "amount": 139.73
+    }
   },
   {
-    "id": "curved-rail-with-fabric-slimline",
-    "name": "Curved Rail With Fabric (Slimline)",
-    "description": "Slimline rail cost plus 15% of fabric cost.",
-    "applicableBlindTypes": ["vertical"],
-    "pricing": { "type": "fixedPlusPercentageBase", "amount": 85.7, "percentage": 15 }
-  },
-  {
-    "id": "curved-rail-with-fabric-vogue",
-    "name": "Curved Rail With Fabric (Vogue)",
-    "description": "Vogue rail cost plus 15% of fabric cost.",
-    "applicableBlindTypes": ["vertical"],
-    "pricing": { "type": "fixedPlusPercentageBase", "amount": 139.73, "percentage": 15 }
+    "id": "curved-rail-with-fabric",
+    "name": "Curved Rail with Fabric",
+    "description": "Workbook line: rail cost + 15% additional for fabric cost.",
+    "applicableBlindTypes": [
+      "vertical"
+    ],
+    "pricing": {
+      "type": "fixedPlusPercentageBase",
+      "amount": 85.7,
+      "percentage": 15
+    }
   },
   {
     "id": "safety-clips",
     "name": "Louvolite Safety Clips",
     "description": "Each.",
-    "applicableBlindTypes": ["vertical"],
-    "pricing": { "type": "fixed", "amount": 1.1 }
+    "applicableBlindTypes": [
+      "vertical"
+    ],
+    "pricing": {
+      "type": "fixed",
+      "amount": 1.1
+    }
   },
   {
     "id": "recut-headrail",
     "name": "Recut or Record Headrail",
     "description": "Each rail.",
-    "applicableBlindTypes": ["vertical"],
-    "pricing": { "type": "fixed", "amount": 4 }
+    "applicableBlindTypes": [
+      "vertical"
+    ],
+    "pricing": {
+      "type": "fixed",
+      "amount": 4
+    }
   },
   {
     "id": "alternating-slats",
     "name": "Alternating Slats",
     "description": "Per colour.",
-    "applicableBlindTypes": ["vertical"],
-    "pricing": { "type": "fixed", "amount": 2 }
+    "applicableBlindTypes": [
+      "vertical"
+    ],
+    "pricing": {
+      "type": "fixed",
+      "amount": 2
+    }
   },
   {
     "id": "roller-40mm-system-motorised",
     "name": "40mm System",
     "description": "Additional cost by width. Used on all motorised rollers.",
-    "applicableBlindTypes": ["roller"],
+    "applicableBlindTypes": [
+      "roller"
+    ],
     "pricing": {
       "type": "widthTable",
       "widths": [
-        600, 800, 1000, 1200, 1400, 1600, 1800, 2000, 2200, 2400, 2600, 2800, 3000, 3200, 3400,
-        3600, 3800
+        600,
+        800,
+        1000,
+        1200,
+        1400,
+        1600,
+        1800,
+        2000,
+        2200,
+        2400,
+        2600,
+        2800,
+        3000,
+        3200,
+        3400,
+        3600,
+        3800
       ],
       "prices": [
-        2.69, 3.62, 4.53, 5.46, 6.38, 7.3, 8.22, 9.14, 10.06, 10.98, 11.91, 12.83, 13.75, 14.67,
-        15.59, 16.51, 17.43
+        2.69,
+        3.62,
+        4.53,
+        5.46,
+        6.38,
+        7.3,
+        8.22,
+        9.14,
+        10.06,
+        10.98,
+        11.91,
+        12.83,
+        13.75,
+        14.67,
+        15.59,
+        16.51,
+        17.43
       ]
     }
   },
@@ -280,16 +728,48 @@
     "id": "roller-40mm-system-manual",
     "name": "40mm System - Manual",
     "description": "Additional cost by width.",
-    "applicableBlindTypes": ["roller"],
+    "applicableBlindTypes": [
+      "roller"
+    ],
     "pricing": {
       "type": "widthTable",
       "widths": [
-        600, 800, 1000, 1200, 1400, 1600, 1800, 2000, 2200, 2400, 2600, 2800, 3000, 3200, 3400,
-        3600, 3800
+        600,
+        800,
+        1000,
+        1200,
+        1400,
+        1600,
+        1800,
+        2000,
+        2200,
+        2400,
+        2600,
+        2800,
+        3000,
+        3200,
+        3400,
+        3600,
+        3800
       ],
       "prices": [
-        5.8, 6.73, 7.64, 8.56, 9.48, 10.41, 11.33, 12.25, 13.17, 14.09, 15.01, 15.93, 16.85, 17.77,
-        18.7, 19.62, 20.54
+        5.8,
+        6.73,
+        7.64,
+        8.56,
+        9.48,
+        10.41,
+        11.33,
+        12.25,
+        13.17,
+        14.09,
+        15.01,
+        15.93,
+        16.85,
+        17.77,
+        18.7,
+        19.62,
+        20.54
       ]
     }
   },
@@ -297,16 +777,48 @@
     "id": "roller-40mm-heavy-duty-system-motorised",
     "name": "40mm Heavy Duty System",
     "description": "Additional cost by width. Can be used for motorised rollers.",
-    "applicableBlindTypes": ["roller"],
+    "applicableBlindTypes": [
+      "roller"
+    ],
     "pricing": {
       "type": "widthTable",
       "widths": [
-        600, 800, 1000, 1200, 1400, 1600, 1800, 2000, 2200, 2400, 2600, 2800, 3000, 3200, 3400,
-        3600, 3800
+        600,
+        800,
+        1000,
+        1200,
+        1400,
+        1600,
+        1800,
+        2000,
+        2200,
+        2400,
+        2600,
+        2800,
+        3000,
+        3200,
+        3400,
+        3600,
+        3800
       ],
       "prices": [
-        5.15, 5.15, 5.15, 6.44, 7.72, 7.72, 9.01, 9.7, 10.51, 11.32, 12.13, 12.94, 13.74, 14.55,
-        15.36, 16.17, 16.98
+        5.15,
+        5.15,
+        5.15,
+        6.44,
+        7.72,
+        7.72,
+        9.01,
+        9.7,
+        10.51,
+        11.32,
+        12.13,
+        12.94,
+        13.74,
+        14.55,
+        15.36,
+        16.17,
+        16.98
       ]
     }
   },
@@ -314,16 +826,48 @@
     "id": "roller-40mm-heavy-duty-system-manual",
     "name": "40mm Heavy Duty System - Manual",
     "description": "Additional cost by width.",
-    "applicableBlindTypes": ["roller"],
+    "applicableBlindTypes": [
+      "roller"
+    ],
     "pricing": {
       "type": "widthTable",
       "widths": [
-        600, 800, 1000, 1200, 1400, 1600, 1800, 2000, 2200, 2400, 2600, 2800, 3000, 3200, 3400,
-        3600, 3800
+        600,
+        800,
+        1000,
+        1200,
+        1400,
+        1600,
+        1800,
+        2000,
+        2200,
+        2400,
+        2600,
+        2800,
+        3000,
+        3200,
+        3400,
+        3600,
+        3800
       ],
       "prices": [
-        8.25, 8.25, 8.25, 9.54, 10.83, 10.83, 12.12, 12.8, 13.61, 14.42, 15.23, 16.04, 16.85, 17.66,
-        18.47, 19.28, 20.09
+        8.25,
+        8.25,
+        8.25,
+        9.54,
+        10.83,
+        10.83,
+        12.12,
+        12.8,
+        13.61,
+        14.42,
+        15.23,
+        16.04,
+        16.85,
+        17.66,
+        18.47,
+        19.28,
+        20.09
       ]
     }
   },
@@ -331,16 +875,48 @@
     "id": "roller-45mm-heavy-duty-system-motorised",
     "name": "45mm Heavy Duty System",
     "description": "Additional cost by width. Used for motorised rollers.",
-    "applicableBlindTypes": ["roller"],
+    "applicableBlindTypes": [
+      "roller"
+    ],
     "pricing": {
       "type": "widthTable",
       "widths": [
-        600, 800, 1000, 1200, 1400, 1600, 1800, 2000, 2200, 2400, 2600, 2800, 3000, 3200, 3400,
-        3600, 3800
+        600,
+        800,
+        1000,
+        1200,
+        1400,
+        1600,
+        1800,
+        2000,
+        2200,
+        2400,
+        2600,
+        2800,
+        3000,
+        3200,
+        3400,
+        3600,
+        3800
       ],
       "prices": [
-        4.03, 5.37, 6.72, 8.06, 9.41, 10.75, 12.1, 13.44, 14.79, 16.13, 17.48, 18.82, 20.17, 21.52,
-        22.86, 24.21, 25.55
+        4.03,
+        5.37,
+        6.72,
+        8.06,
+        9.41,
+        10.75,
+        12.1,
+        13.44,
+        14.79,
+        16.13,
+        17.48,
+        18.82,
+        20.17,
+        21.52,
+        22.86,
+        24.21,
+        25.55
       ]
     }
   },
@@ -348,16 +924,48 @@
     "id": "roller-45mm-heavy-duty-system-manual",
     "name": "45mm Heavy Duty System - Manual",
     "description": "Additional cost by width.",
-    "applicableBlindTypes": ["roller"],
+    "applicableBlindTypes": [
+      "roller"
+    ],
     "pricing": {
       "type": "widthTable",
       "widths": [
-        600, 800, 1000, 1200, 1400, 1600, 1800, 2000, 2200, 2400, 2600, 2800, 3000, 3200, 3400,
-        3600, 3800
+        600,
+        800,
+        1000,
+        1200,
+        1400,
+        1600,
+        1800,
+        2000,
+        2200,
+        2400,
+        2600,
+        2800,
+        3000,
+        3200,
+        3400,
+        3600,
+        3800
       ],
       "prices": [
-        8.26, 8.99, 10.34, 11.68, 13.03, 14.38, 15.72, 17.07, 18.41, 19.76, 21.1, 22.45, 23.79,
-        25.14, 26.48, 27.83, 29.17
+        8.26,
+        8.99,
+        10.34,
+        11.68,
+        13.03,
+        14.38,
+        15.72,
+        17.07,
+        18.41,
+        19.76,
+        21.1,
+        22.45,
+        23.79,
+        25.14,
+        26.48,
+        27.83,
+        29.17
       ]
     }
   },
@@ -365,16 +973,48 @@
     "id": "roller-55mm-tubes",
     "name": "55mm Tubes",
     "description": "Additional cost by width.",
-    "applicableBlindTypes": ["roller"],
+    "applicableBlindTypes": [
+      "roller"
+    ],
     "pricing": {
       "type": "widthTable",
       "widths": [
-        600, 800, 1000, 1200, 1400, 1600, 1800, 2000, 2200, 2400, 2600, 2800, 3000, 3200, 3400,
-        3600, 3800
+        600,
+        800,
+        1000,
+        1200,
+        1400,
+        1600,
+        1800,
+        2000,
+        2200,
+        2400,
+        2600,
+        2800,
+        3000,
+        3200,
+        3400,
+        3600,
+        3800
       ],
       "prices": [
-        14.49, 17.6, 20.7, 23.81, 26.91, 30.01, 33.12, 36.22, 39.33, 42.43, 45.54, 48.64, 51.75,
-        54.86, 57.96, 61.07, 64.17
+        14.49,
+        17.6,
+        20.7,
+        23.81,
+        26.91,
+        30.02,
+        33.12,
+        36.23,
+        39.33,
+        42.44,
+        45.54,
+        48.65,
+        51.75,
+        54.86,
+        57.96,
+        61.07,
+        64.17
       ]
     }
   },
@@ -382,16 +1022,48 @@
     "id": "roller-32-40-open-cassette-standard",
     "name": "32 & 40 Open Cassette - Standard Colours",
     "description": "Additional cost by width. Price includes fabric insert. Anthracite, Beige, Black Satin Grey, White.",
-    "applicableBlindTypes": ["roller"],
+    "applicableBlindTypes": [
+      "roller"
+    ],
     "pricing": {
       "type": "widthTable",
       "widths": [
-        600, 800, 1000, 1200, 1400, 1600, 1800, 2000, 2200, 2400, 2600, 2800, 3000, 3200, 3400,
-        3600, 3800
+        600,
+        800,
+        1000,
+        1200,
+        1400,
+        1600,
+        1800,
+        2000,
+        2200,
+        2400,
+        2600,
+        2800,
+        3000,
+        3200,
+        3400,
+        3600,
+        3800
       ],
       "prices": [
-        11.66, 12.95, 14.25, 15.54, 18.13, 20.72, 22.02, 23.31, 24.61, 28.49, 29.79, 32.38, 33.67,
-        36.26, 38.85, 41.44, 44.03
+        11.66,
+        12.95,
+        14.25,
+        15.54,
+        18.13,
+        20.72,
+        22.02,
+        23.31,
+        24.61,
+        28.49,
+        29.79,
+        32.38,
+        33.67,
+        36.26,
+        38.85,
+        41.44,
+        44.03
       ]
     }
   },
@@ -399,16 +1071,48 @@
     "id": "roller-32-40-open-cassette-chrome",
     "name": "32 & 40 Open Cassette - Chrome",
     "description": "Additional cost by width. Price includes fabric insert.",
-    "applicableBlindTypes": ["roller"],
+    "applicableBlindTypes": [
+      "roller"
+    ],
     "pricing": {
       "type": "widthTable",
       "widths": [
-        600, 800, 1000, 1200, 1400, 1600, 1800, 2000, 2200, 2400, 2600, 2800, 3000, 3200, 3400,
-        3600, 3800
+        600,
+        800,
+        1000,
+        1200,
+        1400,
+        1600,
+        1800,
+        2000,
+        2200,
+        2400,
+        2600,
+        2800,
+        3000,
+        3200,
+        3400,
+        3600,
+        3800
       ],
       "prices": [
-        15.54, 16.84, 18.13, 19.43, 20.72, 24.61, 27.2, 32.38, 34.97, 37.56, 40.15, 42.74, 46.62,
-        49.21, 51.8, 54.39, 55.69
+        15.54,
+        16.84,
+        18.13,
+        19.43,
+        20.72,
+        24.61,
+        27.2,
+        32.38,
+        34.97,
+        37.56,
+        40.15,
+        42.74,
+        46.62,
+        49.21,
+        51.8,
+        54.39,
+        55.69
       ]
     }
   },
@@ -416,16 +1120,48 @@
     "id": "roller-70mm-open-cassette-standard",
     "name": "70mm Open Cassette - Anthracite / Black / White",
     "description": "Additional cost by width. Price includes fabric insert.",
-    "applicableBlindTypes": ["roller"],
+    "applicableBlindTypes": [
+      "roller"
+    ],
     "pricing": {
       "type": "widthTable",
       "widths": [
-        600, 800, 1000, 1200, 1400, 1600, 1800, 2000, 2200, 2400, 2600, 2800, 3000, 3200, 3400,
-        3600, 3800
+        600,
+        800,
+        1000,
+        1200,
+        1400,
+        1600,
+        1800,
+        2000,
+        2200,
+        2400,
+        2600,
+        2800,
+        3000,
+        3200,
+        3400,
+        3600,
+        3800
       ],
       "prices": [
-        15.54, 16.84, 18.13, 19.43, 20.72, 24.61, 27.2, 32.38, 34.97, 37.56, 40.15, 42.74, 46.62,
-        49.21, 51.8, 54.39, 55.69
+        15.54,
+        16.84,
+        18.13,
+        19.43,
+        20.72,
+        24.61,
+        27.2,
+        32.38,
+        34.97,
+        37.56,
+        40.15,
+        42.74,
+        46.62,
+        49.21,
+        51.8,
+        54.39,
+        55.69
       ]
     }
   },
@@ -433,16 +1169,48 @@
     "id": "roller-70mm-open-cassette-satin",
     "name": "70mm Open Cassette - Satin",
     "description": "Additional cost by width. Price includes fabric insert.",
-    "applicableBlindTypes": ["roller"],
+    "applicableBlindTypes": [
+      "roller"
+    ],
     "pricing": {
       "type": "widthTable",
       "widths": [
-        600, 800, 1000, 1200, 1400, 1600, 1800, 2000, 2200, 2400, 2600, 2800, 3000, 3200, 3400,
-        3600, 3800
+        600,
+        800,
+        1000,
+        1200,
+        1400,
+        1600,
+        1800,
+        2000,
+        2200,
+        2400,
+        2600,
+        2800,
+        3000,
+        3200,
+        3400,
+        3600,
+        3800
       ],
       "prices": [
-        17.09, 18.39, 19.68, 20.98, 22.27, 26.16, 28.75, 33.93, 36.52, 39.11, 41.7, 44.29, 48.17,
-        50.76, 53.35, 55.94, 57.24
+        17.09,
+        18.39,
+        19.68,
+        20.98,
+        22.27,
+        26.16,
+        28.75,
+        33.93,
+        36.52,
+        39.11,
+        41.7,
+        44.29,
+        48.17,
+        50.76,
+        53.35,
+        55.94,
+        57.24
       ]
     }
   },
@@ -450,16 +1218,48 @@
     "id": "roller-40mm-cruze-open-cassette",
     "name": "40mm CRUZE Open Cassette",
     "description": "Additional cost by width. Price includes fabric insert.",
-    "applicableBlindTypes": ["roller"],
+    "applicableBlindTypes": [
+      "roller"
+    ],
     "pricing": {
       "type": "widthTable",
       "widths": [
-        600, 800, 1000, 1200, 1400, 1600, 1800, 2000, 2200, 2400, 2600, 2800, 3000, 3200, 3400,
-        3600, 3800
+        600,
+        800,
+        1000,
+        1200,
+        1400,
+        1600,
+        1800,
+        2000,
+        2200,
+        2400,
+        2600,
+        2800,
+        3000,
+        3200,
+        3400,
+        3600,
+        3800
       ],
       "prices": [
-        9.01, 11.18, 13.34, 15.36, 17.96, 19.69, 21.63, 23.58, 25.52, 27.47, 29.41, 31.36, 33.31,
-        35.25, 37.2, 39.14, 41.09
+        9.01,
+        11.18,
+        13.34,
+        15.36,
+        17.96,
+        19.69,
+        21.63,
+        23.58,
+        25.52,
+        27.47,
+        29.41,
+        31.36,
+        33.31,
+        35.25,
+        37.2,
+        39.14,
+        41.09
       ]
     }
   },
@@ -467,16 +1267,48 @@
     "id": "roller-70mm-cruze-open-cassette",
     "name": "70mm CRUZE Open Cassette",
     "description": "Additional cost by width. Price includes fabric insert.",
-    "applicableBlindTypes": ["roller"],
+    "applicableBlindTypes": [
+      "roller"
+    ],
     "pricing": {
       "type": "widthTable",
       "widths": [
-        600, 800, 1000, 1200, 1400, 1600, 1800, 2000, 2200, 2400, 2600, 2800, 3000, 3200, 3400,
-        3600, 3800
+        600,
+        800,
+        1000,
+        1200,
+        1400,
+        1600,
+        1800,
+        2000,
+        2200,
+        2400,
+        2600,
+        2800,
+        3000,
+        3200,
+        3400,
+        3600,
+        3800
       ],
       "prices": [
-        14.6, 15.6, 16.58, 19.12, 20.41, 22.53, 24.45, 26.36, 28.28, 30.19, 32.11, 34.02, 35.94,
-        37.85, 39.76, 41.68, 43.59
+        14.6,
+        15.6,
+        16.58,
+        19.12,
+        20.41,
+        22.53,
+        24.45,
+        26.36,
+        28.28,
+        30.19,
+        32.11,
+        34.02,
+        35.94,
+        37.85,
+        39.76,
+        41.68,
+        43.59
       ]
     }
   },
@@ -484,16 +1316,48 @@
     "id": "roller-back-bar-white",
     "name": "Back Bar - White",
     "description": "Additional cost by width.",
-    "applicableBlindTypes": ["roller"],
+    "applicableBlindTypes": [
+      "roller"
+    ],
     "pricing": {
       "type": "widthTable",
       "widths": [
-        600, 800, 1000, 1200, 1400, 1600, 1800, 2000, 2200, 2400, 2600, 2800, 3000, 3200, 3400,
-        3600, 3800
+        600,
+        800,
+        1000,
+        1200,
+        1400,
+        1600,
+        1800,
+        2000,
+        2200,
+        2400,
+        2600,
+        2800,
+        3000,
+        3200,
+        3400,
+        3600,
+        3800
       ],
       "prices": [
-        3.17, 4.22, 5.28, 6.33, 7.39, 8.45, 9.5, 10.56, 11.61, 12.67, 13.72, 14.78, 15.84, 16.89,
-        17.95, 19.0, 20.06
+        3.17,
+        4.22,
+        5.28,
+        6.33,
+        7.39,
+        8.45,
+        9.5,
+        10.56,
+        11.61,
+        12.67,
+        13.72,
+        14.78,
+        15.84,
+        16.89,
+        17.95,
+        19,
+        20.06
       ]
     }
   },
@@ -501,16 +1365,46 @@
     "id": "roller-gemini-bottom-bar-white-black-anthracite",
     "name": "Gemini Bottom Bar - White / Black / Anthracite",
     "description": "Additional cost by width.",
-    "applicableBlindTypes": ["roller"],
+    "applicableBlindTypes": [
+      "roller"
+    ],
     "pricing": {
       "type": "widthTable",
       "widths": [
-        600, 800, 1000, 1200, 1400, 1600, 1800, 2000, 2200, 2400, 2600, 2800, 3000, 3200, 3400,
-        3600, 3800
+        600,
+        800,
+        1000,
+        1200,
+        1400,
+        1600,
+        1800,
+        2000,
+        2200,
+        2400,
+        2600,
+        2800,
+        3000,
+        3200,
+        3400,
+        3600
       ],
       "prices": [
-        4.24, 5.66, 7.08, 8.5, 9.92, 11.33, 12.75, 14.17, 15.59, 17.01, 18.42, 19.84, 21.26, 22.68,
-        24.09, 25.51, 26.93
+        4.24,
+        5.66,
+        7.08,
+        8.5,
+        9.92,
+        11.33,
+        12.75,
+        14.17,
+        15.59,
+        17.01,
+        18.42,
+        19.84,
+        21.26,
+        22.68,
+        24.09,
+        25.51
       ]
     }
   },
@@ -518,16 +1412,46 @@
     "id": "roller-gemini-bottom-bar-satin-grey",
     "name": "Gemini Bottom Bar - Satin Grey",
     "description": "Additional cost by width.",
-    "applicableBlindTypes": ["roller"],
+    "applicableBlindTypes": [
+      "roller"
+    ],
     "pricing": {
       "type": "widthTable",
       "widths": [
-        600, 800, 1000, 1200, 1400, 1600, 1800, 2000, 2200, 2400, 2600, 2800, 3000, 3200, 3400,
-        3600, 3800
+        600,
+        800,
+        1000,
+        1200,
+        1400,
+        1600,
+        1800,
+        2000,
+        2200,
+        2400,
+        2600,
+        2800,
+        3000,
+        3200,
+        3400,
+        3600
       ],
       "prices": [
-        5.59, 7.45, 9.32, 11.18, 13.04, 14.9, 16.77, 18.63, 20.49, 22.36, 24.22, 26.08, 27.94,
-        29.81, 31.67, 33.53, 35.4
+        5.59,
+        7.45,
+        9.32,
+        11.18,
+        13.04,
+        14.9,
+        16.77,
+        18.63,
+        20.49,
+        22.36,
+        24.22,
+        26.08,
+        27.95,
+        29.81,
+        31.67,
+        33.53
       ]
     }
   },
@@ -535,16 +1459,46 @@
     "id": "roller-gemini-bottom-bar-chrome",
     "name": "Gemini Bottom Bar - Chrome",
     "description": "Additional cost by width.",
-    "applicableBlindTypes": ["roller"],
+    "applicableBlindTypes": [
+      "roller"
+    ],
     "pricing": {
       "type": "widthTable",
       "widths": [
-        600, 800, 1000, 1200, 1400, 1600, 1800, 2000, 2200, 2400, 2600, 2800, 3000, 3200, 3400,
-        3600, 3800
+        600,
+        800,
+        1000,
+        1200,
+        1400,
+        1600,
+        1800,
+        2000,
+        2200,
+        2400,
+        2600,
+        2800,
+        3000,
+        3200,
+        3400,
+        3600
       ],
       "prices": [
-        6.09, 8.11, 10.14, 12.17, 14.2, 16.23, 18.26, 20.29, 22.31, 24.34, 26.37, 28.4, 30.43,
-        32.46, 34.49, 36.51, 38.54
+        6.09,
+        8.11,
+        10.14,
+        12.17,
+        14.2,
+        16.23,
+        18.26,
+        20.29,
+        22.31,
+        24.34,
+        26.37,
+        28.4,
+        30.43,
+        32.46,
+        34.49,
+        36.51
       ]
     }
   },
@@ -552,16 +1506,46 @@
     "id": "roller-bottom-bar-double-wrap",
     "name": "Bottom Bar Double Wrap",
     "description": "Additional cost by width.",
-    "applicableBlindTypes": ["roller"],
+    "applicableBlindTypes": [
+      "roller"
+    ],
     "pricing": {
       "type": "widthTable",
       "widths": [
-        600, 800, 1000, 1200, 1400, 1600, 1800, 2000, 2200, 2400, 2600, 2800, 3000, 3200, 3400,
-        3600, 3800
+        600,
+        800,
+        1000,
+        1200,
+        1400,
+        1600,
+        1800,
+        2000,
+        2200,
+        2400,
+        2600,
+        2800,
+        3000,
+        3200,
+        3400,
+        3600
       ],
       "prices": [
-        1.99, 2.65, 3.33, 3.99, 4.66, 5.33, 6.0, 6.67, 7.34, 8.01, 8.68, 9.35, 10.02, 10.69, 11.36,
-        12.03, 12.7
+        1.99,
+        2.65,
+        3.33,
+        3.99,
+        4.66,
+        5.33,
+        6,
+        6.67,
+        7.34,
+        8.01,
+        8.68,
+        9.35,
+        10.02,
+        10.69,
+        11.36,
+        12.03
       ]
     }
   },
@@ -569,16 +1553,46 @@
     "id": "roller-aluminium-bottom-bar",
     "name": "Aluminium Bottom Bar",
     "description": "Additional cost by width.",
-    "applicableBlindTypes": ["roller"],
+    "applicableBlindTypes": [
+      "roller"
+    ],
     "pricing": {
       "type": "widthTable",
       "widths": [
-        600, 800, 1000, 1200, 1400, 1600, 1800, 2000, 2200, 2400, 2600, 2800, 3000, 3200, 3400,
-        3600, 3800
+        600,
+        800,
+        1000,
+        1200,
+        1400,
+        1600,
+        1800,
+        2000,
+        2200,
+        2400,
+        2600,
+        2800,
+        3000,
+        3200,
+        3400,
+        3600
       ],
       "prices": [
-        2.48, 3.31, 4.14, 4.97, 5.8, 6.62, 7.45, 8.28, 9.11, 9.94, 10.76, 11.59, 12.42, 13.25,
-        14.08, 14.9, 15.73
+        2.48,
+        3.31,
+        4.14,
+        4.97,
+        5.8,
+        6.62,
+        7.45,
+        8.28,
+        9.11,
+        9.94,
+        10.76,
+        11.59,
+        12.42,
+        13.25,
+        14.08,
+        14.9
       ]
     }
   },
@@ -586,16 +1600,46 @@
     "id": "roller-round-bottom-bar-louvolite-white-silver",
     "name": "Round Bottom Bar - Louvolite White / Silver",
     "description": "Additional cost by width.",
-    "applicableBlindTypes": ["roller"],
+    "applicableBlindTypes": [
+      "roller"
+    ],
     "pricing": {
       "type": "widthTable",
       "widths": [
-        600, 800, 1000, 1200, 1400, 1600, 1800, 2000, 2200, 2400, 2600, 2800, 3000, 3200, 3400,
-        3600, 3800
+        600,
+        800,
+        1000,
+        1200,
+        1400,
+        1600,
+        1800,
+        2000,
+        2200,
+        2400,
+        2600,
+        2800,
+        3000,
+        3200,
+        3400,
+        3600
       ],
       "prices": [
-        4.24, 5.66, 7.08, 8.5, 9.92, 11.33, 12.75, 14.17, 15.59, 17.01, 18.42, 19.84, 21.26, 22.68,
-        24.09, 25.51, 26.93
+        4.24,
+        5.66,
+        7.08,
+        8.5,
+        9.92,
+        11.33,
+        12.75,
+        14.17,
+        15.59,
+        17.01,
+        18.42,
+        19.84,
+        21.26,
+        22.68,
+        24.09,
+        25.51
       ]
     }
   },
@@ -603,16 +1647,46 @@
     "id": "roller-unishade-15mm-round-bottom-bar",
     "name": "Unishade 15mm Round Bottom Bar",
     "description": "Additional cost by width.",
-    "applicableBlindTypes": ["roller"],
+    "applicableBlindTypes": [
+      "roller"
+    ],
     "pricing": {
       "type": "widthTable",
       "widths": [
-        600, 800, 1000, 1200, 1400, 1600, 1800, 2000, 2200, 2400, 2600, 2800, 3000, 3200, 3400,
-        3600, 3800
+        600,
+        800,
+        1000,
+        1200,
+        1400,
+        1600,
+        1800,
+        2000,
+        2200,
+        2400,
+        2600,
+        2800,
+        3000,
+        3200,
+        3400,
+        3600
       ],
       "prices": [
-        3.35, 4.47, 5.59, 6.71, 7.82, 8.94, 10.06, 11.18, 12.3, 13.41, 14.53, 15.65, 16.77, 17.88,
-        19.0, 20.12, 21.24
+        3.35,
+        4.47,
+        5.59,
+        6.71,
+        7.82,
+        8.94,
+        10.06,
+        11.18,
+        12.3,
+        13.41,
+        14.53,
+        15.65,
+        16.77,
+        17.88,
+        19,
+        20.12
       ]
     }
   },
@@ -620,16 +1694,46 @@
     "id": "roller-unishade-round-bottom-bar",
     "name": "Unishade Round Bottom Bar",
     "description": "Additional cost by width.",
-    "applicableBlindTypes": ["roller"],
+    "applicableBlindTypes": [
+      "roller"
+    ],
     "pricing": {
       "type": "widthTable",
       "widths": [
-        600, 800, 1000, 1200, 1400, 1600, 1800, 2000, 2200, 2400, 2600, 2800, 3000, 3200, 3400,
-        3600, 3800
+        600,
+        800,
+        1000,
+        1200,
+        1400,
+        1600,
+        1800,
+        2000,
+        2200,
+        2400,
+        2600,
+        2800,
+        3000,
+        3200,
+        3400,
+        3600
       ],
       "prices": [
-        3.35, 4.47, 5.59, 6.71, 7.82, 8.94, 10.06, 11.18, 12.3, 13.41, 14.53, 15.65, 16.77, 17.88,
-        19.0, 20.12, 21.24
+        3.35,
+        4.47,
+        5.59,
+        6.71,
+        7.82,
+        8.94,
+        10.06,
+        11.18,
+        12.3,
+        13.41,
+        14.53,
+        15.65,
+        16.77,
+        17.88,
+        19,
+        20.12
       ]
     }
   },
@@ -637,16 +1741,46 @@
     "id": "roller-unishade-tear-drop-bottom-bar",
     "name": "Unishade Tear Drop Bottom Bar",
     "description": "Additional cost by width.",
-    "applicableBlindTypes": ["roller"],
+    "applicableBlindTypes": [
+      "roller"
+    ],
     "pricing": {
       "type": "widthTable",
       "widths": [
-        600, 800, 1000, 1200, 1400, 1600, 1800, 2000, 2200, 2400, 2600, 2800, 3000, 3200, 3400,
-        3600, 3800
+        600,
+        800,
+        1000,
+        1200,
+        1400,
+        1600,
+        1800,
+        2000,
+        2200,
+        2400,
+        2600,
+        2800,
+        3000,
+        3200,
+        3400,
+        3600
       ],
       "prices": [
-        3.52, 4.69, 5.87, 7.04, 8.22, 9.39, 10.56, 11.74, 12.91, 14.08, 15.26, 16.43, 17.61, 18.78,
-        19.95, 21.13, 22.3
+        3.52,
+        4.69,
+        5.87,
+        7.04,
+        8.22,
+        9.39,
+        10.56,
+        11.74,
+        12.91,
+        14.08,
+        15.26,
+        16.43,
+        17.61,
+        18.78,
+        19.95,
+        21.13
       ]
     }
   },
@@ -654,163 +1788,371 @@
     "id": "roller-unishade-30mm-linea-bottom-bar",
     "name": "Unishade 30mm Linea Bottom Bar",
     "description": "Additional cost by width.",
-    "applicableBlindTypes": ["roller"],
+    "applicableBlindTypes": [
+      "roller"
+    ],
     "pricing": {
       "type": "widthTable",
       "widths": [
-        600, 800, 1000, 1200, 1400, 1600, 1800, 2000, 2200, 2400, 2600, 2800, 3000, 3200, 3400,
-        3600, 3800
+        600,
+        800,
+        1000,
+        1200,
+        1400,
+        1600,
+        1800,
+        2000,
+        2200,
+        2400,
+        2600,
+        2800,
+        3000,
+        3200,
+        3400,
+        3600
       ],
       "prices": [
-        3.52, 4.69, 5.87, 7.04, 8.22, 9.39, 10.56, 11.74, 12.91, 14.08, 15.26, 16.43, 17.61, 18.78,
-        19.95, 21.13, 22.3
+        3.52,
+        4.69,
+        5.87,
+        7.04,
+        8.22,
+        9.39,
+        10.56,
+        11.74,
+        12.91,
+        14.08,
+        15.26,
+        16.43,
+        17.61,
+        18.78,
+        19.95,
+        21.13
       ]
     }
   },
   {
     "id": "roller-metal-chain",
     "name": "Metal Chain",
-    "applicableBlindTypes": ["roller"],
-    "pricing": { "type": "perBlind", "amount": 3.49 }
+    "applicableBlindTypes": [
+      "roller"
+    ],
+    "pricing": {
+      "type": "perBlind",
+      "amount": 3.49
+    }
   },
   {
     "id": "roller-precision-system",
     "name": "Precision System",
-    "applicableBlindTypes": ["roller"],
-    "pricing": { "type": "perBlind", "amount": 23.81 }
+    "applicableBlindTypes": [
+      "roller"
+    ],
+    "pricing": {
+      "type": "perBlind",
+      "amount": 23.81
+    }
   },
   {
     "id": "roller-32mm-extension-brackets",
     "name": "32mm Extension Brackets",
-    "applicableBlindTypes": ["roller"],
-    "pricing": { "type": "perBlind", "amount": 2.33 }
+    "applicableBlindTypes": [
+      "roller"
+    ],
+    "pricing": {
+      "type": "perBlind",
+      "amount": 2.33
+    }
   },
   {
     "id": "roller-double-brackets",
     "name": "Double Brackets",
-    "applicableBlindTypes": ["roller"],
-    "pricing": { "type": "perBlind", "amount": 11.09 }
+    "applicableBlindTypes": [
+      "roller"
+    ],
+    "pricing": {
+      "type": "perBlind",
+      "amount": 11.09
+    }
   },
   {
     "id": "roller-double-brackets-cover",
     "name": "Double Brackets Cover",
-    "applicableBlindTypes": ["roller"],
-    "pricing": { "type": "perBlind", "amount": 2.33 }
+    "applicableBlindTypes": [
+      "roller"
+    ],
+    "pricing": {
+      "type": "perBlind",
+      "amount": 2.33
+    }
   },
   {
     "id": "roller-recut",
     "name": "Recut Roller",
-    "applicableBlindTypes": ["roller"],
-    "pricing": { "type": "perBlind", "amount": 5.82 }
+    "applicableBlindTypes": [
+      "roller"
+    ],
+    "pricing": {
+      "type": "perBlind",
+      "amount": 5.82
+    }
   },
   {
     "id": "roller-recut-cassette",
     "name": "Recut Cassette Roller",
-    "applicableBlindTypes": ["roller"],
-    "pricing": { "type": "perBlind", "amount": 9.31 }
+    "applicableBlindTypes": [
+      "roller"
+    ],
+    "pricing": {
+      "type": "perBlind",
+      "amount": 9.31
+    }
   },
   {
     "id": "roller-pairing-cost",
     "name": "Pairing Cost",
-    "applicableBlindTypes": ["roller"],
-    "pricing": { "type": "perBlind", "amount": 3.33 }
+    "applicableBlindTypes": [
+      "roller"
+    ],
+    "pricing": {
+      "type": "perBlind",
+      "amount": 3.33
+    }
   },
   {
     "id": "roller-coupling-brackets",
     "name": "Coupling Brackets",
-    "applicableBlindTypes": ["roller"],
-    "pricing": { "type": "perBlind", "amount": 5.82 }
+    "applicableBlindTypes": [
+      "roller"
+    ],
+    "pricing": {
+      "type": "perBlind",
+      "amount": 5.82
+    }
   },
   {
     "id": "roller-grip-fit-standard",
     "name": "Grip Fit Standard",
-    "applicableBlindTypes": ["roller"],
-    "pricing": { "type": "perBlind", "amount": 16.63 }
+    "applicableBlindTypes": [
+      "roller"
+    ],
+    "pricing": {
+      "type": "perBlind",
+      "amount": 16.63
+    }
   },
   {
     "id": "roller-grip-fit-motorised",
     "name": "Grip Fit Motorised",
-    "applicableBlindTypes": ["roller"],
-    "pricing": { "type": "perBlind", "amount": 18.85 }
+    "applicableBlindTypes": [
+      "roller"
+    ],
+    "pricing": {
+      "type": "perBlind",
+      "amount": 18.85
+    }
   },
   {
     "id": "roller-omega-adhesive-chain-tidy",
     "name": "Omega Adhesive Chain Tidy",
-    "applicableBlindTypes": ["roller"],
-    "pricing": { "type": "perBlind", "amount": 1.11 }
+    "applicableBlindTypes": [
+      "roller"
+    ],
+    "pricing": {
+      "type": "perBlind",
+      "amount": 1.11
+    }
   },
   {
     "id": "perfect-fit-roller-motor",
     "name": "Perfect Fit Motor",
-    "applicableBlindTypes": ["perfect-fit-roller"],
-    "pricing": { "type": "perBlind", "amount": 42.13 }
+    "applicableBlindTypes": [
+      "perfect-fit-roller"
+    ],
+    "pricing": {
+      "type": "perBlind",
+      "amount": 42.13
+    }
   },
   {
     "id": "perfect-fit-roller-remote-15ch",
     "name": "Perfect Fit Remote 15ch",
-    "applicableBlindTypes": ["perfect-fit-roller"],
-    "pricing": { "type": "perBlind", "amount": 31.04 }
+    "applicableBlindTypes": [
+      "perfect-fit-roller"
+    ],
+    "pricing": {
+      "type": "perBlind",
+      "amount": 31.04
+    }
   },
   {
     "id": "perfect-fit-roller-charger",
     "name": "Charger",
-    "applicableBlindTypes": ["perfect-fit-roller"],
-    "pricing": { "type": "perBlind", "amount": 13.3 }
+    "applicableBlindTypes": [
+      "perfect-fit-roller"
+    ],
+    "pricing": {
+      "type": "perBlind",
+      "amount": 13.3
+    }
   },
   {
     "id": "perfect-fit-roller-wifi-hub",
     "name": "WIFI HUB",
-    "applicableBlindTypes": ["perfect-fit-roller"],
-    "pricing": { "type": "perBlind", "amount": 114.2 }
+    "applicableBlindTypes": [
+      "perfect-fit-roller"
+    ],
+    "pricing": {
+      "type": "perBlind",
+      "amount": 114.2
+    }
   },
   {
     "id": "perfect-fit-roller-pair-remote-set-limits",
     "name": "Pair Remote / Set Limits",
-    "applicableBlindTypes": ["perfect-fit-roller"],
-    "pricing": { "type": "perBlind", "amount": 3.33 }
+    "applicableBlindTypes": [
+      "perfect-fit-roller"
+    ],
+    "pricing": {
+      "type": "perBlind",
+      "amount": 3.33
+    }
   },
   {
     "id": "perfect-fit-roller-recut",
     "name": "Recut PF Roller",
-    "applicableBlindTypes": ["perfect-fit-roller"],
-    "pricing": { "type": "perBlind", "amount": 15.52 }
+    "applicableBlindTypes": [
+      "perfect-fit-roller"
+    ],
+    "pricing": {
+      "type": "perBlind",
+      "amount": 15.52
+    }
   },
   {
     "id": "vision-32-40-open-cassette-chrome",
     "name": "System 32 & 40 Open Cassette / Chrome",
     "description": "Additional cost by width. Price includes fabric insert.",
-    "applicableBlindTypes": ["vision"],
+    "applicableBlindTypes": [
+      "vision"
+    ],
     "pricing": {
       "type": "widthTable",
-      "widths": [600, 800, 1000, 1200, 1400, 1600, 1800, 2000, 2200, 2400, 2600, 2743],
-      "prices": [14.41, 15.52, 16.63, 18.85, 24.39, 26.61, 29.94, 33.26, 37.7, 41.02, 44.35, 47.67]
+      "widths": [
+        600,
+        800,
+        1000,
+        1200,
+        1400,
+        1600,
+        1800,
+        2000,
+        2200,
+        2400,
+        2600,
+        2743
+      ],
+      "prices": [
+        14.41,
+        15.52,
+        16.63,
+        18.85,
+        24.39,
+        26.61,
+        29.94,
+        33.26,
+        37.7,
+        41.02,
+        44.35,
+        47.67
+      ]
     }
   },
   {
     "id": "vision-70mm-open-cassette-standard",
     "name": "System 70mm Open Cassette - Anthracite / Black / White",
     "description": "Additional cost by width. Price includes fabric insert.",
-    "applicableBlindTypes": ["vision"],
+    "applicableBlindTypes": [
+      "vision"
+    ],
     "pricing": {
       "type": "widthTable",
-      "widths": [600, 800, 1000, 1200, 1400, 1600, 1800, 2000, 2200, 2400, 2600, 2743],
-      "prices": [6.65, 7.76, 8.87, 9.98, 11.09, 13.3, 15.52, 16.63, 17.74, 18.85, 19.96, 23.28]
+      "widths": [
+        600,
+        800,
+        1000,
+        1200,
+        1400,
+        1600,
+        1800,
+        2000,
+        2200,
+        2400,
+        2600,
+        2743
+      ],
+      "prices": [
+        6.65,
+        7.76,
+        8.87,
+        9.98,
+        11.09,
+        13.3,
+        15.52,
+        16.63,
+        17.74,
+        18.85,
+        19.96,
+        23.28
+      ]
     }
   },
   {
     "id": "vision-40mm-system-motorised",
     "name": "40mm System",
     "description": "Additional cost by width. Used on all motorised Vision blinds.",
-    "applicableBlindTypes": ["vision"],
+    "applicableBlindTypes": [
+      "vision"
+    ],
     "pricing": {
       "type": "widthTable",
       "widths": [
-        600, 800, 1000, 1200, 1400, 1600, 1800, 2000, 2200, 2400, 2600, 2800, 3000, 3200, 3400,
-        3600, 3800
+        600,
+        800,
+        1000,
+        1200,
+        1400,
+        1600,
+        1800,
+        2000,
+        2200,
+        2400,
+        2600,
+        2800,
+        3000,
+        3200,
+        3400,
+        3600,
+        3800
       ],
       "prices": [
-        2.69, 3.62, 4.53, 5.46, 6.38, 7.3, 8.22, 9.14, 10.06, 10.98, 11.91, 12.83, 13.75, 14.67,
-        15.59, 16.51, 17.43
+        2.69,
+        3.62,
+        4.53,
+        5.46,
+        6.38,
+        7.3,
+        8.22,
+        9.14,
+        10.06,
+        10.98,
+        11.91,
+        12.83,
+        13.75,
+        14.67,
+        15.59,
+        16.51,
+        17.43
       ]
     }
   },
@@ -818,16 +2160,48 @@
     "id": "vision-40mm-system-manual",
     "name": "40mm System - Manual",
     "description": "Additional cost by width.",
-    "applicableBlindTypes": ["vision"],
+    "applicableBlindTypes": [
+      "vision"
+    ],
     "pricing": {
       "type": "widthTable",
       "widths": [
-        600, 800, 1000, 1200, 1400, 1600, 1800, 2000, 2200, 2400, 2600, 2800, 3000, 3200, 3400,
-        3600, 3800
+        600,
+        800,
+        1000,
+        1200,
+        1400,
+        1600,
+        1800,
+        2000,
+        2200,
+        2400,
+        2600,
+        2800,
+        3000,
+        3200,
+        3400,
+        3600,
+        3800
       ],
       "prices": [
-        5.8, 6.73, 7.64, 8.56, 9.48, 10.41, 11.33, 12.25, 13.17, 14.09, 15.01, 15.93, 16.85, 17.77,
-        18.7, 19.62, 20.54
+        5.8,
+        6.73,
+        7.64,
+        8.56,
+        9.48,
+        10.41,
+        11.33,
+        12.25,
+        13.17,
+        14.09,
+        15.01,
+        15.93,
+        16.85,
+        17.77,
+        18.7,
+        19.62,
+        20.54
       ]
     }
   },
@@ -835,16 +2209,48 @@
     "id": "vision-40mm-heavy-duty-system-motorised",
     "name": "40mm Heavy Duty System",
     "description": "Additional cost by width. Can be used for motorised Vision blinds.",
-    "applicableBlindTypes": ["vision"],
+    "applicableBlindTypes": [
+      "vision"
+    ],
     "pricing": {
       "type": "widthTable",
       "widths": [
-        600, 800, 1000, 1200, 1400, 1600, 1800, 2000, 2200, 2400, 2600, 2800, 3000, 3200, 3400,
-        3600, 3800
+        600,
+        800,
+        1000,
+        1200,
+        1400,
+        1600,
+        1800,
+        2000,
+        2200,
+        2400,
+        2600,
+        2800,
+        3000,
+        3200,
+        3400,
+        3600,
+        3800
       ],
       "prices": [
-        5.15, 5.15, 5.15, 6.44, 7.72, 7.72, 9.01, 9.7, 10.51, 11.32, 12.13, 12.94, 13.74, 14.55,
-        15.36, 16.17, 16.98
+        5.15,
+        5.15,
+        5.15,
+        6.44,
+        7.72,
+        7.72,
+        9.01,
+        9.7,
+        10.51,
+        11.32,
+        12.13,
+        12.94,
+        13.74,
+        14.55,
+        15.36,
+        16.17,
+        16.98
       ]
     }
   },
@@ -852,236 +2258,479 @@
     "id": "vision-40mm-heavy-duty-system-manual",
     "name": "40mm Heavy Duty System - Manual",
     "description": "Additional cost by width.",
-    "applicableBlindTypes": ["vision"],
+    "applicableBlindTypes": [
+      "vision"
+    ],
     "pricing": {
       "type": "widthTable",
       "widths": [
-        600, 800, 1000, 1200, 1400, 1600, 1800, 2000, 2200, 2400, 2600, 2800, 3000, 3200, 3400,
-        3600, 3800
+        600,
+        800,
+        1000,
+        1200,
+        1400,
+        1600,
+        1800,
+        2000,
+        2200,
+        2400,
+        2600,
+        2800,
+        3000,
+        3200,
+        3400,
+        3600,
+        3800
       ],
       "prices": [
-        8.25, 8.25, 8.25, 9.54, 10.83, 10.83, 12.12, 12.8, 13.61, 14.42, 15.23, 16.04, 16.85, 17.66,
-        18.47, 19.28, 20.09
+        8.25,
+        8.25,
+        8.25,
+        9.54,
+        10.83,
+        10.83,
+        12.12,
+        12.8,
+        13.61,
+        14.42,
+        15.23,
+        16.04,
+        16.85,
+        17.66,
+        18.47,
+        19.28,
+        20.09
       ]
     }
   },
   {
     "id": "vision-pairing-cost",
     "name": "Pairing Cost",
-    "applicableBlindTypes": ["vision"],
-    "pricing": { "type": "perBlind", "amount": 3.33 }
+    "applicableBlindTypes": [
+      "vision"
+    ],
+    "pricing": {
+      "type": "perBlind",
+      "amount": 3.33
+    }
   },
   {
     "id": "vision-recut",
     "name": "Recut Vision Blind",
-    "applicableBlindTypes": ["vision"],
-    "pricing": { "type": "perBlind", "amount": 15.52 }
+    "applicableBlindTypes": [
+      "vision"
+    ],
+    "pricing": {
+      "type": "perBlind",
+      "amount": 15.52
+    }
   },
   {
     "id": "vision-500-dc-series",
     "name": "500 DC Series Motor",
     "description": "USB C cable included.",
-    "applicableBlindTypes": ["vision"],
-    "pricing": { "type": "perBlind", "amount": 57.44 }
+    "applicableBlindTypes": [
+      "vision"
+    ],
+    "pricing": {
+      "type": "perBlind",
+      "amount": 57.44
+    }
   },
   {
     "id": "vision-1100-short-external-battery",
     "name": "1100 Short Series Motor - External Battery",
-    "applicableBlindTypes": ["vision"],
-    "pricing": { "type": "perBlind", "amount": 57.44 }
+    "applicableBlindTypes": [
+      "vision"
+    ],
+    "pricing": {
+      "type": "perBlind",
+      "amount": 57.44
+    }
   },
   {
     "id": "vision-1100-dc-series",
     "name": "1100 DC Series Motor",
-    "applicableBlindTypes": ["vision"],
-    "pricing": { "type": "perBlind", "amount": 57.96 }
+    "applicableBlindTypes": [
+      "vision"
+    ],
+    "pricing": {
+      "type": "perBlind",
+      "amount": 57.96
+    }
   },
   {
     "id": "vision-2000-dc-series",
     "name": "2000 DC Series Motor",
-    "applicableBlindTypes": ["vision"],
-    "pricing": { "type": "perBlind", "amount": 67.27 }
+    "applicableBlindTypes": [
+      "vision"
+    ],
+    "pricing": {
+      "type": "perBlind",
+      "amount": 67.27
+    }
   },
   {
     "id": "vision-2000-dcm-matter",
     "name": "2000 DCM Motor with Matter Control",
-    "applicableBlindTypes": ["vision"],
-    "pricing": { "type": "perBlind", "amount": 73.49 }
+    "applicableBlindTypes": [
+      "vision"
+    ],
+    "pricing": {
+      "type": "perBlind",
+      "amount": 73.49
+    }
   },
   {
     "id": "vision-3000-dc-series",
     "name": "3000 DC Series Motor",
-    "applicableBlindTypes": ["vision"],
-    "pricing": { "type": "perBlind", "amount": 91.08 }
+    "applicableBlindTypes": [
+      "vision"
+    ],
+    "pricing": {
+      "type": "perBlind",
+      "amount": 91.08
+    }
   },
   {
     "id": "vision-3000-dcm-matter",
     "name": "3000 DCM Motor with Matter Control",
-    "applicableBlindTypes": ["vision"],
-    "pricing": { "type": "perBlind", "amount": 98.32 }
+    "applicableBlindTypes": [
+      "vision"
+    ],
+    "pricing": {
+      "type": "perBlind",
+      "amount": 98.32
+    }
   },
   {
     "id": "vision-remote-1-channel",
     "name": "1 Channel Remote",
-    "applicableBlindTypes": ["vision"],
-    "pricing": { "type": "perBlind", "amount": 13.45 }
+    "applicableBlindTypes": [
+      "vision"
+    ],
+    "pricing": {
+      "type": "perBlind",
+      "amount": 13.45
+    }
   },
   {
     "id": "vision-remote-6-channel",
     "name": "6 Channel Remote",
-    "applicableBlindTypes": ["vision"],
-    "pricing": { "type": "perBlind", "amount": 17.6 }
+    "applicableBlindTypes": [
+      "vision"
+    ],
+    "pricing": {
+      "type": "perBlind",
+      "amount": 17.6
+    }
   },
   {
     "id": "vision-remote-16-channel",
     "name": "16 Channel Remote - White / Grey / Black",
-    "applicableBlindTypes": ["vision"],
-    "pricing": { "type": "perBlind", "amount": 27.94 }
+    "applicableBlindTypes": [
+      "vision"
+    ],
+    "pricing": {
+      "type": "perBlind",
+      "amount": 27.94
+    }
   },
   {
     "id": "vision-wifi-hub",
     "name": "WiFi Hub",
-    "applicableBlindTypes": ["vision"],
-    "pricing": { "type": "perBlind", "amount": 77.63 }
+    "applicableBlindTypes": [
+      "vision"
+    ],
+    "pricing": {
+      "type": "perBlind",
+      "amount": 77.63
+    }
   },
   {
     "id": "vision-solar-panel",
     "name": "Solar Panel",
-    "applicableBlindTypes": ["vision"],
-    "pricing": { "type": "perBlind", "amount": 27.94 }
+    "applicableBlindTypes": [
+      "vision"
+    ],
+    "pricing": {
+      "type": "perBlind",
+      "amount": 27.94
+    }
   },
   {
     "id": "vision-usb-adapter-plug",
     "name": "USB Adapter Plug",
-    "applicableBlindTypes": ["vision"],
-    "pricing": { "type": "perBlind", "amount": 8.52 }
+    "applicableBlindTypes": [
+      "vision"
+    ],
+    "pricing": {
+      "type": "perBlind",
+      "amount": 8.52
+    }
   },
   {
     "id": "perfect-fit-vision-motor-rechargeable",
     "name": "0.3nm Motor Rechargeable",
     "description": "Minimum width 400mm.",
-    "applicableBlindTypes": ["perfect-fit-vision"],
-    "pricing": { "type": "perBlind", "amount": 42.13 }
+    "applicableBlindTypes": [
+      "perfect-fit-vision"
+    ],
+    "pricing": {
+      "type": "perBlind",
+      "amount": 42.13
+    }
   },
   {
     "id": "perfect-fit-vision-new-motor-usb-c",
     "name": "New Motor with USB C Cable",
     "description": "Minimum width 400mm.",
-    "applicableBlindTypes": ["perfect-fit-vision"],
-    "pricing": { "type": "perBlind", "amount": 56.93 }
+    "applicableBlindTypes": [
+      "perfect-fit-vision"
+    ],
+    "pricing": {
+      "type": "perBlind",
+      "amount": 56.93
+    }
   },
   {
     "id": "perfect-fit-vision-remote-15-channel",
     "name": "15 Channel Remote Control",
-    "applicableBlindTypes": ["perfect-fit-vision"],
-    "pricing": { "type": "perBlind", "amount": 31.04 }
+    "applicableBlindTypes": [
+      "perfect-fit-vision"
+    ],
+    "pricing": {
+      "type": "perBlind",
+      "amount": 31.04
+    }
   },
   {
     "id": "perfect-fit-vision-remote-1-channel",
     "name": "1 Channel Remote",
-    "applicableBlindTypes": ["perfect-fit-vision"],
-    "pricing": { "type": "perBlind", "amount": 12.42 }
+    "applicableBlindTypes": [
+      "perfect-fit-vision"
+    ],
+    "pricing": {
+      "type": "perBlind",
+      "amount": 12.42
+    }
   },
   {
     "id": "perfect-fit-vision-charger",
     "name": "Charger",
-    "applicableBlindTypes": ["perfect-fit-vision"],
-    "pricing": { "type": "perBlind", "amount": 13.3 }
+    "applicableBlindTypes": [
+      "perfect-fit-vision"
+    ],
+    "pricing": {
+      "type": "perBlind",
+      "amount": 13.3
+    }
   },
   {
     "id": "perfect-fit-vision-remote-6-channel",
     "name": "6 Channel Remote",
-    "applicableBlindTypes": ["perfect-fit-vision"],
-    "pricing": { "type": "perBlind", "amount": 16.56 }
+    "applicableBlindTypes": [
+      "perfect-fit-vision"
+    ],
+    "pricing": {
+      "type": "perBlind",
+      "amount": 16.56
+    }
   },
   {
     "id": "perfect-fit-vision-wifi-hub",
     "name": "WiFi Hub",
-    "applicableBlindTypes": ["perfect-fit-vision"],
-    "pricing": { "type": "perBlind", "amount": 114.2 }
+    "applicableBlindTypes": [
+      "perfect-fit-vision"
+    ],
+    "pricing": {
+      "type": "perBlind",
+      "amount": 114.2
+    }
   },
   {
     "id": "perfect-fit-vision-remote-16-channel",
     "name": "16 Channel Remote - White / Grey / Black",
-    "applicableBlindTypes": ["perfect-fit-vision"],
-    "pricing": { "type": "perBlind", "amount": 24.84 }
+    "applicableBlindTypes": [
+      "perfect-fit-vision"
+    ],
+    "pricing": {
+      "type": "perBlind",
+      "amount": 24.84
+    }
   },
   {
     "id": "perfect-fit-vision-pair-remote-set-limits",
     "name": "Pair Remote / Set Limits",
-    "applicableBlindTypes": ["perfect-fit-vision"],
-    "pricing": { "type": "perBlind", "amount": 3.33 }
+    "applicableBlindTypes": [
+      "perfect-fit-vision"
+    ],
+    "pricing": {
+      "type": "perBlind",
+      "amount": 3.33
+    }
   },
   {
     "id": "perfect-fit-vision-usb-plug",
     "name": "USB Plug",
-    "applicableBlindTypes": ["perfect-fit-vision"],
-    "pricing": { "type": "perBlind", "amount": 8.52 }
+    "applicableBlindTypes": [
+      "perfect-fit-vision"
+    ],
+    "pricing": {
+      "type": "perBlind",
+      "amount": 8.52
+    }
   },
   {
     "id": "perfect-fit-vision-recut",
     "name": "Recut PF Vision",
-    "applicableBlindTypes": ["perfect-fit-vision"],
-    "pricing": { "type": "perBlind", "amount": 16.63 }
+    "applicableBlindTypes": [
+      "perfect-fit-vision"
+    ],
+    "pricing": {
+      "type": "perBlind",
+      "amount": 16.63
+    }
   },
   {
     "id": "roman-stab-stitch",
     "name": "Stab Stitch",
-    "applicableBlindTypes": ["roman"],
-    "pricing": { "type": "percentageBase", "amount": 10 }
+    "applicableBlindTypes": [
+      "roman"
+    ],
+    "pricing": {
+      "type": "percentageBase",
+      "amount": 10
+    }
   },
   {
     "id": "roman-blackout-lining",
     "name": "Blackout Lining",
-    "applicableBlindTypes": ["roman"],
-    "pricing": { "type": "percentageBase", "amount": 10 }
+    "applicableBlindTypes": [
+      "roman"
+    ],
+    "pricing": {
+      "type": "percentageBase",
+      "amount": 10
+    }
   },
   {
     "id": "roman-bonded-lining",
     "name": "Bonded Lining",
-    "applicableBlindTypes": ["roman"],
-    "pricing": { "type": "percentageBase", "amount": 20 }
+    "applicableBlindTypes": [
+      "roman"
+    ],
+    "pricing": {
+      "type": "percentageBase",
+      "amount": 20
+    }
   },
   {
     "id": "roman-bonded-blackout",
     "name": "Bonded Blackout",
-    "applicableBlindTypes": ["roman"],
-    "pricing": { "type": "percentageBase", "amount": 25 }
+    "applicableBlindTypes": [
+      "roman"
+    ],
+    "pricing": {
+      "type": "percentageBase",
+      "amount": 25
+    }
   },
   {
     "id": "roman-unishade-breakaway-system",
     "name": "Unishade Breakaway System",
     "description": "Roman system uplift rounded up by width.",
-    "applicableBlindTypes": ["roman"],
+    "applicableBlindTypes": [
+      "roman"
+    ],
     "pricing": {
       "type": "widthTable",
-      "widths": [600, 800, 1000, 1200, 1300, 1400, 1600, 1800, 2000, 2200, 2400],
-      "prices": [8.03, 10.44, 12.85, 16.07, 16.87, 18.47, 20.89, 23.3, 26.52, 28.93, 31.33]
+      "widths": [
+        600,
+        800,
+        1000,
+        1200,
+        1300,
+        1400,
+        1600,
+        1800,
+        2000,
+        2200,
+        2400
+      ],
+      "prices": [
+        8.03,
+        10.44,
+        12.85,
+        16.07,
+        16.87,
+        18.47,
+        20.89,
+        23.3,
+        26.52,
+        28.93,
+        31.33
+      ]
     }
   },
   {
     "id": "roman-cruze-cassette-system",
     "name": "Cruze Cassette System",
     "description": "Roman system uplift rounded up by width.",
-    "applicableBlindTypes": ["roman"],
+    "applicableBlindTypes": [
+      "roman"
+    ],
     "pricing": {
       "type": "widthTable",
-      "widths": [600, 800, 1000, 1200, 1300, 1400, 1600, 1800, 2000, 2200, 2400, 2600],
-      "prices": [12.5, 16.66, 20.82, 25.27, 27.78, 29.99, 33.33, 38.33, 41.66, 46.65, 50.82, 54.15]
+      "widths": [
+        600,
+        800,
+        1000,
+        1200,
+        1300,
+        1400,
+        1600,
+        1800,
+        2000,
+        2200,
+        2400,
+        2600
+      ],
+      "prices": [
+        12.5,
+        16.66,
+        20.82,
+        25.27,
+        27.78,
+        29.99,
+        33.33,
+        38.33,
+        41.66,
+        46.65,
+        50.82,
+        54.15
+      ]
     }
   },
   {
     "id": "roman-motorisation-tilt-lift-25",
     "name": "Tilt & Lift 25",
     "description": "Includes Li-Ion battery pack.",
-    "applicableBlindTypes": ["roman"],
-    "pricing": { "type": "perBlind", "amount": 109.7 }
+    "applicableBlindTypes": [
+      "roman"
+    ],
+    "pricing": {
+      "type": "perBlind",
+      "amount": 109.7
+    }
   },
   {
     "id": "roman-motorisation-somfy-roll-up-28-rts",
     "name": "Somfy Roll Up 28 RTS",
     "description": "Includes £20 uplift on blinds over 2.5m wide.",
-    "applicableBlindTypes": ["roman"],
+    "applicableBlindTypes": [
+      "roman"
+    ],
     "pricing": {
       "type": "fixedPlusWidthThreshold",
       "amount": 74.5,
@@ -1092,13 +2741,469 @@
   {
     "id": "roman-motorisation-somfy-sonesse-30-rts",
     "name": "Somfy Sonesse 30 RTS",
-    "applicableBlindTypes": ["roman"],
-    "pricing": { "type": "perBlind", "amount": 107.4 }
+    "applicableBlindTypes": [
+      "roman"
+    ],
+    "pricing": {
+      "type": "perBlind",
+      "amount": 107.4
+    }
   },
   {
     "id": "cord-tidies",
     "name": "Omega Adhesive Cord Tidy",
-    "applicableBlindTypes": ["vertical"],
-    "pricing": { "type": "fixed", "amount": 1.1 }
+    "applicableBlindTypes": [
+      "vertical"
+    ],
+    "pricing": {
+      "type": "fixed",
+      "amount": 1.1
+    }
+  },
+  {
+    "id": "perfect-fit-roller-new-motor-usb-c",
+    "name": "New Motor with USB C Cable",
+    "description": "Minimum width 400mm.",
+    "applicableBlindTypes": [
+      "perfect-fit-roller"
+    ],
+    "pricing": {
+      "type": "perBlind",
+      "amount": 56.93
+    }
+  },
+  {
+    "id": "perfect-fit-roller-remote-1-channel",
+    "name": "1 Channel Remote",
+    "applicableBlindTypes": [
+      "perfect-fit-roller"
+    ],
+    "pricing": {
+      "type": "perBlind",
+      "amount": 12.42
+    }
+  },
+  {
+    "id": "perfect-fit-roller-remote-6-channel",
+    "name": "6 Channel Remote",
+    "applicableBlindTypes": [
+      "perfect-fit-roller"
+    ],
+    "pricing": {
+      "type": "perBlind",
+      "amount": 16.56
+    }
+  },
+  {
+    "id": "perfect-fit-roller-remote-16-channel",
+    "name": "16 Channel Remote - White / Grey / Black",
+    "applicableBlindTypes": [
+      "perfect-fit-roller"
+    ],
+    "pricing": {
+      "type": "perBlind",
+      "amount": 24.84
+    }
+  },
+  {
+    "id": "perfect-fit-roller-usb-plug",
+    "name": "USB Plug",
+    "applicableBlindTypes": [
+      "perfect-fit-roller"
+    ],
+    "pricing": {
+      "type": "perBlind",
+      "amount": 8.52
+    }
+  },
+  {
+    "id": "roller-500-dc-series",
+    "name": "500 DC Series Motor",
+    "description": "USB C cable included. Minimum width 460mm.",
+    "applicableBlindTypes": [
+      "roller"
+    ],
+    "pricing": {
+      "type": "perBlind",
+      "amount": 57.44
+    }
+  },
+  {
+    "id": "roller-1100-short-external-battery",
+    "name": "1100 Short Series Motor - External Battery",
+    "description": "Minimum width 355mm.",
+    "applicableBlindTypes": [
+      "roller"
+    ],
+    "pricing": {
+      "type": "perBlind",
+      "amount": 57.44
+    }
+  },
+  {
+    "id": "roller-1100-dc-series",
+    "name": "1100 DC Series Motor",
+    "description": "Minimum width 510mm.",
+    "applicableBlindTypes": [
+      "roller"
+    ],
+    "pricing": {
+      "type": "perBlind",
+      "amount": 57.96
+    }
+  },
+  {
+    "id": "roller-2000-dc-series",
+    "name": "2000 DC Series Motor",
+    "description": "Minimum width 650mm.",
+    "applicableBlindTypes": [
+      "roller"
+    ],
+    "pricing": {
+      "type": "perBlind",
+      "amount": 67.27
+    }
+  },
+  {
+    "id": "roller-2000-dcm-matter",
+    "name": "2000 DCM Motor with Matter Control",
+    "description": "Minimum width 650mm.",
+    "applicableBlindTypes": [
+      "roller"
+    ],
+    "pricing": {
+      "type": "perBlind",
+      "amount": 73.49
+    }
+  },
+  {
+    "id": "roller-3000-dc-series",
+    "name": "3000 DC Series Motor",
+    "description": "Minimum width 650mm.",
+    "applicableBlindTypes": [
+      "roller"
+    ],
+    "pricing": {
+      "type": "perBlind",
+      "amount": 91.08
+    }
+  },
+  {
+    "id": "roller-3000-dcm-matter",
+    "name": "3000 DCM Motor with Matter Control",
+    "description": "Minimum width 650mm.",
+    "applicableBlindTypes": [
+      "roller"
+    ],
+    "pricing": {
+      "type": "perBlind",
+      "amount": 98.32
+    }
+  },
+  {
+    "id": "roller-remote-1-channel",
+    "name": "1 Channel Remote",
+    "applicableBlindTypes": [
+      "roller"
+    ],
+    "pricing": {
+      "type": "perBlind",
+      "amount": 13.45
+    }
+  },
+  {
+    "id": "roller-remote-6-channel",
+    "name": "6 Channel Remote",
+    "applicableBlindTypes": [
+      "roller"
+    ],
+    "pricing": {
+      "type": "perBlind",
+      "amount": 17.6
+    }
+  },
+  {
+    "id": "roller-remote-16-channel",
+    "name": "16 Channel Remote - White / Grey / Black",
+    "applicableBlindTypes": [
+      "roller"
+    ],
+    "pricing": {
+      "type": "perBlind",
+      "amount": 27.94
+    }
+  },
+  {
+    "id": "roller-wifi-hub-new",
+    "name": "WiFi Hub",
+    "applicableBlindTypes": [
+      "roller"
+    ],
+    "pricing": {
+      "type": "perBlind",
+      "amount": 77.63
+    }
+  },
+  {
+    "id": "roller-solar-panel",
+    "name": "Solar Panel",
+    "applicableBlindTypes": [
+      "roller"
+    ],
+    "pricing": {
+      "type": "perBlind",
+      "amount": 27.94
+    }
+  },
+  {
+    "id": "roller-usb-adapter-plug",
+    "name": "USB Adapter Plug",
+    "applicableBlindTypes": [
+      "roller"
+    ],
+    "pricing": {
+      "type": "perBlind",
+      "amount": 8.52
+    }
+  },
+  {
+    "id": "allusion-upgrade-piano-black-champagne-vogue",
+    "name": "Upgrade to Piano Black / Champagne Gold Vogue",
+    "applicableBlindTypes": [
+      "allusion"
+    ],
+    "pricing": {
+      "type": "widthTable",
+      "widths": [
+        500,
+        700,
+        900,
+        1200,
+        1400,
+        1600,
+        1900,
+        2100,
+        2500,
+        3000,
+        3500,
+        4000,
+        4400,
+        4800
+      ],
+      "prices": [
+        2.77,
+        3.88,
+        4.99,
+        6.1,
+        7.2,
+        8.31,
+        9.42,
+        10.53,
+        11.63,
+        12.74,
+        13.85,
+        14.96,
+        16.06,
+        17.17
+      ]
+    }
+  },
+  {
+    "id": "allusion-70mm-cassette-white-black-anthracite",
+    "name": "70mm Cassette - White / Black / Anthracite Grey",
+    "applicableBlindTypes": [
+      "allusion"
+    ],
+    "pricing": {
+      "type": "widthTable",
+      "widths": [
+        500,
+        700,
+        900,
+        1200,
+        1400,
+        1600,
+        1900,
+        2100,
+        2500,
+        3000,
+        3500,
+        4000,
+        4400,
+        4800
+      ],
+      "prices": [
+        6.64,
+        9.3,
+        11.96,
+        14.62,
+        17.28,
+        19.94,
+        22.6,
+        25.26,
+        27.92,
+        30.58,
+        33.24,
+        35.9,
+        38.56,
+        41.22
+      ]
+    }
+  },
+  {
+    "id": "allusion-80mm-fascia",
+    "name": "80mm Allusion Fascia",
+    "applicableBlindTypes": [
+      "allusion"
+    ],
+    "pricing": {
+      "type": "widthTable",
+      "widths": [
+        500,
+        700,
+        900,
+        1200,
+        1400,
+        1600,
+        1900,
+        2100,
+        2500,
+        3000,
+        3500,
+        4000,
+        4400,
+        4800
+      ],
+      "prices": [
+        8.8,
+        12.32,
+        15.84,
+        19.35,
+        22.87,
+        26.39,
+        29.91,
+        33.43,
+        36.95,
+        40.47,
+        43.99,
+        47.51,
+        51.03,
+        54.54
+      ]
+    }
+  },
+  {
+    "id": "allusion-alternate-slats",
+    "name": "Alternate Slats",
+    "description": "Workbook surcharge for alternate slats.",
+    "applicableBlindTypes": [
+      "allusion"
+    ],
+    "pricing": {
+      "type": "percentageBase",
+      "amount": 15
+    }
+  },
+  {
+    "id": "arena-fauxwood-tape-surcharge",
+    "name": "Taped Surcharge",
+    "applicableBlindTypes": [
+      "arena-fauxwood"
+    ],
+    "pricing": {
+      "type": "percentageBase",
+      "amount": 20
+    }
+  },
+  {
+    "id": "arena-fauxwood-metal-cord-pulls",
+    "name": "Metal Cord Pulls - Set of 3",
+    "description": "Expressions range only.",
+    "applicableBlindTypes": [
+      "arena-fauxwood"
+    ],
+    "pricing": {
+      "type": "fixed",
+      "amount": 5.38
+    }
+  },
+  {
+    "id": "sunwood-faux-herringbone-tape",
+    "name": "Herringbone Tape",
+    "applicableBlindTypes": [
+      "sunwood-faux"
+    ],
+    "pricing": {
+      "type": "percentageBase",
+      "amount": 25
+    }
+  },
+  {
+    "id": "sunwood-faux-flatweave-tape",
+    "name": "Flatweave Tape",
+    "applicableBlindTypes": [
+      "sunwood-faux"
+    ],
+    "pricing": {
+      "type": "percentageBase",
+      "amount": 30
+    }
+  },
+  {
+    "id": "sunwood-faux-extension-brackets",
+    "name": "Extension Brackets",
+    "description": "Each.",
+    "applicableBlindTypes": [
+      "sunwood-faux"
+    ],
+    "pricing": {
+      "type": "fixed",
+      "amount": 1.5
+    }
+  },
+  {
+    "id": "sunwood-faux-fast-track-24hr",
+    "name": "Fast Track 24hr",
+    "applicableBlindTypes": [
+      "sunwood-faux"
+    ],
+    "pricing": {
+      "type": "fixed",
+      "amount": 25
+    }
+  },
+  {
+    "id": "sunwood-wood-face-fix-brackets",
+    "name": "Face Fix Brackets",
+    "description": "Each.",
+    "applicableBlindTypes": [
+      "sunwood-wood"
+    ],
+    "pricing": {
+      "type": "fixed",
+      "amount": 1.08
+    }
+  },
+  {
+    "id": "sunwood-wood-herringbone-tape",
+    "name": "Herringbone Tape",
+    "applicableBlindTypes": [
+      "sunwood-wood"
+    ],
+    "pricing": {
+      "type": "percentageBase",
+      "amount": 25
+    }
+  },
+  {
+    "id": "sunwood-wood-flatweave-tape",
+    "name": "Flatweave Tape",
+    "applicableBlindTypes": [
+      "sunwood-wood"
+    ],
+    "pricing": {
+      "type": "percentageBase",
+      "amount": 30
+    }
   }
 ]

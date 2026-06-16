@@ -281,7 +281,7 @@ function extraDetail(extra: (typeof extras)[number]) {
       );
       break;
     case "widthTable":
-      details.push("Priced by width");
+      details.push("Priced by extra width");
       break;
   }
   return Array.from(new Set(details)).join(" - ");
@@ -496,13 +496,13 @@ export function ProjectQuoteBuilder({ mode }: { mode: BuilderMode }) {
   const fittingSubtotal = useMemo(() => getFittingSubtotal(project), [project]);
   const productsSubtotal = roundMoney(totals.subtotal - fittingSubtotal);
   const overallFittingAmount = getOverallFittingItem(project)?.unitPrice ?? 0;
-  const discountBase = totals.taxableSubtotal + totals.discount;
-  const discountPercent = discountBase > 0 ? roundMoney((totals.discount / discountBase) * 100) : 0;
+  const taxableBeforeDiscount = useMemo(() => getTaxableSubtotalBeforeDiscount(project), [project]);
+  const discountPercent =
+    taxableBeforeDiscount > 0 ? roundMoney((totals.discount / taxableBeforeDiscount) * 100) : 0;
   const setDiscountPercent = (percent: number) => {
     const nextPercent = Math.max(0, Math.min(100, percent));
     setProject((current) => {
-      const currentTotals = calculateProjectQuote(current);
-      const currentDiscountBase = currentTotals.taxableSubtotal + currentTotals.discount;
+      const currentDiscountBase = getTaxableSubtotalBeforeDiscount(current);
       return {
         ...current,
         discount: roundMoney((currentDiscountBase * nextPercent) / 100),
@@ -533,14 +533,18 @@ export function ProjectQuoteBuilder({ mode }: { mode: BuilderMode }) {
     (product) => product.id === draft.wardrobeProductId,
   );
 
-  const liveItem = useMemo(() => {
+  const liveResult = useMemo(() => {
     try {
-      return buildProjectItem(draft, project, translateLabel);
-    } catch (_error) {
-      return null;
+      return { item: buildProjectItem(draft, project, translateLabel), error: "" };
+    } catch (error) {
+      return {
+        item: null,
+        error: error instanceof Error ? error.message : "Unable to price item.",
+      };
     }
   }, [draft, project, translateLabel]);
-  const livePricingWarning = getProjectItemWarning(liveItem);
+  const liveItem = liveResult.item;
+  const livePricingWarning = liveResult.error || getProjectItemWarning(liveItem);
 
   const addArea = () => {
     const name = areaName.trim();
@@ -1433,6 +1437,19 @@ function getFittingSubtotal(project: ProjectQuote) {
   );
 }
 
+function getTaxableSubtotalBeforeDiscount(project: ProjectQuote) {
+  return roundMoney(
+    project.areas.reduce(
+      (sum, area) =>
+        sum +
+        area.items
+          .filter((item) => item.taxable)
+          .reduce((itemSum, item) => itemSum + item.lineTotal, 0),
+      0,
+    ),
+  );
+}
+
 function getOverallFittingItem(project: ProjectQuote) {
   return project.areas
     .flatMap((area) => area.items)
@@ -1696,11 +1713,40 @@ function BlindDraftForm({
                     setDraft((current) => ({
                       ...current,
                       blindExtras: event.target.checked
-                        ? [...current.blindExtras, { id: extra.id, quantity: 1 }]
+                        ? [
+                            ...current.blindExtras,
+                            {
+                              id: extra.id,
+                              quantity: 1,
+                              widthMm:
+                                extra.pricing.type === "widthTable"
+                                  ? current.blindWidthMm
+                                  : undefined,
+                            },
+                          ]
                         : current.blindExtras.filter((item) => item.id !== extra.id),
                     }))
                   }
                 />
+                {selected && extra.pricing.type === "widthTable" ? (
+                  <input
+                    type="number"
+                    min={1}
+                    value={selected.widthMm ?? draft.blindWidthMm}
+                    onChange={(event) => {
+                      const widthMm = Math.max(1, Number(event.target.value) || 0);
+                      setDraft((current) => ({
+                        ...current,
+                        blindExtras: current.blindExtras.map((item) =>
+                          item.id === extra.id ? { ...item, widthMm } : item,
+                        ),
+                      }));
+                    }}
+                    onClick={(event) => event.stopPropagation()}
+                    className="h-8 w-24 rounded-lg border border-border bg-background px-2 text-right text-xs tabular-nums"
+                    aria-label={`${extra.name} width in millimetres`}
+                  />
+                ) : null}
               </label>
             );
           })}

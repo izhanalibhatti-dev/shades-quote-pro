@@ -95,7 +95,6 @@ const QuotePreview = forwardRef<HTMLDivElement, { quote: QuoteState }>(function 
               <th className="pb-2 text-right font-medium">W x H (mm)</th>
               <th className="pb-2 text-right font-medium">{t("quote.tableSize")}</th>
               <th className="pb-2 text-right font-medium">{t("quote.qty")}</th>
-              <th className="pb-2 text-right font-medium">{t("quote.base")}</th>
             </tr>
           </thead>
           <tbody>
@@ -114,17 +113,15 @@ const QuotePreview = forwardRef<HTMLDivElement, { quote: QuoteState }>(function 
                 {p.roundedWidthMm} x {p.roundedHeightMm}
               </td>
               <td className="py-3 text-right tabular-nums">{quote.size.quantity}</td>
-              <td className="py-3 text-right tabular-nums font-medium">{formatGBP(p.basePrice)}</td>
             </tr>
             {p.extras.map((extra) => (
               <tr key={extra.id} className="border-t border-[#f4efe6]">
                 <td className="py-2 pr-2 align-top text-[#4b5563]">{extra.name}</td>
                 <td className="py-2 text-right text-[#6b7280]">Extra</td>
-                <td className="py-2 text-right text-[#6b7280]">{formatGBP(extra.unitPrice)}</td>
-                <td className="py-2 text-right tabular-nums">{extra.quantity}</td>
-                <td className="py-2 text-right tabular-nums font-medium">
-                  {formatGBP(extra.total)}
+                <td className="py-2 text-right text-[#6b7280]">
+                  {extra.roundedWidthMm ? `${extra.roundedWidthMm}mm` : ""}
                 </td>
+                <td className="py-2 text-right tabular-nums">{extra.quantity}</td>
               </tr>
             ))}
           </tbody>
@@ -144,20 +141,6 @@ const QuotePreview = forwardRef<HTMLDivElement, { quote: QuoteState }>(function 
           )}
         </div>
         <div className="min-w-0 rounded-xl bg-[#faf7f1] p-5">
-          <Row k={t("quote.basePrice")} v={formatGBP(p.basePrice)} />
-          <Row k={t("quote.extras")} v={formatGBP(p.extrasTotal)} />
-          <Row k={t("quote.tradePrice")} v={formatGBP(p.tradePrice)} />
-          {quote.pricing.discount > 0 && (
-            <Row k={t("quote.discount")} v={`- ${formatGBP(quote.pricing.discount)}`} />
-          )}
-          <div className="my-2 h-px bg-[#e7e1d3]" />
-          <Row k={t("quote.taxableSubtotal")} v={formatGBP(p.taxableSubtotal)} />
-          <Row
-            k={`${t("quote.vat")} (${Math.round(quote.pricing.vatRate * 100)}%)`}
-            v={formatGBP(p.vat)}
-          />
-          <Row k={t("quote.labour")} v={formatGBP(p.labourCost)} />
-          <div className="my-2 h-px bg-[#e7e1d3]" />
           <div className="flex items-baseline justify-between gap-3">
             <span className="text-[10.5px] uppercase tracking-[0.18em] text-[#6b7280]">
               {t("quote.total")}
@@ -231,15 +214,6 @@ function Pair({ k, v }: { k: string; v: string }) {
       <dt className="text-[#9ca3af]">{k}</dt>
       <dd className="text-right text-[#374151]">{v}</dd>
     </>
-  );
-}
-
-function Row({ k, v }: { k: string; v: string }) {
-  return (
-    <div className="flex items-baseline justify-between py-1 text-[12px]">
-      <span className="text-[#6b7280]">{k}</span>
-      <span className="tabular-nums text-[#1a1d2b]">{v}</span>
-    </div>
   );
 }
 

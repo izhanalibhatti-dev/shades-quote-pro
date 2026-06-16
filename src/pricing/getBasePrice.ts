@@ -13,6 +13,19 @@ export function getBasePrice({
   widthMm: number;
   heightMm: number;
 }) {
+  assertDimensionInRange({
+    value: widthMm,
+    available: priceTable.widths,
+    label: "width",
+    tableName: priceTable.priceSourceLabel ?? priceTable.id,
+  });
+  assertDimensionInRange({
+    value: heightMm,
+    available: priceTable.heights,
+    label: "height",
+    tableName: priceTable.priceSourceLabel ?? priceTable.id,
+  });
+
   const roundedWidthMm = roundWidth(widthMm, priceTable.widths);
   const roundedHeightMm = roundHeight(heightMm, priceTable.heights);
   const widthIndex = priceTable.widths.indexOf(roundedWidthMm);
@@ -36,4 +49,31 @@ export function getBasePrice({
     roundedWidthMm,
     roundedHeightMm,
   };
+}
+
+function assertDimensionInRange({
+  value,
+  available,
+  label,
+  tableName,
+}: {
+  value: number;
+  available: number[];
+  label: "width" | "height";
+  tableName: string;
+}) {
+  const min = Math.min(...available);
+  const max = Math.max(...available);
+
+  if (value < min) {
+    throw new Error(
+      `Blind ${label} ${value}mm is below the minimum ${label} for ${tableName}. Available ${label} range: ${min}-${max}mm.`,
+    );
+  }
+
+  if (value > max) {
+    throw new Error(
+      `Blind ${label} ${value}mm is above the maximum ${label} for ${tableName}. Available ${label} range: ${min}-${max}mm.`,
+    );
+  }
 }

@@ -10,8 +10,6 @@ const ProjectQuotePreview = forwardRef<
   { project: ProjectQuote; scopeLabel?: string; forceLocale?: LocaleCode }
 >(function ProjectQuotePreview({ project, scopeLabel, forceLocale }, ref) {
   const totals = calculateProjectQuote(project);
-  const fittingSubtotal = getFittingSubtotal(project);
-  const productsSubtotal = +(totals.subtotal - fittingSubtotal).toFixed(2);
   const ctx = useI18n();
   const { locale, t } = forceLocale ? createTranslator(forceLocale) : ctx;
   const date = new Date(project.date);
@@ -82,7 +80,6 @@ const ProjectQuotePreview = forwardRef<
 
       <div className="space-y-7 px-10 py-7">
         {project.areas.map((area) => {
-          const areaTotal = totals.areaTotals.find((item) => item.areaId === area.id);
           return (
             <section key={area.id}>
               <div className="mb-3 flex items-end justify-between gap-4">
@@ -93,9 +90,6 @@ const ProjectQuotePreview = forwardRef<
                   <h2 className="mt-0.5 text-[17px] font-semibold tracking-tight">{area.name}</h2>
                   {area.notes && <p className="mt-1 text-[11.5px] text-[#6b7280]">{area.notes}</p>}
                 </div>
-                <div className="text-right text-[13px] font-semibold tabular-nums">
-                  {formatGBP(areaTotal?.subtotal ?? 0)}
-                </div>
               </div>
               <table className="w-full text-[12px]">
                 <thead>
@@ -103,13 +97,12 @@ const ProjectQuotePreview = forwardRef<
                     <th className="py-2 text-left font-medium">{t("quote.item")}</th>
                     <th className="py-2 text-left font-medium">{t("quote.detailsColumn")}</th>
                     <th className="py-2 text-right font-medium">{t("quote.qty")}</th>
-                    <th className="py-2 text-right font-medium">{t("quote.total")}</th>
                   </tr>
                 </thead>
                 <tbody>
                   {area.items.length === 0 ? (
                     <tr>
-                      <td className="py-3 text-[#9ca3af]" colSpan={4}>
+                      <td className="py-3 text-[#9ca3af]" colSpan={3}>
                         {t("status.noItems")}
                       </td>
                     </tr>
@@ -126,9 +119,6 @@ const ProjectQuotePreview = forwardRef<
                           <ItemDetails item={item} t={t} />
                         </td>
                         <td className="py-3 text-right tabular-nums">{item.quantity}</td>
-                        <td className="py-3 text-right font-medium tabular-nums">
-                          {formatGBP(item.lineTotal)}
-                        </td>
                       </tr>
                     ))
                   )}
@@ -153,19 +143,6 @@ const ProjectQuotePreview = forwardRef<
           )}
         </div>
         <div className="min-w-0 rounded-xl bg-[#faf7f1] p-5">
-          <Row k="Products subtotal" v={formatGBP(productsSubtotal)} />
-          <Row k="Fitting subtotal" v={formatGBP(fittingSubtotal)} />
-          <Row k={t("quote.subtotal")} v={formatGBP(totals.subtotal)} />
-          {totals.discount > 0 && (
-            <Row k={t("quote.discount")} v={`- ${formatGBP(totals.discount)}`} />
-          )}
-          <Row k={t("quote.taxableSubtotal")} v={formatGBP(totals.taxableSubtotal)} />
-          <Row k={t("quote.nonTaxable")} v={formatGBP(totals.nonTaxableSubtotal)} />
-          <Row
-            k={`${t("quote.vat")} (${Math.round(project.vatRate * 100)}%)`}
-            v={formatGBP(totals.vat)}
-          />
-          <div className="my-2 h-px bg-[#e7e1d3]" />
           <div className="flex items-baseline justify-between gap-3">
             <span className="text-[10.5px] uppercase tracking-[0.18em] text-[#6b7280]">
               {t("quote.total")}
@@ -223,19 +200,6 @@ const ProjectQuotePreview = forwardRef<
   );
 });
 
-function getFittingSubtotal(project: ProjectQuote) {
-  return +project.areas
-    .reduce(
-      (sum, area) =>
-        sum +
-        area.items
-          .filter((item) => item.type === "labour")
-          .reduce((itemSum, item) => itemSum + item.lineTotal, 0),
-      0,
-    )
-    .toFixed(2);
-}
-
 function ItemDetails({ item, t }: { item: ProjectQuoteItem; t: ReturnType<typeof useI18n>["t"] }) {
   if (item.type === "blind") {
     const p = item.calculation;
@@ -256,7 +220,6 @@ function ItemDetails({ item, t }: { item: ProjectQuoteItem; t: ReturnType<typeof
     return (
       <>
         {line.widthMm && line.heightMm ? `${line.widthMm} x ${line.heightMm}mm · ` : ""}
-        {t("field.unit")} {formatGBP(line.calc.unitPrice)}
         {line.addons.length > 0
           ? ` · ${line.addons.length} add-on${line.addons.length === 1 ? "" : "s"}`
           : ""}
@@ -293,15 +256,6 @@ function Block({ label, children }: { label: string; children: React.ReactNode }
     <div>
       <div className="text-[10px] uppercase tracking-[0.22em] text-[#9ca3af]">{label}</div>
       <div className="mt-1.5">{children}</div>
-    </div>
-  );
-}
-
-function Row({ k, v }: { k: string; v: string }) {
-  return (
-    <div className="flex items-baseline justify-between py-1 text-[12px]">
-      <span className="text-[#6b7280]">{k}</span>
-      <span className="tabular-nums text-[#1a1d2b]">{v}</span>
     </div>
   );
 }
