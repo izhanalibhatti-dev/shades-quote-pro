@@ -1944,7 +1944,7 @@ function WardrobeCategoryPicker({
             role="dialog"
             aria-modal="true"
             aria-label="Select wardrobe category"
-            className="ml-auto flex h-full w-full max-w-5xl flex-col overflow-hidden bg-background shadow-2xl sm:rounded-3xl sm:border sm:border-border"
+            className="mx-auto flex h-full w-full max-w-5xl flex-col overflow-hidden bg-background shadow-2xl sm:rounded-3xl sm:border sm:border-border"
           >
             <div className="flex items-start justify-between gap-4 border-b border-border px-5 py-4 sm:px-6">
               <div>
@@ -2153,7 +2153,7 @@ function WardrobeProductPicker({
             role="dialog"
             aria-modal="true"
             aria-label="Select wardrobe product"
-            className="ml-auto flex h-full w-full max-w-5xl flex-col overflow-hidden bg-background shadow-2xl sm:rounded-3xl sm:border sm:border-border"
+            className="mx-auto flex h-full w-full max-w-5xl flex-col overflow-hidden bg-background shadow-2xl sm:rounded-3xl sm:border sm:border-border"
           >
             <div className="flex items-start justify-between gap-4 border-b border-border px-5 py-4 sm:px-6">
               <div>
