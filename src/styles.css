@@ -203,6 +203,24 @@
   outline: none;
 }
 
+.click-feedback {
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease,
+    opacity 180ms ease;
+}
+
+.click-feedback:not(:disabled):active {
+  transform: scale(0.97);
+  border-color: oklch(0.62 0.18 145) !important;
+  background: oklch(0.62 0.18 145) !important;
+  color: white !important;
+  box-shadow: 0 10px 24px -14px oklch(0.62 0.18 145 / 0.9);
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

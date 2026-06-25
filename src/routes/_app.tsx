@@ -7,13 +7,13 @@ import AppSidebar from "@/components/AppSidebar";
 import { QuoteProvider } from "@/components/QuoteContext";
 import AccessibilityWidget from "@/components/AccessibilityWidget";
 import LanguageSelector from "@/components/LanguageSelector";
-import { isAuthed } from "@/lib/auth";
+import { isAuthed, refreshAuthSession } from "@/lib/auth";
 import { useI18n } from "@/lib/i18n";
 import { applyTheme, getTheme } from "@/lib/theme";
 
 export const Route = createFileRoute("/_app")({
-  beforeLoad: () => {
-    if (typeof window !== "undefined" && !isAuthed()) {
+  beforeLoad: async () => {
+    if (typeof window !== "undefined" && !isAuthed() && !(await refreshAuthSession())) {
       throw redirect({ to: "/" });
     }
   },

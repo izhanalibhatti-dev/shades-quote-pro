@@ -155,8 +155,8 @@ const ITEM_TYPES: {
   { type: "manual", labelKey: "item.manual", icon: Pencil },
 ];
 
-const OVERALL_FITTING_TITLE = "Overall Fitting Labour";
-const OVERALL_FITTING_NOTE = "Whole quote fitting cost";
+const OVERALL_FITTING_TITLE = "Overall Labour";
+const OVERALL_FITTING_NOTE = "Whole quote labour cost";
 
 type BlindSelectableOption = (typeof fabrics)[number];
 
@@ -605,7 +605,7 @@ export function ProjectQuoteBuilder({ mode }: { mode: BuilderMode }) {
     setDraft({
       ...initialDraftForMode(mode),
       type: "labour",
-      title: targetArea ? `${targetArea.name} fitting labour` : "Fitting labour",
+      title: "Labour",
       taxable: false,
     });
   };
@@ -630,7 +630,7 @@ export function ProjectQuoteBuilder({ mode }: { mode: BuilderMode }) {
         id: existing?.id ?? uid(),
         type: "labour",
         title: OVERALL_FITTING_TITLE,
-        description: "Whole quote fitting cost",
+        description: "Whole quote labour cost",
         quantity: 1,
         unitPrice: nextAmount,
         lineTotal: nextAmount,
@@ -725,7 +725,7 @@ export function ProjectQuoteBuilder({ mode }: { mode: BuilderMode }) {
         : draft.type === "accessory"
           ? "Accessory item"
           : draft.type === "labour"
-            ? "Labour / fitting item"
+            ? "Labour item"
             : "Manual item";
   const activeItemHelper =
     draft.type === "blind"
@@ -735,7 +735,7 @@ export function ProjectQuoteBuilder({ mode }: { mode: BuilderMode }) {
         : draft.type === "accessory"
           ? "Add a standalone accessory or supplied part."
           : draft.type === "labour"
-            ? "Add fitting, installation or other non-taxable labour."
+            ? "Add installation or other non-taxable labour."
             : "Add a custom line without changing product pricing.";
 
   return (
@@ -754,7 +754,7 @@ export function ProjectQuoteBuilder({ mode }: { mode: BuilderMode }) {
         <div className="flex items-center gap-2">
           <button
             onClick={onReset}
-            className="inline-flex h-10 items-center gap-2 rounded-xl border border-border bg-card px-3.5 text-sm font-medium hover:bg-accent"
+            className="click-feedback inline-flex h-10 items-center gap-2 rounded-xl border border-border bg-card px-3.5 text-sm font-medium hover:bg-accent"
           >
             <RotateCcw className="h-4 w-4" /> {t("actions.reset")}
           </button>
@@ -762,7 +762,7 @@ export function ProjectQuoteBuilder({ mode }: { mode: BuilderMode }) {
             whileTap={{ scale: 0.98 }}
             onClick={() => exportProject(false)}
             disabled={exporting}
-            className="inline-flex h-10 items-center gap-2 rounded-xl bg-primary px-4 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-95 disabled:opacity-70"
+            className="click-feedback inline-flex h-10 items-center gap-2 rounded-xl bg-primary px-4 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-95 disabled:opacity-70"
           >
             <Download className="h-4 w-4" />
             {exporting ? t("actions.exporting") : t("actions.export")}
@@ -771,13 +771,13 @@ export function ProjectQuoteBuilder({ mode }: { mode: BuilderMode }) {
             onClick={() => exportProject(true)}
             disabled={exporting}
             title="Always renders the customer document in English"
-            className="inline-flex h-10 items-center gap-2 rounded-xl border border-border bg-card px-3.5 text-sm font-medium hover:bg-accent disabled:opacity-70"
+            className="click-feedback inline-flex h-10 items-center gap-2 rounded-xl border border-border bg-card px-3.5 text-sm font-medium hover:bg-accent disabled:opacity-70"
           >
             <Download className="h-4 w-4" /> Export in English
           </button>
           <button
             onClick={printProject}
-            className="inline-flex h-10 items-center gap-2 rounded-xl border border-border bg-card px-3.5 text-sm font-medium hover:bg-accent"
+            className="click-feedback inline-flex h-10 items-center gap-2 rounded-xl border border-border bg-card px-3.5 text-sm font-medium hover:bg-accent"
           >
             <FileText className="h-4 w-4" /> {t("actions.printPdf")}
           </button>
@@ -866,7 +866,7 @@ export function ProjectQuoteBuilder({ mode }: { mode: BuilderMode }) {
                 <button
                   key={area.id}
                   onClick={() => setActiveAreaId(area.id)}
-                  className={`rounded-xl border px-3 py-2 text-sm font-medium ${
+                  className={`click-feedback rounded-xl border px-3 py-2 text-sm font-medium ${
                     activeArea?.id === area.id
                       ? "border-primary bg-primary text-primary-foreground"
                       : "border-border bg-background hover:bg-accent"
@@ -880,7 +880,7 @@ export function ProjectQuoteBuilder({ mode }: { mode: BuilderMode }) {
               <TextInput label={t("quote.addRoom")} value={areaName} onChange={setAreaName} />
               <button
                 onClick={addArea}
-                className="mt-[21px] inline-flex h-11 items-center justify-center gap-2 rounded-xl bg-primary px-4 text-sm font-medium text-primary-foreground"
+                className="click-feedback mt-[21px] inline-flex h-11 items-center justify-center gap-2 rounded-xl bg-primary px-4 text-sm font-medium text-primary-foreground"
               >
                 <Plus className="h-4 w-4" /> {t("actions.addArea")}
               </button>
@@ -902,7 +902,7 @@ export function ProjectQuoteBuilder({ mode }: { mode: BuilderMode }) {
                 <button
                   onClick={() => removeArea(activeArea.id)}
                   disabled={project.areas.length <= 1}
-                  className="mt-[21px] inline-flex h-11 items-center justify-center gap-2 rounded-xl border border-border px-4 text-sm font-medium text-muted-foreground hover:bg-accent disabled:opacity-40"
+                  className="click-feedback mt-[21px] inline-flex h-11 items-center justify-center gap-2 rounded-xl border border-border px-4 text-sm font-medium text-muted-foreground hover:bg-accent disabled:opacity-40"
                 >
                   <Trash2 className="h-4 w-4" /> {t("actions.remove")}
                 </button>
@@ -955,7 +955,7 @@ export function ProjectQuoteBuilder({ mode }: { mode: BuilderMode }) {
                             taxable: option.type !== "labour",
                           }))
                         }
-                        className={`flex h-11 items-center justify-center gap-2 rounded-xl border px-3 text-sm font-medium ${
+                        className={`click-feedback flex h-11 items-center justify-center gap-2 rounded-xl border px-3 text-sm font-medium ${
                           draft.type === option.type
                             ? "border-primary bg-primary text-primary-foreground"
                             : "border-border bg-card hover:bg-accent"
@@ -1026,7 +1026,7 @@ export function ProjectQuoteBuilder({ mode }: { mode: BuilderMode }) {
                     setEditingItemId(null);
                     setDraft(initialDraftForMode(mode));
                   }}
-                  className="h-10 rounded-xl border border-border px-4 text-sm font-medium hover:bg-accent"
+                  className="click-feedback h-10 rounded-xl border border-border px-4 text-sm font-medium hover:bg-accent"
                 >
                   {t("actions.cancelEdit")}
                 </button>
@@ -1034,7 +1034,7 @@ export function ProjectQuoteBuilder({ mode }: { mode: BuilderMode }) {
               <button
                 onClick={saveItem}
                 disabled={!activeArea || !liveItem || Boolean(livePricingWarning)}
-                className="inline-flex h-10 items-center gap-2 rounded-xl bg-primary px-4 text-sm font-medium text-primary-foreground disabled:opacity-50"
+                className="click-feedback inline-flex h-10 items-center gap-2 rounded-xl bg-primary px-4 text-sm font-medium text-primary-foreground disabled:opacity-50"
               >
                 <Plus className="h-4 w-4" />
                 {editingItemId ? t("actions.saveItem") : t("actions.addToRoom")}
@@ -1065,9 +1065,9 @@ export function ProjectQuoteBuilder({ mode }: { mode: BuilderMode }) {
                           <button
                             type="button"
                             onClick={() => startFittingItem(area.id)}
-                            className="inline-flex h-8 items-center gap-1.5 rounded-lg border border-border px-2.5 text-xs font-medium hover:bg-accent"
+                            className="click-feedback inline-flex h-8 items-center gap-1.5 rounded-lg border border-border px-2.5 text-xs font-medium hover:bg-accent"
                           >
-                            <Hammer className="h-3.5 w-3.5" /> Add Labour / Fitting
+                            <Hammer className="h-3.5 w-3.5" /> Add Labour
                           </button>
                         )}
                         <div className="text-sm font-semibold tabular-nums">
@@ -1136,7 +1136,7 @@ export function ProjectQuoteBuilder({ mode }: { mode: BuilderMode }) {
 
             <div className="mt-5 grid gap-3 sm:grid-cols-2">
               <NumberInput
-                label="Overall fitting cost (£)"
+                label="Overall labour cost (£)"
                 value={overallFittingAmount}
                 onChange={setOverallFittingCost}
               />
@@ -1154,7 +1154,7 @@ export function ProjectQuoteBuilder({ mode }: { mode: BuilderMode }) {
                       key={percent}
                       type="button"
                       onClick={() => setDiscountPercent(percent)}
-                      className={`rounded-lg border px-2.5 py-1 text-xs font-medium ${
+                      className={`click-feedback rounded-lg border px-2.5 py-1 text-xs font-medium ${
                         Math.round(discountPercent) === percent
                           ? "border-primary bg-primary text-primary-foreground"
                           : "border-border bg-background hover:bg-accent"
@@ -1186,7 +1186,7 @@ export function ProjectQuoteBuilder({ mode }: { mode: BuilderMode }) {
 
             <div className="mt-5 rounded-2xl bg-foreground/[0.04] p-5">
               <TotalRow label="Products subtotal" value={formatGBP(productsSubtotal)} />
-              <TotalRow label="Fitting subtotal" value={formatGBP(fittingSubtotal)} />
+              <TotalRow label="Labour subtotal" value={formatGBP(fittingSubtotal)} />
               <TotalRow label={t("quote.subtotal")} value={formatGBP(totals.subtotal)} />
               <TotalRow label={`${t("quote.discount")} %`} value={`${discountPercent}%`} />
               <TotalRow
@@ -1403,11 +1403,7 @@ function buildProjectItem(
   const lineTotal = roundMoney(quantity * unitPrice);
   const title =
     draft.title.trim() ||
-    (draft.type === "labour"
-      ? "Fitting labour"
-      : draft.type === "accessory"
-        ? "Accessory"
-        : "Manual item");
+    (draft.type === "labour" ? "Labour" : draft.type === "accessory" ? "Accessory" : "Manual item");
 
   if (lineTotal <= 0 || !title) return null;
 

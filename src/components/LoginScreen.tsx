@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { Mail, Lock, ArrowRight, Loader2 } from "lucide-react";
 import Logo from "@/components/Logo";
 import LanguageSelector from "@/components/LanguageSelector";
-import { signIn, isAuthed } from "@/lib/auth";
+import { signInWithPassword, isAuthed, refreshAuthSession } from "@/lib/auth";
 import { useI18n } from "@/lib/i18n";
 
 export default function LoginScreen() {
@@ -12,10 +12,17 @@ export default function LoginScreen() {
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
   const { t } = useI18n();
 
   useEffect(() => {
-    if (isAuthed()) navigate({ to: "/dashboard" });
+    if (isAuthed()) {
+      navigate({ to: "/dashboard" });
+      return;
+    }
+    void refreshAuthSession().then((ok) => {
+      if (ok) navigate({ to: "/dashboard" });
+    });
   }, [navigate]);
 
   const onSubmit = async (e: React.FormEvent) => {
@@ -23,9 +30,15 @@ export default function LoginScreen() {
     const email = emailRef.current?.value.trim() ?? "";
     const password = passwordRef.current?.value ?? "";
     if (!email || !password) return;
+    setError("");
     setLoading(true);
-    await new Promise((r) => setTimeout(r, 650));
-    signIn();
+    const result = await signInWithPassword(email, password);
+    setLoading(false);
+    if (!result.ok) {
+      setError(result.message ?? "Sign in failed. Check the email and password.");
+      passwordRef.current?.focus();
+      return;
+    }
     navigate({ to: "/dashboard" });
   };
 
@@ -80,6 +93,7 @@ export default function LoginScreen() {
               type="email"
               placeholder={t("login.email")}
               autoComplete="email"
+              defaultValue="Admin@admin.com"
               autoFocus
             />
             <Field
@@ -90,6 +104,11 @@ export default function LoginScreen() {
               placeholder={t("login.password")}
               autoComplete="current-password"
             />
+            {error && (
+              <p className="rounded-xl border border-red-300/25 bg-red-500/10 px-3 py-2 text-sm text-red-100">
+                {error}
+              </p>
+            )}
 
             <motion.button
               whileHover={{ y: -1 }}
@@ -129,6 +148,7 @@ function Field({
   type,
   placeholder,
   autoComplete,
+  defaultValue,
   autoFocus = false,
 }: {
   icon: React.ReactNode;
@@ -137,6 +157,7 @@ function Field({
   type: string;
   placeholder: string;
   autoComplete?: string;
+  defaultValue?: string;
   autoFocus?: boolean;
 }) {
   return (
@@ -156,6 +177,7 @@ function Field({
         type={type}
         placeholder={placeholder}
         autoComplete={autoComplete}
+        defaultValue={defaultValue}
         autoFocus={autoFocus}
         className="login-field-input h-full w-full bg-transparent text-sm text-white placeholder:text-white/40 focus:outline-none focus-visible:outline-none"
       />
