@@ -4,6 +4,8 @@ export interface SelectedExtra {
   widthMm?: number;
 }
 
+export type BlindMount = "Exact" | "Recess";
+
 export interface QuoteState {
   customer: {
     fullName: string;
@@ -21,7 +23,7 @@ export interface QuoteState {
     frameColour?: string;
     useCompanyDiscountedPrice?: boolean;
     room: string;
-    mount: "Inside Recess" | "Outside Recess" | "Ceiling" | "Face Fix";
+    mount: BlindMount;
     chainSide: "Left" | "Right";
   };
   size: {

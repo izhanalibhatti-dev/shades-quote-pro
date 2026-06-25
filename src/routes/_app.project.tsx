@@ -52,7 +52,7 @@ import { calculateQuote } from "@/pricing/calculateQuote";
 import { calculateProjectQuote } from "@/pricing/calculateProjectQuote";
 import { calculateLine } from "@/wardrobe-pricing/calculate";
 import type { ProjectQuote, ProjectQuoteItem, ProjectQuoteItemType } from "@/types/ProjectQuote";
-import type { QuoteState, SelectedExtra } from "@/types/Quote";
+import type { BlindMount, QuoteState, SelectedExtra } from "@/types/Quote";
 import type { WardrobeAddon, WardrobeCategoryId, WardrobeProduct } from "@/types/Wardrobe";
 
 export const Route = createFileRoute("/_app/project")({
@@ -74,7 +74,7 @@ interface DraftState {
   blindWidthMm: number;
   blindHeightMm: number;
   blindQuantity: number;
-  blindMount: "Inside Recess" | "Outside Recess" | "Ceiling" | "Face Fix";
+  blindMount: BlindMount;
   blindChainSide: "Left" | "Right";
   blindExtras: SelectedExtra[];
   wardrobeCategoryId: WardrobeCategoryId;
@@ -157,6 +157,7 @@ const ITEM_TYPES: {
 
 const OVERALL_FITTING_TITLE = "Overall Labour";
 const OVERALL_FITTING_NOTE = "Whole quote labour cost";
+const BLIND_MOUNT_OPTIONS: BlindMount[] = ["Exact", "Recess"];
 
 type BlindSelectableOption = (typeof fabrics)[number];
 
@@ -189,6 +190,10 @@ function isPerfectFitFrameBlindType(
   blindTypeId: string,
 ): blindTypeId is keyof typeof PERFECT_FIT_FRAME_SURCHARGE_EXTRA_IDS {
   return blindTypeId in PERFECT_FIT_FRAME_SURCHARGE_EXTRA_IDS;
+}
+
+function normalizeBlindMount(value: string | undefined): BlindMount {
+  return value === "Inside Recess" || value === "Recess" ? "Recess" : "Exact";
 }
 
 function withPerfectFitFrameSurcharge(
@@ -384,7 +389,7 @@ function initialDraft(): DraftState {
     blindWidthMm: 0,
     blindHeightMm: 0,
     blindQuantity: 1,
-    blindMount: "Inside Recess",
+    blindMount: "Recess",
     blindChainSide: "Right",
     blindExtras: [],
     wardrobeCategoryId: firstWardrobeCategory.id,
@@ -1262,6 +1267,14 @@ function buildProjectItem(
   if (draft.type === "blind") {
     const fabric = fabrics.find((item) => item.id === draft.blindFabricId);
     if (!fabric) return null;
+    const validOptions = [
+      ...getOptionsForBlindType(draft.blindTypeId),
+      ...getFallbackOptionsForBlindType(draft.blindTypeId),
+    ];
+    const fabricIsValidForBlindType = validOptions.some((option) => option.id === fabric.id);
+    if (!fabricIsValidForBlindType) {
+      throw new Error("Selected fabric or finish is not available for this blind type.");
+    }
 
     const quote: QuoteState = {
       ...defaultQuote(),
@@ -1493,7 +1506,7 @@ function draftFromItem(item: ProjectQuoteItem): DraftState {
       blindWidthMm: item.quote.size.widthMm,
       blindHeightMm: item.quote.size.heightMm,
       blindQuantity: item.quote.size.quantity,
-      blindMount: item.quote.product.mount,
+      blindMount: normalizeBlindMount(item.quote.product.mount),
       blindChainSide: item.quote.product.chainSide,
       blindExtras: item.quote.extras,
       notes: item.notes ?? "",
@@ -1728,7 +1741,7 @@ function BlindDraftForm({
               blindMount: blindMount as DraftState["blindMount"],
             }))
           }
-          options={["Inside Recess", "Outside Recess", "Ceiling", "Face Fix"].map((value) => ({
+          options={BLIND_MOUNT_OPTIONS.map((value) => ({
             value,
             label: value,
           }))}

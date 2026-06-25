@@ -37,7 +37,7 @@ export function defaultQuote(): QuoteState {
       productTypeId: productType.id,
       fabricId: fabric.id,
       room: "Living Room",
-      mount: "Inside Recess",
+      mount: "Recess",
       chainSide: "Right",
     },
     size: {
