@@ -32,8 +32,20 @@ export function calculateQuote(quote: QuoteState): QuoteCalculation {
     throw new Error(`Price table ${productType.priceTableId} was not found.`);
   }
 
+  const normalBands = priceTable.priceVariants?.normal.bands ?? priceTable.bands;
+  const companyDiscountedBands = priceTable.priceVariants?.companyDiscounted?.bands;
+  if (!normalBands) {
+    throw new Error(`Price table ${priceTable.id} has no normal price section.`);
+  }
+  const useCompanyDiscountedPrice = Boolean(
+    quote.product.useCompanyDiscountedPrice && companyDiscountedBands,
+  );
+  const selectedPriceTable = {
+    ...priceTable,
+    bands: useCompanyDiscountedPrice ? companyDiscountedBands! : normalBands,
+  };
   const base = getBasePrice({
-    priceTable,
+    priceTable: selectedPriceTable,
     band,
     widthMm: quote.size.widthMm,
     heightMm: quote.size.heightMm,
@@ -46,6 +58,7 @@ export function calculateQuote(quote: QuoteState): QuoteCalculation {
     (band && band !== "Standard"
       ? `Internal pricing reference: ${pricingCompany}, Band ${band}. Pricing source: ${pricingSource}.`
       : `Internal pricing reference: ${pricingCompany}. Pricing source: ${pricingSource}.`);
+  const priceVariant = useCompanyDiscountedPrice ? "companyDiscounted" : "list";
 
   const basePrice = base.price * quote.size.quantity;
   const selectedExtraLines = quote.extras.map((selected) => {
@@ -74,6 +87,7 @@ export function calculateQuote(quote: QuoteState): QuoteCalculation {
     pricingSource,
     pricingReferenceNote,
     priceSource: pricingReferenceNote,
+    priceVariant,
     widthMm: quote.size.widthMm,
     heightMm: quote.size.heightMm,
     roundedWidthMm: base.roundedWidthMm,

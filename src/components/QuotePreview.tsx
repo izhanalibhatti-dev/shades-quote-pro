@@ -75,6 +75,7 @@ const QuotePreview = forwardRef<HTMLDivElement, { quote: QuoteState }>(function 
           <div className="mt-1 text-[12.5px] text-[#4b5563]">{p.supplierName}</div>
           <dl className="mt-2 grid grid-cols-2 gap-x-4 gap-y-1 text-[11.5px] text-[#4b5563]">
             {!isInternalBandLabel(p.fabricName) && <Pair k={t("quote.fabric")} v={p.fabricName} />}
+            {quote.product.colour && <Pair k="Colour" v={quote.product.colour} />}
             <Pair k={t("quote.mount")} v={quote.product.mount} />
             <Pair k={t("quote.chain")} v={quote.product.chainSide} />
           </dl>

@@ -217,13 +217,26 @@ function ItemDetails({ item, t }: { item: ProjectQuoteItem; t: ReturnType<typeof
 
   if (item.type === "wardrobe") {
     const line = item.wardrobeLine;
+    const details = [
+      line.widthMm && line.heightMm ? `${line.widthMm} x ${line.heightMm}mm` : "",
+      line.colour ? `Colour: ${line.colour}` : "",
+      line.doorDesignName ? `Design: ${line.doorDesignName}` : "",
+      line.doorDesignSummary
+        ? line.doorDesignSummary
+            .split("\n")
+            .filter((part) => !part.startsWith("Design:"))
+            .slice(0, 3)
+            .join(" · ")
+        : "",
+      line.addons.length > 0
+        ? `${line.addons.length} add-on${line.addons.length === 1 ? "" : "s"}`
+        : "",
+    ].filter(Boolean);
+
     return (
-      <>
-        {line.widthMm && line.heightMm ? `${line.widthMm} x ${line.heightMm}mm · ` : ""}
-        {line.addons.length > 0
-          ? ` · ${line.addons.length} add-on${line.addons.length === 1 ? "" : "s"}`
-          : ""}
-      </>
+      <div className="space-y-1">
+        {details.length > 0 ? details.map((detail) => <div key={detail}>{detail}</div>) : null}
+      </div>
     );
   }
 

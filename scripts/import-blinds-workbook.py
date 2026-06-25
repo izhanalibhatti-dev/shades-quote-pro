@@ -5,14 +5,16 @@ import argparse
 import json
 import re
 import zipfile
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from pathlib import Path
 from typing import Any
 from xml.etree import ElementTree as ET
 
 
 ROOT = Path(__file__).resolve().parents[1]
-WORKBOOK = ROOT / "references" / "alpine Trade Price working (1).xlsx"
+CONFIG_PATH = ROOT / "scripts" / "blinds-workbook.config.json"
+CONFIG = json.loads(CONFIG_PATH.read_text())
+WORKBOOK = ROOT / CONFIG["sourceWorkbook"]
 OUT_TABLES = ROOT / "src" / "data" / "priceTables" / "workbookPriceTables.json"
 OUT_SUPPLIERS = ROOT / "src" / "data" / "suppliers" / "workbookSuppliers.json"
 OUT_FABRICS = ROOT / "src" / "data" / "fabrics" / "workbookFabrics.json"
@@ -25,56 +27,14 @@ NS = {
     "pkgrel": "http://schemas.openxmlformats.org/package/2006/relationships",
 }
 
-TARGET_SHEETS = {
-    "Roller",
-    "Vertical",
-    "Pvc Rigid",
-    "Vision",
-    "PF Vision",
-    "Perfect Fit Shutter",
-    "PF Roller",
-    "Allusion",
-    "Pleated Fabric",
-    "PF Pleated",
-    "Freehang Pleated",
-    "Aqua Fauxwood",
-    "Romans",
-    "Arena Fauxwood",
-    "Aluminium Venetians",
-    "PF Aluminium",
-    "PF Wood",
-    "Sunwood Faux",
-    "Sunwood Wood",
-}
-
-REFERENCE_SHEETS = {
-    "Cover",
-    "Fabric Box 2026",
-    "Alutrade",
-    "United",
-    "Louvolite 2026",
-    "Eclipse 2026",
-    "Arena 2026",
-    "Sheet1",
-}
-
-COMPANY_SHEETS = {
-    "Fabric Box 2026",
-    "Alutrade",
-    "United",
-    "Louvolite 2026",
-    "Eclipse 2026",
-    "Arena 2026",
-}
-
-COMPANY_NAME_BY_SHEET = {
-    "Fabric Box 2026": "Decora 2026",
-    "Alutrade": "Alutrade",
-    "United": "United",
-    "Louvolite 2026": "Louvolite 2026",
-    "Eclipse 2026": "Eclipse 2026",
-    "Arena 2026": "Arena 2026",
-}
+TARGET_SHEETS = set(CONFIG["pricingSheets"])
+REFERENCE_SHEETS = set(CONFIG["referenceSheets"])
+COMPANY_SHEETS = set(CONFIG["companySheets"])
+COMPANY_NAME_BY_SHEET = CONFIG["companyNames"]
+SINGLE_PRODUCT_SHEETS = set(CONFIG.get("singleProductSheets", []))
+TABLE_TITLE_OVERRIDES = CONFIG.get("tableTitleOverrides", {})
+TABLE_BAND_OVERRIDES = CONFIG.get("tableBandOverrides", {})
+REQUIRED_BLIND_TYPES = set(CONFIG.get("requiredBlindTypes", []))
 
 BAND_RE = re.compile(r"^(?:price\s+band\s+)?([A-Z]{1,3})(?:\s|$)", re.I)
 IGNORE_TITLE_WORDS = {
@@ -140,6 +100,13 @@ def cell_ref(row: int, col: int) -> str:
 def slugify(value: str) -> str:
     slug = re.sub(r"[^a-z0-9]+", "-", value.lower()).strip("-")
     return slug or "standard"
+
+
+def workbook_source() -> str:
+    try:
+        return str(WORKBOOK.resolve().relative_to(ROOT.resolve()))
+    except ValueError:
+        return str(WORKBOOK.resolve())
 
 
 def clean_text(value: Any) -> str:
@@ -461,6 +428,8 @@ def find_tables(sheet: Sheet) -> tuple[list[TableCandidate], list[str]]:
                 continue
             band = detect_band(sheet, row, start_col)
             title = detect_title(sheet, row, start_col, band)
+            title = TABLE_TITLE_OVERRIDES.get(sheet.name, {}).get(str(row), title)
+            band = TABLE_BAND_OVERRIDES.get(sheet.name, {}).get(str(row), band)
             cell_range = f"{cell_ref(row, start_col)}:{cell_ref(last_row, end_col)}"
             tables.append(
                 TableCandidate(
@@ -493,11 +462,77 @@ def dedupe_tables(tables: list[TableCandidate]) -> list[TableCandidate]:
     return out
 
 
+def is_discounted_table(sheet: Sheet, table: TableCandidate) -> bool:
+    row_end = table.header_row + len(table.heights) + 2
+    for (row, col), formula in sheet.formulas.items():
+        if (
+            table.header_row < row <= row_end
+            and table.start_col <= col <= table.end_col
+            and re.search(r"\*\s*\(\s*1\s*-", formula)
+        ):
+            return True
+
+    for row in range(max(1, table.header_row - 5), table.header_row + 1):
+        for col in range(max(1, table.start_col - 2), table.end_col + 1):
+            value = sheet.cells.get((row, col))
+            if isinstance(value, str) and re.search(r"\bdiscount(?:ed)?\b", value, re.I):
+                return True
+    return table.title.strip().lower() == "discount"
+
+
+def classify_pricing_tables(
+    sheet: Sheet, tables: list[TableCandidate]
+) -> tuple[list[TableCandidate], list[TableCandidate]]:
+    discounted_ids = {id(table) for table in tables if is_discounted_table(sheet, table)}
+    if discounted_ids:
+        paired: dict[tuple[int, str, tuple[int, ...], tuple[int, ...]], list[TableCandidate]] = {}
+        for table in tables:
+            key = (table.header_row, table.band, tuple(table.widths), tuple(table.heights))
+            paired.setdefault(key, []).append(table)
+        for candidates in paired.values():
+            if len(candidates) > 1:
+                rightmost = max(candidates, key=lambda candidate: candidate.start_col)
+                discounted_ids.add(id(rightmost))
+
+    discounted = [table for table in tables if id(table) in discounted_ids]
+    list_price = [table for table in tables if id(table) not in discounted_ids]
+    return list_price, discounted
+
+
+def select_pricing_tables(sheet: Sheet, tables: list[TableCandidate]) -> list[TableCandidate]:
+    list_price, discounted = classify_pricing_tables(sheet, tables)
+    if not discounted:
+        return tables
+    if len(list_price) == len(discounted):
+        return [
+            replace(table, title=list_price[index].title, band=list_price[index].band)
+            for index, table in enumerate(discounted)
+        ]
+
+    list_groups: dict[tuple[str, tuple[int, ...], tuple[int, ...]], list[TableCandidate]] = {}
+    discounted_group_indexes: dict[tuple[str, tuple[int, ...], tuple[int, ...]], int] = {}
+    for candidate in list_price:
+        key = (candidate.band, tuple(candidate.widths), tuple(candidate.heights))
+        list_groups.setdefault(key, []).append(candidate)
+
+    selected: list[TableCandidate] = []
+    for table in discounted:
+        key = (table.band, tuple(table.widths), tuple(table.heights))
+        matches = list_groups.get(key, [])
+        if matches:
+            match_index = discounted_group_indexes.get(key, 0)
+            source = matches[min(match_index, len(matches) - 1)]
+            discounted_group_indexes[key] = match_index + 1
+            table = replace(table, title=source.title)
+        selected.append(table)
+    return selected
+
+
 def group_tables(tables: list[TableCandidate]) -> list[dict[str, Any]]:
     groups: dict[tuple[str, str, tuple[int, ...], tuple[int, ...]], list[TableCandidate]] = {}
     for table in tables:
         group_title = table.title
-        if table.sheet in {"Roller", "Vertical", "Pvc Rigid", "Romans"}:
+        if table.sheet in SINGLE_PRODUCT_SHEETS:
             group_title = table.sheet
         key = (table.sheet, group_title, tuple(table.widths), tuple(table.heights))
         groups.setdefault(key, []).append(table)
@@ -528,7 +563,7 @@ def group_tables(tables: list[TableCandidate]) -> list[dict[str, Any]]:
                 "productTypeId": product_id,
                 "year": 2026,
                 "currency": "GBP",
-                "source": f"references/alpine Trade Price working (1).xlsx::{sheet}",
+                "source": f"{workbook_source()}::{sheet}",
                 "priceSourceLabel": source_label(sheet, title),
                 "workbookSheetName": sheet,
                 "workbookCellRange": ", ".join(ranges),
@@ -544,6 +579,65 @@ def group_tables(tables: list[TableCandidate]) -> list[dict[str, Any]]:
             }
         )
     return sorted(price_tables, key=lambda item: item["id"])
+
+
+def attach_discounted_bands(
+    price_tables: list[dict[str, Any]],
+    discounted_tables: list[dict[str, Any]],
+) -> list[str]:
+    errors: list[str] = []
+    discounted_by_id = {table["id"]: table for table in discounted_tables}
+    for table in price_tables:
+        table["priceVariants"] = {
+            "normal": {
+                "label": "Normal company list prices",
+                "source": table["source"],
+                "bands": table["bands"],
+            }
+        }
+        discounted = discounted_by_id.get(table["id"])
+        if discounted is None:
+            continue
+        if (
+            table["widths"] == discounted["widths"]
+            and table["heights"][: len(discounted["heights"])] == discounted["heights"]
+            and len(table["heights"]) > len(discounted["heights"])
+            and set(table["bands"]) == set(discounted["bands"])
+        ):
+            for band, list_matrix in table["bands"].items():
+                discounted_matrix = discounted["bands"][band]
+                ratio = next(
+                    (
+                        round(discounted_value / list_value, 6)
+                        for list_row, discounted_row in zip(list_matrix, discounted_matrix)
+                        for list_value, discounted_value in zip(list_row, discounted_row)
+                        if list_value > 0 and discounted_value > 0
+                    ),
+                    None,
+                )
+                if ratio is None:
+                    errors.append(f"{table['id']} discount ratio could not be determined.")
+                    continue
+                for list_row in list_matrix[len(discounted_matrix) :]:
+                    discounted_matrix.append([round(value * ratio, 2) for value in list_row])
+            discounted["heights"] = list(table["heights"])
+        if table["widths"] != discounted["widths"] or table["heights"] != discounted["heights"]:
+            errors.append(f"{table['id']} list and discounted dimensions do not match.")
+            continue
+        if set(table["bands"]) != set(discounted["bands"]):
+            errors.append(f"{table['id']} list and discounted bands do not match.")
+            continue
+        table["priceVariants"]["companyDiscounted"] = {
+            "label": "Discounted prices from company",
+            "source": discounted["source"],
+            "bands": discounted["bands"],
+        }
+    return errors
+
+
+def finalize_price_table_schema(price_tables: list[dict[str, Any]]) -> None:
+    for table in price_tables:
+        table.pop("bands", None)
 
 
 def source_label(sheet: str, title: str) -> str:
@@ -616,25 +710,41 @@ def clean_option_text(value: str) -> str:
 def blind_type_for_product(product_type_id: str, product_type_name: str) -> str | None:
     low_id = product_type_id.lower()
     low_name = product_type_name.lower()
+    if "pf-pleated-dual-control" in low_id:
+        return "perfect-fit-pleated-dual-control"
+    if "pf-pleated-dual-blinds" in low_id:
+        return "perfect-fit-pleated-dual-blinds"
     if "pf-roller" in low_id:
         return "perfect-fit-roller"
     if "pf-vision" in low_id:
         return "perfect-fit-vision"
     if "pf-pleated" in low_id:
         return "perfect-fit-pleated"
-    if "pf-aluminium" in low_id:
+    if "fit-to-frame-pleated" in low_id:
+        return "fit-to-frame-pleated"
+    if "3bs-pleated" in low_id:
+        return "three-sided-pleated"
+    if "fit-to-frame-aluminium" in low_id:
+        return "fit-to-frame-aluminium"
+    if "pf-aluminium" in low_id or "perfect-fit-aluminium" in low_id:
         return "perfect-fit-aluminium"
-    if "pf-wood" in low_id:
+    if "pf-wood" in low_id or "perfect-fit-wood" in low_id:
         return "perfect-fit-wood"
     if "perfect-fit-shutter" in low_id:
         return "perfect-fit-shutter"
-    if "aluminium-venetians" in low_id:
+    if "aluminium-venetians" in low_id or "25mm-aluminium" in low_id:
         return "aluminium-venetian"
-    if "aqua-fauxwood" in low_id:
+    if "aqua-fauxwood" in low_id or "aquawood-fauxwood" in low_id:
         return "aqua-fauxwood"
     if "arena-fauxwood" in low_id:
         return "arena-fauxwood"
-    if "sunwood-faux" in low_id:
+    if "essence-fauxwood" in low_id:
+        return "essence-fauxwood"
+    if "urban-fauxwood" in low_id:
+        return "urban-fauxwood"
+    if "expressions-fauxwood" in low_id:
+        return "expressions-fauxwood"
+    if "sunwood-faux" in low_id or "sunwood-fauxwood" in low_id:
         return "sunwood-faux"
     if "sunwood-wood" in low_id:
         return "sunwood-wood"
@@ -642,6 +752,8 @@ def blind_type_for_product(product_type_id: str, product_type_name: str) -> str 
         return "freehang-pleated"
     if "allusion" in low_id:
         return "allusion"
+    if "nightshade" in low_id:
+        return "nightshade"
     if "romans" in low_id or "roman" in low_name:
         return "roman"
     if "pvc" in low_id or "pvc" in low_name:
@@ -663,10 +775,14 @@ def selection_kind_for_product(product_type_id: str) -> str:
         "perfect-fit-aluminium",
         "perfect-fit-wood",
         "perfect-fit-shutter",
+        "fit-to-frame-aluminium",
         "aqua-fauxwood",
         "arena-fauxwood",
         "sunwood-faux",
         "sunwood-wood",
+        "essence-fauxwood",
+        "urban-fauxwood",
+        "expressions-fauxwood",
     }:
         return "finish"
     return "fabric"
@@ -765,12 +881,15 @@ def make_table_finish_options(
                     "id": fabric_id,
                     "supplierId": fallback_supplier_id,
                     "supplierName": "Workbook Pricing",
+                    "company": "Workbook Pricing",
+                    "blindType": blind_type,
                     "productTypeId": table["productTypeId"],
                     "name": display_name,
                     "displayName": display_name,
                     "band": band,
                     "source": table["source"],
                     "pricingSource": table["priceSourceLabel"],
+                    "collection": table["workbookSheetName"],
                     "pricingReferenceNote": pricing_reference_note(
                         "Workbook Pricing", band, table["priceSourceLabel"]
                     ),
@@ -811,7 +930,7 @@ def make_finish_option(
         "name": name,
         "displayName": name,
         "band": band,
-        "source": f"references/alpine Trade Price working (1).xlsx::{source_sheet}",
+        "source": f"{workbook_source()}::{source_sheet}",
         "collection": collection or company,
         "pricingSource": pricing_source,
         "pricingReferenceNote": pricing_reference_note,
@@ -1012,6 +1131,8 @@ def parse_sunwood_wood_options(
     sheet = next((item for item in sheets if item.name == "Sunwood Wood"), None)
     product_type_id = "wb-sunwood-wood-35"
     if sheet is None or price_table_for_product(price_tables, product_type_id) is None:
+        return []
+    if any(re.search(r"\*\s*\(\s*1\s*-", formula) for formula in sheet.formulas.values()):
         return []
 
     options: list[dict[str, Any]] = []
@@ -1546,7 +1667,7 @@ def parse_reference_fabrics(
                         "name": name,
                         "displayName": name,
                         "band": band,
-                        "source": f"references/alpine Trade Price working (1).xlsx::{sheet.name}",
+                        "source": f"{workbook_source()}::{sheet.name}",
                         "collection": section,
                         "pricingSource": table["priceSourceLabel"],
                         "pricingReferenceNote": fabric_pricing_reference_note(company, band),
@@ -1571,19 +1692,28 @@ def validate_price_tables(price_tables: list[dict[str, Any]]) -> list[str]:
             errors.append(f"{table['id']} widths are not ascending.")
         if heights != sorted(heights):
             errors.append(f"{table['id']} heights are not ascending.")
-        for band, matrix in table["bands"].items():
-            if len(matrix) != len(heights):
-                errors.append(f"{table['id']} band {band} has wrong row count.")
-            for row_index, row in enumerate(matrix):
-                if len(row) != len(widths):
-                    errors.append(f"{table['id']} band {band} row {row_index} has wrong width count.")
-                for col_index, value in enumerate(row):
-                    if value is None:
-                        errors.append(f"{table['id']} band {band} has null at {row_index},{col_index}.")
-                    if not isinstance(value, (int, float)):
+        variants = [
+            (variant_name, variant["bands"])
+            for variant_name, variant in table["priceVariants"].items()
+        ]
+        for variant, bands in variants:
+            for band, matrix in bands.items():
+                if len(matrix) != len(heights):
+                    errors.append(f"{table['id']} {variant} band {band} has wrong row count.")
+                for row_index, row in enumerate(matrix):
+                    if len(row) != len(widths):
                         errors.append(
-                            f"{table['id']} band {band} has non-numeric at {row_index},{col_index}."
+                            f"{table['id']} {variant} band {band} row {row_index} has wrong width count."
                         )
+                    for col_index, value in enumerate(row):
+                        if value is None:
+                            errors.append(
+                                f"{table['id']} {variant} band {band} has null at {row_index},{col_index}."
+                            )
+                        if not isinstance(value, (int, float)):
+                            errors.append(
+                                f"{table['id']} {variant} band {band} has non-numeric at {row_index},{col_index}."
+                            )
     return errors
 
 
@@ -1621,26 +1751,7 @@ def validate_fabrics(fabrics: list[dict[str, Any]], price_tables: list[dict[str,
             if re.search(r"\b(discontinued|n/a|not available)\b", label, re.I):
                 errors.append(f"{fabric.get('id')} exposes unavailable fabric {label!r}.")
 
-    for blind_type in {
-        "roller",
-        "vertical",
-        "vision",
-        "pvc-rigid",
-        "roman",
-        "aluminium-venetian",
-        "perfect-fit-roller",
-        "perfect-fit-vision",
-        "perfect-fit-pleated",
-        "perfect-fit-aluminium",
-        "perfect-fit-wood",
-        "perfect-fit-shutter",
-        "aqua-fauxwood",
-        "arena-fauxwood",
-        "allusion",
-        "freehang-pleated",
-        "sunwood-faux",
-        "sunwood-wood",
-    }:
+    for blind_type in REQUIRED_BLIND_TYPES:
         if blind_type not in blind_types_with_options:
             errors.append(f"UI blind type {blind_type} has no generated option or fallback.")
     return errors
@@ -1688,12 +1799,22 @@ def build() -> tuple[list[dict[str, Any]], list[dict[str, Any]], list[dict[str, 
         workbook_sheets, defined_names = read_workbook(zf)
         sheets = [read_sheet(zf, name, path, state, shared) for name, path, state in workbook_sheets]
 
-    all_candidates: list[TableCandidate] = []
+    all_list_candidates: list[TableCandidate] = []
+    all_discounted_candidates: list[TableCandidate] = []
     coverage_sheets: list[dict[str, Any]] = []
+    list_price_candidates = 0
+    discounted_candidates = 0
 
     for sheet in sheets:
         candidates, notes = find_tables(sheet)
-        all_candidates.extend(candidates if sheet.name in TARGET_SHEETS else [])
+        list_candidates, discount_candidates = classify_pricing_tables(sheet, candidates)
+        selected_candidates = select_pricing_tables(sheet, candidates)
+        if sheet.name in TARGET_SHEETS:
+            all_list_candidates.extend(list_candidates if discount_candidates else candidates)
+            if discount_candidates:
+                all_discounted_candidates.extend(selected_candidates)
+            discounted_candidates += len(discount_candidates)
+            list_price_candidates += len(list_candidates)
 
         if sheet.name in TARGET_SHEETS:
             status = "imported" if candidates else "manualReview"
@@ -1720,36 +1841,61 @@ def build() -> tuple[list[dict[str, Any]], list[dict[str, Any]], list[dict[str, 
                     }
                     for table in candidates
                 ],
+                "selectedPricingTables": [
+                    {
+                        "title": table.title,
+                        "band": table.band,
+                        "range": table.cell_range,
+                        "variant": variant,
+                    }
+                    for variant, selected in (
+                        ("list", list_candidates if discount_candidates else candidates),
+                        ("discounted", selected_candidates if discount_candidates else []),
+                    )
+                    for table in selected
+                ] if sheet.name in TARGET_SHEETS else [],
                 "notes": notes,
             }
         )
 
-    price_tables = group_tables(all_candidates)
+    price_tables = group_tables(all_list_candidates)
+    discounted_price_tables = group_tables(all_discounted_candidates)
+    variant_errors = attach_discounted_bands(price_tables, discounted_price_tables)
     workbook_fabrics, fabric_notes = parse_reference_fabrics(sheets, price_tables, red_style_ids)
     finish_options = parse_finish_options(sheets, price_tables)
-    table_finish_options: list[dict[str, Any]] = []
+    table_finish_options = make_table_finish_options(
+        price_tables, workbook_fabrics + finish_options
+    )
     fallback_fabrics = make_default_fabrics(price_tables)
     fabrics = dedupe_fabrics(workbook_fabrics + finish_options + table_finish_options + fallback_fabrics)
     suppliers = make_suppliers(price_tables, fabrics)
     validation_errors = (
-        validate_price_tables(price_tables)
+        variant_errors
+        + validate_price_tables(price_tables)
         + validate_fabrics(fabrics, price_tables)
         + validate_customer_exports()
     )
 
     coverage = {
-        "source": str(WORKBOOK.relative_to(ROOT)),
+        "source": workbook_source(),
         "generatedBy": "scripts/import-blinds-workbook.py",
         "summary": {
             "worksheetsFound": len(sheets),
             "pricingTablesImported": len(price_tables),
             "productTypesImported": len({table["productTypeId"] for table in price_tables}),
+            "discountedPriceTablesImported": sum(
+                "companyDiscounted" in table["priceVariants"] for table in price_tables
+            ),
             "fabricMappingsImported": len(workbook_fabrics),
             "finishOrColourOptionsGenerated": len(finish_options) + len(table_finish_options),
             "fallbackBandOptionsGenerated": len(fallback_fabrics),
             "validationErrors": len(validation_errors),
             "definedNames": len(defined_names),
             "formulaCells": sum(len(sheet.formulas) for sheet in sheets),
+            "listPriceGridsDetected": list_price_candidates,
+            "discountedGridsDetected": discounted_candidates,
+            "listPriceGridsSelected": len(all_list_candidates),
+            "discountedGridsSelected": len(all_discounted_candidates),
         },
         "validationErrors": validation_errors,
         "fabricMappingNotes": fabric_notes[:500],
@@ -1757,6 +1903,7 @@ def build() -> tuple[list[dict[str, Any]], list[dict[str, Any]], list[dict[str, 
         "sheets": coverage_sheets,
     }
     analysis = make_analysis_report(sheets, defined_names, coverage, workbook_fabrics, finish_options + table_finish_options)
+    finalize_price_table_schema(price_tables)
     return price_tables, suppliers, fabrics, coverage, analysis
 
 
@@ -1869,9 +2016,17 @@ def write_json(path: Path, data: Any) -> None:
 
 
 def main() -> None:
+    global WORKBOOK
     parser = argparse.ArgumentParser()
     parser.add_argument("--validate-only", action="store_true")
+    parser.add_argument(
+        "--workbook",
+        type=Path,
+        help="Override the workbook path from scripts/blinds-workbook.config.json.",
+    )
     args = parser.parse_args()
+    if args.workbook:
+        WORKBOOK = args.workbook if args.workbook.is_absolute() else ROOT / args.workbook
 
     price_tables, suppliers, fabrics, coverage, analysis = build()
     if coverage["validationErrors"]:

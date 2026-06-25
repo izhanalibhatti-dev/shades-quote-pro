@@ -10,6 +10,7 @@ lerna-debug.log*
 node_modules
 dist
 dist-ssr
+tmp/
 .output
 .vinxi
 .tanstack/**
@@ -32,3 +33,4 @@ photos of pricing. 2/
 *.njsproj
 *.sln
 *.sw?
+~$*.xlsx

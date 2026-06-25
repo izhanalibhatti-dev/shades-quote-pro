@@ -7,6 +7,8 @@ import {
   AlertTriangle,
   Blinds,
   Check,
+  ChevronDown,
+  ChevronUp,
   Copy,
   DoorOpen,
   Download,
@@ -30,6 +32,20 @@ import { DateField } from "@/components/DateField";
 import { extras, fabrics, priceTables, suppliers } from "@/data/catalog";
 import { BLIND_PRODUCT_TYPES, getBlindProductType } from "@/data/blinds/productTypes";
 import { WARDROBE_CATEGORIES, WARDROBE_DOOR_ADDONS } from "@/data/wardrobe/categories";
+import {
+  CREATE_CENTRE_ROUTS,
+  CREATE_COLOUR_RANGE,
+  CREATE_DOOR_DESIGN_ADDON_IDS,
+  CREATE_DOOR_DESIGNS,
+  CREATE_EDGE_PROFILES,
+  FUSION_GLOSS_COLOURS,
+  FUSION_TEXTURED_COLOURS,
+  MILANO_COLOURS,
+  SERICA_COLOURS,
+  VISION_COLOURS,
+  type CreateDoorDesign,
+  type DoorColourOption,
+} from "@/data/wardrobe/createOptions";
 import { defaultQuote, formatGBP, uid } from "@/lib/quote-types";
 import { useI18n, type TranslationKey } from "@/lib/i18n";
 import { calculateQuote } from "@/pricing/calculateQuote";
@@ -52,6 +68,8 @@ interface DraftState {
   blindTypeId: string;
   blindProductTypeId: string;
   blindFabricId: string;
+  blindColour: string;
+  blindUseCompanyDiscountedPrice: boolean;
   blindFrameColour: PerfectFitRollerFrameColour;
   blindWidthMm: number;
   blindHeightMm: number;
@@ -67,6 +85,7 @@ interface DraftState {
   wardrobeManualUnitPrice?: number;
   wardrobeAddons: WardrobeAddon[];
   wardrobeColour: string;
+  wardrobeDoorDesignId: string;
   title: string;
   code: string;
   description: string;
@@ -76,97 +95,52 @@ interface DraftState {
   notes: string;
 }
 
-interface DoorColourOption {
-  name: string;
-  hex: string;
+function doorColourOptions(productId: string): DoorColourOption[] {
+  if (productId === "serica-door") return SERICA_COLOURS;
+  if (productId === "vision-door") return VISION_COLOURS;
+  if (productId === "milano-door") return MILANO_COLOURS;
+  if (productId === "fusion-textured-door") return FUSION_TEXTURED_COLOURS;
+  if (productId === "fusion-mirror-gloss-door") return FUSION_GLOSS_COLOURS;
+  if (productId === "manhattan-door" || productId === "cairo-fretted-door") {
+    return CREATE_COLOUR_RANGE;
+  }
+  if (productId === "create-vinyl-door") return CREATE_COLOUR_RANGE;
+  return [];
 }
 
-const DOOR_COLOUR_GROUPS: Record<string, DoorColourOption[]> = {
-  create: [
-    { name: "Frost White Supermatt", hex: "#f4f2ed" },
-    { name: "Light Grey Supermatt", hex: "#c9c9c2" },
-    { name: "Cashmere Supermatt", hex: "#c8b9a5" },
-    { name: "Dark Grey Supermatt", hex: "#575856" },
-    { name: "Black Supermatt", hex: "#171717" },
-    { name: "Reed Green Supermatt", hex: "#66705d" },
-    { name: "Heritage Green Supermatt", hex: "#3f5545" },
-    { name: "Dust Grey Supermatt", hex: "#8b8983" },
-    { name: "Indigo Supermatt", hex: "#263848" },
-    { name: "Alby Blue Supermatt", hex: "#778996" },
-    { name: "Ivory Gloss", hex: "#eee4cf" },
-    { name: "White Gloss", hex: "#f7f7f2" },
-    { name: "Light Grey Gloss", hex: "#d2d3ce" },
-    { name: "Cashmere Gloss", hex: "#cbbba4" },
-  ],
-  serica: [
-    { name: "Frost White", hex: "#f4f2ed" },
-    { name: "Light Grey", hex: "#c9c9c2" },
-    { name: "Dark Grey", hex: "#575856" },
-    { name: "Black", hex: "#171717" },
-    { name: "Cashmere", hex: "#c8b9a5" },
-    { name: "Denim", hex: "#4d5d6a" },
-    { name: "Alby Blue", hex: "#778996" },
-    { name: "Dust Grey", hex: "#8b8983" },
-    { name: "Graphite", hex: "#4a4b48" },
-    { name: "Heritage Green", hex: "#3f5545" },
-  ],
-  vision: [
-    { name: "White", hex: "#f7f7f2" },
-    { name: "Light Grey", hex: "#c9c9c2" },
-    { name: "Black", hex: "#151515" },
-    { name: "Cream", hex: "#eee4cf" },
-    { name: "Cashmere", hex: "#c8b9a5" },
-    { name: "Beige Metallic", hex: "#b7aa96" },
-    { name: "Stone Grey", hex: "#8f8b80" },
-    { name: "Anthracite Grey", hex: "#3f4241" },
-    { name: "Dark Grey", hex: "#565856" },
-    { name: "Metallic Blue", hex: "#4a6075" },
-    { name: "Fjord", hex: "#9caea8" },
-  ],
-  milano: [
-    { name: "Grained Black", hex: "#1d1d1a" },
-    { name: "Cross Gold", hex: "#b0986e" },
-    { name: "Cross Brass", hex: "#6a6554" },
-    { name: "Relief Oak Ginger", hex: "#a17345" },
-    { name: "Relief Oak Pimento", hex: "#8b6044" },
-    { name: "Travertin Alcamo", hex: "#b7afa1" },
-    { name: "Pietra Grey", hex: "#676767" },
-    { name: "Cremona Oak Cannolo", hex: "#9f835d" },
-    { name: "Cremona Oak Torro", hex: "#7d624a" },
-  ],
-  fusionTextured: [
-    { name: "Snow White", hex: "#f7f7f2" },
-    { name: "Ivory", hex: "#eee4cf" },
-    { name: "Cashmere", hex: "#c8b9a5" },
-    { name: "Light Grey", hex: "#c9c9c2" },
-    { name: "Graphite", hex: "#4a4b48" },
-    { name: "Black", hex: "#171717" },
-    { name: "Gold Harbor Oak", hex: "#b48d59" },
-    { name: "Hazel Silverjack Oak", hex: "#9b8870" },
-    { name: "Coast Evoke Oak", hex: "#9d7c54" },
-    { name: "Concrete Flow", hex: "#8c8f8c" },
-  ],
-  fusionGloss: [
-    { name: "Snow White", hex: "#f7f7f2" },
-    { name: "Cool Grey", hex: "#c3c5c4" },
-    { name: "Cashmere", hex: "#c8b9a5" },
-    { name: "Ivory", hex: "#eee4cf" },
-    { name: "Slate Grey", hex: "#626a70" },
-    { name: "Black", hex: "#171717" },
-  ],
-};
+function isCreateDoorProduct(productId: string) {
+  return productId === "create-vinyl-door";
+}
 
-function doorColourOptions(productId: string): DoorColourOption[] {
-  if (productId === "serica-door") return DOOR_COLOUR_GROUPS.serica;
-  if (productId === "vision-door") return DOOR_COLOUR_GROUPS.vision;
-  if (productId === "milano-door") return DOOR_COLOUR_GROUPS.milano;
-  if (productId === "fusion-textured-door") return DOOR_COLOUR_GROUPS.fusionTextured;
-  if (productId === "fusion-mirror-gloss-door") return DOOR_COLOUR_GROUPS.fusionGloss;
-  if (productId === "manhattan-door" || productId === "cairo-fretted-door") {
-    return DOOR_COLOUR_GROUPS.create;
-  }
-  if (productId === "create-vinyl-door") return DOOR_COLOUR_GROUPS.create;
-  return [];
+function findCreateDoorDesign(id: string): CreateDoorDesign | undefined {
+  return CREATE_DOOR_DESIGNS.find((design) => design.id === id) ?? CREATE_DOOR_DESIGNS[0];
+}
+
+function createDoorDesignSummary(design?: CreateDoorDesign) {
+  if (!design) return "";
+  return [
+    `Design: ${design.name}`,
+    `Rout: ${design.rout}`,
+    `Edge: ${design.edge}`,
+    `Stiles & rails: ${design.stilesRails}`,
+    `Centre rail on tall doors: ${design.centreRailTallDoors}`,
+    design.notes ?? "",
+  ]
+    .filter(Boolean)
+    .join("\n");
+}
+
+function designAddons(design?: CreateDoorDesign): WardrobeAddon[] {
+  const addonIds = new Set(design?.addonIds ?? []);
+  return WARDROBE_DOOR_ADDONS.filter((addon) => addonIds.has(addon.id));
+}
+
+function syncDesignAddons(currentAddons: WardrobeAddon[], design?: CreateDoorDesign) {
+  const manuallySelected = currentAddons.filter(
+    (addon) => !CREATE_DOOR_DESIGN_ADDON_IDS.includes(addon.id),
+  );
+  const required = designAddons(design);
+  return [...manuallySelected, ...required];
 }
 
 const ITEM_TYPES: {
@@ -404,6 +378,8 @@ function initialDraft(): DraftState {
     blindTypeId: firstBlindType?.id ?? getFabricBlindTypeId(firstFabric) ?? "",
     blindProductTypeId: firstFabric?.productTypeId ?? "",
     blindFabricId: firstFabric?.id ?? "",
+    blindColour: "",
+    blindUseCompanyDiscountedPrice: false,
     blindFrameColour: "White",
     blindWidthMm: 0,
     blindHeightMm: 0,
@@ -416,8 +392,9 @@ function initialDraft(): DraftState {
     wardrobeWidthMm: 0,
     wardrobeHeightMm: 0,
     wardrobeQuantity: 1,
-    wardrobeAddons: [],
+    wardrobeAddons: designAddons(CREATE_DOOR_DESIGNS[0]),
     wardrobeColour: "",
+    wardrobeDoorDesignId: CREATE_DOOR_DESIGNS[0]?.id ?? "",
     title: "",
     code: "",
     description: "",
@@ -1295,6 +1272,8 @@ function buildProjectItem(
         supplierId: fabric.supplierId,
         productTypeId: fabric.productTypeId,
         fabricId: fabric.id,
+        colour: draft.blindColour.trim() || undefined,
+        useCompanyDiscountedPrice: draft.blindUseCompanyDiscountedPrice,
         frameColour: isPerfectFitFrameBlindType(draft.blindTypeId)
           ? draft.blindFrameColour
           : undefined,
@@ -1342,6 +1321,7 @@ function buildProjectItem(
       : "";
     const descriptionParts = [
       selectionText,
+      draft.blindColour.trim() ? `Colour: ${draft.blindColour.trim()}` : "",
       frameText,
       `${calculation.widthMm} x ${calculation.heightMm}mm`,
     ].filter(Boolean);
@@ -1365,6 +1345,10 @@ function buildProjectItem(
     const category = WARDROBE_CATEGORIES.find((item) => item.id === draft.wardrobeCategoryId);
     const product = category?.products.find((item) => item.id === draft.wardrobeProductId);
     if (!category || !product) return null;
+    const createDesign = isCreateDoorProduct(product.id)
+      ? findCreateDoorDesign(draft.wardrobeDoorDesignId)
+      : undefined;
+    const designSummary = createDoorDesignSummary(createDesign);
 
     const calc = calculateLine(product, {
       widthMm: draft.wardrobeWidthMm,
@@ -1375,21 +1359,27 @@ function buildProjectItem(
     });
     const wardrobeNotes = [
       draft.wardrobeColour ? `Colour / finish: ${draft.wardrobeColour}` : "",
+      designSummary,
       draft.notes,
     ]
       .filter(Boolean)
       .join("\n");
+    const lineProductName = createDesign ? `${createDesign.name} Door` : product.name;
     const wardrobeLine = {
       id: "draft",
       categoryId: category.id,
       productId: product.id,
-      productName: product.name,
+      productName: lineProductName,
       categoryName: category.name,
       widthMm: product.requiresDimensions ? draft.wardrobeWidthMm : undefined,
       heightMm: product.requiresDimensions ? draft.wardrobeHeightMm : undefined,
       quantity: Math.max(1, draft.wardrobeQuantity),
       manualUnitPrice: draft.wardrobeManualUnitPrice,
       addons: draft.wardrobeAddons,
+      colour: draft.wardrobeColour || undefined,
+      doorDesignId: createDesign?.id,
+      doorDesignName: createDesign?.name,
+      doorDesignSummary: designSummary || undefined,
       notes: wardrobeNotes || undefined,
       calc,
     };
@@ -1397,8 +1387,8 @@ function buildProjectItem(
     return {
       id: "draft",
       type: "wardrobe",
-      title: product.name,
-      description: category.name,
+      title: lineProductName,
+      description: createDesign ? `${category.name} - Create Vinyl Wrapped Range` : category.name,
       quantity: wardrobeLine.quantity,
       unitPrice: calc.unitPrice,
       lineTotal: calc.lineTotal,
@@ -1498,6 +1488,8 @@ function draftFromItem(item: ProjectQuoteItem): DraftState {
       blindTypeId: blindType?.id ?? "",
       blindProductTypeId: item.quote.product.productTypeId,
       blindFabricId: item.quote.product.fabricId,
+      blindColour: item.quote.product.colour ?? "",
+      blindUseCompanyDiscountedPrice: item.quote.product.useCompanyDiscountedPrice ?? false,
       blindFrameColour:
         savedFrameColour && isPerfectFitRollerFrameColour(savedFrameColour)
           ? savedFrameColour
@@ -1524,7 +1516,8 @@ function draftFromItem(item: ProjectQuoteItem): DraftState {
       wardrobeQuantity: line.quantity,
       wardrobeManualUnitPrice: line.manualUnitPrice,
       wardrobeAddons: line.addons,
-      wardrobeColour: "",
+      wardrobeColour: line.colour ?? "",
+      wardrobeDoorDesignId: line.doorDesignId ?? CREATE_DOOR_DESIGNS[0]?.id ?? "",
       notes: line.notes ?? "",
     };
   }
@@ -1557,9 +1550,14 @@ function BlindDraftForm({
   isFallbackSelection: boolean;
   t: (key: TranslationKey) => string;
 }) {
+  const [showExtras, setShowExtras] = useState(true);
   const hasOnlyStandardPlaceholder =
     availableOptions.length === 1 && availableOptions[0]?.name.trim().toLowerCase() === "standard";
   const selectionLabel = "Fabric / Finish / Colour";
+  const selectedPriceTable = priceTables.find(
+    (table) => table.productTypeId === draft.blindProductTypeId,
+  );
+  const hasCompanyDiscountedPrice = Boolean(selectedPriceTable?.priceVariants?.companyDiscounted);
   const visibleExtras = extras.filter((extra) =>
     isExtraApplicableToBlindType(extra, draft.blindTypeId),
   );
@@ -1570,6 +1568,7 @@ function BlindDraftForm({
       blindTypeId,
       blindProductTypeId: fabric?.productTypeId ?? "",
       blindFabricId: fabric?.id ?? "",
+      blindUseCompanyDiscountedPrice: false,
       blindFrameColour: isPerfectFitFrameBlindType(blindTypeId)
         ? current.blindFrameColour
         : "White",
@@ -1608,6 +1607,7 @@ function BlindDraftForm({
                 ...current,
                 blindFabricId,
                 blindProductTypeId: fabric?.productTypeId ?? current.blindProductTypeId,
+                blindUseCompanyDiscountedPrice: false,
               }));
             }}
             options={availableOptions.map((fabric) => ({
@@ -1637,6 +1637,56 @@ function BlindDraftForm({
             options={PERFECT_FIT_ROLLER_FRAME_COLOURS.map((value) => ({ value, label: value }))}
           />
         )}
+        <TextInput
+          label="Blind Colour"
+          value={draft.blindColour}
+          onChange={(blindColour) => setDraft((current) => ({ ...current, blindColour }))}
+          placeholder="Type the chosen colour"
+        />
+        <div className="md:col-span-2">
+          <div className="mb-2 text-[11px] font-medium uppercase tracking-[0.12em] text-muted-foreground">
+            Price type
+          </div>
+          <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
+            <button
+              type="button"
+              aria-pressed={!draft.blindUseCompanyDiscountedPrice}
+              onClick={() =>
+                setDraft((current) => ({
+                  ...current,
+                  blindUseCompanyDiscountedPrice: false,
+                }))
+              }
+              className={`flex min-h-11 items-center justify-between gap-3 rounded-xl border px-3 text-left text-sm font-medium transition focus:outline-none focus:ring-2 focus:ring-ring ${
+                !draft.blindUseCompanyDiscountedPrice
+                  ? "border-primary bg-primary text-primary-foreground"
+                  : "border-border bg-background hover:bg-accent"
+              }`}
+            >
+              Normal prices
+              {!draft.blindUseCompanyDiscountedPrice && <Check className="h-4 w-4" />}
+            </button>
+            <button
+              type="button"
+              disabled={!hasCompanyDiscountedPrice}
+              aria-pressed={draft.blindUseCompanyDiscountedPrice}
+              onClick={() =>
+                setDraft((current) => ({
+                  ...current,
+                  blindUseCompanyDiscountedPrice: true,
+                }))
+              }
+              className={`flex min-h-11 items-center justify-between gap-3 rounded-xl border px-3 text-left text-sm font-medium transition focus:outline-none focus:ring-2 focus:ring-ring disabled:cursor-not-allowed disabled:opacity-45 ${
+                draft.blindUseCompanyDiscountedPrice
+                  ? "border-primary bg-primary text-primary-foreground"
+                  : "border-border bg-background hover:bg-accent"
+              }`}
+            >
+              Discounted prices from company
+              {draft.blindUseCompanyDiscountedPrice && <Check className="h-4 w-4" />}
+            </button>
+          </div>
+        </div>
         {isFallbackSelection && (
           <div className="rounded-xl border border-amber-400/40 bg-amber-400/10 px-3 py-2 text-xs text-muted-foreground md:col-span-2">
             No fabric/colour list was found for this blind type. Select the pricing band shown in
@@ -1700,68 +1750,90 @@ function BlindDraftForm({
         />
       </div>
       <div>
-        <div className="mb-2 text-[11px] font-medium uppercase tracking-[0.12em] text-muted-foreground">
-          {t("field.blindExtras")}
+        <div className="mb-2 flex items-center justify-between gap-3">
+          <div className="text-[11px] font-medium uppercase tracking-[0.12em] text-muted-foreground">
+            {t("field.blindExtras")}
+          </div>
+          <button
+            type="button"
+            onClick={() => setShowExtras((current) => !current)}
+            aria-expanded={showExtras}
+            className="inline-flex h-8 items-center gap-1 rounded-lg border border-border bg-background px-2.5 text-xs font-medium text-muted-foreground transition hover:bg-accent hover:text-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+          >
+            {showExtras ? (
+              <ChevronUp className="h-3.5 w-3.5" />
+            ) : (
+              <ChevronDown className="h-3.5 w-3.5" />
+            )}
+            {showExtras ? "Hide" : "Show"}
+          </button>
         </div>
-        <div className="grid gap-2 md:grid-cols-2">
-          {visibleExtras.map((extra) => {
-            const selected = draft.blindExtras.find((item) => item.id === extra.id);
-            return (
-              <label
-                key={extra.id}
-                className="flex items-center justify-between gap-3 rounded-xl border border-border bg-background px-3 py-2 text-sm"
-              >
-                <span className="min-w-0">
-                  <span className="block truncate">{extra.name}</span>
-                  <span className="block truncate text-xs text-muted-foreground">
-                    {extraDetail(extra)}
+        {showExtras && (
+          <div className="grid gap-2 md:grid-cols-2">
+            {visibleExtras.map((extra) => {
+              const selected = draft.blindExtras.find((item) => item.id === extra.id);
+              return (
+                <label
+                  key={extra.id}
+                  className="flex items-center justify-between gap-3 rounded-xl border border-border bg-background px-3 py-2 text-sm"
+                >
+                  <span className="min-w-0">
+                    <span className="block truncate">{extra.name}</span>
+                    <span className="block truncate text-xs text-muted-foreground">
+                      {extraDetail(extra)}
+                    </span>
                   </span>
-                </span>
-                <input
-                  type="checkbox"
-                  checked={!!selected}
-                  onChange={(event) =>
-                    setDraft((current) => ({
-                      ...current,
-                      blindExtras: event.target.checked
-                        ? [
-                            ...current.blindExtras,
-                            {
-                              id: extra.id,
-                              quantity: 1,
-                              widthMm:
-                                extra.pricing.type === "widthTable"
-                                  ? current.blindWidthMm
-                                  : undefined,
-                            },
-                          ]
-                        : current.blindExtras.filter((item) => item.id !== extra.id),
-                    }))
-                  }
-                />
-                {selected && extra.pricing.type === "widthTable" ? (
                   <input
-                    type="number"
-                    min={1}
-                    value={selected.widthMm ?? draft.blindWidthMm}
-                    onChange={(event) => {
-                      const widthMm = Math.max(1, Number(event.target.value) || 0);
+                    type="checkbox"
+                    checked={!!selected}
+                    onChange={(event) =>
                       setDraft((current) => ({
                         ...current,
-                        blindExtras: current.blindExtras.map((item) =>
-                          item.id === extra.id ? { ...item, widthMm } : item,
-                        ),
-                      }));
-                    }}
-                    onClick={(event) => event.stopPropagation()}
-                    className="h-8 w-24 rounded-lg border border-border bg-background px-2 text-right text-xs tabular-nums"
-                    aria-label={`${extra.name} width in millimetres`}
+                        blindExtras: event.target.checked
+                          ? [
+                              ...current.blindExtras,
+                              {
+                                id: extra.id,
+                                quantity: 1,
+                                widthMm:
+                                  extra.pricing.type === "widthTable"
+                                    ? current.blindWidthMm
+                                    : undefined,
+                              },
+                            ]
+                          : current.blindExtras.filter((item) => item.id !== extra.id),
+                      }))
+                    }
                   />
-                ) : null}
-              </label>
-            );
-          })}
-        </div>
+                  {selected && extra.pricing.type === "widthTable" ? (
+                    <input
+                      type="number"
+                      min={1}
+                      value={selected.widthMm ?? draft.blindWidthMm}
+                      onChange={(event) => {
+                        const widthMm = Math.max(1, Number(event.target.value) || 0);
+                        setDraft((current) => ({
+                          ...current,
+                          blindExtras: current.blindExtras.map((item) =>
+                            item.id === extra.id ? { ...item, widthMm } : item,
+                          ),
+                        }));
+                      }}
+                      onClick={(event) => event.stopPropagation()}
+                      className="h-8 w-24 rounded-lg border border-border bg-background px-2 text-right text-xs tabular-nums"
+                      aria-label={`${extra.name} width in millimetres`}
+                    />
+                  ) : null}
+                </label>
+              );
+            })}
+            {visibleExtras.length === 0 && (
+              <div className="rounded-xl border border-dashed border-border px-3 py-4 text-sm text-muted-foreground md:col-span-2">
+                No extras are listed for this blind type.
+              </div>
+            )}
+          </div>
+        )}
       </div>
       <Textarea
         label={t("field.notes")}
@@ -1786,6 +1858,11 @@ function WardrobeDraftForm({
   t: (key: TranslationKey) => string;
 }) {
   const doorColours = product && category?.id === "doors" ? doorColourOptions(product.id) : [];
+  const selectedCreateDesign =
+    product && isCreateDoorProduct(product.id)
+      ? findCreateDoorDesign(draft.wardrobeDoorDesignId)
+      : undefined;
+  const selectedCreateDesignAddonIds = new Set(selectedCreateDesign?.addonIds ?? []);
   return (
     <div className="space-y-4">
       <div className="grid gap-3 md:grid-cols-2">
@@ -1799,7 +1876,17 @@ function WardrobeDraftForm({
               wardrobeCategoryId: wardrobeCategoryId as WardrobeCategoryId,
               wardrobeProductId: nextCategory?.products[0]?.id ?? "",
               wardrobeManualUnitPrice: undefined,
-              wardrobeAddons: wardrobeCategoryId === "doors" ? current.wardrobeAddons : [],
+              wardrobeAddons:
+                wardrobeCategoryId === "doors"
+                  ? syncDesignAddons(
+                      current.wardrobeAddons,
+                      findCreateDoorDesign(current.wardrobeDoorDesignId),
+                    )
+                  : [],
+              wardrobeDoorDesignId:
+                wardrobeCategoryId === "doors"
+                  ? current.wardrobeDoorDesignId || (CREATE_DOOR_DESIGNS[0]?.id ?? "")
+                  : "",
             }));
           }}
         />
@@ -1813,8 +1900,21 @@ function WardrobeDraftForm({
               ...current,
               wardrobeProductId,
               wardrobeManualUnitPrice: undefined,
-              wardrobeAddons: category?.id === "doors" ? current.wardrobeAddons : [],
+              wardrobeAddons:
+                category?.id === "doors" && isCreateDoorProduct(wardrobeProductId)
+                  ? syncDesignAddons(
+                      current.wardrobeAddons,
+                      findCreateDoorDesign(current.wardrobeDoorDesignId),
+                    )
+                  : category?.id === "doors"
+                    ? current.wardrobeAddons.filter(
+                        (addon) => !CREATE_DOOR_DESIGN_ADDON_IDS.includes(addon.id),
+                      )
+                    : [],
               wardrobeColour: "",
+              wardrobeDoorDesignId: isCreateDoorProduct(wardrobeProductId)
+                ? current.wardrobeDoorDesignId || (CREATE_DOOR_DESIGNS[0]?.id ?? "")
+                : "",
             }))
           }
         />
@@ -1882,6 +1982,21 @@ function WardrobeDraftForm({
       {product?.description && (
         <p className="text-[11px] text-muted-foreground">{product.description}</p>
       )}
+      {product && isCreateDoorProduct(product.id) && selectedCreateDesign && (
+        <CreateDoorDesignPanel
+          value={selectedCreateDesign.id}
+          onChange={(wardrobeDoorDesignId) =>
+            setDraft((current) => {
+              const nextDesign = findCreateDoorDesign(wardrobeDoorDesignId);
+              return {
+                ...current,
+                wardrobeDoorDesignId,
+                wardrobeAddons: syncDesignAddons(current.wardrobeAddons, nextDesign),
+              };
+            })
+          }
+        />
+      )}
       {doorColours.length > 0 && (
         <DoorColourPicker
           value={draft.wardrobeColour}
@@ -1902,15 +2017,21 @@ function WardrobeDraftForm({
           <div className="grid gap-2 md:grid-cols-2">
             {WARDROBE_DOOR_ADDONS.map((addon) => {
               const selected = draft.wardrobeAddons.some((item) => item.id === addon.id);
+              const requiredByDesign = selectedCreateDesignAddonIds.has(addon.id);
               const amount = addon.amount > 0 ? `+${addon.amount}%` : `${addon.amount}%`;
               return (
                 <label
                   key={addon.id}
-                  className="flex min-h-11 items-center gap-2 rounded-xl border border-border bg-background px-3 text-sm"
+                  className={`flex min-h-11 items-center gap-2 rounded-xl border px-3 text-sm ${
+                    requiredByDesign
+                      ? "border-amber-200 bg-amber-50 text-amber-950"
+                      : "border-border bg-background"
+                  }`}
                 >
                   <input
                     type="checkbox"
                     checked={selected}
+                    disabled={requiredByDesign}
                     onChange={(event) =>
                       setDraft((current) => ({
                         ...current,
@@ -1921,7 +2042,9 @@ function WardrobeDraftForm({
                     }
                   />
                   <span className="min-w-0 flex-1">{addon.name}</span>
-                  <span className="text-xs text-muted-foreground">{amount}</span>
+                  <span className="text-xs text-muted-foreground">
+                    {requiredByDesign ? `Design ${amount}` : amount}
+                  </span>
                 </label>
               );
             })}
@@ -2106,35 +2229,151 @@ function DoorColourPicker({
   options: DoorColourOption[];
   onChange: (value: string) => void;
 }) {
+  const grouped = options.reduce<Record<string, DoorColourOption[]>>((groups, option) => {
+    const group = option.group || "Colours";
+    groups[group] = [...(groups[group] ?? []), option];
+    return groups;
+  }, {});
+
   return (
     <div>
       <span className="mb-1.5 block text-[11px] font-medium uppercase tracking-[0.12em] text-muted-foreground">
         Door colour / finish
       </span>
-      <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-4">
-        {options.map((option) => {
-          const selected = option.name === value;
-          return (
-            <button
-              key={option.name}
-              type="button"
-              onClick={() => onChange(option.name)}
-              aria-pressed={selected}
-              className={`flex min-h-14 items-center gap-3 rounded-xl border px-3 py-2 text-left text-sm transition focus:outline-none focus:ring-2 focus:ring-ring ${
-                selected
-                  ? "border-foreground/60 bg-foreground text-background"
-                  : "border-border bg-background hover:border-foreground/30 hover:bg-accent/30"
-              }`}
-            >
-              <span
-                className="h-8 w-8 shrink-0 rounded-lg border border-border shadow-inner"
-                style={{ backgroundColor: option.hex }}
-              />
-              <span className="min-w-0 flex-1 leading-tight">{option.name}</span>
-              {selected && <Check className="h-4 w-4 shrink-0" />}
-            </button>
-          );
-        })}
+      <div className="space-y-3 rounded-2xl border border-border bg-background p-3">
+        {Object.entries(grouped).map(([group, colours]) => (
+          <div key={group}>
+            <div className="mb-1.5 text-xs font-semibold text-foreground">{group}</div>
+            <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-4">
+              {colours.map((option) => {
+                const selected = option.name === value;
+                return (
+                  <button
+                    key={option.name}
+                    type="button"
+                    onClick={() => onChange(option.name)}
+                    aria-pressed={selected}
+                    className={`flex min-h-14 items-center gap-3 rounded-xl border px-3 py-2 text-left text-sm transition focus:outline-none focus:ring-2 focus:ring-ring ${
+                      selected
+                        ? "border-foreground/60 bg-foreground text-background"
+                        : "border-border bg-card hover:border-foreground/30 hover:bg-accent/30"
+                    }`}
+                  >
+                    <span
+                      className="h-8 w-8 shrink-0 rounded-lg border border-border shadow-inner"
+                      style={{ backgroundColor: option.hex }}
+                    />
+                    <span className="min-w-0 flex-1 leading-tight">{option.name}</span>
+                    {selected && <Check className="h-4 w-4 shrink-0" />}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function CreateDoorDesignPanel({
+  value,
+  onChange,
+}: {
+  value: string;
+  onChange: (value: string) => void;
+}) {
+  const selected = findCreateDoorDesign(value) ?? CREATE_DOOR_DESIGNS[0];
+  const requiredAddons = designAddons(selected);
+  const designsByCollection = CREATE_DOOR_DESIGNS.reduce<Record<string, CreateDoorDesign[]>>(
+    (groups, design) => {
+      const group = design.collection ?? "Main Door Designs";
+      groups[group] = [...(groups[group] ?? []), design];
+      return groups;
+    },
+    {},
+  );
+
+  return (
+    <div className="rounded-2xl border border-border bg-background p-3">
+      <div className="grid gap-3 lg:grid-cols-[minmax(0,1fr)_minmax(260px,0.8fr)]">
+        <div>
+          <label
+            htmlFor="create-door-design"
+            className="mb-1.5 block text-[11px] font-medium uppercase tracking-[0.12em] text-muted-foreground"
+          >
+            Create door design
+          </label>
+          <select
+            id="create-door-design"
+            value={value}
+            onChange={(event) => onChange(event.target.value)}
+            className="h-11 w-full rounded-xl border border-border bg-background px-3 text-sm focus:border-foreground/40 focus:outline-none focus:ring-2 focus:ring-foreground/10"
+          >
+            {Object.entries(designsByCollection).map(([collection, designs]) => (
+              <optgroup key={collection} label={collection}>
+                {designs.map((design) => (
+                  <option key={design.id} value={design.id}>
+                    {design.name}
+                  </option>
+                ))}
+              </optgroup>
+            ))}
+          </select>
+
+          <div className="mt-3 grid gap-2 sm:grid-cols-2">
+            <SpecChip label="Rout" value={selected?.rout ?? "-"} />
+            <SpecChip label="Edge" value={selected?.edge ?? "-"} />
+            <SpecChip label="Stiles & rails" value={selected?.stilesRails ?? "-"} />
+            <SpecChip label="Centre rail tall doors" value={selected?.centreRailTallDoors ?? "-"} />
+          </div>
+          {selected?.notes && (
+            <p className="mt-2 rounded-xl bg-muted/50 px-3 py-2 text-xs text-muted-foreground">
+              {selected.notes}
+            </p>
+          )}
+          {requiredAddons.length > 0 && (
+            <p className="mt-2 rounded-xl border border-amber-200 bg-amber-50 px-3 py-2 text-xs text-amber-900">
+              Auto-applied surcharge:{" "}
+              {requiredAddons
+                .map((addon) => `${addon.name} ${addon.amount > 0 ? "+" : ""}${addon.amount}%`)
+                .join(", ")}
+            </p>
+          )}
+        </div>
+
+        <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-1">
+          <CatalogueList title="Edge profiles" items={CREATE_EDGE_PROFILES} />
+          <CatalogueList title="Centre routs" items={CREATE_CENTRE_ROUTS} />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function SpecChip({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="rounded-xl border border-border bg-card px-3 py-2">
+      <div className="text-[10px] font-medium uppercase tracking-[0.12em] text-muted-foreground">
+        {label}
+      </div>
+      <div className="mt-0.5 text-sm font-semibold text-foreground">{value}</div>
+    </div>
+  );
+}
+
+function CatalogueList({ title, items }: { title: string; items: string[] }) {
+  return (
+    <div className="rounded-xl border border-border bg-card px-3 py-2">
+      <div className="text-[10px] font-medium uppercase tracking-[0.12em] text-muted-foreground">
+        {title}
+      </div>
+      <div className="mt-1 flex flex-wrap gap-1.5">
+        {items.map((item) => (
+          <span key={item} className="rounded-lg bg-muted px-2 py-1 text-[11px] text-foreground">
+            {item}
+          </span>
+        ))}
       </div>
     </div>
   );
@@ -2395,11 +2634,13 @@ function TextInput({
   value,
   onChange,
   type = "text",
+  placeholder,
 }: {
   label: string;
   value: string;
   onChange: (value: string) => void;
   type?: string;
+  placeholder?: string;
 }) {
   return (
     <label className="block">
@@ -2409,6 +2650,7 @@ function TextInput({
       <input
         type={type}
         value={value}
+        placeholder={placeholder}
         onChange={(event) => onChange(event.target.value)}
         className="h-11 w-full rounded-xl border border-border bg-background px-3.5 text-sm focus:border-foreground/40 focus:outline-none focus:ring-2 focus:ring-foreground/10"
       />
@@ -2602,7 +2844,12 @@ function BlindTypeGraphic({ typeId }: { typeId: string }) {
     );
   }
 
-  if (typeId.includes("venetian") || typeId.includes("fauxwood") || typeId.includes("sunwood")) {
+  if (
+    typeId.includes("venetian") ||
+    typeId.includes("aluminium") ||
+    typeId.includes("fauxwood") ||
+    typeId.includes("sunwood")
+  ) {
     return (
       <svg aria-hidden="true" viewBox="0 0 80 64" className="h-16 w-20">
         {frame}

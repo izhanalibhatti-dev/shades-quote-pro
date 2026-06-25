@@ -14,7 +14,7 @@ interface Group {
 const GROUPS: Group[] = [
   {
     title: "Roller Blinds",
-    ids: ["roller", "vision", "perfect-fit-roller", "perfect-fit-vision"],
+    ids: ["roller", "vision", "nightshade", "perfect-fit-roller", "perfect-fit-vision"],
   },
   {
     title: "Vertical Blinds",
@@ -27,18 +27,29 @@ const GROUPS: Group[] = [
       "arena-fauxwood",
       "sunwood-faux",
       "sunwood-wood",
+      "essence-fauxwood",
+      "urban-fauxwood",
+      "expressions-fauxwood",
       "aluminium-venetian",
       "perfect-fit-aluminium",
+      "fit-to-frame-aluminium",
       "perfect-fit-wood",
     ],
   },
   {
     title: "Specialist",
-    ids: ["roman", "allusion", "perfect-fit-pleated", "perfect-fit-shutter"],
+    ids: ["roman", "allusion", "perfect-fit-shutter"],
   },
   {
     title: "Pleated",
-    ids: ["freehang-pleated"],
+    ids: [
+      "freehang-pleated",
+      "perfect-fit-pleated",
+      "perfect-fit-pleated-dual-control",
+      "perfect-fit-pleated-dual-blinds",
+      "fit-to-frame-pleated",
+      "three-sided-pleated",
+    ],
   },
 ];
 

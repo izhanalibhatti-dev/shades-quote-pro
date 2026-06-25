@@ -1,31 +1,2988 @@
 {
+  "note": "Edit only fileName values. Run `node scripts/sync-wardrobe-photo-slots.mjs` after changing wardrobe catalogue names.",
   "categories": [
-    { "id": "doors", "name": "Doors", "fileName": "" },
-    { "id": "panels", "name": "Panels / Cut & Edge", "fileName": "" },
-    { "id": "worktops", "name": "Worktops", "fileName": "" },
-    { "id": "sliding-doors", "name": "Sliding Doors", "fileName": "" },
-    { "id": "acoustic-panels", "name": "Acoustic Panels", "fileName": "" },
-    { "id": "handles", "name": "Handles", "fileName": "" },
-    { "id": "hinges", "name": "Hinges", "fileName": "" },
-    { "id": "drawers", "name": "Drawers", "fileName": "" },
-    { "id": "internal-storage", "name": "Internal Storage", "fileName": "" },
-    { "id": "led-lighting", "name": "LED Lighting", "fileName": "" },
-    { "id": "bedroom-accessories", "name": "Bedroom Accessories", "fileName": "" },
-    { "id": "sinks-taps", "name": "Sinks & Taps", "fileName": "" },
-    { "id": "misc", "name": "Miscellaneous Accessories", "fileName": "" }
+    {
+      "id": "doors",
+      "name": "Doors",
+      "fileName": "1.jpg"
+    },
+    {
+      "id": "panels",
+      "name": "Panels / Cut & Edge",
+      "fileName": "2.jpg"
+    },
+    {
+      "id": "worktops",
+      "name": "Worktops",
+      "fileName": "3.jpg"
+    },
+    {
+      "id": "sliding-doors",
+      "name": "Sliding Doors",
+      "fileName": ""
+    },
+    {
+      "id": "acoustic-panels",
+      "name": "Acoustic Panels",
+      "fileName": ""
+    },
+    {
+      "id": "handles",
+      "name": "Handles",
+      "fileName": ""
+    },
+    {
+      "id": "hinges",
+      "name": "Hinges",
+      "fileName": ""
+    },
+    {
+      "id": "drawers",
+      "name": "Drawers",
+      "fileName": ""
+    },
+    {
+      "id": "internal-storage",
+      "name": "Internal Storage",
+      "fileName": ""
+    },
+    {
+      "id": "led-lighting",
+      "name": "LED Lighting",
+      "fileName": ""
+    },
+    {
+      "id": "bedroom-accessories",
+      "name": "Bedroom Accessories",
+      "fileName": ""
+    },
+    {
+      "id": "sinks-taps",
+      "name": "Sinks & Taps",
+      "fileName": ""
+    },
+    {
+      "id": "misc",
+      "name": "Miscellaneous Accessories",
+      "fileName": ""
+    }
   ],
   "products": [
-    { "id": "create-vinyl-door", "name": "Create Vinyl Door Base Price", "fileName": "" },
-    { "id": "manhattan-door", "name": "Manhattan Door", "fileName": "" },
-    { "id": "cairo-fretted-door", "name": "Cairo Fretted Door", "fileName": "" },
-    { "id": "serica-door", "name": "Serica Slab Supermatt Door", "fileName": "" },
-    { "id": "vision-door", "name": "Vision Acrylic Door", "fileName": "" },
-    { "id": "milano-door", "name": "Milano Slab Door", "fileName": "" },
-    { "id": "fusion-textured-door", "name": "Fusion Textured Door", "fileName": "" },
-    { "id": "fusion-mirror-gloss-door", "name": "Fusion Mirror Gloss Door", "fileName": "" }
+    {
+      "id": "create-vinyl-door",
+      "categoryId": "doors",
+      "name": "Create Vinyl Door Base Price",
+      "fileName": ""
+    },
+    {
+      "id": "manhattan-door",
+      "categoryId": "doors",
+      "name": "Manhattan Door",
+      "fileName": ""
+    },
+    {
+      "id": "cairo-fretted-door",
+      "categoryId": "doors",
+      "name": "Cairo Fretted Door",
+      "fileName": ""
+    },
+    {
+      "id": "serica-door",
+      "categoryId": "doors",
+      "name": "Serica Slab Supermatt Door",
+      "fileName": ""
+    },
+    {
+      "id": "vision-door",
+      "categoryId": "doors",
+      "name": "Vision Acrylic Door",
+      "fileName": ""
+    },
+    {
+      "id": "milano-door",
+      "categoryId": "doors",
+      "name": "Milano Slab Door",
+      "fileName": ""
+    },
+    {
+      "id": "fusion-textured-door",
+      "categoryId": "doors",
+      "name": "Fusion Textured Door",
+      "fileName": ""
+    },
+    {
+      "id": "fusion-mirror-gloss-door",
+      "categoryId": "doors",
+      "name": "Fusion Mirror Gloss Door",
+      "fileName": ""
+    },
+    {
+      "id": "aluminium-black-smoked-715",
+      "categoryId": "doors",
+      "name": "Aluminium Black Smoked Glass 715 x 496",
+      "fileName": ""
+    },
+    {
+      "id": "aluminium-black-smoked-1245",
+      "categoryId": "doors",
+      "name": "Aluminium Black Smoked Glass 1245 x 496",
+      "fileName": ""
+    },
+    {
+      "id": "aluminium-black-smoked-1965",
+      "categoryId": "doors",
+      "name": "Aluminium Black Smoked Glass 1965 x 496",
+      "fileName": ""
+    },
+    {
+      "id": "aluminium-black-smoked-2155",
+      "categoryId": "doors",
+      "name": "Aluminium Black Smoked Glass 2155 x 496",
+      "fileName": ""
+    },
+    {
+      "id": "aluminium-black-fluted-715",
+      "categoryId": "doors",
+      "name": "Aluminium Black Reeded Fluted Glass 715 x 496",
+      "fileName": ""
+    },
+    {
+      "id": "aluminium-black-fluted-1245",
+      "categoryId": "doors",
+      "name": "Aluminium Black Reeded Fluted Glass 1245 x 496",
+      "fileName": ""
+    },
+    {
+      "id": "aluminium-black-fluted-1965",
+      "categoryId": "doors",
+      "name": "Aluminium Black Reeded Fluted Glass 1965 x 496",
+      "fileName": ""
+    },
+    {
+      "id": "aluminium-black-fluted-2155",
+      "categoryId": "doors",
+      "name": "Aluminium Black Reeded Fluted Glass 2155 x 496",
+      "fileName": ""
+    },
+    {
+      "id": "aluminium-brass-smoked-715",
+      "categoryId": "doors",
+      "name": "Aluminium Brass Smoked Glass 715 x 496",
+      "fileName": ""
+    },
+    {
+      "id": "aluminium-brass-smoked-1245",
+      "categoryId": "doors",
+      "name": "Aluminium Brass Smoked Glass 1245 x 496",
+      "fileName": ""
+    },
+    {
+      "id": "aluminium-brass-smoked-1965",
+      "categoryId": "doors",
+      "name": "Aluminium Brass Smoked Glass 1965 x 496",
+      "fileName": ""
+    },
+    {
+      "id": "aluminium-brass-smoked-2155",
+      "categoryId": "doors",
+      "name": "Aluminium Brass Smoked Glass 2155 x 496",
+      "fileName": ""
+    },
+    {
+      "id": "glazing-drawer-clear",
+      "categoryId": "doors",
+      "name": "Glazing Drawer Clear Glass",
+      "fileName": ""
+    },
+    {
+      "id": "glazing-drawer-satin",
+      "categoryId": "doors",
+      "name": "Glazing Drawer Satin Glass",
+      "fileName": ""
+    },
+    {
+      "id": "glazing-drawer-antique-bronze",
+      "categoryId": "doors",
+      "name": "Glazing Drawer Antique Bronze Mirror",
+      "fileName": ""
+    },
+    {
+      "id": "glazing-drawer-silver",
+      "categoryId": "doors",
+      "name": "Glazing Drawer Silver Mirror",
+      "fileName": ""
+    },
+    {
+      "id": "glazing-drawer-mesh",
+      "categoryId": "doors",
+      "name": "Glazing Drawer Mesh",
+      "fileName": ""
+    },
+    {
+      "id": "glazing-kitchen-clear",
+      "categoryId": "doors",
+      "name": "Glazing Kitchen Door Clear Glass",
+      "fileName": ""
+    },
+    {
+      "id": "glazing-kitchen-satin",
+      "categoryId": "doors",
+      "name": "Glazing Kitchen Door Satin Glass",
+      "fileName": ""
+    },
+    {
+      "id": "glazing-kitchen-antique-bronze",
+      "categoryId": "doors",
+      "name": "Glazing Kitchen Door Antique Bronze Mirror",
+      "fileName": ""
+    },
+    {
+      "id": "glazing-kitchen-silver",
+      "categoryId": "doors",
+      "name": "Glazing Kitchen Door Silver Mirror",
+      "fileName": ""
+    },
+    {
+      "id": "glazing-kitchen-mesh",
+      "categoryId": "doors",
+      "name": "Glazing Kitchen Door Mesh",
+      "fileName": ""
+    },
+    {
+      "id": "glazing-bedroom-up-to-1200-clear",
+      "categoryId": "doors",
+      "name": "Glazing Bedroom Door up to 1200mm Clear Glass",
+      "fileName": ""
+    },
+    {
+      "id": "glazing-bedroom-up-to-1200-satin",
+      "categoryId": "doors",
+      "name": "Glazing Bedroom Door up to 1200mm Satin Glass",
+      "fileName": ""
+    },
+    {
+      "id": "glazing-bedroom-up-to-1200-antique-bronze",
+      "categoryId": "doors",
+      "name": "Glazing Bedroom Door up to 1200mm Antique Bronze Mirror",
+      "fileName": ""
+    },
+    {
+      "id": "glazing-bedroom-up-to-1200-silver",
+      "categoryId": "doors",
+      "name": "Glazing Bedroom Door up to 1200mm Silver Mirror",
+      "fileName": ""
+    },
+    {
+      "id": "glazing-bedroom-up-to-1200-mesh",
+      "categoryId": "doors",
+      "name": "Glazing Bedroom Door up to 1200mm Mesh",
+      "fileName": ""
+    },
+    {
+      "id": "glazing-bedroom-1201-2155-clear",
+      "categoryId": "doors",
+      "name": "Glazing Bedroom Door 1201-2155mm Clear Glass",
+      "fileName": ""
+    },
+    {
+      "id": "glazing-bedroom-1201-2155-satin",
+      "categoryId": "doors",
+      "name": "Glazing Bedroom Door 1201-2155mm Satin Glass",
+      "fileName": ""
+    },
+    {
+      "id": "glazing-bedroom-1201-2155-antique-bronze",
+      "categoryId": "doors",
+      "name": "Glazing Bedroom Door 1201-2155mm Antique Bronze Mirror",
+      "fileName": ""
+    },
+    {
+      "id": "glazing-bedroom-1201-2155-silver",
+      "categoryId": "doors",
+      "name": "Glazing Bedroom Door 1201-2155mm Silver Mirror",
+      "fileName": ""
+    },
+    {
+      "id": "glazing-bedroom-over-2155-clear",
+      "categoryId": "doors",
+      "name": "Glazing Bedroom Door over 2155mm Clear Glass",
+      "fileName": ""
+    },
+    {
+      "id": "glazing-bedroom-over-2155-satin",
+      "categoryId": "doors",
+      "name": "Glazing Bedroom Door over 2155mm Satin Glass",
+      "fileName": ""
+    },
+    {
+      "id": "glazing-bedroom-over-2155-antique-bronze",
+      "categoryId": "doors",
+      "name": "Glazing Bedroom Door over 2155mm Antique Bronze Mirror",
+      "fileName": ""
+    },
+    {
+      "id": "glazing-bedroom-over-2155-silver",
+      "categoryId": "doors",
+      "name": "Glazing Bedroom Door over 2155mm Silver Mirror",
+      "fileName": ""
+    },
+    {
+      "id": "unglazed-groove-bead",
+      "categoryId": "doors",
+      "name": "Unglazed Routed Groove and Rubber Bead",
+      "fileName": ""
+    },
+    {
+      "id": "vinyl-backing-board",
+      "categoryId": "doors",
+      "name": "2.5mm Vinyl Wrapped Backing Board",
+      "fileName": ""
+    },
+    {
+      "id": "create-fretted-frame",
+      "categoryId": "doors",
+      "name": "Create Fretted Frame",
+      "fileName": ""
+    },
+    {
+      "id": "hinge-drilling",
+      "categoryId": "doors",
+      "name": "Hinge Drilling",
+      "fileName": ""
+    },
+    {
+      "id": "create-18mm-panel-1",
+      "categoryId": "panels",
+      "name": "Create 18mm Panel 720 x 325mm",
+      "fileName": ""
+    },
+    {
+      "id": "create-18mm-panel-2",
+      "categoryId": "panels",
+      "name": "Create 18mm Panel 800 x 325mm",
+      "fileName": ""
+    },
+    {
+      "id": "create-18mm-panel-3",
+      "categoryId": "panels",
+      "name": "Create 18mm Panel 900 x 325mm",
+      "fileName": ""
+    },
+    {
+      "id": "create-18mm-panel-4",
+      "categoryId": "panels",
+      "name": "Create 18mm Panel 900 x 600mm",
+      "fileName": ""
+    },
+    {
+      "id": "create-18mm-panel-5",
+      "categoryId": "panels",
+      "name": "Create 18mm Panel 900 x 1180mm",
+      "fileName": ""
+    },
+    {
+      "id": "create-18mm-panel-6",
+      "categoryId": "panels",
+      "name": "Create 18mm Panel 900 x 2000mm",
+      "fileName": ""
+    },
+    {
+      "id": "create-18mm-panel-7",
+      "categoryId": "panels",
+      "name": "Create 18mm Panel 1250 x 325mm",
+      "fileName": ""
+    },
+    {
+      "id": "create-18mm-panel-8",
+      "categoryId": "panels",
+      "name": "Create 18mm Panel 1250 x 600mm",
+      "fileName": ""
+    },
+    {
+      "id": "create-18mm-panel-9",
+      "categoryId": "panels",
+      "name": "Create 18mm Panel 2400 x 325mm",
+      "fileName": ""
+    },
+    {
+      "id": "create-18mm-panel-10",
+      "categoryId": "panels",
+      "name": "Create 18mm Panel 2400 x 610mm",
+      "fileName": ""
+    },
+    {
+      "id": "create-22mm-panel-1",
+      "categoryId": "panels",
+      "name": "Create 22mm Panel 720 x 325mm",
+      "fileName": ""
+    },
+    {
+      "id": "create-22mm-panel-2",
+      "categoryId": "panels",
+      "name": "Create 22mm Panel 800 x 325mm",
+      "fileName": ""
+    },
+    {
+      "id": "create-22mm-panel-3",
+      "categoryId": "panels",
+      "name": "Create 22mm Panel 900 x 325mm",
+      "fileName": ""
+    },
+    {
+      "id": "create-22mm-panel-4",
+      "categoryId": "panels",
+      "name": "Create 22mm Panel 900 x 600mm",
+      "fileName": ""
+    },
+    {
+      "id": "create-22mm-panel-5",
+      "categoryId": "panels",
+      "name": "Create 22mm Panel 900 x 1180mm",
+      "fileName": ""
+    },
+    {
+      "id": "create-22mm-panel-6",
+      "categoryId": "panels",
+      "name": "Create 22mm Panel 900 x 2000mm",
+      "fileName": ""
+    },
+    {
+      "id": "create-22mm-panel-7",
+      "categoryId": "panels",
+      "name": "Create 22mm Panel 1250 x 325mm",
+      "fileName": ""
+    },
+    {
+      "id": "create-22mm-panel-8",
+      "categoryId": "panels",
+      "name": "Create 22mm Panel 1250 x 600mm",
+      "fileName": ""
+    },
+    {
+      "id": "create-22mm-panel-9",
+      "categoryId": "panels",
+      "name": "Create 22mm Panel 2400 x 325mm",
+      "fileName": ""
+    },
+    {
+      "id": "create-22mm-panel-10",
+      "categoryId": "panels",
+      "name": "Create 22mm Panel 2400 x 610mm",
+      "fileName": ""
+    },
+    {
+      "id": "create-25mm-panel-1",
+      "categoryId": "panels",
+      "name": "Create 25mm Panel 720 x 325mm",
+      "fileName": ""
+    },
+    {
+      "id": "create-25mm-panel-2",
+      "categoryId": "panels",
+      "name": "Create 25mm Panel 800 x 325mm",
+      "fileName": ""
+    },
+    {
+      "id": "create-25mm-panel-3",
+      "categoryId": "panels",
+      "name": "Create 25mm Panel 900 x 325mm",
+      "fileName": ""
+    },
+    {
+      "id": "create-25mm-panel-4",
+      "categoryId": "panels",
+      "name": "Create 25mm Panel 900 x 600mm",
+      "fileName": ""
+    },
+    {
+      "id": "create-25mm-panel-5",
+      "categoryId": "panels",
+      "name": "Create 25mm Panel 900 x 1180mm",
+      "fileName": ""
+    },
+    {
+      "id": "create-25mm-panel-6",
+      "categoryId": "panels",
+      "name": "Create 25mm Panel 900 x 2000mm",
+      "fileName": ""
+    },
+    {
+      "id": "create-25mm-panel-7",
+      "categoryId": "panels",
+      "name": "Create 25mm Panel 1250 x 325mm",
+      "fileName": ""
+    },
+    {
+      "id": "create-25mm-panel-8",
+      "categoryId": "panels",
+      "name": "Create 25mm Panel 1250 x 600mm",
+      "fileName": ""
+    },
+    {
+      "id": "create-25mm-panel-9",
+      "categoryId": "panels",
+      "name": "Create 25mm Panel 2400 x 325mm",
+      "fileName": ""
+    },
+    {
+      "id": "create-25mm-panel-10",
+      "categoryId": "panels",
+      "name": "Create 25mm Panel 2400 x 610mm",
+      "fileName": ""
+    },
+    {
+      "id": "serica-panel-1",
+      "categoryId": "panels",
+      "name": "Serica Panel 720 x 325mm",
+      "fileName": ""
+    },
+    {
+      "id": "serica-panel-2",
+      "categoryId": "panels",
+      "name": "Serica Panel 800 x 325mm",
+      "fileName": ""
+    },
+    {
+      "id": "serica-panel-3",
+      "categoryId": "panels",
+      "name": "Serica Panel 900 x 325mm",
+      "fileName": ""
+    },
+    {
+      "id": "serica-panel-4",
+      "categoryId": "panels",
+      "name": "Serica Panel 900 x 600mm",
+      "fileName": ""
+    },
+    {
+      "id": "serica-panel-5",
+      "categoryId": "panels",
+      "name": "Serica Panel 900 x 1180mm",
+      "fileName": ""
+    },
+    {
+      "id": "serica-panel-6",
+      "categoryId": "panels",
+      "name": "Serica Panel 900 x 2000mm",
+      "fileName": ""
+    },
+    {
+      "id": "serica-panel-7",
+      "categoryId": "panels",
+      "name": "Serica Panel 1250 x 325mm",
+      "fileName": ""
+    },
+    {
+      "id": "serica-panel-8",
+      "categoryId": "panels",
+      "name": "Serica Panel 1250 x 600mm",
+      "fileName": ""
+    },
+    {
+      "id": "serica-panel-9",
+      "categoryId": "panels",
+      "name": "Serica Panel 2400 x 325mm",
+      "fileName": ""
+    },
+    {
+      "id": "serica-panel-10",
+      "categoryId": "panels",
+      "name": "Serica Panel 2400 x 610mm",
+      "fileName": ""
+    },
+    {
+      "id": "vision-panel-1",
+      "categoryId": "panels",
+      "name": "Vision Panel 720 x 325mm",
+      "fileName": ""
+    },
+    {
+      "id": "vision-panel-2",
+      "categoryId": "panels",
+      "name": "Vision Panel 800 x 325mm",
+      "fileName": ""
+    },
+    {
+      "id": "vision-panel-3",
+      "categoryId": "panels",
+      "name": "Vision Panel 900 x 325mm",
+      "fileName": ""
+    },
+    {
+      "id": "vision-panel-4",
+      "categoryId": "panels",
+      "name": "Vision Panel 900 x 600mm",
+      "fileName": ""
+    },
+    {
+      "id": "vision-panel-5",
+      "categoryId": "panels",
+      "name": "Vision Panel 900 x 1180mm",
+      "fileName": ""
+    },
+    {
+      "id": "vision-panel-6",
+      "categoryId": "panels",
+      "name": "Vision Panel 900 x 2000mm",
+      "fileName": ""
+    },
+    {
+      "id": "vision-panel-7",
+      "categoryId": "panels",
+      "name": "Vision Panel 1250 x 325mm",
+      "fileName": ""
+    },
+    {
+      "id": "vision-panel-8",
+      "categoryId": "panels",
+      "name": "Vision Panel 1250 x 600mm",
+      "fileName": ""
+    },
+    {
+      "id": "vision-panel-9",
+      "categoryId": "panels",
+      "name": "Vision Panel 2400 x 325mm",
+      "fileName": ""
+    },
+    {
+      "id": "vision-panel-10",
+      "categoryId": "panels",
+      "name": "Vision Panel 2400 x 610mm",
+      "fileName": ""
+    },
+    {
+      "id": "milano-panel-1",
+      "categoryId": "panels",
+      "name": "Milano Panel 720 x 325mm",
+      "fileName": ""
+    },
+    {
+      "id": "milano-panel-2",
+      "categoryId": "panels",
+      "name": "Milano Panel 800 x 325mm",
+      "fileName": ""
+    },
+    {
+      "id": "milano-panel-3",
+      "categoryId": "panels",
+      "name": "Milano Panel 900 x 325mm",
+      "fileName": ""
+    },
+    {
+      "id": "milano-panel-4",
+      "categoryId": "panels",
+      "name": "Milano Panel 900 x 600mm",
+      "fileName": ""
+    },
+    {
+      "id": "milano-panel-5",
+      "categoryId": "panels",
+      "name": "Milano Panel 900 x 1180mm",
+      "fileName": ""
+    },
+    {
+      "id": "milano-panel-6",
+      "categoryId": "panels",
+      "name": "Milano Panel 900 x 2000mm",
+      "fileName": ""
+    },
+    {
+      "id": "milano-panel-7",
+      "categoryId": "panels",
+      "name": "Milano Panel 1250 x 325mm",
+      "fileName": ""
+    },
+    {
+      "id": "milano-panel-8",
+      "categoryId": "panels",
+      "name": "Milano Panel 1250 x 600mm",
+      "fileName": ""
+    },
+    {
+      "id": "milano-panel-9",
+      "categoryId": "panels",
+      "name": "Milano Panel 2400 x 325mm",
+      "fileName": ""
+    },
+    {
+      "id": "milano-panel-10",
+      "categoryId": "panels",
+      "name": "Milano Panel 2400 x 610mm",
+      "fileName": ""
+    },
+    {
+      "id": "fusion-textured-panel-1",
+      "categoryId": "panels",
+      "name": "Fusion Textured Panel 720 x 325mm",
+      "fileName": ""
+    },
+    {
+      "id": "fusion-textured-panel-2",
+      "categoryId": "panels",
+      "name": "Fusion Textured Panel 800 x 325mm",
+      "fileName": ""
+    },
+    {
+      "id": "fusion-textured-panel-3",
+      "categoryId": "panels",
+      "name": "Fusion Textured Panel 900 x 325mm",
+      "fileName": ""
+    },
+    {
+      "id": "fusion-textured-panel-4",
+      "categoryId": "panels",
+      "name": "Fusion Textured Panel 900 x 600mm",
+      "fileName": ""
+    },
+    {
+      "id": "fusion-textured-panel-5",
+      "categoryId": "panels",
+      "name": "Fusion Textured Panel 900 x 1180mm",
+      "fileName": ""
+    },
+    {
+      "id": "fusion-textured-panel-6",
+      "categoryId": "panels",
+      "name": "Fusion Textured Panel 900 x 2000mm",
+      "fileName": ""
+    },
+    {
+      "id": "fusion-textured-panel-7",
+      "categoryId": "panels",
+      "name": "Fusion Textured Panel 1250 x 325mm",
+      "fileName": ""
+    },
+    {
+      "id": "fusion-textured-panel-8",
+      "categoryId": "panels",
+      "name": "Fusion Textured Panel 1250 x 600mm",
+      "fileName": ""
+    },
+    {
+      "id": "fusion-textured-panel-9",
+      "categoryId": "panels",
+      "name": "Fusion Textured Panel 2400 x 325mm",
+      "fileName": ""
+    },
+    {
+      "id": "fusion-textured-panel-10",
+      "categoryId": "panels",
+      "name": "Fusion Textured Panel 2400 x 610mm",
+      "fileName": ""
+    },
+    {
+      "id": "fusion-gloss-panel-1",
+      "categoryId": "panels",
+      "name": "Fusion Gloss Panel 720 x 325mm",
+      "fileName": ""
+    },
+    {
+      "id": "fusion-gloss-panel-2",
+      "categoryId": "panels",
+      "name": "Fusion Gloss Panel 800 x 325mm",
+      "fileName": ""
+    },
+    {
+      "id": "fusion-gloss-panel-3",
+      "categoryId": "panels",
+      "name": "Fusion Gloss Panel 900 x 325mm",
+      "fileName": ""
+    },
+    {
+      "id": "fusion-gloss-panel-4",
+      "categoryId": "panels",
+      "name": "Fusion Gloss Panel 900 x 600mm",
+      "fileName": ""
+    },
+    {
+      "id": "fusion-gloss-panel-5",
+      "categoryId": "panels",
+      "name": "Fusion Gloss Panel 900 x 1180mm",
+      "fileName": ""
+    },
+    {
+      "id": "fusion-gloss-panel-6",
+      "categoryId": "panels",
+      "name": "Fusion Gloss Panel 900 x 2000mm",
+      "fileName": ""
+    },
+    {
+      "id": "fusion-gloss-panel-7",
+      "categoryId": "panels",
+      "name": "Fusion Gloss Panel 1250 x 325mm",
+      "fileName": ""
+    },
+    {
+      "id": "fusion-gloss-panel-8",
+      "categoryId": "panels",
+      "name": "Fusion Gloss Panel 1250 x 600mm",
+      "fileName": ""
+    },
+    {
+      "id": "fusion-gloss-panel-9",
+      "categoryId": "panels",
+      "name": "Fusion Gloss Panel 2400 x 325mm",
+      "fileName": ""
+    },
+    {
+      "id": "fusion-gloss-panel-10",
+      "categoryId": "panels",
+      "name": "Fusion Gloss Panel 2400 x 610mm",
+      "fileName": ""
+    },
+    {
+      "id": "create-tg-panelling",
+      "categoryId": "panels",
+      "name": "Create T&G Panelling",
+      "fileName": ""
+    },
+    {
+      "id": "create-30mm-board",
+      "categoryId": "panels",
+      "name": "Create 30mm Board",
+      "fileName": ""
+    },
+    {
+      "id": "create-9mm-board",
+      "categoryId": "panels",
+      "name": "Create 9mm Board",
+      "fileName": ""
+    },
+    {
+      "id": "plas-snow-white-160",
+      "categoryId": "panels",
+      "name": "Plas Cut & Edge Snow White 2800 x 160mm",
+      "fileName": ""
+    },
+    {
+      "id": "plas-snow-white-300",
+      "categoryId": "panels",
+      "name": "Plas Cut & Edge Snow White 2800 x 300mm",
+      "fileName": ""
+    },
+    {
+      "id": "plas-snow-white-500",
+      "categoryId": "panels",
+      "name": "Plas Cut & Edge Snow White 2800 x 500mm",
+      "fileName": ""
+    },
+    {
+      "id": "plas-snow-white-570",
+      "categoryId": "panels",
+      "name": "Plas Cut & Edge Snow White 2800 x 570mm",
+      "fileName": ""
+    },
+    {
+      "id": "plas-snow-white-610",
+      "categoryId": "panels",
+      "name": "Plas Cut & Edge Snow White 2800 x 610mm",
+      "fileName": ""
+    },
+    {
+      "id": "plas-cashmere-160",
+      "categoryId": "panels",
+      "name": "Plas Cut & Edge Cashmere 2800 x 160mm",
+      "fileName": ""
+    },
+    {
+      "id": "plas-cashmere-300",
+      "categoryId": "panels",
+      "name": "Plas Cut & Edge Cashmere 2800 x 300mm",
+      "fileName": ""
+    },
+    {
+      "id": "plas-cashmere-500",
+      "categoryId": "panels",
+      "name": "Plas Cut & Edge Cashmere 2800 x 500mm",
+      "fileName": ""
+    },
+    {
+      "id": "plas-cashmere-570",
+      "categoryId": "panels",
+      "name": "Plas Cut & Edge Cashmere 2800 x 570mm",
+      "fileName": ""
+    },
+    {
+      "id": "plas-cashmere-610",
+      "categoryId": "panels",
+      "name": "Plas Cut & Edge Cashmere 2800 x 610mm",
+      "fileName": ""
+    },
+    {
+      "id": "plas-slate-grey-160",
+      "categoryId": "panels",
+      "name": "Plas Cut & Edge Slate Grey 2800 x 160mm",
+      "fileName": ""
+    },
+    {
+      "id": "plas-slate-grey-300",
+      "categoryId": "panels",
+      "name": "Plas Cut & Edge Slate Grey 2800 x 300mm",
+      "fileName": ""
+    },
+    {
+      "id": "plas-slate-grey-500",
+      "categoryId": "panels",
+      "name": "Plas Cut & Edge Slate Grey 2800 x 500mm",
+      "fileName": ""
+    },
+    {
+      "id": "plas-slate-grey-570",
+      "categoryId": "panels",
+      "name": "Plas Cut & Edge Slate Grey 2800 x 570mm",
+      "fileName": ""
+    },
+    {
+      "id": "plas-slate-grey-610",
+      "categoryId": "panels",
+      "name": "Plas Cut & Edge Slate Grey 2800 x 610mm",
+      "fileName": ""
+    },
+    {
+      "id": "plas-light-grey-160",
+      "categoryId": "panels",
+      "name": "Plas Cut & Edge Light Grey 2800 x 160mm",
+      "fileName": ""
+    },
+    {
+      "id": "plas-light-grey-300",
+      "categoryId": "panels",
+      "name": "Plas Cut & Edge Light Grey 2800 x 300mm",
+      "fileName": ""
+    },
+    {
+      "id": "plas-light-grey-500",
+      "categoryId": "panels",
+      "name": "Plas Cut & Edge Light Grey 2800 x 500mm",
+      "fileName": ""
+    },
+    {
+      "id": "plas-light-grey-570",
+      "categoryId": "panels",
+      "name": "Plas Cut & Edge Light Grey 2800 x 570mm",
+      "fileName": ""
+    },
+    {
+      "id": "plas-light-grey-610",
+      "categoryId": "panels",
+      "name": "Plas Cut & Edge Light Grey 2800 x 610mm",
+      "fileName": ""
+    },
+    {
+      "id": "plas-graphite-basalt-160",
+      "categoryId": "panels",
+      "name": "Plas Cut & Edge Graphite/Basalt 2800 x 160mm",
+      "fileName": ""
+    },
+    {
+      "id": "plas-graphite-basalt-300",
+      "categoryId": "panels",
+      "name": "Plas Cut & Edge Graphite/Basalt 2800 x 300mm",
+      "fileName": ""
+    },
+    {
+      "id": "plas-graphite-basalt-500",
+      "categoryId": "panels",
+      "name": "Plas Cut & Edge Graphite/Basalt 2800 x 500mm",
+      "fileName": ""
+    },
+    {
+      "id": "plas-graphite-basalt-570",
+      "categoryId": "panels",
+      "name": "Plas Cut & Edge Graphite/Basalt 2800 x 570mm",
+      "fileName": ""
+    },
+    {
+      "id": "plas-graphite-basalt-610",
+      "categoryId": "panels",
+      "name": "Plas Cut & Edge Graphite/Basalt 2800 x 610mm",
+      "fileName": ""
+    },
+    {
+      "id": "plas-gold-harbor-oak-160",
+      "categoryId": "panels",
+      "name": "Plas Cut & Edge Gold Harbor Oak 2800 x 160mm",
+      "fileName": ""
+    },
+    {
+      "id": "plas-gold-harbor-oak-300",
+      "categoryId": "panels",
+      "name": "Plas Cut & Edge Gold Harbor Oak 2800 x 300mm",
+      "fileName": ""
+    },
+    {
+      "id": "plas-gold-harbor-oak-500",
+      "categoryId": "panels",
+      "name": "Plas Cut & Edge Gold Harbor Oak 2800 x 500mm",
+      "fileName": ""
+    },
+    {
+      "id": "plas-gold-harbor-oak-570",
+      "categoryId": "panels",
+      "name": "Plas Cut & Edge Gold Harbor Oak 2800 x 570mm",
+      "fileName": ""
+    },
+    {
+      "id": "plas-gold-harbor-oak-610",
+      "categoryId": "panels",
+      "name": "Plas Cut & Edge Gold Harbor Oak 2800 x 610mm",
+      "fileName": ""
+    },
+    {
+      "id": "plas-sonoma-oak-160",
+      "categoryId": "panels",
+      "name": "Plas Cut & Edge Sonoma Oak 2800 x 160mm",
+      "fileName": ""
+    },
+    {
+      "id": "plas-sonoma-oak-300",
+      "categoryId": "panels",
+      "name": "Plas Cut & Edge Sonoma Oak 2800 x 300mm",
+      "fileName": ""
+    },
+    {
+      "id": "plas-sonoma-oak-500",
+      "categoryId": "panels",
+      "name": "Plas Cut & Edge Sonoma Oak 2800 x 500mm",
+      "fileName": ""
+    },
+    {
+      "id": "plas-sonoma-oak-570",
+      "categoryId": "panels",
+      "name": "Plas Cut & Edge Sonoma Oak 2800 x 570mm",
+      "fileName": ""
+    },
+    {
+      "id": "plas-sonoma-oak-610",
+      "categoryId": "panels",
+      "name": "Plas Cut & Edge Sonoma Oak 2800 x 610mm",
+      "fileName": ""
+    },
+    {
+      "id": "plas-coast-evoke-oak-160",
+      "categoryId": "panels",
+      "name": "Plas Cut & Edge Coast Evoke Oak 2800 x 160mm",
+      "fileName": ""
+    },
+    {
+      "id": "plas-coast-evoke-oak-300",
+      "categoryId": "panels",
+      "name": "Plas Cut & Edge Coast Evoke Oak 2800 x 300mm",
+      "fileName": ""
+    },
+    {
+      "id": "plas-coast-evoke-oak-500",
+      "categoryId": "panels",
+      "name": "Plas Cut & Edge Coast Evoke Oak 2800 x 500mm",
+      "fileName": ""
+    },
+    {
+      "id": "plas-coast-evoke-oak-570",
+      "categoryId": "panels",
+      "name": "Plas Cut & Edge Coast Evoke Oak 2800 x 570mm",
+      "fileName": ""
+    },
+    {
+      "id": "plas-coast-evoke-oak-610",
+      "categoryId": "panels",
+      "name": "Plas Cut & Edge Coast Evoke Oak 2800 x 610mm",
+      "fileName": ""
+    },
+    {
+      "id": "plas-grained-black-160",
+      "categoryId": "panels",
+      "name": "Plas Cut & Edge Grained Black 2800 x 160mm",
+      "fileName": ""
+    },
+    {
+      "id": "plas-grained-black-300",
+      "categoryId": "panels",
+      "name": "Plas Cut & Edge Grained Black 2800 x 300mm",
+      "fileName": ""
+    },
+    {
+      "id": "plas-grained-black-500",
+      "categoryId": "panels",
+      "name": "Plas Cut & Edge Grained Black 2800 x 500mm",
+      "fileName": ""
+    },
+    {
+      "id": "plas-grained-black-570",
+      "categoryId": "panels",
+      "name": "Plas Cut & Edge Grained Black 2800 x 570mm",
+      "fileName": ""
+    },
+    {
+      "id": "plas-grained-black-610",
+      "categoryId": "panels",
+      "name": "Plas Cut & Edge Grained Black 2800 x 610mm",
+      "fileName": ""
+    },
+    {
+      "id": "create-worktop-25-non-gloss",
+      "categoryId": "worktops",
+      "name": "Create Worktop 25mm Non-Gloss",
+      "fileName": ""
+    },
+    {
+      "id": "create-worktop-25-gloss",
+      "categoryId": "worktops",
+      "name": "Create Worktop 25mm Gloss",
+      "fileName": ""
+    },
+    {
+      "id": "create-worktop-18-non-gloss",
+      "categoryId": "worktops",
+      "name": "Create Worktop 18mm Non-Gloss",
+      "fileName": ""
+    },
+    {
+      "id": "create-worktop-18-gloss",
+      "categoryId": "worktops",
+      "name": "Create Worktop 18mm Gloss",
+      "fileName": ""
+    },
+    {
+      "id": "sliding-door-builder",
+      "categoryId": "sliding-doors",
+      "name": "Sliding Door Builder Price",
+      "fileName": ""
+    },
+    {
+      "id": "acuwall-harbor-oak-panel",
+      "categoryId": "acoustic-panels",
+      "name": "Acuwall Harbor Oak Panel 2440 x 600 x 19",
+      "fileName": ""
+    },
+    {
+      "id": "acuwall-tobacco-walnut-panel",
+      "categoryId": "acoustic-panels",
+      "name": "Acuwall Tobacco Walnut Panel 2440 x 600 x 19",
+      "fileName": ""
+    },
+    {
+      "id": "acuwall-black-oak-panel",
+      "categoryId": "acoustic-panels",
+      "name": "Acuwall Black Oak Panel 2440 x 600 x 19",
+      "fileName": ""
+    },
+    {
+      "id": "acuwall-harbor-oak-end-cap",
+      "categoryId": "acoustic-panels",
+      "name": "Acuwall Harbor Oak End Cap 2440 x 27 x 10",
+      "fileName": ""
+    },
+    {
+      "id": "acuwall-tobacco-walnut-end-cap",
+      "categoryId": "acoustic-panels",
+      "name": "Acuwall Tobacco Walnut End Cap 2440 x 27 x 10",
+      "fileName": ""
+    },
+    {
+      "id": "acuwall-black-oak-end-cap",
+      "categoryId": "acoustic-panels",
+      "name": "Acuwall Black Oak End Cap 2440 x 27 x 10",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-501",
+      "categoryId": "handles",
+      "name": "Handle Int 501 40mm Brushed Bronze",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-502",
+      "categoryId": "handles",
+      "name": "Handle Int 502 160mm Brushed Bronze",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-503",
+      "categoryId": "handles",
+      "name": "Handle Int 503 320mm Brushed Bronze",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-511",
+      "categoryId": "handles",
+      "name": "Handle Int 511 40mm Brushed Nickel",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-512",
+      "categoryId": "handles",
+      "name": "Handle Int 512 160mm Brushed Nickel",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-513",
+      "categoryId": "handles",
+      "name": "Handle Int 513 320mm Brushed Nickel",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-430",
+      "categoryId": "handles",
+      "name": "Handle Int 430 448mm Antique Bronze",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-431",
+      "categoryId": "handles",
+      "name": "Handle Int 431 192mm Antique Bronze",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-432",
+      "categoryId": "handles",
+      "name": "Handle Int 432 25mm Antique Bronze",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-433",
+      "categoryId": "handles",
+      "name": "Handle Int 433 25mm Antique Bronze",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-56",
+      "categoryId": "handles",
+      "name": "Handle Int 56 128mm Stainless Steel",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-44",
+      "categoryId": "handles",
+      "name": "Handle Int 44 128mm Stainless Steel",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-19",
+      "categoryId": "handles",
+      "name": "Handle Int 19 160mm Brushed Nickel",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-20",
+      "categoryId": "handles",
+      "name": "Handle Int 20 192mm Brushed Nickel",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-21",
+      "categoryId": "handles",
+      "name": "Handle Int 21 256mm Brushed Nickel",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-58",
+      "categoryId": "handles",
+      "name": "Handle Int 58 128mm Matt Nickel",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-68",
+      "categoryId": "handles",
+      "name": "Handle Int 68 160mm Matt Nickel",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-29",
+      "categoryId": "handles",
+      "name": "Handle Int 29 57mm Chrome",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-28",
+      "categoryId": "handles",
+      "name": "Handle Int 28 160/192mm Chrome",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-285",
+      "categoryId": "handles",
+      "name": "Handle Int 285 288/320mm Chrome",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-96",
+      "categoryId": "handles",
+      "name": "Handle Int 96 160mm Knurled Steel",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-97",
+      "categoryId": "handles",
+      "name": "Handle Int 97 256mm Knurled Steel",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-92",
+      "categoryId": "handles",
+      "name": "Handle Int 92 160mm Knurled Black",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-93",
+      "categoryId": "handles",
+      "name": "Handle Int 93 256mm Knurled Black",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-112",
+      "categoryId": "handles",
+      "name": "Handle Int 112 160mm Knurled Brass",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-113",
+      "categoryId": "handles",
+      "name": "Handle Int 113 320mm Knurled Brass",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-117",
+      "categoryId": "handles",
+      "name": "Handle Int 117 32mm Chrome",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-116",
+      "categoryId": "handles",
+      "name": "Handle Int 116 32mm Black Nickel",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-12",
+      "categoryId": "handles",
+      "name": "Handle Int 12 30mm Matt Nickel",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-31",
+      "categoryId": "handles",
+      "name": "Handle Int 31 38mm Chrome",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-11",
+      "categoryId": "handles",
+      "name": "Handle Int 11 30mm Crystal and Polished Chrome",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-115",
+      "categoryId": "handles",
+      "name": "Handle Int 115 40mm Crystal and Polished Chrome",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-317",
+      "categoryId": "handles",
+      "name": "Handle Int 317 192mm Polished Chrome",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-98",
+      "categoryId": "handles",
+      "name": "Handle Int 98 160mm Matt Black",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-86",
+      "categoryId": "handles",
+      "name": "Handle Int 86 160mm Brushed Copper",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-89",
+      "categoryId": "handles",
+      "name": "Handle Int 89 192mm Brushed Brass",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-107",
+      "categoryId": "handles",
+      "name": "Handle Int 107 128mm Trim Black",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-108",
+      "categoryId": "handles",
+      "name": "Handle Int 108 256mm Trim Black",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-315",
+      "categoryId": "handles",
+      "name": "Handle Int 315 76mm Polished Chrome",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-99",
+      "categoryId": "handles",
+      "name": "Handle Int 99 76mm Matt Black",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-87",
+      "categoryId": "handles",
+      "name": "Handle Int 87 76mm Brushed Copper",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-90",
+      "categoryId": "handles",
+      "name": "Handle Int 90 76mm Brushed Brass",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-109",
+      "categoryId": "handles",
+      "name": "Handle Int 109 128mm Trim Brass",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-110",
+      "categoryId": "handles",
+      "name": "Handle Int 110 256mm Trim Brass",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-316",
+      "categoryId": "handles",
+      "name": "Handle Int 316 32mm Polished Chrome",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-100",
+      "categoryId": "handles",
+      "name": "Handle Int 100 32mm Matt Black",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-88",
+      "categoryId": "handles",
+      "name": "Handle Int 88 32mm Brushed Copper",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-91",
+      "categoryId": "handles",
+      "name": "Handle Int 91 32mm Brushed Brass",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-401",
+      "categoryId": "handles",
+      "name": "Handle Int 401 120mm Antique Bronze",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-411",
+      "categoryId": "handles",
+      "name": "Handle Int 411 120mm Anthracite",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-421",
+      "categoryId": "handles",
+      "name": "Handle Int 421 120mm Brushed Brass",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-402",
+      "categoryId": "handles",
+      "name": "Handle Int 402 128mm Antique Bronze",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-412",
+      "categoryId": "handles",
+      "name": "Handle Int 412 128mm Anthracite",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-422",
+      "categoryId": "handles",
+      "name": "Handle Int 422 128mm Brushed Brass",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-403",
+      "categoryId": "handles",
+      "name": "Handle Int 403 192mm Antique Bronze",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-413",
+      "categoryId": "handles",
+      "name": "Handle Int 413 192mm Anthracite",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-423",
+      "categoryId": "handles",
+      "name": "Handle Int 423 192mm Brushed Brass",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-408",
+      "categoryId": "handles",
+      "name": "Handle Int 408 128mm Antique Bronze Backplate",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-418",
+      "categoryId": "handles",
+      "name": "Handle Int 418 128mm Anthracite Backplate",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-428",
+      "categoryId": "handles",
+      "name": "Handle Int 428 128mm Brushed Brass Backplate",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-409",
+      "categoryId": "handles",
+      "name": "Handle Int 409 192mm Antique Bronze Backplate",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-419",
+      "categoryId": "handles",
+      "name": "Handle Int 419 192mm Anthracite Backplate",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-429",
+      "categoryId": "handles",
+      "name": "Handle Int 429 192mm Brushed Brass Backplate",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-404",
+      "categoryId": "handles",
+      "name": "Handle Int 404 30mm Antique Bronze",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-414",
+      "categoryId": "handles",
+      "name": "Handle Int 414 30mm Anthracite",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-424",
+      "categoryId": "handles",
+      "name": "Handle Int 424 30mm Brushed Brass",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-405",
+      "categoryId": "handles",
+      "name": "Handle Int 405 64mm Antique Bronze",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-415",
+      "categoryId": "handles",
+      "name": "Handle Int 415 64mm Anthracite",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-425",
+      "categoryId": "handles",
+      "name": "Handle Int 425 64mm Brushed Brass",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-406",
+      "categoryId": "handles",
+      "name": "Handle Int 406 64mm Antique Bronze",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-416",
+      "categoryId": "handles",
+      "name": "Handle Int 416 64mm Anthracite",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-426",
+      "categoryId": "handles",
+      "name": "Handle Int 426 64mm Brushed Brass",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-407",
+      "categoryId": "handles",
+      "name": "Handle Int 407 64mm Antique Bronze",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-417",
+      "categoryId": "handles",
+      "name": "Handle Int 417 64mm Anthracite",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-427",
+      "categoryId": "handles",
+      "name": "Handle Int 427 64mm Brushed Brass",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-81",
+      "categoryId": "handles",
+      "name": "Handle Int 81 160mm Brushed Copper",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-15",
+      "categoryId": "handles",
+      "name": "Handle Int 15 64mm Brushed Nickel",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-155",
+      "categoryId": "handles",
+      "name": "Handle Int 155 32mm Brushed Nickel",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-102",
+      "categoryId": "handles",
+      "name": "Handle Int 102 320mm Knurled Black",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-103",
+      "categoryId": "handles",
+      "name": "Handle Int 103 24mm Knurled Black",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-105",
+      "categoryId": "handles",
+      "name": "Handle Int 105 320mm Knurled Nickel",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-106",
+      "categoryId": "handles",
+      "name": "Handle Int 106 24mm Knurled Nickel",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-69",
+      "categoryId": "handles",
+      "name": "Handle Int 69 160mm Mugello Set Handle Brushed Nickel",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-70",
+      "categoryId": "handles",
+      "name": "Screw Int 70 22mm pack of 100",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-71",
+      "categoryId": "handles",
+      "name": "Screw Int 71 25mm pack of 100",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-502-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 502 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-503-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 503 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-501-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 501 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-512-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 512 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-513-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 513 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-511-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 511 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-430-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 430 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-431-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 431 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-432-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 432 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-433-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 433 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-56-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 56 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-44-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 44 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-19-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 19 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-20-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 20 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-21-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 21 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-58-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 58 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-68-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 68 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-28-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 28 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-285-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 285 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-29-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 29 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-96-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 96 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-97-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 97 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-92-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 92 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-93-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 93 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-112-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 112 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-113-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 113 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-117-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 117 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-116-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 116 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-12-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 12 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-31-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 31 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-11-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 11 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-115-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 115 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-317-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 317 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-98-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 98 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-86-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 86 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-89-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 89 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-107-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 107 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-108-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 108 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-315-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 315 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-99-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 99 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-87-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 87 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-90-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 90 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-109-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 109 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-110-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 110 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-316-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 316 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-100-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 100 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-88-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 88 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-91-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 91 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-401-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 401 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-411-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 411 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-421-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 421 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-402-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 402 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-412-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 412 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-422-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 422 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-403-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 403 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-413-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 413 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-423-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 423 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-408-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 408 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-418-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 418 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-428-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 428 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-409-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 409 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-419-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 419 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-429-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 429 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-404-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 404 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-414-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 414 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-424-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 424 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-405-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 405 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-415-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 415 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-425-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 425 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-406-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 406 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-416-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 416 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-426-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 426 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-407-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 407 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-417-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 417 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-427-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 427 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-81-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 81 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-15-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 15 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-155-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 155 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-102-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 102 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-103-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 103 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-105-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 105 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-106-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 106 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "handle-int-69-50s",
+      "categoryId": "handles",
+      "name": "Handle Int 69 50s nett price",
+      "fileName": ""
+    },
+    {
+      "id": "hettich-110-soft-close",
+      "categoryId": "hinges",
+      "name": "Hettich 110 Soft Close Hinge 9071205",
+      "fileName": ""
+    },
+    {
+      "id": "hettich-165-soft-close-zero",
+      "categoryId": "hinges",
+      "name": "Hettich 165 Soft Close Zero Protrusion Hinge 9099540",
+      "fileName": ""
+    },
+    {
+      "id": "hettich-touch-open-mechanism",
+      "categoryId": "hinges",
+      "name": "Hettich Touch Open Mechanism 9089630",
+      "fileName": ""
+    },
+    {
+      "id": "hettich-110-touch-open",
+      "categoryId": "hinges",
+      "name": "Hettich 110 Touch Open Hinge 9073662",
+      "fileName": ""
+    },
+    {
+      "id": "hettich-165-touch-open",
+      "categoryId": "hinges",
+      "name": "Hettich 165 Touch Open Hinge 9099660",
+      "fileName": ""
+    },
+    {
+      "id": "hettich-bifold",
+      "categoryId": "hinges",
+      "name": "Hettich Bi-Fold Hinge 9090109",
+      "fileName": ""
+    },
+    {
+      "id": "hettich-45-angled",
+      "categoryId": "hinges",
+      "name": "Hettich 45 Degree Angled Hinge 9088019",
+      "fileName": ""
+    },
+    {
+      "id": "hettich-30-angled",
+      "categoryId": "hinges",
+      "name": "Hettich 30 Degree Angled Hinge 9088016",
+      "fileName": ""
+    },
+    {
+      "id": "hettich-backplate-wood-18",
+      "categoryId": "hinges",
+      "name": "Hettich Backplate Woodscrew 18mm 9071576",
+      "fileName": ""
+    },
+    {
+      "id": "hettich-backplate-euro-18",
+      "categoryId": "hinges",
+      "name": "Hettich Backplate Euro Screw 18mm 9071626",
+      "fileName": ""
+    },
+    {
+      "id": "hettich-adjustment-backplate-18",
+      "categoryId": "hinges",
+      "name": "Hettich 2 Piece Extra Adjustment Backplate 18mm 9071666",
+      "fileName": ""
+    },
+    {
+      "id": "hettich-backplate-wood-15",
+      "categoryId": "hinges",
+      "name": "Hettich Backplate Woodscrew 15mm 9071577",
+      "fileName": ""
+    },
+    {
+      "id": "hettich-backplate-euro-15",
+      "categoryId": "hinges",
+      "name": "Hettich Backplate Euro Screw 15mm 9071627",
+      "fileName": ""
+    },
+    {
+      "id": "hettich-adjustment-backplate-15",
+      "categoryId": "hinges",
+      "name": "Hettich 2 Piece Extra Adjustment Backplate 15mm 9071667",
+      "fileName": ""
+    },
+    {
+      "id": "hettich-cup-cover",
+      "categoryId": "hinges",
+      "name": "Hettich Sensys Hinge Cup Cover Plate 9088251",
+      "fileName": ""
+    },
+    {
+      "id": "hettich-110-standard",
+      "categoryId": "hinges",
+      "name": "Hettich 110 Standard Hinge 1029518",
+      "fileName": ""
+    },
+    {
+      "id": "hettich-165-standard-zero",
+      "categoryId": "hinges",
+      "name": "Hettich 165 Standard Zero Protrusion Hinge 9099600",
+      "fileName": ""
+    },
+    {
+      "id": "i-hinge-165-soft-close",
+      "categoryId": "hinges",
+      "name": "i-Hinge 165 Soft Close",
+      "fileName": ""
+    },
+    {
+      "id": "i-hinge-backplate-wood-18",
+      "categoryId": "hinges",
+      "name": "i-Hinge Cam Adjustable Woodscrew 18mm",
+      "fileName": ""
+    },
+    {
+      "id": "i-hinge-backplate-euro-18",
+      "categoryId": "hinges",
+      "name": "i-Hinge Cam Adjustable Euro Screw 18mm",
+      "fileName": ""
+    },
+    {
+      "id": "i-hinge-110-soft-close",
+      "categoryId": "hinges",
+      "name": "i-Hinge 110 Soft Close",
+      "fileName": ""
+    },
+    {
+      "id": "slimbox-standard-84",
+      "categoryId": "drawers",
+      "name": "Standard Slim Drawer 84mm x 450mm",
+      "fileName": ""
+    },
+    {
+      "id": "slimbox-midi-167",
+      "categoryId": "drawers",
+      "name": "Midi Slim Drawer 167mm x 400mm",
+      "fileName": ""
+    },
+    {
+      "id": "slimbox-pan-199",
+      "categoryId": "drawers",
+      "name": "Pan Slim Drawer 199mm x 450mm",
+      "fileName": ""
+    },
+    {
+      "id": "internal-front-1-5m",
+      "categoryId": "drawers",
+      "name": "Internal Front 1.5 metre",
+      "fileName": ""
+    },
+    {
+      "id": "internal-rail-1-5m",
+      "categoryId": "drawers",
+      "name": "Midi/Pan Internal Rail 1.5 metre",
+      "fileName": ""
+    },
+    {
+      "id": "standard-internal-brackets",
+      "categoryId": "drawers",
+      "name": "Standard Internal 84mm Brackets",
+      "fileName": ""
+    },
+    {
+      "id": "midi-internal-brackets",
+      "categoryId": "drawers",
+      "name": "Midi Internal 167mm Brackets",
+      "fileName": ""
+    },
+    {
+      "id": "pan-internal-brackets",
+      "categoryId": "drawers",
+      "name": "Pan Internal 199mm Brackets",
+      "fileName": ""
+    },
+    {
+      "id": "drawer-bottom-back-standard-300",
+      "categoryId": "drawers",
+      "name": "Bottom and Back Standard Drawer 300mm",
+      "fileName": ""
+    },
+    {
+      "id": "drawer-bottom-back-standard-400",
+      "categoryId": "drawers",
+      "name": "Bottom and Back Standard Drawer 400mm",
+      "fileName": ""
+    },
+    {
+      "id": "drawer-bottom-back-standard-450",
+      "categoryId": "drawers",
+      "name": "Bottom and Back Standard Drawer 450mm",
+      "fileName": ""
+    },
+    {
+      "id": "drawer-bottom-back-standard-500",
+      "categoryId": "drawers",
+      "name": "Bottom and Back Standard Drawer 500mm",
+      "fileName": ""
+    },
+    {
+      "id": "drawer-bottom-back-standard-600",
+      "categoryId": "drawers",
+      "name": "Bottom and Back Standard Drawer 600mm",
+      "fileName": ""
+    },
+    {
+      "id": "drawer-bottom-back-standard-800",
+      "categoryId": "drawers",
+      "name": "Bottom and Back Standard Drawer 800mm",
+      "fileName": ""
+    },
+    {
+      "id": "drawer-bottom-back-standard-1000",
+      "categoryId": "drawers",
+      "name": "Bottom and Back Standard Drawer 1000mm",
+      "fileName": ""
+    },
+    {
+      "id": "drawer-bottom-back-midi-pan-300",
+      "categoryId": "drawers",
+      "name": "Bottom and Back Midi/Pan Drawer 300mm",
+      "fileName": ""
+    },
+    {
+      "id": "drawer-bottom-back-midi-pan-400",
+      "categoryId": "drawers",
+      "name": "Bottom and Back Midi/Pan Drawer 400mm",
+      "fileName": ""
+    },
+    {
+      "id": "drawer-bottom-back-midi-pan-450",
+      "categoryId": "drawers",
+      "name": "Bottom and Back Midi/Pan Drawer 450mm",
+      "fileName": ""
+    },
+    {
+      "id": "drawer-bottom-back-midi-pan-500",
+      "categoryId": "drawers",
+      "name": "Bottom and Back Midi/Pan Drawer 500mm",
+      "fileName": ""
+    },
+    {
+      "id": "drawer-bottom-back-midi-pan-600",
+      "categoryId": "drawers",
+      "name": "Bottom and Back Midi/Pan Drawer 600mm",
+      "fileName": ""
+    },
+    {
+      "id": "drawer-bottom-back-midi-pan-800",
+      "categoryId": "drawers",
+      "name": "Bottom and Back Midi/Pan Drawer 800mm",
+      "fileName": ""
+    },
+    {
+      "id": "drawer-bottom-back-midi-pan-1000",
+      "categoryId": "drawers",
+      "name": "Bottom and Back Midi/Pan Drawer 1000mm",
+      "fileName": ""
+    },
+    {
+      "id": "storage-tower-500",
+      "categoryId": "drawers",
+      "name": "Kitchen Storage Tower 500mm",
+      "fileName": ""
+    },
+    {
+      "id": "storage-tower-600",
+      "categoryId": "drawers",
+      "name": "Kitchen Storage Tower 600mm",
+      "fileName": ""
+    },
+    {
+      "id": "safe-drawer-600",
+      "categoryId": "internal-storage",
+      "name": "Safe Drawer to Suit 600mm Unit INT-SAFE",
+      "fileName": ""
+    },
+    {
+      "id": "jewellery-tray-600",
+      "categoryId": "internal-storage",
+      "name": "Jewellery Tray 600mm INT-JT6",
+      "fileName": ""
+    },
+    {
+      "id": "jewellery-tray-800",
+      "categoryId": "internal-storage",
+      "name": "Jewellery Tray 800mm INT-JT8",
+      "fileName": ""
+    },
+    {
+      "id": "jewellery-tray-900",
+      "categoryId": "internal-storage",
+      "name": "Jewellery Tray 900mm INT-JT9",
+      "fileName": ""
+    },
+    {
+      "id": "robe-basket-600",
+      "categoryId": "internal-storage",
+      "name": "Robe Basket 600mm INT-RBSK6",
+      "fileName": ""
+    },
+    {
+      "id": "robe-basket-800",
+      "categoryId": "internal-storage",
+      "name": "Robe Basket 800mm INT-RBSK8",
+      "fileName": ""
+    },
+    {
+      "id": "robe-basket-900",
+      "categoryId": "internal-storage",
+      "name": "Robe Basket 900mm INT-RBSK9",
+      "fileName": ""
+    },
+    {
+      "id": "laundry-basket-600",
+      "categoryId": "internal-storage",
+      "name": "Laundry Basket 600mm INTW-LBSK6",
+      "fileName": ""
+    },
+    {
+      "id": "laundry-basket-800",
+      "categoryId": "internal-storage",
+      "name": "Laundry Basket 800mm INTW-LBSK8",
+      "fileName": ""
+    },
+    {
+      "id": "laundry-basket-900",
+      "categoryId": "internal-storage",
+      "name": "Laundry Basket 900mm INTW-LBSK9",
+      "fileName": ""
+    },
+    {
+      "id": "shoe-rack-600",
+      "categoryId": "internal-storage",
+      "name": "Shoe Rack 600mm INT-SHR6",
+      "fileName": ""
+    },
+    {
+      "id": "shoe-rack-800",
+      "categoryId": "internal-storage",
+      "name": "Shoe Rack 800mm INT-SHR8",
+      "fileName": ""
+    },
+    {
+      "id": "shoe-rack-900",
+      "categoryId": "internal-storage",
+      "name": "Shoe Rack 900mm INT-SHR9",
+      "fileName": ""
+    },
+    {
+      "id": "led-round-70-motion",
+      "categoryId": "led-lighting",
+      "name": "Round Light 70mm Motion Sensor INTL-RNDPIR",
+      "fileName": ""
+    },
+    {
+      "id": "led-round-70-standard",
+      "categoryId": "led-lighting",
+      "name": "Round Light 70mm Standard INTL-RND",
+      "fileName": ""
+    },
+    {
+      "id": "led-strip-400-motion",
+      "categoryId": "led-lighting",
+      "name": "Strip Light 400mm Motion Sensor INTL-40PIRSTP",
+      "fileName": ""
+    },
+    {
+      "id": "led-strip-400-standard",
+      "categoryId": "led-lighting",
+      "name": "Strip Light 400mm Standard INTL-40STP",
+      "fileName": ""
+    },
+    {
+      "id": "led-strip-1900-motion",
+      "categoryId": "led-lighting",
+      "name": "Strip Light 1900mm Motion Sensor INTL-190PIRSTP",
+      "fileName": ""
+    },
+    {
+      "id": "led-strip-1900-standard",
+      "categoryId": "led-lighting",
+      "name": "Strip Light 1900mm Standard INTL-190STP",
+      "fileName": ""
+    },
+    {
+      "id": "led-driver-splitter",
+      "categoryId": "led-lighting",
+      "name": "Driver and Splitter Pack INTL-DRV",
+      "fileName": ""
+    },
+    {
+      "id": "led-remote-control",
+      "categoryId": "led-lighting",
+      "name": "Remote Control INTL-REM",
+      "fileName": ""
+    },
+    {
+      "id": "led-remote-receiver-cable",
+      "categoryId": "led-lighting",
+      "name": "Remote Receiver and Cable INTL-REMRCV",
+      "fileName": ""
+    },
+    {
+      "id": "led-2m-extension",
+      "categoryId": "led-lighting",
+      "name": "2 Metre Extension Cable INTL-2EXT",
+      "fileName": ""
+    },
+    {
+      "id": "led-remote-holder",
+      "categoryId": "led-lighting",
+      "name": "Remote Control Holder INTL-REMHLD",
+      "fileName": ""
+    },
+    {
+      "id": "end-support-ha02",
+      "categoryId": "bedroom-accessories",
+      "name": "End Support HA02 Pack of 200",
+      "fileName": ""
+    },
+    {
+      "id": "centre-support-ha08",
+      "categoryId": "bedroom-accessories",
+      "name": "Centre Support HA08 Pack of 100",
+      "fileName": ""
+    },
+    {
+      "id": "pop-up-socket-basic",
+      "categoryId": "bedroom-accessories",
+      "name": "Pop-up Socket INT-PLUG",
+      "fileName": ""
+    },
+    {
+      "id": "pop-up-socket-power",
+      "categoryId": "bedroom-accessories",
+      "name": "Pop-up Socket with Speaker and IQ Charging INT-PLUGPOWER",
+      "fileName": ""
+    },
+    {
+      "id": "pull-down-rail-450",
+      "categoryId": "bedroom-accessories",
+      "name": "Pull Down Wardrobe Rail 450-600mm INT-WPD45",
+      "fileName": ""
+    },
+    {
+      "id": "pull-down-rail-600",
+      "categoryId": "bedroom-accessories",
+      "name": "Pull Down Wardrobe Rail 600-830mm INT-WPD60",
+      "fileName": ""
+    },
+    {
+      "id": "pull-down-rail-830",
+      "categoryId": "bedroom-accessories",
+      "name": "Pull Down Wardrobe Rail 830-1150mm INT-WPD83",
+      "fileName": ""
+    },
+    {
+      "id": "cable-outlet-grey",
+      "categoryId": "bedroom-accessories",
+      "name": "80mm Cable Outlet Grey INT-CABOUTG",
+      "fileName": ""
+    },
+    {
+      "id": "cable-outlet-brushed-steel",
+      "categoryId": "bedroom-accessories",
+      "name": "80mm Cable Outlet Brushed Steel INT-CABOUTST",
+      "fileName": ""
+    },
+    {
+      "id": "chrome-hanging-rail-3m",
+      "categoryId": "bedroom-accessories",
+      "name": "Chrome Hanging Rail 15 x 30mm Oval",
+      "fileName": ""
+    },
+    {
+      "id": "corner-rail",
+      "categoryId": "bedroom-accessories",
+      "name": "Corner Rail 600mm x 600mm",
+      "fileName": ""
+    },
+    {
+      "id": "cutlery-tray-400",
+      "categoryId": "bedroom-accessories",
+      "name": "Cutlery Tray 400mm",
+      "fileName": ""
+    },
+    {
+      "id": "cutlery-tray-500",
+      "categoryId": "bedroom-accessories",
+      "name": "Cutlery Tray 500mm",
+      "fileName": ""
+    },
+    {
+      "id": "cutlery-tray-600",
+      "categoryId": "bedroom-accessories",
+      "name": "Cutlery Tray 600mm",
+      "fileName": ""
+    },
+    {
+      "id": "cutlery-tray-800",
+      "categoryId": "bedroom-accessories",
+      "name": "Cutlery Tray 800mm",
+      "fileName": ""
+    },
+    {
+      "id": "cutlery-tray-1000",
+      "categoryId": "bedroom-accessories",
+      "name": "Cutlery Tray 1000mm",
+      "fileName": ""
+    },
+    {
+      "id": "kitchen-corner-lh",
+      "categoryId": "bedroom-accessories",
+      "name": "Kitchen Corner Solution Left Hand INT-CNRLH",
+      "fileName": ""
+    },
+    {
+      "id": "kitchen-corner-rh",
+      "categoryId": "bedroom-accessories",
+      "name": "Kitchen Corner Solution Right Hand INT-CNRRH",
+      "fileName": ""
+    },
+    {
+      "id": "sink-ms10",
+      "categoryId": "sinks-taps",
+      "name": "1.0 Inset Contract Sink MS10 Stainless Steel",
+      "fileName": ""
+    },
+    {
+      "id": "sink-ms30",
+      "categoryId": "sinks-taps",
+      "name": "1.0 Inset Premium Sink MS30 Stainless Steel",
+      "fileName": ""
+    },
+    {
+      "id": "sink-ms40",
+      "categoryId": "sinks-taps",
+      "name": "1.5 Inset Premium Sink MS40 Stainless Steel",
+      "fileName": ""
+    },
+    {
+      "id": "sink-ms50",
+      "categoryId": "sinks-taps",
+      "name": "1.0 Undermount Sink MS50 Stainless Steel",
+      "fileName": ""
+    },
+    {
+      "id": "sink-ms51",
+      "categoryId": "sinks-taps",
+      "name": "1.0 Undermount Sink MS51 Brass Gold",
+      "fileName": ""
+    },
+    {
+      "id": "sink-ms52",
+      "categoryId": "sinks-taps",
+      "name": "1.0 Undermount Sink MS52 Black",
+      "fileName": ""
+    },
+    {
+      "id": "sink-ms60",
+      "categoryId": "sinks-taps",
+      "name": "1.5 Undermount Sink MS60 Stainless Steel",
+      "fileName": ""
+    },
+    {
+      "id": "sink-ms61",
+      "categoryId": "sinks-taps",
+      "name": "1.5 Undermount Sink MS61 Brass Gold",
+      "fileName": ""
+    },
+    {
+      "id": "sink-ms62",
+      "categoryId": "sinks-taps",
+      "name": "1.5 Undermount Sink MS62 Black",
+      "fileName": ""
+    },
+    {
+      "id": "tap-mt310",
+      "categoryId": "sinks-taps",
+      "name": "Contract Mixer Tap MT310 Chrome",
+      "fileName": ""
+    },
+    {
+      "id": "tap-mt320",
+      "categoryId": "sinks-taps",
+      "name": "Side Lever Square Neck Mixer Tap MT320 Chrome",
+      "fileName": ""
+    },
+    {
+      "id": "tap-mt321",
+      "categoryId": "sinks-taps",
+      "name": "Side Lever Square Neck Mixer Tap MT321 Brass Gold",
+      "fileName": ""
+    },
+    {
+      "id": "tap-mt322",
+      "categoryId": "sinks-taps",
+      "name": "Side Lever Square Neck Mixer Tap MT322 Matt Black",
+      "fileName": ""
+    },
+    {
+      "id": "tap-mt330",
+      "categoryId": "sinks-taps",
+      "name": "Twin Lever Round Neck Mixer Tap MT330 Chrome",
+      "fileName": ""
+    },
+    {
+      "id": "tap-mt331",
+      "categoryId": "sinks-taps",
+      "name": "Twin Lever Round Neck Mixer Tap MT331 Brass Gold",
+      "fileName": ""
+    },
+    {
+      "id": "tap-mt332",
+      "categoryId": "sinks-taps",
+      "name": "Twin Lever Round Neck Mixer Tap MT332 Matt Black",
+      "fileName": ""
+    },
+    {
+      "id": "tap-mt340",
+      "categoryId": "sinks-taps",
+      "name": "Traditional Twin Lever Round Neck Mixer Tap MT340 Chrome",
+      "fileName": ""
+    },
+    {
+      "id": "tap-mt341",
+      "categoryId": "sinks-taps",
+      "name": "Traditional Twin Lever Round Neck Mixer Tap MT341 Brass Gold",
+      "fileName": ""
+    },
+    {
+      "id": "tap-mt350",
+      "categoryId": "sinks-taps",
+      "name": "Modern Hose Mixer Tap MT350 Chrome",
+      "fileName": ""
+    },
+    {
+      "id": "og-external-plinth",
+      "categoryId": "misc",
+      "name": "OG External Plinth 3050 x 117 x 22",
+      "fileName": ""
+    },
+    {
+      "id": "pencil-external-plinth",
+      "categoryId": "misc",
+      "name": "Pencil External Plinth 3050 x 117 x 40",
+      "fileName": ""
+    },
+    {
+      "id": "modern-pelmet",
+      "categoryId": "misc",
+      "name": "Modern Pelmet 3050 x 117 x 22",
+      "fileName": ""
+    },
+    {
+      "id": "traditional-pelmet",
+      "categoryId": "misc",
+      "name": "Traditional Pelmet 3050 x 60",
+      "fileName": ""
+    },
+    {
+      "id": "contemporary-cornice",
+      "categoryId": "misc",
+      "name": "Contemporary Cornice 3050 x 80",
+      "fileName": ""
+    },
+    {
+      "id": "face-fix-cornice",
+      "categoryId": "misc",
+      "name": "Face Fix Cornice 3050 x 50",
+      "fileName": ""
+    },
+    {
+      "id": "modern-cornice",
+      "categoryId": "misc",
+      "name": "Modern Cornice 3050 x 50",
+      "fileName": ""
+    },
+    {
+      "id": "traditional-cornice",
+      "categoryId": "misc",
+      "name": "Traditional Cornice 3050 x 50",
+      "fileName": ""
+    },
+    {
+      "id": "straight-cornice-pelmet",
+      "categoryId": "misc",
+      "name": "Straight Cornice/Pelmet 2520 x 75 x 25",
+      "fileName": ""
+    },
+    {
+      "id": "combination-cornice-pelmet",
+      "categoryId": "misc",
+      "name": "Combination Cornice/Pelmet 3050 x 39",
+      "fileName": ""
+    },
+    {
+      "id": "multi-purpose-rail",
+      "categoryId": "misc",
+      "name": "Multi-Purpose Rail 2520 x 75",
+      "fileName": ""
+    },
+    {
+      "id": "kitchen-plinth-square",
+      "categoryId": "misc",
+      "name": "Kitchen Plinth Square Profile 2520 x 150",
+      "fileName": ""
+    },
+    {
+      "id": "profiled-plinth",
+      "categoryId": "misc",
+      "name": "Profiled Plinth 2520 x 150",
+      "fileName": ""
+    },
+    {
+      "id": "bottle-rack",
+      "categoryId": "misc",
+      "name": "Bottle Rack 60 x 1200",
+      "fileName": ""
+    },
+    {
+      "id": "pilaster-block",
+      "categoryId": "misc",
+      "name": "Pilaster Block",
+      "fileName": ""
+    },
+    {
+      "id": "dental-rail",
+      "categoryId": "misc",
+      "name": "Dental Rail 2520 x 60",
+      "fileName": ""
+    },
+    {
+      "id": "square-pilaster",
+      "categoryId": "misc",
+      "name": "Square Pilaster",
+      "fileName": ""
+    },
+    {
+      "id": "grooved-pilaster",
+      "categoryId": "misc",
+      "name": "Grooved Pilaster",
+      "fileName": ""
+    },
+    {
+      "id": "single-mirror",
+      "categoryId": "misc",
+      "name": "Arched or Square Single Mirror",
+      "fileName": ""
+    },
+    {
+      "id": "triple-mirror",
+      "categoryId": "misc",
+      "name": "Arched or Square Triple Mirror",
+      "fileName": ""
+    },
+    {
+      "id": "arched-front-non-gloss",
+      "categoryId": "misc",
+      "name": "Arched Front Non-Gloss",
+      "fileName": ""
+    },
+    {
+      "id": "arched-front-gloss",
+      "categoryId": "misc",
+      "name": "Arched Front Gloss",
+      "fileName": ""
+    },
+    {
+      "id": "meranti-corner-sets",
+      "categoryId": "misc",
+      "name": "Meranti Corner Sets",
+      "fileName": ""
+    },
+    {
+      "id": "custom-item",
+      "categoryId": "misc",
+      "name": "Custom Item (manual price)",
+      "fileName": ""
+    }
   ],
   "shared": [
-    { "id": "aluminium-glass-doors", "name": "Aluminium Glass Doors", "fileName": "" },
-    { "id": "feature-glazing", "name": "Feature Glazing / Fretted Frames", "fileName": "" }
+    {
+      "id": "aluminium-glass-doors",
+      "name": "Aluminium Glass Doors",
+      "fileName": ""
+    },
+    {
+      "id": "feature-glazing",
+      "name": "Feature Glazing / Fretted Frames",
+      "fileName": ""
+    }
   ]
 }

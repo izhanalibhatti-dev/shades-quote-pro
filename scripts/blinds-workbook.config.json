@@ -1,0 +1,136 @@
+{
+  "sourceWorkbook": "References/Shades and Space Trade Price List 15th June 2026 with Discounts NEW.xlsx",
+  "pricingSheets": [
+    "Vertical",
+    "Pvc Rigid",
+    "Roller",
+    "PF Roller",
+    "Vision",
+    "PF Vision",
+    "Perfect Fit Shutter",
+    "Allusion",
+    "Freehang Pleated",
+    "PF Pleated",
+    "PF  Pleated Dual Control",
+    "PF Pleated Dual Blinds",
+    "Fit to Frame Pleated",
+    "3BS Pleated",
+    "Nightshade",
+    "25MM Aluminium",
+    "Perfect Fit Aluminium",
+    "Fit to Frame Aluminium",
+    "Aquawood Fauxwood",
+    "Sunwood Fauxwood",
+    "Essence Fauxwood",
+    "Urban Fauxwood",
+    "Expressions Fauxwood",
+    "Sunwood Wood",
+    "Perfect Fit wood",
+    "Roman"
+  ],
+  "referenceSheets": [
+    "Cover",
+    "Terms & Conditions",
+    "Master Control",
+    "Fabric Library",
+    "Fabric Box 2025",
+    "Arena 2026",
+    "Alutrade",
+    "Louvolite 2026",
+    "United",
+    "Eclipse 2026",
+    "Pleated Fabric",
+    "Slats only",
+    "Skye"
+  ],
+  "companySheets": [
+    "Fabric Library",
+    "Fabric Box 2025",
+    "Arena 2026",
+    "Alutrade",
+    "Louvolite 2026",
+    "United",
+    "Eclipse 2026"
+  ],
+  "companyNames": {
+    "Fabric Library": "Fabric Library",
+    "Fabric Box 2025": "Fabric Box",
+    "Arena 2026": "Arena 2026",
+    "Alutrade": "Alutrade",
+    "Louvolite 2026": "Louvolite 2026",
+    "United": "United",
+    "Eclipse 2026": "Eclipse 2026"
+  },
+  "singleProductSheets": [
+    "Roller",
+    "Vertical",
+    "Pvc Rigid",
+    "PF Roller",
+    "PF Pleated",
+    "PF  Pleated Dual Control",
+    "PF Pleated Dual Blinds",
+    "Freehang Pleated",
+    "Fit to Frame Pleated",
+    "3BS Pleated"
+  ],
+  "tableTitleOverrides": {
+    "Sunwood Fauxwood": {
+      "8": "Sunwood Fauxwood 35/50mm",
+      "31": "Sunwood Fauxwood 35/50mm",
+      "54": "Sunwood Fauxwood 50mm with Tapes",
+      "77": "Sunwood Fauxwood 50mm with Tapes"
+    },
+    "Sunwood Wood": {
+      "7": "Sunwood 35mm Essential Collection",
+      "17": "Sunwood 50mm Essential, Soft Grain & Perfect Grain",
+      "27": "Sunwood 50mm Band C",
+      "44": "Sunwood 50mm Essential, Soft Grain & Perfect Grain with 25mm Tapes",
+      "54": "Sunwood 50mm Band C with 25mm Tapes"
+    },
+    "Perfect Fit wood": {
+      "6": "Perfect Fit Sunwood 25mm",
+      "19": "Perfect Fit Sunwood 25mm"
+    }
+  },
+  "tableBandOverrides": {
+    "Sunwood Wood": {
+      "7": "Standard",
+      "17": "Standard",
+      "27": "Standard",
+      "44": "Standard",
+      "54": "Standard"
+    },
+    "Perfect Fit wood": {
+      "6": "Standard",
+      "19": "Standard"
+    }
+  },
+  "requiredBlindTypes": [
+    "roller",
+    "vertical",
+    "vision",
+    "pvc-rigid",
+    "roman",
+    "aluminium-venetian",
+    "perfect-fit-roller",
+    "perfect-fit-vision",
+    "perfect-fit-pleated",
+    "perfect-fit-pleated-dual-control",
+    "perfect-fit-pleated-dual-blinds",
+    "fit-to-frame-pleated",
+    "three-sided-pleated",
+    "perfect-fit-aluminium",
+    "fit-to-frame-aluminium",
+    "perfect-fit-wood",
+    "perfect-fit-shutter",
+    "aqua-fauxwood",
+    "sunwood-faux",
+    "sunwood-wood",
+    "essence-fauxwood",
+    "urban-fauxwood",
+    "expressions-fauxwood",
+    "allusion",
+    "freehang-pleated",
+    "nightshade"
+  ]
+}

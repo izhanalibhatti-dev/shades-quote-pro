@@ -12,15 +12,27 @@ Then edit this plain JSON file:
 src/data/wardrobe/photo-slots.json
 ```
 
-Add the file name to the matching slot:
+The names and hierarchy are already filled in from the wardrobe catalogue. Only edit
+the `fileName` value on the matching slot:
 
 ```json
-{ "id": "manhattan-door", "name": "Manhattan Door", "fileName": "manhattan-door.jpg" }
+{
+  "id": "manhattan-door",
+  "categoryId": "doors",
+  "name": "Manhattan Door",
+  "fileName": "manhattan-door.jpg"
+}
 ```
 
 Leave `fileName` empty when there should be no photo. The app will still show the same category and product picker hierarchy with a plain catalogue placeholder.
 
 Use normal web image formats: `.jpg`, `.jpeg`, `.png`, or `.webp`.
+
+If the wardrobe catalogue changes, refresh the photo slot names with:
+
+```bash
+node scripts/sync-wardrobe-photo-slots.mjs
+```
 
 You can check the setup with:
 

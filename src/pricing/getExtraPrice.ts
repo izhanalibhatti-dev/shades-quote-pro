@@ -52,7 +52,9 @@ function getUnitPrice(
       };
     case "widthTable": {
       const widthMm =
-        Number.isFinite(selected.widthMm) && (selected.widthMm ?? 0) > 0
+        typeof selected.widthMm === "number" &&
+        Number.isFinite(selected.widthMm) &&
+        selected.widthMm > 0
           ? selected.widthMm
           : quote.size.widthMm;
       const result = getWidthTablePrice(extra.pricing.widths, extra.pricing.prices, widthMm);

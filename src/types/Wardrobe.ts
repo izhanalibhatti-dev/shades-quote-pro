@@ -87,6 +87,10 @@ export interface WardrobeLineItem {
   /** Manual price override per unit. When set, supersedes calculated price. */
   manualUnitPrice?: number;
   addons: WardrobeAddon[];
+  colour?: string;
+  doorDesignId?: string;
+  doorDesignName?: string;
+  doorDesignSummary?: string;
   notes?: string;
   // Cached calculation at the time of add/update — kept so the summary does
   // not need to re-resolve the catalogue for stale items.

@@ -1,93 +1,73 @@
 {
-  "source": "references/alpine Trade Price working (1).xlsx",
+  "source": "References/Shades and Space Trade Price List 15th June 2026 with Discounts NEW.xlsx",
   "generatedBy": "scripts/import-blinds-workbook.py",
   "summary": {
-    "worksheetsFound": 27,
-    "pricingTablesImported": 36,
-    "productTypesImported": 36,
-    "fabricMappingsImported": 800,
-    "finishOrColourOptionsGenerated": 635,
-    "fallbackBandOptionsGenerated": 73,
+    "worksheetsFound": 39,
+    "pricingTablesImported": 44,
+    "productTypesImported": 44,
+    "discountedPriceTablesImported": 44,
+    "fabricMappingsImported": 842,
+    "finishOrColourOptionsGenerated": 51,
+    "fallbackBandOptionsGenerated": 106,
     "validationErrors": 0,
-    "definedNames": 4,
-    "formulaCells": 0
+    "definedNames": 0,
+    "formulaCells": 1825,
+    "listPriceGridsDetected": 106,
+    "discountedGridsDetected": 106,
+    "listPriceGridsSelected": 106,
+    "discountedGridsSelected": 106
   },
   "validationErrors": [],
   "fabricMappingNotes": [
-    "Skipped unsupported fabric band Alutrade!C12 = 'DISCONTINUED'.",
-    "Skipped unsupported fabric band Alutrade!C19 = 'DISCONTINUED'.",
+    "Skipped unsupported fabric band Arena 2026!F46 = 'F+10%'.",
+    "Skipped unsupported fabric band Arena 2026!I12 = 'F+15%'.",
+    "Skipped unsupported fabric band Arena 2026!I49 = 'F+20%'.",
     "Skipped unsupported fabric band Louvolite 2026!C11 = 'F+20%'.",
     "Skipped unsupported fabric band Louvolite 2026!C15 = 'F+20%'.",
     "Skipped unsupported fabric band Eclipse 2026!I51 = 'F + 10%'.",
     "Skipped unsupported fabric band Eclipse 2026!L17 = 'F + 15%'.",
-    "Skipped unsupported fabric band Eclipse 2026!L48 = 'F + 20%'.",
-    "Skipped unsupported fabric band Arena 2026!F46 = 'F+10%'.",
-    "Skipped unsupported fabric band Arena 2026!I12 = 'F+15%'.",
-    "Skipped unsupported fabric band Arena 2026!I49 = 'F+20%'."
+    "Skipped unsupported fabric band Eclipse 2026!L48 = 'F + 20%'."
   ],
-  "definedNames": [
-    {
-      "name": "_xlnm.Print_Area",
-      "localSheetId": "23",
-      "refersTo": "'PF Aluminium'!$M$32:$S$55"
-    },
-    {
-      "name": "_xlnm.Print_Area",
-      "localSheetId": "24",
-      "refersTo": "'PF Wood'!$B$2:$M$9"
-    },
-    {
-      "name": "_xlnm.Print_Area",
-      "localSheetId": "25",
-      "refersTo": "'Sunwood Faux'!$A$1:$AF$20"
-    },
-    {
-      "name": "_xlnm.Print_Area",
-      "localSheetId": "26",
-      "refersTo": "'Sunwood Wood'!$B$1:$Q$39"
-    }
-  ],
+  "definedNames": [],
   "sheets": [
     {
       "sheet": "Cover",
       "status": "skipped",
       "reason": "Reference, fabric-band, cover, or supplier metadata sheet. Not a direct quote pricing grid.",
       "detectedTables": [],
+      "selectedPricingTables": [],
       "notes": []
     },
     {
-      "sheet": "Fabric Box 2026",
+      "sheet": "Terms & Conditions",
       "status": "skipped",
       "reason": "Reference, fabric-band, cover, or supplier metadata sheet. Not a direct quote pricing grid.",
       "detectedTables": [],
+      "selectedPricingTables": [],
       "notes": []
     },
     {
-      "sheet": "Alutrade",
+      "sheet": "Master Control",
       "status": "skipped",
       "reason": "Reference, fabric-band, cover, or supplier metadata sheet. Not a direct quote pricing grid.",
       "detectedTables": [],
+      "selectedPricingTables": [],
       "notes": []
     },
     {
-      "sheet": "United",
+      "sheet": "Fabric Library",
       "status": "skipped",
       "reason": "Reference, fabric-band, cover, or supplier metadata sheet. Not a direct quote pricing grid.",
       "detectedTables": [],
+      "selectedPricingTables": [],
       "notes": []
     },
     {
-      "sheet": "Louvolite 2026",
+      "sheet": "Fabric Box 2025",
       "status": "skipped",
       "reason": "Reference, fabric-band, cover, or supplier metadata sheet. Not a direct quote pricing grid.",
       "detectedTables": [],
-      "notes": []
-    },
-    {
-      "sheet": "Eclipse 2026",
-      "status": "skipped",
-      "reason": "Reference, fabric-band, cover, or supplier metadata sheet. Not a direct quote pricing grid.",
-      "detectedTables": [],
+      "selectedPricingTables": [],
       "notes": []
     },
     {
@@ -95,6 +75,47 @@
       "status": "skipped",
       "reason": "Reference, fabric-band, cover, or supplier metadata sheet. Not a direct quote pricing grid.",
       "detectedTables": [],
+      "selectedPricingTables": [],
+      "notes": []
+    },
+    {
+      "sheet": "Alutrade",
+      "status": "skipped",
+      "reason": "Reference, fabric-band, cover, or supplier metadata sheet. Not a direct quote pricing grid.",
+      "detectedTables": [],
+      "selectedPricingTables": [],
+      "notes": []
+    },
+    {
+      "sheet": "Louvolite 2026",
+      "status": "skipped",
+      "reason": "Reference, fabric-band, cover, or supplier metadata sheet. Not a direct quote pricing grid.",
+      "detectedTables": [],
+      "selectedPricingTables": [],
+      "notes": []
+    },
+    {
+      "sheet": "United",
+      "status": "skipped",
+      "reason": "Reference, fabric-band, cover, or supplier metadata sheet. Not a direct quote pricing grid.",
+      "detectedTables": [],
+      "selectedPricingTables": [],
+      "notes": []
+    },
+    {
+      "sheet": "Eclipse 2026",
+      "status": "skipped",
+      "reason": "Reference, fabric-band, cover, or supplier metadata sheet. Not a direct quote pricing grid.",
+      "detectedTables": [],
+      "selectedPricingTables": [],
+      "notes": []
+    },
+    {
+      "sheet": "Pleated Fabric",
+      "status": "skipped",
+      "reason": "Reference, fabric-band, cover, or supplier metadata sheet. Not a direct quote pricing grid.",
+      "detectedTables": [],
+      "selectedPricingTables": [],
       "notes": []
     },
     {
@@ -105,60 +126,196 @@
         {
           "title": "Vertical",
           "band": "AA",
-          "range": "D4:O15",
-          "widths": 12,
-          "heights": 10
+          "range": "D6:AW34",
+          "widths": 46,
+          "heights": 27
         },
         {
-          "title": "Vertical",
+          "title": "Discount",
+          "band": "AA",
+          "range": "BB6:CU34",
+          "widths": 46,
+          "heights": 27
+        },
+        {
+          "title": "118 1/8",
           "band": "A",
-          "range": "D18:O29",
-          "widths": 12,
-          "heights": 10
+          "range": "D37:AW65",
+          "widths": 46,
+          "heights": 27
         },
         {
-          "title": "Vertical",
+          "title": "118 1/8",
+          "band": "A",
+          "range": "BB37:CU65",
+          "widths": 46,
+          "heights": 27
+        },
+        {
+          "title": "118 1/8",
           "band": "B",
-          "range": "D32:O43",
-          "widths": 12,
-          "heights": 10
+          "range": "D68:AW96",
+          "widths": 46,
+          "heights": 27
         },
         {
-          "title": "Vertical",
+          "title": "118 1/8",
+          "band": "B",
+          "range": "BB68:CU96",
+          "widths": 46,
+          "heights": 27
+        },
+        {
+          "title": "118 1/8",
           "band": "C",
-          "range": "D46:O57",
-          "widths": 12,
-          "heights": 10
+          "range": "D99:AW127",
+          "widths": 46,
+          "heights": 27
         },
         {
-          "title": "Vertical",
+          "title": "118 1/8",
+          "band": "C",
+          "range": "BB99:CU127",
+          "widths": 46,
+          "heights": 27
+        },
+        {
+          "title": "118 1/8",
           "band": "D",
-          "range": "D60:O71",
-          "widths": 12,
-          "heights": 10
+          "range": "D130:AW158",
+          "widths": 46,
+          "heights": 27
         },
         {
-          "title": "Vertical",
+          "title": "118 1/8",
+          "band": "D",
+          "range": "BB130:CU158",
+          "widths": 46,
+          "heights": 27
+        },
+        {
+          "title": "118 1/8",
           "band": "E",
-          "range": "D74:O85",
-          "widths": 12,
-          "heights": 10
+          "range": "D161:AW189",
+          "widths": 46,
+          "heights": 27
+        },
+        {
+          "title": "118 1/8",
+          "band": "E",
+          "range": "BB161:CU189",
+          "widths": 46,
+          "heights": 27
+        },
+        {
+          "title": "118 1/8",
+          "band": "F",
+          "range": "D192:AW220",
+          "widths": 46,
+          "heights": 27
+        },
+        {
+          "title": "118 1/8",
+          "band": "F",
+          "range": "BB192:CU220",
+          "widths": 46,
+          "heights": 27
+        }
+      ],
+      "selectedPricingTables": [
+        {
+          "title": "Vertical",
+          "band": "AA",
+          "range": "D6:AW34",
+          "variant": "list"
+        },
+        {
+          "title": "118 1/8",
+          "band": "A",
+          "range": "D37:AW65",
+          "variant": "list"
+        },
+        {
+          "title": "118 1/8",
+          "band": "B",
+          "range": "D68:AW96",
+          "variant": "list"
+        },
+        {
+          "title": "118 1/8",
+          "band": "C",
+          "range": "D99:AW127",
+          "variant": "list"
+        },
+        {
+          "title": "118 1/8",
+          "band": "D",
+          "range": "D130:AW158",
+          "variant": "list"
+        },
+        {
+          "title": "118 1/8",
+          "band": "E",
+          "range": "D161:AW189",
+          "variant": "list"
+        },
+        {
+          "title": "118 1/8",
+          "band": "F",
+          "range": "D192:AW220",
+          "variant": "list"
         },
         {
           "title": "Vertical",
+          "band": "AA",
+          "range": "BB6:CU34",
+          "variant": "discounted"
+        },
+        {
+          "title": "118 1/8",
+          "band": "A",
+          "range": "BB37:CU65",
+          "variant": "discounted"
+        },
+        {
+          "title": "118 1/8",
+          "band": "B",
+          "range": "BB68:CU96",
+          "variant": "discounted"
+        },
+        {
+          "title": "118 1/8",
+          "band": "C",
+          "range": "BB99:CU127",
+          "variant": "discounted"
+        },
+        {
+          "title": "118 1/8",
+          "band": "D",
+          "range": "BB130:CU158",
+          "variant": "discounted"
+        },
+        {
+          "title": "118 1/8",
+          "band": "E",
+          "range": "BB161:CU189",
+          "variant": "discounted"
+        },
+        {
+          "title": "118 1/8",
           "band": "F",
-          "range": "D88:O99",
-          "widths": 12,
-          "heights": 10
+          "range": "BB192:CU220",
+          "variant": "discounted"
         }
       ],
       "notes": []
     },
     {
-      "sheet": "Sheet1",
+      "sheet": "Slats only",
       "status": "skipped",
       "reason": "Reference, fabric-band, cover, or supplier metadata sheet. Not a direct quote pricing grid.",
       "detectedTables": [],
+      "selectedPricingTables": [],
       "notes": []
     },
     {
@@ -167,25 +324,84 @@
       "reason": null,
       "detectedTables": [
         {
-          "title": "Occa -",
+          "title": "31 1/2",
           "band": "A",
-          "range": "D5:U15",
-          "widths": 18,
-          "heights": 10
+          "range": "D7:AW32",
+          "widths": 46,
+          "heights": 25
         },
         {
-          "title": "Alaya - Amari - Carerra - Kuta - Niro - Tosca",
+          "title": "31 1/2",
+          "band": "A",
+          "range": "BA7:CT32",
+          "widths": 46,
+          "heights": 25
+        },
+        {
+          "title": "31 1/2",
           "band": "B",
-          "range": "D19:U29",
-          "widths": 18,
-          "heights": 10
+          "range": "D36:AW61",
+          "widths": 46,
+          "heights": 25
         },
         {
-          "title": "Pvc Rigid",
+          "title": "31 1/2",
+          "band": "B",
+          "range": "BA36:CT61",
+          "widths": 46,
+          "heights": 25
+        },
+        {
+          "title": "31 1/2",
           "band": "C",
-          "range": "D33:U43",
-          "widths": 18,
-          "heights": 10
+          "range": "D65:AW90",
+          "widths": 46,
+          "heights": 25
+        },
+        {
+          "title": "31 1/2",
+          "band": "C",
+          "range": "BA65:CT90",
+          "widths": 46,
+          "heights": 25
+        }
+      ],
+      "selectedPricingTables": [
+        {
+          "title": "31 1/2",
+          "band": "A",
+          "range": "D7:AW32",
+          "variant": "list"
+        },
+        {
+          "title": "31 1/2",
+          "band": "B",
+          "range": "D36:AW61",
+          "variant": "list"
+        },
+        {
+          "title": "31 1/2",
+          "band": "C",
+          "range": "D65:AW90",
+          "variant": "list"
+        },
+        {
+          "title": "31 1/2",
+          "band": "A",
+          "range": "BA7:CT32",
+          "variant": "discounted"
+        },
+        {
+          "title": "31 1/2",
+          "band": "B",
+          "range": "BA36:CT61",
+          "variant": "discounted"
+        },
+        {
+          "title": "31 1/2",
+          "band": "C",
+          "range": "BA65:CT90",
+          "variant": "discounted"
         }
       ],
       "notes": []
@@ -196,154 +412,188 @@
       "reason": null,
       "detectedTables": [
         {
-          "title": "Roller",
+          "title": "27 1/2",
           "band": "AA",
-          "range": "D3:U17",
-          "widths": 18,
-          "heights": 13
+          "range": "D6:AL40",
+          "widths": 35,
+          "heights": 34
         },
         {
-          "title": "Roller",
+          "title": "27 1/2",
+          "band": "AA",
+          "range": "AP6:BX40",
+          "widths": 35,
+          "heights": 34
+        },
+        {
+          "title": "27 1/2",
           "band": "A",
-          "range": "D20:U34",
-          "widths": 18,
-          "heights": 14
+          "range": "D44:AL78",
+          "widths": 35,
+          "heights": 34
         },
         {
-          "title": "Roller",
+          "title": "27 1/2",
+          "band": "A",
+          "range": "AP44:BX78",
+          "widths": 35,
+          "heights": 34
+        },
+        {
+          "title": "27 1/2",
           "band": "B",
-          "range": "D37:U51",
-          "widths": 18,
-          "heights": 14
+          "range": "D82:AL116",
+          "widths": 35,
+          "heights": 34
         },
         {
-          "title": "Roller",
+          "title": "27 1/2",
+          "band": "B",
+          "range": "AP82:BX116",
+          "widths": 35,
+          "heights": 34
+        },
+        {
+          "title": "27 1/2",
           "band": "C",
-          "range": "D54:U68",
-          "widths": 18,
-          "heights": 14
+          "range": "D120:AL154",
+          "widths": 35,
+          "heights": 34
         },
         {
-          "title": "Roller",
+          "title": "27 1/2",
+          "band": "C",
+          "range": "AP120:BX154",
+          "widths": 35,
+          "heights": 34
+        },
+        {
+          "title": "27 1/2",
           "band": "D",
-          "range": "D71:U85",
-          "widths": 18,
-          "heights": 14
+          "range": "D158:AL192",
+          "widths": 35,
+          "heights": 34
         },
         {
-          "title": "Roller",
+          "title": "27 1/2",
+          "band": "D",
+          "range": "AP158:BX192",
+          "widths": 35,
+          "heights": 34
+        },
+        {
+          "title": "27 1/2",
           "band": "E",
-          "range": "D88:U102",
-          "widths": 18,
-          "heights": 14
+          "range": "D196:AL230",
+          "widths": 35,
+          "heights": 34
         },
         {
-          "title": "Roller",
+          "title": "27 1/2",
+          "band": "E",
+          "range": "AP196:BX230",
+          "widths": 35,
+          "heights": 34
+        },
+        {
+          "title": "27 1/2",
           "band": "F",
-          "range": "D105:U119",
-          "widths": 18,
-          "heights": 14
+          "range": "D234:AL268",
+          "widths": 35,
+          "heights": 34
+        },
+        {
+          "title": "27 1/2",
+          "band": "F",
+          "range": "AP234:BX268",
+          "widths": 35,
+          "heights": 34
         }
       ],
-      "notes": []
-    },
-    {
-      "sheet": "Vision",
-      "status": "imported",
-      "reason": null,
-      "detectedTables": [
+      "selectedPricingTables": [
         {
-          "title": "Capri",
+          "title": "27 1/2",
+          "band": "AA",
+          "range": "D6:AL40",
+          "variant": "list"
+        },
+        {
+          "title": "27 1/2",
           "band": "A",
-          "range": "D6:P18",
-          "widths": 13,
-          "heights": 12
+          "range": "D44:AL78",
+          "variant": "list"
         },
         {
-          "title": "Arrezzo - Firenza - Modella - Naples - Nola - Nuvola - Setosa - Trento",
+          "title": "27 1/2",
           "band": "B",
-          "range": "D23:P35",
-          "widths": 13,
-          "heights": 12
+          "range": "D82:AL116",
+          "variant": "list"
         },
         {
-          "title": "Allegria - Ferrara - Lusso - Modina - Rimini",
+          "title": "27 1/2",
           "band": "C",
-          "range": "D40:P52",
-          "widths": 13,
-          "heights": 12
+          "range": "D120:AL154",
+          "variant": "list"
         },
         {
-          "title": "Alberto - Bella - Boucle - Floreale - Tessuto",
+          "title": "27 1/2",
           "band": "D",
-          "range": "D57:P69",
-          "widths": 13,
-          "heights": 12
+          "range": "D158:AL192",
+          "variant": "list"
         },
         {
-          "title": "Vision",
+          "title": "27 1/2",
           "band": "E",
-          "range": "D74:P86",
-          "widths": 13,
-          "heights": 12
-        }
-      ],
-      "notes": []
-    },
-    {
-      "sheet": "PF Vision",
-      "status": "imported",
-      "reason": null,
-      "detectedTables": [
+          "range": "D196:AL230",
+          "variant": "list"
+        },
         {
-          "title": "Capri",
+          "title": "27 1/2",
+          "band": "F",
+          "range": "D234:AL268",
+          "variant": "list"
+        },
+        {
+          "title": "27 1/2",
+          "band": "AA",
+          "range": "AP6:BX40",
+          "variant": "discounted"
+        },
+        {
+          "title": "27 1/2",
           "band": "A",
-          "range": "D8:K17",
-          "widths": 8,
-          "heights": 9
+          "range": "AP44:BX78",
+          "variant": "discounted"
         },
         {
-          "title": "Arrezzo - Firenza - Modella - Naples - Nola - Nuvola - Setosa - Trento",
+          "title": "27 1/2",
           "band": "B",
-          "range": "D21:K31",
-          "widths": 8,
-          "heights": 10
+          "range": "AP82:BX116",
+          "variant": "discounted"
         },
         {
-          "title": "Allegria - Ferrara - Lusso - Modina - Rimini",
+          "title": "27 1/2",
           "band": "C",
-          "range": "D35:K44",
-          "widths": 8,
-          "heights": 9
+          "range": "AP120:BX154",
+          "variant": "discounted"
         },
         {
-          "title": "Alberto - Bella - Boucle - Floreale - Tessuto",
+          "title": "27 1/2",
           "band": "D",
-          "range": "D48:K57",
-          "widths": 8,
-          "heights": 9
+          "range": "AP158:BX192",
+          "variant": "discounted"
         },
         {
-          "title": "PF Vision",
+          "title": "27 1/2",
           "band": "E",
-          "range": "D60:K69",
-          "widths": 8,
-          "heights": 9
-        }
-      ],
-      "notes": []
-    },
-    {
-      "sheet": "Perfect Fit Shutter",
-      "status": "imported",
-      "reason": null,
-      "detectedTables": [
+          "range": "AP196:BX230",
+          "variant": "discounted"
+        },
         {
-          "title": "Glass Size",
-          "band": "Standard",
-          "range": "C4:U21",
-          "widths": 19,
-          "heights": 16
+          "title": "27 1/2",
+          "band": "F",
+          "range": "AP234:BX268",
+          "variant": "discounted"
         }
       ],
       "notes": []
@@ -356,51 +606,476 @@
         {
           "title": "PF Roller",
           "band": "A",
-          "range": "D7:L17",
+          "range": "D8:L18",
           "widths": 9,
           "heights": 10
         },
         {
           "title": "PF Roller",
           "band": "B",
-          "range": "P7:X17",
+          "range": "P8:X18",
+          "widths": 9,
+          "heights": 10
+        },
+        {
+          "title": "Discount",
+          "band": "A",
+          "range": "AB8:AJ18",
+          "widths": 9,
+          "heights": 10
+        },
+        {
+          "title": "Discount",
+          "band": "B",
+          "range": "AN8:AV18",
           "widths": 9,
           "heights": 10
         },
         {
           "title": "PF Roller",
           "band": "C",
-          "range": "D20:L30",
+          "range": "D21:L31",
           "widths": 9,
           "heights": 10
         },
         {
           "title": "PF Roller",
           "band": "D",
-          "range": "P20:X30",
+          "range": "P21:X31",
+          "widths": 9,
+          "heights": 10
+        },
+        {
+          "title": "PF Roller",
+          "band": "C",
+          "range": "AB21:AJ31",
+          "widths": 9,
+          "heights": 10
+        },
+        {
+          "title": "PF Roller",
+          "band": "D",
+          "range": "AN21:AV31",
           "widths": 9,
           "heights": 10
         },
         {
           "title": "PF Roller",
           "band": "E",
-          "range": "D33:L43",
+          "range": "D34:L44",
           "widths": 9,
           "heights": 10
         },
         {
           "title": "PF Roller",
           "band": "F",
-          "range": "P33:X43",
+          "range": "P34:X44",
           "widths": 9,
           "heights": 10
         },
         {
-          "title": "Perfect Fit Konnect",
-          "band": "INS",
-          "range": "D58:H63",
-          "widths": 5,
-          "heights": 5
+          "title": "PF Roller",
+          "band": "E",
+          "range": "AB34:AJ44",
+          "widths": 9,
+          "heights": 10
+        },
+        {
+          "title": "PF Roller",
+          "band": "F",
+          "range": "AN34:AV44",
+          "widths": 9,
+          "heights": 10
+        }
+      ],
+      "selectedPricingTables": [
+        {
+          "title": "PF Roller",
+          "band": "A",
+          "range": "D8:L18",
+          "variant": "list"
+        },
+        {
+          "title": "PF Roller",
+          "band": "B",
+          "range": "P8:X18",
+          "variant": "list"
+        },
+        {
+          "title": "PF Roller",
+          "band": "C",
+          "range": "D21:L31",
+          "variant": "list"
+        },
+        {
+          "title": "PF Roller",
+          "band": "D",
+          "range": "P21:X31",
+          "variant": "list"
+        },
+        {
+          "title": "PF Roller",
+          "band": "E",
+          "range": "D34:L44",
+          "variant": "list"
+        },
+        {
+          "title": "PF Roller",
+          "band": "F",
+          "range": "P34:X44",
+          "variant": "list"
+        },
+        {
+          "title": "PF Roller",
+          "band": "A",
+          "range": "AB8:AJ18",
+          "variant": "discounted"
+        },
+        {
+          "title": "PF Roller",
+          "band": "B",
+          "range": "AN8:AV18",
+          "variant": "discounted"
+        },
+        {
+          "title": "PF Roller",
+          "band": "C",
+          "range": "AB21:AJ31",
+          "variant": "discounted"
+        },
+        {
+          "title": "PF Roller",
+          "band": "D",
+          "range": "AN21:AV31",
+          "variant": "discounted"
+        },
+        {
+          "title": "PF Roller",
+          "band": "E",
+          "range": "AB34:AJ44",
+          "variant": "discounted"
+        },
+        {
+          "title": "PF Roller",
+          "band": "F",
+          "range": "AN34:AV44",
+          "variant": "discounted"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "sheet": "Vision",
+      "status": "imported",
+      "reason": null,
+      "detectedTables": [
+        {
+          "title": "Capri - Luna (D)",
+          "band": "A",
+          "range": "D7:AB32",
+          "widths": 25,
+          "heights": 24
+        },
+        {
+          "title": "Capri - Luna (D)",
+          "band": "A",
+          "range": "AG7:BE32",
+          "widths": 25,
+          "heights": 24
+        },
+        {
+          "title": "Arrezzo - Firenze - Modello - Naples - Nola - Nuvola - Rift (D) - Setosa - Trento",
+          "band": "B",
+          "range": "D36:AB61",
+          "widths": 25,
+          "heights": 24
+        },
+        {
+          "title": "Arrezzo - Firenze - Modello - Naples - Nola - Nuvola - Rift (D) - Setosa - Trento",
+          "band": "B",
+          "range": "AG36:BE61",
+          "widths": 25,
+          "heights": 24
+        },
+        {
+          "title": "Allegria - Ferrara - Lusso - Modina - Rimini - Rosso (D)",
+          "band": "C",
+          "range": "D65:AB90",
+          "widths": 25,
+          "heights": 24
+        },
+        {
+          "title": "Allegria - Ferrara - Lusso - Modina - Rimini - Rosso (D)",
+          "band": "C",
+          "range": "AG65:BE90",
+          "widths": 25,
+          "heights": 24
+        },
+        {
+          "title": "Albero - Bella - Boucle - Floreale - Tessuto - Hoxton (D) - Kanza (D) - Nobis (D)",
+          "band": "D",
+          "range": "D94:AB119",
+          "widths": 25,
+          "heights": 24
+        },
+        {
+          "title": "Albero - Bella - Boucle - Floreale - Tessuto - Hoxton (D) - Kanza (D) - Nobis (D)",
+          "band": "D",
+          "range": "AG94:BE119",
+          "widths": 25,
+          "heights": 24
+        },
+        {
+          "title": "Mero (D) - Tela (D)",
+          "band": "E",
+          "range": "D123:AB148",
+          "widths": 25,
+          "heights": 24
+        },
+        {
+          "title": "Mero (D) - Tela (D)",
+          "band": "E",
+          "range": "AG123:BE148",
+          "widths": 25,
+          "heights": 24
+        }
+      ],
+      "selectedPricingTables": [
+        {
+          "title": "Capri - Luna (D)",
+          "band": "A",
+          "range": "D7:AB32",
+          "variant": "list"
+        },
+        {
+          "title": "Arrezzo - Firenze - Modello - Naples - Nola - Nuvola - Rift (D) - Setosa - Trento",
+          "band": "B",
+          "range": "D36:AB61",
+          "variant": "list"
+        },
+        {
+          "title": "Allegria - Ferrara - Lusso - Modina - Rimini - Rosso (D)",
+          "band": "C",
+          "range": "D65:AB90",
+          "variant": "list"
+        },
+        {
+          "title": "Albero - Bella - Boucle - Floreale - Tessuto - Hoxton (D) - Kanza (D) - Nobis (D)",
+          "band": "D",
+          "range": "D94:AB119",
+          "variant": "list"
+        },
+        {
+          "title": "Mero (D) - Tela (D)",
+          "band": "E",
+          "range": "D123:AB148",
+          "variant": "list"
+        },
+        {
+          "title": "Capri - Luna (D)",
+          "band": "A",
+          "range": "AG7:BE32",
+          "variant": "discounted"
+        },
+        {
+          "title": "Arrezzo - Firenze - Modello - Naples - Nola - Nuvola - Rift (D) - Setosa - Trento",
+          "band": "B",
+          "range": "AG36:BE61",
+          "variant": "discounted"
+        },
+        {
+          "title": "Allegria - Ferrara - Lusso - Modina - Rimini - Rosso (D)",
+          "band": "C",
+          "range": "AG65:BE90",
+          "variant": "discounted"
+        },
+        {
+          "title": "Albero - Bella - Boucle - Floreale - Tessuto - Hoxton (D) - Kanza (D) - Nobis (D)",
+          "band": "D",
+          "range": "AG94:BE119",
+          "variant": "discounted"
+        },
+        {
+          "title": "Mero (D) - Tela (D)",
+          "band": "E",
+          "range": "AG123:BE148",
+          "variant": "discounted"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "sheet": "PF Vision",
+      "status": "imported",
+      "reason": null,
+      "detectedTables": [
+        {
+          "title": "27 1/2",
+          "band": "A",
+          "range": "D8:Q25",
+          "widths": 14,
+          "heights": 17
+        },
+        {
+          "title": "27 1/2",
+          "band": "A",
+          "range": "W8:AJ25",
+          "widths": 14,
+          "heights": 17
+        },
+        {
+          "title": "27 1/2",
+          "band": "B",
+          "range": "D30:Q49",
+          "widths": 14,
+          "heights": 19
+        },
+        {
+          "title": "Areezo Max Drop 1100 - 43 1/2",
+          "band": "B",
+          "range": "W30:AJ49",
+          "widths": 14,
+          "heights": 19
+        },
+        {
+          "title": "27 1/2",
+          "band": "C",
+          "range": "D54:Q71",
+          "widths": 14,
+          "heights": 17
+        },
+        {
+          "title": "Allegria Max Drop 2730 - 107 1/2",
+          "band": "C",
+          "range": "W54:AJ71",
+          "widths": 14,
+          "heights": 17
+        },
+        {
+          "title": "27 1/2",
+          "band": "D",
+          "range": "D76:Q93",
+          "widths": 14,
+          "heights": 17
+        },
+        {
+          "title": "Albero Max drop is 1000 - 39 3/8",
+          "band": "D",
+          "range": "W76:AJ93",
+          "widths": 14,
+          "heights": 17
+        },
+        {
+          "title": "27 1/2",
+          "band": "E",
+          "range": "D97:Q114",
+          "widths": 14,
+          "heights": 17
+        },
+        {
+          "title": "27 1/2",
+          "band": "E",
+          "range": "W97:AJ114",
+          "widths": 14,
+          "heights": 17
+        }
+      ],
+      "selectedPricingTables": [
+        {
+          "title": "27 1/2",
+          "band": "A",
+          "range": "D8:Q25",
+          "variant": "list"
+        },
+        {
+          "title": "27 1/2",
+          "band": "B",
+          "range": "D30:Q49",
+          "variant": "list"
+        },
+        {
+          "title": "27 1/2",
+          "band": "C",
+          "range": "D54:Q71",
+          "variant": "list"
+        },
+        {
+          "title": "27 1/2",
+          "band": "D",
+          "range": "D76:Q93",
+          "variant": "list"
+        },
+        {
+          "title": "27 1/2",
+          "band": "E",
+          "range": "D97:Q114",
+          "variant": "list"
+        },
+        {
+          "title": "27 1/2",
+          "band": "A",
+          "range": "W8:AJ25",
+          "variant": "discounted"
+        },
+        {
+          "title": "27 1/2",
+          "band": "B",
+          "range": "W30:AJ49",
+          "variant": "discounted"
+        },
+        {
+          "title": "27 1/2",
+          "band": "C",
+          "range": "W54:AJ71",
+          "variant": "discounted"
+        },
+        {
+          "title": "27 1/2",
+          "band": "D",
+          "range": "W76:AJ93",
+          "variant": "discounted"
+        },
+        {
+          "title": "27 1/2",
+          "band": "E",
+          "range": "W97:AJ114",
+          "variant": "discounted"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "sheet": "Perfect Fit Shutter",
+      "status": "imported",
+      "reason": null,
+      "detectedTables": [
+        {
+          "title": "Glass Size",
+          "band": "Standard",
+          "range": "D4:Y21",
+          "widths": 22,
+          "heights": 16
+        },
+        {
+          "title": "Glass Size",
+          "band": "Standard",
+          "range": "AC4:AX21",
+          "widths": 22,
+          "heights": 16
+        }
+      ],
+      "selectedPricingTables": [
+        {
+          "title": "Glass Size",
+          "band": "Standard",
+          "range": "D4:Y21",
+          "variant": "list"
+        },
+        {
+          "title": "Glass Size",
+          "band": "Standard",
+          "range": "AC4:AX21",
+          "variant": "discounted"
         }
       ],
       "notes": []
@@ -411,96 +1086,84 @@
       "reason": null,
       "detectedTables": [
         {
-          "title": "Horizon",
+          "title": "Vista FR - Natural",
           "band": "A",
-          "range": "D4:Q19",
-          "widths": 14,
+          "range": "D5:Z20",
+          "widths": 23,
+          "heights": 14
+        },
+        {
+          "title": "Vista FR - Natural",
+          "band": "A",
+          "range": "AD5:AZ20",
+          "widths": 23,
           "heights": 14
         },
         {
           "title": "Vista FR - Natural",
           "band": "B",
-          "range": "D22:Q37",
-          "widths": 14,
+          "range": "D23:Z38",
+          "widths": 23,
+          "heights": 14
+        },
+        {
+          "title": "Vista FR - Natural",
+          "band": "B",
+          "range": "AD23:AZ38",
+          "widths": 23,
           "heights": 14
         },
         {
           "title": "Shadow",
           "band": "C",
-          "range": "D41:Q56",
-          "widths": 14,
+          "range": "D42:Z57",
+          "widths": 23,
+          "heights": 14
+        },
+        {
+          "title": "Shadow",
+          "band": "C",
+          "range": "AD42:AZ57",
+          "widths": 23,
           "heights": 14
         }
       ],
-      "notes": []
-    },
-    {
-      "sheet": "Pleated Fabric",
-      "status": "manualReview",
-      "reason": "No complete width/height pricing grid was detected.",
-      "detectedTables": [],
-      "notes": []
-    },
-    {
-      "sheet": "PF Pleated",
-      "status": "imported",
-      "reason": null,
-      "detectedTables": [
+      "selectedPricingTables": [
         {
-          "title": "PF Pleated",
+          "title": "Vista FR - Natural",
           "band": "A",
-          "range": "D4:N20",
-          "widths": 11,
-          "heights": 15
+          "range": "D5:Z20",
+          "variant": "list"
         },
         {
-          "title": "PF Pleated",
+          "title": "Vista FR - Natural",
           "band": "B",
-          "range": "D22:N38",
-          "widths": 11,
-          "heights": 15
+          "range": "D23:Z38",
+          "variant": "list"
         },
         {
-          "title": "PF Pleated",
+          "title": "Shadow",
           "band": "C",
-          "range": "D40:N56",
-          "widths": 11,
-          "heights": 15
+          "range": "D42:Z57",
+          "variant": "list"
         },
         {
-          "title": "PF Pleated",
-          "band": "D",
-          "range": "D58:N74",
-          "widths": 11,
-          "heights": 15
+          "title": "Vista FR - Natural",
+          "band": "A",
+          "range": "AD5:AZ20",
+          "variant": "discounted"
         },
         {
-          "title": "PF Pleated",
-          "band": "E",
-          "range": "D76:N92",
-          "widths": 11,
-          "heights": 15
+          "title": "Vista FR - Natural",
+          "band": "B",
+          "range": "AD23:AZ38",
+          "variant": "discounted"
         },
         {
-          "title": "PF Pleated",
-          "band": "F",
-          "range": "D94:N110",
-          "widths": 11,
-          "heights": 15
-        },
-        {
-          "title": "PF Pleated",
-          "band": "G",
-          "range": "D112:N128",
-          "widths": 11,
-          "heights": 15
-        },
-        {
-          "title": "PF Pleated",
-          "band": "H",
-          "range": "D130:N146",
-          "widths": 11,
-          "heights": 15
+          "title": "Shadow",
+          "band": "C",
+          "range": "AD42:AZ57",
+          "variant": "discounted"
         }
       ],
       "notes": []
@@ -513,122 +1176,1576 @@
         {
           "title": "Freehang Pleated",
           "band": "A",
-          "range": "D3:V22",
-          "widths": 19,
-          "heights": 18
+          "range": "D5:AE32",
+          "widths": 28,
+          "heights": 26
         },
         {
-          "title": "Freehang Pleated",
+          "title": "Discount",
+          "band": "A",
+          "range": "AI5:BJ32",
+          "widths": 28,
+          "heights": 26
+        },
+        {
+          "title": "110 1/4",
           "band": "B",
-          "range": "D24:V43",
-          "widths": 19,
-          "heights": 18
+          "range": "D35:AE62",
+          "widths": 28,
+          "heights": 26
         },
         {
-          "title": "Freehang Pleated",
+          "title": "110 1/4",
+          "band": "B",
+          "range": "AI35:BJ62",
+          "widths": 28,
+          "heights": 26
+        },
+        {
+          "title": "110 1/4",
           "band": "C",
-          "range": "D45:V64",
-          "widths": 19,
-          "heights": 18
+          "range": "D65:AE92",
+          "widths": 28,
+          "heights": 26
         },
         {
-          "title": "Freehang Pleated",
+          "title": "110 1/4",
+          "band": "C",
+          "range": "AI65:BJ92",
+          "widths": 28,
+          "heights": 26
+        },
+        {
+          "title": "110 1/4",
           "band": "D",
-          "range": "D66:V85",
-          "widths": 19,
-          "heights": 18
+          "range": "D95:AE122",
+          "widths": 28,
+          "heights": 26
         },
         {
-          "title": "Freehang Pleated",
+          "title": "110 1/4",
+          "band": "D",
+          "range": "AI95:BJ122",
+          "widths": 28,
+          "heights": 26
+        },
+        {
+          "title": "110 1/4",
           "band": "E",
-          "range": "D87:V106",
-          "widths": 19,
-          "heights": 18
+          "range": "D125:AE152",
+          "widths": 28,
+          "heights": 26
         },
         {
-          "title": "Freehang Pleated",
+          "title": "110 1/4",
+          "band": "E",
+          "range": "AI125:BJ152",
+          "widths": 28,
+          "heights": 26
+        },
+        {
+          "title": "110 1/4",
           "band": "F",
-          "range": "D108:V127",
-          "widths": 19,
-          "heights": 18
+          "range": "D155:AE182",
+          "widths": 28,
+          "heights": 26
         },
         {
-          "title": "Freehang Pleated",
+          "title": "110 1/4",
+          "band": "F",
+          "range": "AI155:BJ182",
+          "widths": 28,
+          "heights": 26
+        },
+        {
+          "title": "110 1/4",
           "band": "G",
-          "range": "D129:V148",
-          "widths": 19,
-          "heights": 18
+          "range": "D185:AE212",
+          "widths": 28,
+          "heights": 26
+        },
+        {
+          "title": "110 1/4",
+          "band": "G",
+          "range": "AI185:BJ212",
+          "widths": 28,
+          "heights": 26
+        },
+        {
+          "title": "110 1/4",
+          "band": "H",
+          "range": "D215:AE242",
+          "widths": 28,
+          "heights": 26
+        },
+        {
+          "title": "110 1/4",
+          "band": "H",
+          "range": "AI215:BJ242",
+          "widths": 28,
+          "heights": 26
+        }
+      ],
+      "selectedPricingTables": [
+        {
+          "title": "Freehang Pleated",
+          "band": "A",
+          "range": "D5:AE32",
+          "variant": "list"
+        },
+        {
+          "title": "110 1/4",
+          "band": "B",
+          "range": "D35:AE62",
+          "variant": "list"
+        },
+        {
+          "title": "110 1/4",
+          "band": "C",
+          "range": "D65:AE92",
+          "variant": "list"
+        },
+        {
+          "title": "110 1/4",
+          "band": "D",
+          "range": "D95:AE122",
+          "variant": "list"
+        },
+        {
+          "title": "110 1/4",
+          "band": "E",
+          "range": "D125:AE152",
+          "variant": "list"
+        },
+        {
+          "title": "110 1/4",
+          "band": "F",
+          "range": "D155:AE182",
+          "variant": "list"
+        },
+        {
+          "title": "110 1/4",
+          "band": "G",
+          "range": "D185:AE212",
+          "variant": "list"
+        },
+        {
+          "title": "110 1/4",
+          "band": "H",
+          "range": "D215:AE242",
+          "variant": "list"
         },
         {
           "title": "Freehang Pleated",
+          "band": "A",
+          "range": "AI5:BJ32",
+          "variant": "discounted"
+        },
+        {
+          "title": "110 1/4",
+          "band": "B",
+          "range": "AI35:BJ62",
+          "variant": "discounted"
+        },
+        {
+          "title": "110 1/4",
+          "band": "C",
+          "range": "AI65:BJ92",
+          "variant": "discounted"
+        },
+        {
+          "title": "110 1/4",
+          "band": "D",
+          "range": "AI95:BJ122",
+          "variant": "discounted"
+        },
+        {
+          "title": "110 1/4",
+          "band": "E",
+          "range": "AI125:BJ152",
+          "variant": "discounted"
+        },
+        {
+          "title": "110 1/4",
+          "band": "F",
+          "range": "AI155:BJ182",
+          "variant": "discounted"
+        },
+        {
+          "title": "110 1/4",
+          "band": "G",
+          "range": "AI185:BJ212",
+          "variant": "discounted"
+        },
+        {
+          "title": "110 1/4",
           "band": "H",
-          "range": "D150:V169",
-          "widths": 19,
-          "heights": 18
+          "range": "AI215:BJ242",
+          "variant": "discounted"
         }
       ],
       "notes": []
     },
     {
-      "sheet": "Aqua Fauxwood",
+      "sheet": "PF Pleated",
+      "status": "imported",
+      "reason": null,
+      "detectedTables": [
+        {
+          "title": "PF Pleated",
+          "band": "A",
+          "range": "D5:Q28",
+          "widths": 14,
+          "heights": 22
+        },
+        {
+          "title": "Discount",
+          "band": "A",
+          "range": "U5:AH28",
+          "widths": 14,
+          "heights": 22
+        },
+        {
+          "title": "94 1/2",
+          "band": "B",
+          "range": "D31:Q54",
+          "widths": 14,
+          "heights": 22
+        },
+        {
+          "title": "94 1/2",
+          "band": "B",
+          "range": "U31:AH54",
+          "widths": 14,
+          "heights": 22
+        },
+        {
+          "title": "94 1/2",
+          "band": "C",
+          "range": "D57:Q80",
+          "widths": 14,
+          "heights": 22
+        },
+        {
+          "title": "94 1/2",
+          "band": "C",
+          "range": "U57:AH80",
+          "widths": 14,
+          "heights": 22
+        },
+        {
+          "title": "94 1/2",
+          "band": "D",
+          "range": "D83:Q106",
+          "widths": 14,
+          "heights": 22
+        },
+        {
+          "title": "94 1/2",
+          "band": "D",
+          "range": "U83:AH106",
+          "widths": 14,
+          "heights": 22
+        },
+        {
+          "title": "94 1/2",
+          "band": "E",
+          "range": "D109:Q132",
+          "widths": 14,
+          "heights": 22
+        },
+        {
+          "title": "94 1/2",
+          "band": "E",
+          "range": "U109:AH132",
+          "widths": 14,
+          "heights": 22
+        },
+        {
+          "title": "94 1/2",
+          "band": "F",
+          "range": "D135:Q158",
+          "widths": 14,
+          "heights": 22
+        },
+        {
+          "title": "94 1/2",
+          "band": "F",
+          "range": "U135:AH158",
+          "widths": 14,
+          "heights": 22
+        },
+        {
+          "title": "94 1/2",
+          "band": "G",
+          "range": "D161:Q184",
+          "widths": 14,
+          "heights": 22
+        },
+        {
+          "title": "94 1/2",
+          "band": "G",
+          "range": "U161:AH184",
+          "widths": 14,
+          "heights": 22
+        },
+        {
+          "title": "94 1/2",
+          "band": "H",
+          "range": "D187:Q210",
+          "widths": 14,
+          "heights": 22
+        },
+        {
+          "title": "94 1/2",
+          "band": "H",
+          "range": "U187:AH210",
+          "widths": 14,
+          "heights": 22
+        }
+      ],
+      "selectedPricingTables": [
+        {
+          "title": "PF Pleated",
+          "band": "A",
+          "range": "D5:Q28",
+          "variant": "list"
+        },
+        {
+          "title": "94 1/2",
+          "band": "B",
+          "range": "D31:Q54",
+          "variant": "list"
+        },
+        {
+          "title": "94 1/2",
+          "band": "C",
+          "range": "D57:Q80",
+          "variant": "list"
+        },
+        {
+          "title": "94 1/2",
+          "band": "D",
+          "range": "D83:Q106",
+          "variant": "list"
+        },
+        {
+          "title": "94 1/2",
+          "band": "E",
+          "range": "D109:Q132",
+          "variant": "list"
+        },
+        {
+          "title": "94 1/2",
+          "band": "F",
+          "range": "D135:Q158",
+          "variant": "list"
+        },
+        {
+          "title": "94 1/2",
+          "band": "G",
+          "range": "D161:Q184",
+          "variant": "list"
+        },
+        {
+          "title": "94 1/2",
+          "band": "H",
+          "range": "D187:Q210",
+          "variant": "list"
+        },
+        {
+          "title": "PF Pleated",
+          "band": "A",
+          "range": "U5:AH28",
+          "variant": "discounted"
+        },
+        {
+          "title": "94 1/2",
+          "band": "B",
+          "range": "U31:AH54",
+          "variant": "discounted"
+        },
+        {
+          "title": "94 1/2",
+          "band": "C",
+          "range": "U57:AH80",
+          "variant": "discounted"
+        },
+        {
+          "title": "94 1/2",
+          "band": "D",
+          "range": "U83:AH106",
+          "variant": "discounted"
+        },
+        {
+          "title": "94 1/2",
+          "band": "E",
+          "range": "U109:AH132",
+          "variant": "discounted"
+        },
+        {
+          "title": "94 1/2",
+          "band": "F",
+          "range": "U135:AH158",
+          "variant": "discounted"
+        },
+        {
+          "title": "94 1/2",
+          "band": "G",
+          "range": "U161:AH184",
+          "variant": "discounted"
+        },
+        {
+          "title": "94 1/2",
+          "band": "H",
+          "range": "U187:AH210",
+          "variant": "discounted"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "sheet": "PF  Pleated Dual Control",
+      "status": "imported",
+      "reason": null,
+      "detectedTables": [
+        {
+          "title": "PF  Pleated Dual Control",
+          "band": "A",
+          "range": "D5:L28",
+          "widths": 9,
+          "heights": 22
+        },
+        {
+          "title": "Discount",
+          "band": "A",
+          "range": "P5:X28",
+          "widths": 9,
+          "heights": 22
+        },
+        {
+          "title": "94 1/2",
+          "band": "B",
+          "range": "D31:L54",
+          "widths": 9,
+          "heights": 22
+        },
+        {
+          "title": "94 1/2",
+          "band": "B",
+          "range": "P31:X54",
+          "widths": 9,
+          "heights": 22
+        },
+        {
+          "title": "94 1/2",
+          "band": "C",
+          "range": "D57:L80",
+          "widths": 9,
+          "heights": 22
+        },
+        {
+          "title": "94 1/2",
+          "band": "C",
+          "range": "P57:X80",
+          "widths": 9,
+          "heights": 22
+        },
+        {
+          "title": "94 1/2",
+          "band": "D",
+          "range": "D83:L106",
+          "widths": 9,
+          "heights": 22
+        },
+        {
+          "title": "94 1/2",
+          "band": "D",
+          "range": "P83:X106",
+          "widths": 9,
+          "heights": 22
+        },
+        {
+          "title": "94 1/2",
+          "band": "E",
+          "range": "D109:L132",
+          "widths": 9,
+          "heights": 22
+        },
+        {
+          "title": "94 1/2",
+          "band": "E",
+          "range": "P109:X132",
+          "widths": 9,
+          "heights": 22
+        },
+        {
+          "title": "94 1/2",
+          "band": "F",
+          "range": "D135:L158",
+          "widths": 9,
+          "heights": 22
+        },
+        {
+          "title": "94 1/2",
+          "band": "F",
+          "range": "P135:X158",
+          "widths": 9,
+          "heights": 22
+        },
+        {
+          "title": "94 1/2",
+          "band": "G",
+          "range": "D161:L184",
+          "widths": 9,
+          "heights": 22
+        },
+        {
+          "title": "94 1/2",
+          "band": "G",
+          "range": "P161:X184",
+          "widths": 9,
+          "heights": 22
+        },
+        {
+          "title": "94 1/2",
+          "band": "H",
+          "range": "D187:L210",
+          "widths": 9,
+          "heights": 22
+        },
+        {
+          "title": "94 1/2",
+          "band": "H",
+          "range": "P187:X210",
+          "widths": 9,
+          "heights": 22
+        }
+      ],
+      "selectedPricingTables": [
+        {
+          "title": "PF  Pleated Dual Control",
+          "band": "A",
+          "range": "D5:L28",
+          "variant": "list"
+        },
+        {
+          "title": "94 1/2",
+          "band": "B",
+          "range": "D31:L54",
+          "variant": "list"
+        },
+        {
+          "title": "94 1/2",
+          "band": "C",
+          "range": "D57:L80",
+          "variant": "list"
+        },
+        {
+          "title": "94 1/2",
+          "band": "D",
+          "range": "D83:L106",
+          "variant": "list"
+        },
+        {
+          "title": "94 1/2",
+          "band": "E",
+          "range": "D109:L132",
+          "variant": "list"
+        },
+        {
+          "title": "94 1/2",
+          "band": "F",
+          "range": "D135:L158",
+          "variant": "list"
+        },
+        {
+          "title": "94 1/2",
+          "band": "G",
+          "range": "D161:L184",
+          "variant": "list"
+        },
+        {
+          "title": "94 1/2",
+          "band": "H",
+          "range": "D187:L210",
+          "variant": "list"
+        },
+        {
+          "title": "PF  Pleated Dual Control",
+          "band": "A",
+          "range": "P5:X28",
+          "variant": "discounted"
+        },
+        {
+          "title": "94 1/2",
+          "band": "B",
+          "range": "P31:X54",
+          "variant": "discounted"
+        },
+        {
+          "title": "94 1/2",
+          "band": "C",
+          "range": "P57:X80",
+          "variant": "discounted"
+        },
+        {
+          "title": "94 1/2",
+          "band": "D",
+          "range": "P83:X106",
+          "variant": "discounted"
+        },
+        {
+          "title": "94 1/2",
+          "band": "E",
+          "range": "P109:X132",
+          "variant": "discounted"
+        },
+        {
+          "title": "94 1/2",
+          "band": "F",
+          "range": "P135:X158",
+          "variant": "discounted"
+        },
+        {
+          "title": "94 1/2",
+          "band": "G",
+          "range": "P161:X184",
+          "variant": "discounted"
+        },
+        {
+          "title": "94 1/2",
+          "band": "H",
+          "range": "P187:X210",
+          "variant": "discounted"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "sheet": "PF Pleated Dual Blinds",
+      "status": "imported",
+      "reason": null,
+      "detectedTables": [
+        {
+          "title": "PF Pleated Dual Blinds",
+          "band": "A",
+          "range": "D5:Q28",
+          "widths": 14,
+          "heights": 22
+        },
+        {
+          "title": "Discount",
+          "band": "A",
+          "range": "U5:AH28",
+          "widths": 14,
+          "heights": 22
+        },
+        {
+          "title": "94 1/2",
+          "band": "B",
+          "range": "D31:Q54",
+          "widths": 14,
+          "heights": 22
+        },
+        {
+          "title": "94 1/2",
+          "band": "B",
+          "range": "U31:AH54",
+          "widths": 14,
+          "heights": 22
+        },
+        {
+          "title": "94 1/2",
+          "band": "C",
+          "range": "D57:Q80",
+          "widths": 14,
+          "heights": 22
+        },
+        {
+          "title": "94 1/2",
+          "band": "C",
+          "range": "U57:AH80",
+          "widths": 14,
+          "heights": 22
+        },
+        {
+          "title": "94 1/2",
+          "band": "D",
+          "range": "D83:Q106",
+          "widths": 14,
+          "heights": 22
+        },
+        {
+          "title": "94 1/2",
+          "band": "D",
+          "range": "U83:AH106",
+          "widths": 14,
+          "heights": 22
+        },
+        {
+          "title": "94 1/2",
+          "band": "E",
+          "range": "D109:Q132",
+          "widths": 14,
+          "heights": 22
+        },
+        {
+          "title": "94 1/2",
+          "band": "E",
+          "range": "U109:AH132",
+          "widths": 14,
+          "heights": 22
+        },
+        {
+          "title": "94 1/2",
+          "band": "F",
+          "range": "D135:Q158",
+          "widths": 14,
+          "heights": 22
+        },
+        {
+          "title": "94 1/2",
+          "band": "F",
+          "range": "U135:AH158",
+          "widths": 14,
+          "heights": 22
+        },
+        {
+          "title": "94 1/2",
+          "band": "G",
+          "range": "D161:Q184",
+          "widths": 14,
+          "heights": 22
+        },
+        {
+          "title": "94 1/2",
+          "band": "G",
+          "range": "U161:AH184",
+          "widths": 14,
+          "heights": 22
+        },
+        {
+          "title": "94 1/2",
+          "band": "H",
+          "range": "D187:Q210",
+          "widths": 14,
+          "heights": 22
+        },
+        {
+          "title": "94 1/2",
+          "band": "H",
+          "range": "U187:AH210",
+          "widths": 14,
+          "heights": 22
+        }
+      ],
+      "selectedPricingTables": [
+        {
+          "title": "PF Pleated Dual Blinds",
+          "band": "A",
+          "range": "D5:Q28",
+          "variant": "list"
+        },
+        {
+          "title": "94 1/2",
+          "band": "B",
+          "range": "D31:Q54",
+          "variant": "list"
+        },
+        {
+          "title": "94 1/2",
+          "band": "C",
+          "range": "D57:Q80",
+          "variant": "list"
+        },
+        {
+          "title": "94 1/2",
+          "band": "D",
+          "range": "D83:Q106",
+          "variant": "list"
+        },
+        {
+          "title": "94 1/2",
+          "band": "E",
+          "range": "D109:Q132",
+          "variant": "list"
+        },
+        {
+          "title": "94 1/2",
+          "band": "F",
+          "range": "D135:Q158",
+          "variant": "list"
+        },
+        {
+          "title": "94 1/2",
+          "band": "G",
+          "range": "D161:Q184",
+          "variant": "list"
+        },
+        {
+          "title": "94 1/2",
+          "band": "H",
+          "range": "D187:Q210",
+          "variant": "list"
+        },
+        {
+          "title": "PF Pleated Dual Blinds",
+          "band": "A",
+          "range": "U5:AH28",
+          "variant": "discounted"
+        },
+        {
+          "title": "94 1/2",
+          "band": "B",
+          "range": "U31:AH54",
+          "variant": "discounted"
+        },
+        {
+          "title": "94 1/2",
+          "band": "C",
+          "range": "U57:AH80",
+          "variant": "discounted"
+        },
+        {
+          "title": "94 1/2",
+          "band": "D",
+          "range": "U83:AH106",
+          "variant": "discounted"
+        },
+        {
+          "title": "94 1/2",
+          "band": "E",
+          "range": "U109:AH132",
+          "variant": "discounted"
+        },
+        {
+          "title": "94 1/2",
+          "band": "F",
+          "range": "U135:AH158",
+          "variant": "discounted"
+        },
+        {
+          "title": "94 1/2",
+          "band": "G",
+          "range": "U161:AH184",
+          "variant": "discounted"
+        },
+        {
+          "title": "94 1/2",
+          "band": "H",
+          "range": "U187:AH210",
+          "variant": "discounted"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "sheet": "Fit to Frame Pleated",
+      "status": "imported",
+      "reason": null,
+      "detectedTables": [
+        {
+          "title": "Fit to Frame Pleated",
+          "band": "A",
+          "range": "D7:P18",
+          "widths": 13,
+          "heights": 11
+        },
+        {
+          "title": "Discount",
+          "band": "A",
+          "range": "T7:AF18",
+          "widths": 13,
+          "heights": 11
+        },
+        {
+          "title": "Fit to Frame Pleated",
+          "band": "B",
+          "range": "D22:P33",
+          "widths": 13,
+          "heights": 11
+        },
+        {
+          "title": "Fit to Frame Pleated",
+          "band": "B",
+          "range": "T22:AF33",
+          "widths": 13,
+          "heights": 11
+        },
+        {
+          "title": "Fit to Frame Pleated",
+          "band": "C",
+          "range": "D37:P48",
+          "widths": 13,
+          "heights": 11
+        },
+        {
+          "title": "Fit to Frame Pleated",
+          "band": "C",
+          "range": "T37:AF48",
+          "widths": 13,
+          "heights": 11
+        },
+        {
+          "title": "Fit to Frame Pleated",
+          "band": "D",
+          "range": "D52:P63",
+          "widths": 13,
+          "heights": 11
+        },
+        {
+          "title": "Fit to Frame Pleated",
+          "band": "D",
+          "range": "T52:AF63",
+          "widths": 13,
+          "heights": 11
+        },
+        {
+          "title": "Fit to Frame Pleated",
+          "band": "E",
+          "range": "D67:P78",
+          "widths": 13,
+          "heights": 11
+        },
+        {
+          "title": "Fit to Frame Pleated",
+          "band": "E",
+          "range": "T67:AF78",
+          "widths": 13,
+          "heights": 11
+        }
+      ],
+      "selectedPricingTables": [
+        {
+          "title": "Fit to Frame Pleated",
+          "band": "A",
+          "range": "D7:P18",
+          "variant": "list"
+        },
+        {
+          "title": "Fit to Frame Pleated",
+          "band": "B",
+          "range": "D22:P33",
+          "variant": "list"
+        },
+        {
+          "title": "Fit to Frame Pleated",
+          "band": "C",
+          "range": "D37:P48",
+          "variant": "list"
+        },
+        {
+          "title": "Fit to Frame Pleated",
+          "band": "D",
+          "range": "D52:P63",
+          "variant": "list"
+        },
+        {
+          "title": "Fit to Frame Pleated",
+          "band": "E",
+          "range": "D67:P78",
+          "variant": "list"
+        },
+        {
+          "title": "Fit to Frame Pleated",
+          "band": "A",
+          "range": "T7:AF18",
+          "variant": "discounted"
+        },
+        {
+          "title": "Fit to Frame Pleated",
+          "band": "B",
+          "range": "T22:AF33",
+          "variant": "discounted"
+        },
+        {
+          "title": "Fit to Frame Pleated",
+          "band": "C",
+          "range": "T37:AF48",
+          "variant": "discounted"
+        },
+        {
+          "title": "Fit to Frame Pleated",
+          "band": "D",
+          "range": "T52:AF63",
+          "variant": "discounted"
+        },
+        {
+          "title": "Fit to Frame Pleated",
+          "band": "E",
+          "range": "T67:AF78",
+          "variant": "discounted"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "sheet": "3BS Pleated",
+      "status": "imported",
+      "reason": null,
+      "detectedTables": [
+        {
+          "title": "3BS Pleated",
+          "band": "A",
+          "range": "D5:M25",
+          "widths": 10,
+          "heights": 19
+        },
+        {
+          "title": "Discount",
+          "band": "A",
+          "range": "S5:AB25",
+          "widths": 10,
+          "heights": 19
+        },
+        {
+          "title": "82 5/8",
+          "band": "B",
+          "range": "D28:M48",
+          "widths": 10,
+          "heights": 19
+        },
+        {
+          "title": "82 5/8",
+          "band": "B",
+          "range": "S28:AB48",
+          "widths": 10,
+          "heights": 19
+        },
+        {
+          "title": "82 5/8",
+          "band": "C",
+          "range": "D51:M71",
+          "widths": 10,
+          "heights": 19
+        },
+        {
+          "title": "82 5/8",
+          "band": "C",
+          "range": "S51:AB71",
+          "widths": 10,
+          "heights": 19
+        },
+        {
+          "title": "82 5/8",
+          "band": "D",
+          "range": "D74:M94",
+          "widths": 10,
+          "heights": 19
+        },
+        {
+          "title": "82 5/8",
+          "band": "D",
+          "range": "S74:AB94",
+          "widths": 10,
+          "heights": 19
+        },
+        {
+          "title": "82 5/8",
+          "band": "E",
+          "range": "D97:M117",
+          "widths": 10,
+          "heights": 19
+        },
+        {
+          "title": "82 5/8",
+          "band": "E",
+          "range": "S97:AB117",
+          "widths": 10,
+          "heights": 19
+        },
+        {
+          "title": "82 5/8",
+          "band": "F",
+          "range": "D120:M140",
+          "widths": 10,
+          "heights": 19
+        },
+        {
+          "title": "82 5/8",
+          "band": "F",
+          "range": "S120:AB140",
+          "widths": 10,
+          "heights": 19
+        },
+        {
+          "title": "82 5/8",
+          "band": "G",
+          "range": "D143:M163",
+          "widths": 10,
+          "heights": 19
+        },
+        {
+          "title": "82 5/8",
+          "band": "G",
+          "range": "S143:AB163",
+          "widths": 10,
+          "heights": 19
+        },
+        {
+          "title": "82 5/8",
+          "band": "H",
+          "range": "D166:M186",
+          "widths": 10,
+          "heights": 19
+        },
+        {
+          "title": "82 5/8",
+          "band": "H",
+          "range": "S166:AB186",
+          "widths": 10,
+          "heights": 19
+        }
+      ],
+      "selectedPricingTables": [
+        {
+          "title": "3BS Pleated",
+          "band": "A",
+          "range": "D5:M25",
+          "variant": "list"
+        },
+        {
+          "title": "82 5/8",
+          "band": "B",
+          "range": "D28:M48",
+          "variant": "list"
+        },
+        {
+          "title": "82 5/8",
+          "band": "C",
+          "range": "D51:M71",
+          "variant": "list"
+        },
+        {
+          "title": "82 5/8",
+          "band": "D",
+          "range": "D74:M94",
+          "variant": "list"
+        },
+        {
+          "title": "82 5/8",
+          "band": "E",
+          "range": "D97:M117",
+          "variant": "list"
+        },
+        {
+          "title": "82 5/8",
+          "band": "F",
+          "range": "D120:M140",
+          "variant": "list"
+        },
+        {
+          "title": "82 5/8",
+          "band": "G",
+          "range": "D143:M163",
+          "variant": "list"
+        },
+        {
+          "title": "82 5/8",
+          "band": "H",
+          "range": "D166:M186",
+          "variant": "list"
+        },
+        {
+          "title": "3BS Pleated",
+          "band": "A",
+          "range": "S5:AB25",
+          "variant": "discounted"
+        },
+        {
+          "title": "82 5/8",
+          "band": "B",
+          "range": "S28:AB48",
+          "variant": "discounted"
+        },
+        {
+          "title": "82 5/8",
+          "band": "C",
+          "range": "S51:AB71",
+          "variant": "discounted"
+        },
+        {
+          "title": "82 5/8",
+          "band": "D",
+          "range": "S74:AB94",
+          "variant": "discounted"
+        },
+        {
+          "title": "82 5/8",
+          "band": "E",
+          "range": "S97:AB117",
+          "variant": "discounted"
+        },
+        {
+          "title": "82 5/8",
+          "band": "F",
+          "range": "S120:AB140",
+          "variant": "discounted"
+        },
+        {
+          "title": "82 5/8",
+          "band": "G",
+          "range": "S143:AB163",
+          "variant": "discounted"
+        },
+        {
+          "title": "82 5/8",
+          "band": "H",
+          "range": "S166:AB186",
+          "variant": "discounted"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "sheet": "Nightshade",
+      "status": "imported",
+      "reason": null,
+      "detectedTables": [
+        {
+          "title": "Nightshade",
+          "band": "Standard",
+          "range": "D5:T15",
+          "widths": 17,
+          "heights": 9
+        },
+        {
+          "title": "Discount",
+          "band": "Standard",
+          "range": "D36:T46",
+          "widths": 17,
+          "heights": 9
+        }
+      ],
+      "selectedPricingTables": [
+        {
+          "title": "Nightshade",
+          "band": "Standard",
+          "range": "D5:T15",
+          "variant": "list"
+        },
+        {
+          "title": "Nightshade",
+          "band": "Standard",
+          "range": "D36:T46",
+          "variant": "discounted"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "sheet": "25MM Aluminium",
+      "status": "imported",
+      "reason": null,
+      "detectedTables": [
+        {
+          "title": "Plain -Metallic",
+          "band": "Standard",
+          "range": "E8:W28",
+          "widths": 19,
+          "heights": 20
+        },
+        {
+          "title": "Silver",
+          "band": "Standard",
+          "range": "AJ8:BB28",
+          "widths": 19,
+          "heights": 20
+        },
+        {
+          "title": "Brushed - Filtra - Caruso - Woodline - Stripe - Hammered - Textured - Premium Metalic",
+          "band": "Standard",
+          "range": "E34:W54",
+          "widths": 19,
+          "heights": 20
+        },
+        {
+          "title": "Sparkle Black",
+          "band": "Standard",
+          "range": "AJ34:BB54",
+          "widths": 19,
+          "heights": 20
+        }
+      ],
+      "selectedPricingTables": [
+        {
+          "title": "Plain -Metallic",
+          "band": "Standard",
+          "range": "E8:W28",
+          "variant": "list"
+        },
+        {
+          "title": "Brushed - Filtra - Caruso - Woodline - Stripe - Hammered - Textured - Premium Metalic",
+          "band": "Standard",
+          "range": "E34:W54",
+          "variant": "list"
+        },
+        {
+          "title": "Plain -Metallic",
+          "band": "Standard",
+          "range": "AJ8:BB28",
+          "variant": "discounted"
+        },
+        {
+          "title": "Brushed - Filtra - Caruso - Woodline - Stripe - Hammered - Textured - Premium Metalic",
+          "band": "Standard",
+          "range": "AJ34:BB54",
+          "variant": "discounted"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "sheet": "Perfect Fit Aluminium",
+      "status": "imported",
+      "reason": null,
+      "detectedTables": [
+        {
+          "title": "Perfect Fit 25mm Plain Aluminium Venetians",
+          "band": "Standard",
+          "range": "D12:K29",
+          "widths": 8,
+          "heights": 17
+        },
+        {
+          "title": "Pastel Blue",
+          "band": "Standard",
+          "range": "X12:AE29",
+          "widths": 8,
+          "heights": 17
+        },
+        {
+          "title": "Perfect Fit 25mm Special Effects Aluminium Venetians",
+          "band": "Standard",
+          "range": "D36:K53",
+          "widths": 8,
+          "heights": 17
+        },
+        {
+          "title": "Sparkle Black",
+          "band": "Standard",
+          "range": "X36:AE53",
+          "widths": 8,
+          "heights": 17
+        }
+      ],
+      "selectedPricingTables": [
+        {
+          "title": "Perfect Fit 25mm Plain Aluminium Venetians",
+          "band": "Standard",
+          "range": "D12:K29",
+          "variant": "list"
+        },
+        {
+          "title": "Perfect Fit 25mm Special Effects Aluminium Venetians",
+          "band": "Standard",
+          "range": "D36:K53",
+          "variant": "list"
+        },
+        {
+          "title": "Perfect Fit 25mm Plain Aluminium Venetians",
+          "band": "Standard",
+          "range": "X12:AE29",
+          "variant": "discounted"
+        },
+        {
+          "title": "Perfect Fit 25mm Special Effects Aluminium Venetians",
+          "band": "Standard",
+          "range": "X36:AE53",
+          "variant": "discounted"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "sheet": "Fit to Frame Aluminium",
+      "status": "imported",
+      "reason": null,
+      "detectedTables": [
+        {
+          "title": "Blue Swatch Only",
+          "band": "A",
+          "range": "D7:J20",
+          "widths": 7,
+          "heights": 13
+        },
+        {
+          "title": "Discount",
+          "band": "A",
+          "range": "N7:T20",
+          "widths": 7,
+          "heights": 13
+        },
+        {
+          "title": "Fit to Frame Aluminium",
+          "band": "B",
+          "range": "D24:J37",
+          "widths": 7,
+          "heights": 13
+        },
+        {
+          "title": "Fit to Frame Aluminium",
+          "band": "B",
+          "range": "N24:T37",
+          "widths": 7,
+          "heights": 13
+        }
+      ],
+      "selectedPricingTables": [
+        {
+          "title": "Blue Swatch Only",
+          "band": "A",
+          "range": "D7:J20",
+          "variant": "list"
+        },
+        {
+          "title": "Fit to Frame Aluminium",
+          "band": "B",
+          "range": "D24:J37",
+          "variant": "list"
+        },
+        {
+          "title": "Blue Swatch Only",
+          "band": "A",
+          "range": "N7:T20",
+          "variant": "discounted"
+        },
+        {
+          "title": "Fit to Frame Aluminium",
+          "band": "B",
+          "range": "N24:T37",
+          "variant": "discounted"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "sheet": "Aquawood Fauxwood",
       "status": "imported",
       "reason": null,
       "detectedTables": [
         {
           "title": "White Smooth - White Grain - Niagra - Grey - Grey Wash - Grey Nightfall",
           "band": "Standard",
-          "range": "D8:Y12",
+          "range": "D9:Y13",
           "widths": 22,
           "heights": 4
         },
         {
           "title": "PRICE WITH TAPE",
           "band": "Standard",
-          "range": "D17:Y21",
+          "range": "D18:Y22",
+          "widths": 22,
+          "heights": 4
+        },
+        {
+          "title": "White Smooth - White Grain - Niagra - Grey - Grey Wash - Grey Nightfall",
+          "band": "Standard",
+          "range": "D37:Y41",
+          "widths": 22,
+          "heights": 4
+        },
+        {
+          "title": "PRICE WITH TAPE",
+          "band": "Standard",
+          "range": "D46:Y50",
           "widths": 22,
           "heights": 4
         }
       ],
-      "notes": []
-    },
-    {
-      "sheet": "Romans",
-      "status": "imported",
-      "reason": null,
-      "detectedTables": [
+      "selectedPricingTables": [
         {
-          "title": "Boheme, Haven, Pinnacle, Reveal, Strata, Tova, Trace, Vine",
-          "band": "A",
-          "range": "D6:O25",
-          "widths": 12,
-          "heights": 18
+          "title": "White Smooth - White Grain - Niagra - Grey - Grey Wash - Grey Nightfall",
+          "band": "Standard",
+          "range": "D9:Y13",
+          "variant": "list"
         },
         {
-          "title": "Belle, Capella, Cielo, Folina, Lila, Opal, Serenity, Veil, Verdant, Vibenna",
-          "band": "B",
-          "range": "D31:O50",
-          "widths": 12,
-          "heights": 18
+          "title": "PRICE WITH TAPE",
+          "band": "Standard",
+          "range": "D18:Y22",
+          "variant": "list"
         },
         {
-          "title": "Bliss, Calista, Cami, Canvas, Celina, Flores, Kairo, Keates, Lorcan, Lovella, Lumi, Memento, Mulberry, Ortega, Saskia, Sculpt, Treviso, Vista, Wentworth",
-          "band": "C",
-          "range": "D56:O75",
-          "widths": 12,
-          "heights": 18
+          "title": "White Smooth - White Grain - Niagra - Grey - Grey Wash - Grey Nightfall",
+          "band": "Standard",
+          "range": "D37:Y41",
+          "variant": "discounted"
         },
         {
-          "title": "Artisan, Arturo, Catkin, Casa, Dakar, Echo, Jareh, Lemon Grove, Lora, Lorenzo, Marble, Mimi, Noble, Nomad, Pavo, Riva, Rumour, Spire, Tivoli, Verve",
-          "band": "D",
-          "range": "D81:O100",
-          "widths": 12,
-          "heights": 18
+          "title": "PRICE WITH TAPE",
+          "band": "Standard",
+          "range": "D46:Y50",
+          "variant": "discounted"
         }
       ],
       "notes": []
     },
     {
-      "sheet": "Arena Fauxwood",
+      "sheet": "Sunwood Fauxwood",
+      "status": "imported",
+      "reason": null,
+      "detectedTables": [
+        {
+          "title": "Sunwood Fauxwood 35/50mm",
+          "band": "Standard",
+          "range": "D8:Z12",
+          "widths": 23,
+          "heights": 3
+        },
+        {
+          "title": "Sunwood Fauxwood 35/50mm",
+          "band": "Standard",
+          "range": "D31:Z35",
+          "widths": 23,
+          "heights": 3
+        },
+        {
+          "title": "Sunwood Fauxwood 50mm with Tapes",
+          "band": "Standard",
+          "range": "D54:Z58",
+          "widths": 23,
+          "heights": 3
+        },
+        {
+          "title": "Sunwood Fauxwood 50mm with Tapes",
+          "band": "Standard",
+          "range": "D77:Z81",
+          "widths": 23,
+          "heights": 3
+        }
+      ],
+      "selectedPricingTables": [
+        {
+          "title": "Sunwood Fauxwood 35/50mm",
+          "band": "Standard",
+          "range": "D8:Z12",
+          "variant": "list"
+        },
+        {
+          "title": "Sunwood Fauxwood 50mm with Tapes",
+          "band": "Standard",
+          "range": "D54:Z58",
+          "variant": "list"
+        },
+        {
+          "title": "Sunwood Fauxwood 35/50mm",
+          "band": "Standard",
+          "range": "D31:Z35",
+          "variant": "discounted"
+        },
+        {
+          "title": "Sunwood Fauxwood 50mm with Tapes",
+          "band": "Standard",
+          "range": "D77:Z81",
+          "variant": "discounted"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "sheet": "Essence Fauxwood",
       "status": "imported",
       "reason": null,
       "detectedTables": [
@@ -640,99 +2757,97 @@
           "heights": 3
         },
         {
+          "title": "Band A - Essence Range",
+          "band": "Standard",
+          "range": "D19:P23",
+          "widths": 13,
+          "heights": 3
+        }
+      ],
+      "selectedPricingTables": [
+        {
+          "title": "Band A - Essence Range",
+          "band": "Standard",
+          "range": "D5:P9",
+          "variant": "list"
+        },
+        {
+          "title": "Band A - Essence Range",
+          "band": "Standard",
+          "range": "D19:P23",
+          "variant": "discounted"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "sheet": "Urban Fauxwood",
+      "status": "imported",
+      "reason": null,
+      "detectedTables": [
+        {
           "title": "Band B - Urban Range",
           "band": "Standard",
-          "range": "D15:P19",
+          "range": "D5:P9",
           "widths": 13,
+          "heights": 3
+        },
+        {
+          "title": "Band B - Urban Range",
+          "band": "Standard",
+          "range": "D18:P22",
+          "widths": 13,
+          "heights": 3
+        }
+      ],
+      "selectedPricingTables": [
+        {
+          "title": "Band B - Urban Range",
+          "band": "Standard",
+          "range": "D5:P9",
+          "variant": "list"
+        },
+        {
+          "title": "Band B - Urban Range",
+          "band": "Standard",
+          "range": "D18:P22",
+          "variant": "discounted"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "sheet": "Expressions Fauxwood",
+      "status": "imported",
+      "reason": null,
+      "detectedTables": [
+        {
+          "title": "Band C - Expressions Range",
+          "band": "Standard",
+          "range": "D5:Q9",
+          "widths": 14,
           "heights": 3
         },
         {
           "title": "Band C - Expressions Range",
           "band": "Standard",
-          "range": "D24:Q28",
-          "widths": 14,
-          "heights": 3
-        },
-        {
-          "title": "Band D - Expressions Range (Highshine White & Cool White)",
-          "band": "ANY",
-          "range": "D33:Q37",
+          "range": "D17:Q21",
           "widths": 14,
           "heights": 3
         }
       ],
-      "notes": []
-    },
-    {
-      "sheet": "Aluminium Venetians",
-      "status": "imported",
-      "reason": null,
-      "detectedTables": [
+      "selectedPricingTables": [
         {
-          "title": "Plain -Metallic",
+          "title": "Band C - Expressions Range",
           "band": "Standard",
-          "range": "E7:W27",
-          "widths": 19,
-          "heights": 20
+          "range": "D5:Q9",
+          "variant": "list"
         },
         {
-          "title": "Brushed - Filtra - Caruso - Woodline - Stripe - Hammered - Textured - Premium Metalic",
+          "title": "Band C - Expressions Range",
           "band": "Standard",
-          "range": "E33:W53",
-          "widths": 19,
-          "heights": 20
-        }
-      ],
-      "notes": []
-    },
-    {
-      "sheet": "PF Aluminium",
-      "status": "imported",
-      "reason": null,
-      "detectedTables": [
-        {
-          "title": "Perfect Fit 25mm Plain Aluminium Venetians",
-          "band": "Standard",
-          "range": "D10:K27",
-          "widths": 8,
-          "heights": 17
-        },
-        {
-          "title": "Perfect Fit 25mm Special Effects Aluminium Venetians",
-          "band": "Standard",
-          "range": "D34:K51",
-          "widths": 8,
-          "heights": 17
-        }
-      ],
-      "notes": []
-    },
-    {
-      "sheet": "PF Wood",
-      "status": "imported",
-      "reason": null,
-      "detectedTables": [
-        {
-          "title": "35\"",
-          "band": "INS",
-          "range": "D4:M7",
-          "widths": 10,
-          "heights": 3
-        }
-      ],
-      "notes": []
-    },
-    {
-      "sheet": "Sunwood Faux",
-      "status": "imported",
-      "reason": null,
-      "detectedTables": [
-        {
-          "title": "SUNWOOD Fauxwood - 35/50mm",
-          "band": "Standard",
-          "range": "D6:Z10",
-          "widths": 23,
-          "heights": 3
+          "range": "D17:Q21",
+          "variant": "discounted"
         }
       ],
       "notes": []
@@ -743,25 +2858,294 @@
       "reason": null,
       "detectedTables": [
         {
-          "title": "35”",
-          "band": "INS",
+          "title": "Sunwood 35mm Essential Collection",
+          "band": "Standard",
           "range": "D7:Q11",
           "widths": 14,
           "heights": 4
         },
         {
-          "title": "35”",
-          "band": "INS",
-          "range": "D18:Q22",
+          "title": "Sunwood 35mm Essential Collection",
+          "band": "Standard",
+          "range": "U7:AH11",
           "widths": 14,
           "heights": 4
         },
         {
-          "title": "35”",
-          "band": "INS",
-          "range": "D28:Q32",
+          "title": "Sunwood 50mm Essential, Soft Grain & Perfect Grain",
+          "band": "Standard",
+          "range": "D17:Q21",
           "widths": 14,
           "heights": 4
+        },
+        {
+          "title": "Sunwood 50mm Essential, Soft Grain & Perfect Grain",
+          "band": "Standard",
+          "range": "U17:AH21",
+          "widths": 14,
+          "heights": 4
+        },
+        {
+          "title": "Sunwood 50mm Band C",
+          "band": "Standard",
+          "range": "D27:Q31",
+          "widths": 14,
+          "heights": 4
+        },
+        {
+          "title": "Sunwood 50mm Band C",
+          "band": "Standard",
+          "range": "U27:AH31",
+          "widths": 14,
+          "heights": 4
+        },
+        {
+          "title": "Sunwood 50mm Essential, Soft Grain & Perfect Grain with 25mm Tapes",
+          "band": "Standard",
+          "range": "D44:Q49",
+          "widths": 14,
+          "heights": 5
+        },
+        {
+          "title": "Sunwood 50mm Essential, Soft Grain & Perfect Grain with 25mm Tapes",
+          "band": "Standard",
+          "range": "U44:AH48",
+          "widths": 14,
+          "heights": 4
+        },
+        {
+          "title": "Sunwood 50mm Band C with 25mm Tapes",
+          "band": "Standard",
+          "range": "D54:Q59",
+          "widths": 14,
+          "heights": 5
+        },
+        {
+          "title": "Sunwood 50mm Band C with 25mm Tapes",
+          "band": "Standard",
+          "range": "U54:AH58",
+          "widths": 14,
+          "heights": 4
+        }
+      ],
+      "selectedPricingTables": [
+        {
+          "title": "Sunwood 35mm Essential Collection",
+          "band": "Standard",
+          "range": "D7:Q11",
+          "variant": "list"
+        },
+        {
+          "title": "Sunwood 50mm Essential, Soft Grain & Perfect Grain",
+          "band": "Standard",
+          "range": "D17:Q21",
+          "variant": "list"
+        },
+        {
+          "title": "Sunwood 50mm Band C",
+          "band": "Standard",
+          "range": "D27:Q31",
+          "variant": "list"
+        },
+        {
+          "title": "Sunwood 50mm Essential, Soft Grain & Perfect Grain with 25mm Tapes",
+          "band": "Standard",
+          "range": "D44:Q49",
+          "variant": "list"
+        },
+        {
+          "title": "Sunwood 50mm Band C with 25mm Tapes",
+          "band": "Standard",
+          "range": "D54:Q59",
+          "variant": "list"
+        },
+        {
+          "title": "Sunwood 35mm Essential Collection",
+          "band": "Standard",
+          "range": "U7:AH11",
+          "variant": "discounted"
+        },
+        {
+          "title": "Sunwood 50mm Essential, Soft Grain & Perfect Grain",
+          "band": "Standard",
+          "range": "U17:AH21",
+          "variant": "discounted"
+        },
+        {
+          "title": "Sunwood 50mm Band C",
+          "band": "Standard",
+          "range": "U27:AH31",
+          "variant": "discounted"
+        },
+        {
+          "title": "Sunwood 50mm Essential, Soft Grain & Perfect Grain with 25mm Tapes",
+          "band": "Standard",
+          "range": "U44:AH48",
+          "variant": "discounted"
+        },
+        {
+          "title": "Sunwood 50mm Band C with 25mm Tapes",
+          "band": "Standard",
+          "range": "U54:AH58",
+          "variant": "discounted"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "sheet": "Perfect Fit wood",
+      "status": "imported",
+      "reason": null,
+      "detectedTables": [
+        {
+          "title": "Perfect Fit Sunwood 25mm",
+          "band": "Standard",
+          "range": "D6:M9",
+          "widths": 10,
+          "heights": 3
+        },
+        {
+          "title": "Perfect Fit Sunwood 25mm",
+          "band": "Standard",
+          "range": "D19:M22",
+          "widths": 10,
+          "heights": 3
+        }
+      ],
+      "selectedPricingTables": [
+        {
+          "title": "Perfect Fit Sunwood 25mm",
+          "band": "Standard",
+          "range": "D6:M9",
+          "variant": "list"
+        },
+        {
+          "title": "Perfect Fit Sunwood 25mm",
+          "band": "Standard",
+          "range": "D19:M22",
+          "variant": "discounted"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "sheet": "Skye",
+      "status": "skipped",
+      "reason": "Reference, fabric-band, cover, or supplier metadata sheet. Not a direct quote pricing grid.",
+      "detectedTables": [],
+      "selectedPricingTables": [],
+      "notes": []
+    },
+    {
+      "sheet": "Roman",
+      "status": "imported",
+      "reason": null,
+      "detectedTables": [
+        {
+          "title": "Boheme, Haven, Pinnacle, Reveal, Strata, Tova, Trace, Vine",
+          "band": "A",
+          "range": "D6:O25",
+          "widths": 12,
+          "heights": 18
+        },
+        {
+          "title": "Boheme, Haven, Pinnacle, Reveal, Strata, Tova, Trace, Vine",
+          "band": "A",
+          "range": "S6:AD25",
+          "widths": 12,
+          "heights": 18
+        },
+        {
+          "title": "Belle, Capella, Cielo, Folina, Lila, Opal, Serenity, Veil, Verdant, Vibenna",
+          "band": "B",
+          "range": "D29:O48",
+          "widths": 12,
+          "heights": 18
+        },
+        {
+          "title": "Belle, Capella, Cielo, Folina, Lila, Opal, Serenity, Veil, Verdant, Vibenna",
+          "band": "B",
+          "range": "S29:AD48",
+          "widths": 12,
+          "heights": 18
+        },
+        {
+          "title": "Bliss, Calista, Cami, Canvas, Celina, Flores, Kairo, Keates, Lorcan, Lovella, Lumi, Memento, Mulberry, Ortega, Saskia, Sculpt, Treviso, Vista, Wentworth",
+          "band": "C",
+          "range": "D52:O71",
+          "widths": 12,
+          "heights": 18
+        },
+        {
+          "title": "Bliss, Calista, Cami, Canvas, Celina, Flores, Kairo, Keates, Lorcan, Lovella, Lumi, Memento, Mulberry, Ortega, Saskia, Sculpt, Treviso, Vista, Wentworth",
+          "band": "C",
+          "range": "S52:AD71",
+          "widths": 12,
+          "heights": 18
+        },
+        {
+          "title": "Artisan, Arturo, Catkin, Casa, Dakar, Echo, Jareh, Lemon Grove, Lora, Lorenzo, Marble, Mimi, Noble, Nomad, Pavo, Riva, Rumour, Spire, Tivoli, Verve",
+          "band": "D",
+          "range": "D75:O94",
+          "widths": 12,
+          "heights": 18
+        },
+        {
+          "title": "Artisan, Arturo, Catkin, Casa, Dakar, Echo, Jareh, Lemon Grove, Lora, Lorenzo, Marble, Mimi, Noble, Nomad, Pavo, Riva, Rumour, Spire, Tivoli, Verve",
+          "band": "D",
+          "range": "S75:AD94",
+          "widths": 12,
+          "heights": 18
+        }
+      ],
+      "selectedPricingTables": [
+        {
+          "title": "Boheme, Haven, Pinnacle, Reveal, Strata, Tova, Trace, Vine",
+          "band": "A",
+          "range": "D6:O25",
+          "variant": "list"
+        },
+        {
+          "title": "Belle, Capella, Cielo, Folina, Lila, Opal, Serenity, Veil, Verdant, Vibenna",
+          "band": "B",
+          "range": "D29:O48",
+          "variant": "list"
+        },
+        {
+          "title": "Bliss, Calista, Cami, Canvas, Celina, Flores, Kairo, Keates, Lorcan, Lovella, Lumi, Memento, Mulberry, Ortega, Saskia, Sculpt, Treviso, Vista, Wentworth",
+          "band": "C",
+          "range": "D52:O71",
+          "variant": "list"
+        },
+        {
+          "title": "Artisan, Arturo, Catkin, Casa, Dakar, Echo, Jareh, Lemon Grove, Lora, Lorenzo, Marble, Mimi, Noble, Nomad, Pavo, Riva, Rumour, Spire, Tivoli, Verve",
+          "band": "D",
+          "range": "D75:O94",
+          "variant": "list"
+        },
+        {
+          "title": "Boheme, Haven, Pinnacle, Reveal, Strata, Tova, Trace, Vine",
+          "band": "A",
+          "range": "S6:AD25",
+          "variant": "discounted"
+        },
+        {
+          "title": "Belle, Capella, Cielo, Folina, Lila, Opal, Serenity, Veil, Verdant, Vibenna",
+          "band": "B",
+          "range": "S29:AD48",
+          "variant": "discounted"
+        },
+        {
+          "title": "Bliss, Calista, Cami, Canvas, Celina, Flores, Kairo, Keates, Lorcan, Lovella, Lumi, Memento, Mulberry, Ortega, Saskia, Sculpt, Treviso, Vista, Wentworth",
+          "band": "C",
+          "range": "S52:AD71",
+          "variant": "discounted"
+        },
+        {
+          "title": "Artisan, Arturo, Catkin, Casa, Dakar, Echo, Jareh, Lemon Grove, Lora, Lorenzo, Marble, Mimi, Noble, Nomad, Pavo, Riva, Rumour, Spire, Tivoli, Verve",
+          "band": "D",
+          "range": "S75:AD94",
+          "variant": "discounted"
         }
       ],
       "notes": []

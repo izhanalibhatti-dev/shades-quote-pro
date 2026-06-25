@@ -17,7 +17,9 @@ export interface QuoteState {
     supplierId: string;
     productTypeId: string;
     fabricId: string;
+    colour?: string;
     frameColour?: string;
+    useCompanyDiscountedPrice?: boolean;
     room: string;
     mount: "Inside Recess" | "Outside Recess" | "Ceiling" | "Face Fix";
     chainSide: "Left" | "Right";
@@ -66,6 +68,7 @@ export interface QuoteCalculation {
   pricingSource: string;
   pricingReferenceNote: string;
   priceSource: string;
+  priceVariant: "list" | "companyDiscounted";
   widthMm: number;
   heightMm: number;
   roundedWidthMm: number;

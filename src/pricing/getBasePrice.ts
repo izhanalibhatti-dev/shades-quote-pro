@@ -22,7 +22,7 @@ export function getBasePrice({
   const roundedHeightMm = roundHeight(heightMm, priceTable.heights);
   const widthIndex = priceTable.widths.indexOf(roundedWidthMm);
   const heightIndex = priceTable.heights.indexOf(roundedHeightMm);
-  const bandMatrix = priceTable.bands[band];
+  const bandMatrix = priceTable.bands?.[band];
 
   if (!bandMatrix) {
     throw new Error(`Price table ${priceTable.id} does not contain band ${band}.`);

@@ -45,7 +45,7 @@ export const BLIND_PRODUCT_TYPES: BlindProductTypeDefinition[] = [
     id: "aluminium-venetian",
     label: "Aluminium Venetian",
     selectionLabel: "Finish / Colour",
-    match: (id) => hasPrefix(id, "wb-aluminium-venetians"),
+    match: (id) => hasPrefix(id, "wb-aluminium-venetians") || hasPrefix(id, "wb-25mm-aluminium"),
   },
   {
     id: "perfect-fit-roller",
@@ -60,6 +60,18 @@ export const BLIND_PRODUCT_TYPES: BlindProductTypeDefinition[] = [
     match: (id) => hasPrefix(id, "wb-pf-vision"),
   },
   {
+    id: "perfect-fit-pleated-dual-control",
+    label: "Perfect Fit Pleated Dual Control",
+    selectionLabel: "Fabric",
+    match: (id) => hasPrefix(id, "wb-pf-pleated-dual-control"),
+  },
+  {
+    id: "perfect-fit-pleated-dual-blinds",
+    label: "Perfect Fit Pleated Dual Blinds",
+    selectionLabel: "Fabric",
+    match: (id) => hasPrefix(id, "wb-pf-pleated-dual-blinds"),
+  },
+  {
     id: "perfect-fit-pleated",
     label: "Perfect Fit Pleated",
     selectionLabel: "Fabric",
@@ -69,13 +81,13 @@ export const BLIND_PRODUCT_TYPES: BlindProductTypeDefinition[] = [
     id: "perfect-fit-aluminium",
     label: "Perfect Fit Aluminium",
     selectionLabel: "Finish / Colour",
-    match: (id) => hasPrefix(id, "wb-pf-aluminium"),
+    match: (id) => hasPrefix(id, "wb-pf-aluminium") || hasPrefix(id, "wb-perfect-fit-aluminium"),
   },
   {
     id: "perfect-fit-wood",
     label: "Perfect Fit Wood",
     selectionLabel: "Finish / Colour",
-    match: (id) => hasPrefix(id, "wb-pf-wood"),
+    match: (id) => hasPrefix(id, "wb-pf-wood") || hasPrefix(id, "wb-perfect-fit-wood"),
   },
   {
     id: "perfect-fit-shutter",
@@ -87,7 +99,7 @@ export const BLIND_PRODUCT_TYPES: BlindProductTypeDefinition[] = [
     id: "aqua-fauxwood",
     label: "Aqua Fauxwood",
     selectionLabel: "Finish / Colour",
-    match: (id) => hasPrefix(id, "wb-aqua-fauxwood"),
+    match: (id) => hasPrefix(id, "wb-aqua-fauxwood") || hasPrefix(id, "wb-aquawood-fauxwood"),
   },
   {
     id: "arena-fauxwood",
@@ -108,10 +120,52 @@ export const BLIND_PRODUCT_TYPES: BlindProductTypeDefinition[] = [
     match: (id) => hasPrefix(id, "wb-freehang-pleated"),
   },
   {
+    id: "fit-to-frame-pleated",
+    label: "Fit to Frame Pleated",
+    selectionLabel: "Fabric",
+    match: (id) => hasPrefix(id, "wb-fit-to-frame-pleated"),
+  },
+  {
+    id: "three-sided-pleated",
+    label: "3BS Pleated",
+    selectionLabel: "Fabric",
+    match: (id) => hasPrefix(id, "wb-3bs-pleated"),
+  },
+  {
+    id: "fit-to-frame-aluminium",
+    label: "Fit to Frame Aluminium",
+    selectionLabel: "Finish / Colour",
+    match: (id) => hasPrefix(id, "wb-fit-to-frame-aluminium"),
+  },
+  {
+    id: "nightshade",
+    label: "Nightshade",
+    selectionLabel: "Finish / Colour",
+    match: (id) => hasPrefix(id, "wb-nightshade"),
+  },
+  {
+    id: "essence-fauxwood",
+    label: "Essence Fauxwood",
+    selectionLabel: "Finish / Colour",
+    match: (id) => hasPrefix(id, "wb-essence-fauxwood"),
+  },
+  {
+    id: "urban-fauxwood",
+    label: "Urban Fauxwood",
+    selectionLabel: "Finish / Colour",
+    match: (id) => hasPrefix(id, "wb-urban-fauxwood"),
+  },
+  {
+    id: "expressions-fauxwood",
+    label: "Expressions Fauxwood",
+    selectionLabel: "Finish / Colour",
+    match: (id) => hasPrefix(id, "wb-expressions-fauxwood"),
+  },
+  {
     id: "sunwood-faux",
     label: "Sunwood Faux",
     selectionLabel: "Finish / Colour",
-    match: (id) => hasPrefix(id, "wb-sunwood-faux"),
+    match: (id) => hasPrefix(id, "wb-sunwood-faux") || hasPrefix(id, "wb-sunwood-fauxwood"),
   },
   {
     id: "sunwood-wood",
