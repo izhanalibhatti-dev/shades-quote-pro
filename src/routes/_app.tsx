@@ -7,6 +7,7 @@ import AppSidebar from "@/components/AppSidebar";
 import { QuoteProvider } from "@/components/QuoteContext";
 import AccessibilityWidget from "@/components/AccessibilityWidget";
 import LanguageSelector from "@/components/LanguageSelector";
+import ThemeToggle from "@/components/ThemeToggle";
 import { isAuthed, refreshAuthSession } from "@/lib/auth";
 import { useI18n } from "@/lib/i18n";
 import { applyTheme, getTheme } from "@/lib/theme";
@@ -52,6 +53,10 @@ function AppLayout() {
             <div className="min-w-0 flex-1 truncate text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
               {t("app.name")}
             </div>
+            <ThemeToggle
+              compact
+              className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+            />
             <LanguageSelector />
           </header>
 

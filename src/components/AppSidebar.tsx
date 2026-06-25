@@ -7,17 +7,14 @@ import {
   LogOut,
   PanelLeftClose,
   PanelLeft,
-  Moon,
-  Sun,
   DoorOpen,
   BriefcaseBusiness,
 } from "lucide-react";
-import { useEffect, useState } from "react";
 import Logo from "@/components/Logo";
 import LanguageSelector from "@/components/LanguageSelector";
+import ThemeToggle from "@/components/ThemeToggle";
 import { signOut } from "@/lib/auth";
 import { useI18n, type TranslationKey } from "@/lib/i18n";
-import { applyTheme, getTheme, type Theme } from "@/lib/theme";
 
 const NAV = [
   { to: "/dashboard", labelKey: "nav.dashboard", icon: LayoutDashboard },
@@ -40,20 +37,7 @@ export default function AppSidebar({
 }) {
   const navigate = useNavigate();
   const pathname = useRouterState({ select: (s) => s.location.pathname });
-  const [theme, setTheme] = useState<Theme>("light");
   const { t } = useI18n();
-
-  useEffect(() => {
-    const t = getTheme();
-    setTheme(t);
-    applyTheme(t);
-  }, []);
-
-  const toggleTheme = () => {
-    const next: Theme = theme === "dark" ? "light" : "dark";
-    setTheme(next);
-    applyTheme(next);
-  };
 
   const handleSignOut = () => {
     signOut();
@@ -109,21 +93,10 @@ export default function AppSidebar({
         <div className={collapsed ? "flex justify-center" : "w-full"}>
           <LanguageSelector compact={collapsed} showLabel={false} />
         </div>
-        <button
-          onClick={toggleTheme}
+        <ThemeToggle
+          compact={collapsed}
           className={`flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-sidebar-foreground/75 transition-colors hover:bg-sidebar-accent/60 hover:text-sidebar-foreground ${collapsed ? "justify-center px-2" : ""}`}
-        >
-          {theme === "dark" ? (
-            <Sun className="h-[18px] w-[18px]" />
-          ) : (
-            <Moon className="h-[18px] w-[18px]" />
-          )}
-          {!collapsed && (
-            <span className="font-medium tracking-tight">
-              {theme === "dark" ? t("nav.lightMode") : t("nav.darkMode")}
-            </span>
-          )}
-        </button>
+        />
         <button
           onClick={() => setCollapsed(!collapsed)}
           className={`hidden md:flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-sidebar-foreground/75 transition-colors hover:bg-sidebar-accent/60 hover:text-sidebar-foreground ${collapsed ? "justify-center px-2" : ""}`}

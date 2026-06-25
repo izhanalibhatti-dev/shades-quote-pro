@@ -281,6 +281,7 @@ export type TranslationKey =
   | "field.category"
   | "field.product"
   | "field.unitPrice"
+  | "field.labourPrice"
   | "field.priceOverride"
   | "field.itemName"
   | "field.code"
@@ -462,6 +463,7 @@ const en: Dictionary = {
   "field.category": "Category",
   "field.product": "Product",
   "field.unitPrice": "Unit price (£)",
+  "field.labourPrice": "Labour price (£)",
   "field.priceOverride": "Price override (£)",
   "field.itemName": "Item name",
   "field.code": "Code",

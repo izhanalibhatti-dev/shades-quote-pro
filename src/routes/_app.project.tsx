@@ -2595,7 +2595,7 @@ function ManualDraftForm({
         }
       />
       <NumberInput
-        label={t("field.unitPrice")}
+        label={draft.type === "labour" ? t("field.labourPrice") : t("field.unitPrice")}
         value={draft.unitPrice}
         onChange={(unitPrice) =>
           setDraft((current) => ({ ...current, unitPrice: Math.max(0, unitPrice) }))
